@@ -3,704 +3,1061 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ana Essenci | Loja Premium de Perfumes e Beleza</title>
-  <meta name="description" content="Ana Essenci: perfumes, beleza, autocuidado e corpo e banho em uma loja com visual premium, foco em conversão e experiência elegante." />
-  <meta name="theme-color" content="#e8c8d4" />
-
+  <title>Ana Essenci | Perfumes que marcam presença</title>
+  <meta name="description" content="Loja premium de perfumes femininos e masculinos com visual elegante, carrossel de imagens por produto e experiência profissional para conversão." />
+  <meta name="theme-color" content="#e7c6d4" />
   <style>
-    :root{
-      --bg:#fff9fb;
-      --bg-soft:#fff1f5;
-      --white:#ffffff;
-      --text:#2d1f26;
-      --muted:#7c6871;
-      --primary:#ca829a;
-      --primary-dark:#ac627b;
-      --gold:#c7a069;
-      --gold-soft:#f4e2be;
-      --line:rgba(172,98,123,.14);
-      --shadow:0 20px 50px rgba(177,116,140,.14);
-      --shadow-strong:0 28px 70px rgba(177,116,140,.20);
-      --radius-xl:32px;
-      --radius-lg:24px;
-      --radius-md:18px;
-      --max:1260px;
+    :root {
+      --bg: #fff9fb;
+      --bg-soft: #fff1f6;
+      --bg-strong: #fde8f0;
+      --card: rgba(255,255,255,0.84);
+      --card-solid: #ffffff;
+      --text: #2c1d24;
+      --muted: #7c6670;
+      --primary: #c97797;
+      --primary-strong: #b85d81;
+      --primary-dark: #8f3f5f;
+      --gold: #cc9d61;
+      --gold-soft: #f8ead5;
+      --line: rgba(186, 116, 145, 0.16);
+      --success: #25d366;
+      --danger: #d45b7a;
+      --shadow-sm: 0 12px 28px rgba(179, 115, 139, 0.10);
+      --shadow-md: 0 18px 40px rgba(179, 115, 139, 0.14);
+      --shadow-lg: 0 28px 80px rgba(179, 115, 139, 0.18);
+      --radius-sm: 14px;
+      --radius-md: 20px;
+      --radius-lg: 28px;
+      --radius-xl: 38px;
+      --container: 1380px;
+      --header-h: 86px;
     }
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      scroll-behavior:smooth;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    body{
-      font-family:"Segoe UI", Arial, sans-serif;
-      color:var(--text);
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(255,225,235,.78), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(255,236,243,.72), transparent 28%),
-        linear-gradient(180deg, #fff9fb 0%, #fffefe 100%);
-      line-height:1.6;
-      overflow-x:hidden;
+        radial-gradient(circle at top left, rgba(255, 225, 235, 0.75), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(255, 236, 243, 0.65), transparent 28%),
+        linear-gradient(180deg, #fff9fb 0%, #fffdfd 100%);
+      overflow-x: hidden;
     }
 
-    img{
-      max-width:100%;
-      display:block;
+    img {
+      display: block;
+      max-width: 100%;
+      user-select: none;
+      -webkit-user-drag: none;
     }
 
-    a{
-      color:inherit;
-      text-decoration:none;
+    button,
+    input,
+    select {
+      font: inherit;
     }
 
-    .container{
-      width:min(92%, var(--max));
-      margin:0 auto;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .topbar{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      backdrop-filter:blur(14px);
-      background:rgba(255,255,255,.76);
-      border-bottom:1px solid rgba(172,98,123,.08);
+    .container {
+      width: min(94%, var(--container));
+      margin: 0 auto;
     }
 
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-      padding:14px 0;
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+      white-space: nowrap;
     }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width:0;
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: var(--header-h);
+      border-bottom: 1px solid rgba(186, 116, 145, 0.10);
+      backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.72);
     }
 
-    .brand-logo{
-      width:54px;
-      height:54px;
-      border-radius:50%;
-      overflow:hidden;
-      background:#fff;
-      border:1px solid var(--line);
-      box-shadow:var(--shadow);
-      flex-shrink:0;
+    .header-wrap {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
     }
 
-    .brand-logo img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
     }
 
-    .brand-text{
-      line-height:1.1;
+    .brand-logo {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(186, 116, 145, 0.15);
+      flex-shrink: 0;
     }
 
-    .brand-text strong{
-      display:block;
-      font-size:1rem;
-      letter-spacing:.4px;
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    .brand-text span{
-      display:block;
-      font-size:12px;
-      color:var(--muted);
-      text-transform:uppercase;
-      letter-spacing:1px;
+    .brand-copy {
+      min-width: 0;
     }
 
-    .menu{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      flex-wrap:wrap;
+    .brand-copy strong {
+      display: block;
+      font-size: 1rem;
+      line-height: 1.1;
+      letter-spacing: 0.2px;
     }
 
-    .menu a{
-      color:var(--muted);
-      font-size:14px;
-      padding:10px 14px;
-      border-radius:999px;
-      transition:.25s ease;
+    .brand-copy span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin-top: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    .menu a:hover{
-      background:var(--bg-soft);
-      color:var(--primary-dark);
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .nav-actions{
-      display:flex;
-      align-items:center;
-      gap:10px;
+    .nav a {
+      padding: 12px 16px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: 0.24s ease;
     }
 
-    .menu-toggle{
-      display:none;
-      width:44px;
-      height:44px;
-      border:none;
-      background:#fff;
-      border-radius:14px;
-      border:1px solid var(--line);
-      box-shadow:var(--shadow);
-      font-size:20px;
-      color:var(--primary-dark);
-      cursor:pointer;
+    .nav a:hover,
+    .nav a:focus-visible {
+      background: var(--bg-soft);
+      color: var(--primary-dark);
+      outline: none;
     }
 
-    .mobile-menu{
-      display:none;
-      flex-direction:column;
-      gap:8px;
-      padding:0 0 16px;
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    .mobile-menu.active{
-      display:flex;
+    .menu-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: #fff;
+      color: var(--primary-dark);
+      font-size: 1.35rem;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
     }
 
-    .mobile-menu a{
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:12px 14px;
-      color:var(--muted);
-      font-weight:700;
+    .btn {
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 24px;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.26s ease;
+      min-height: 50px;
+      text-align: center;
     }
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      border:none;
-      border-radius:999px;
-      padding:15px 24px;
-      font-weight:700;
-      font-size:15px;
-      cursor:pointer;
-      transition:.25s ease;
-      text-align:center;
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+      box-shadow: 0 16px 34px rgba(184, 93, 129, 0.26);
     }
 
-    .btn-primary{
-      background:linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color:#fff;
-      box-shadow:0 14px 30px rgba(172,98,123,.26);
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 38px rgba(184, 93, 129, 0.32);
     }
 
-    .btn-primary:hover{
-      transform:translateY(-2px);
-      box-shadow:0 18px 36px rgba(172,98,123,.32);
+    .btn-soft {
+      color: var(--primary-dark);
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(186, 116, 145, 0.16);
     }
 
-    .btn-soft{
-      background:#fff;
-      color:var(--primary-dark);
-      border:1px solid rgba(172,98,123,.16);
+    .btn-soft:hover {
+      background: var(--bg-soft);
+      transform: translateY(-2px);
     }
 
-    .btn-soft:hover{
-      background:var(--bg-soft);
+    .btn-full {
+      width: 100%;
     }
 
-    .hero{
-      padding:30px 0 24px;
+    .mobile-nav {
+      display: none;
+      padding: 0 0 18px;
+      gap: 10px;
+      flex-direction: column;
     }
 
-    .hero-banner{
-      min-height:620px;
-      border-radius:38px;
-      overflow:hidden;
-      position:relative;
+    .mobile-nav.active {
+      display: flex;
+    }
+
+    .mobile-nav a {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px 16px;
+      color: var(--muted);
+      font-weight: 700;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero {
+      padding: 28px 0 22px;
+    }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 720px;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(186, 116, 145, 0.12);
+      box-shadow: var(--shadow-lg);
       background:
-        linear-gradient(90deg, rgba(255,249,251,.94) 0%, rgba(255,249,251,.84) 38%, rgba(255,249,251,.22) 100%),
-        url('imagens/banner-ana-essenci.jpg') center/cover no-repeat;
-      border:1px solid rgba(172,98,123,.10);
-      box-shadow:var(--shadow-strong);
-      display:flex;
-      align-items:center;
+        linear-gradient(92deg, rgba(255,249,251,0.96) 0%, rgba(255,249,251,0.88) 38%, rgba(255,249,251,0.22) 100%),
+        url('imagens/banners/banner-ana-essenci.jpg') center center / cover no-repeat;
+      display: flex;
+      align-items: center;
     }
 
-    .hero-content{
-      max-width:720px;
-      padding:60px 56px;
+    .hero-blur {
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 202, 223, 0.34), transparent 68%);
+      filter: blur(16px);
+      pointer-events: none;
     }
 
-    .tag{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 14px;
-      border-radius:999px;
-      background:rgba(255,255,255,.82);
-      border:1px solid rgba(172,98,123,.14);
-      color:var(--primary-dark);
-      font-size:13px;
-      font-weight:700;
-      box-shadow:var(--shadow);
-      margin-bottom:18px;
+    .hero-blur.one {
+      top: -120px;
+      left: -80px;
     }
 
-    .hero h1{
-      font-size:clamp(2.4rem, 4vw, 5rem);
-      line-height:1.02;
-      letter-spacing:-1.6px;
-      margin-bottom:14px;
+    .hero-blur.two {
+      right: -120px;
+      bottom: -120px;
     }
 
-    .hero h1 span{
-      color:var(--primary-dark);
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      padding: 70px 60px;
     }
 
-    .hero p{
-      color:var(--muted);
-      font-size:1.08rem;
-      max-width:600px;
-      margin-bottom:24px;
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 16px;
+      border-radius: 999px;
+      color: var(--primary-dark);
+      background: rgba(255,255,255,0.84);
+      border: 1px solid rgba(186, 116, 145, 0.14);
+      box-shadow: var(--shadow-sm);
+      font-size: 0.85rem;
+      font-weight: 800;
+      margin-bottom: 22px;
     }
 
-    .hero-actions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-bottom:26px;
+    .hero-title {
+      font-size: clamp(2.8rem, 5vw, 5.6rem);
+      line-height: 0.98;
+      letter-spacing: -2px;
+      margin-bottom: 18px;
+      max-width: 700px;
     }
 
-    .hero-stats{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(130px,1fr));
-      gap:14px;
-      max-width:760px;
+    .hero-title span {
+      color: var(--primary-dark);
     }
 
-    .stat{
-      background:rgba(255,255,255,.84);
-      border:1px solid rgba(172,98,123,.12);
-      border-radius:20px;
-      padding:16px;
-      box-shadow:var(--shadow);
+    .hero-text {
+      font-size: 1.08rem;
+      color: var(--muted);
+      line-height: 1.72;
+      max-width: 620px;
+      margin-bottom: 26px;
     }
 
-    .stat strong{
-      display:block;
-      color:var(--primary-dark);
-      font-size:1.12rem;
-      margin-bottom:2px;
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 32px;
     }
 
-    .stat span{
-      color:var(--muted);
-      font-size:13px;
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(150px, 1fr));
+      gap: 14px;
+      max-width: 780px;
     }
 
-    section{
-      padding:58px 0;
+    .hero-stat {
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(186, 116, 145, 0.12);
+      box-shadow: var(--shadow-sm);
+      border-radius: 22px;
+      padding: 18px;
     }
 
-    .section-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:end;
-      gap:20px;
-      flex-wrap:wrap;
-      margin-bottom:24px;
+    .hero-stat strong {
+      display: block;
+      color: var(--primary-dark);
+      font-size: 1.05rem;
+      margin-bottom: 4px;
     }
 
-    .section-head h2{
-      font-size:clamp(1.9rem, 2.8vw, 2.9rem);
-      letter-spacing:-1px;
+    .hero-stat span {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.55;
+      display: block;
     }
 
-    .section-head p{
-      max-width:650px;
-      color:var(--muted);
+    section {
+      padding: 68px 0;
     }
 
-    .categories-grid{
-      display:grid;
-      grid-template-columns:repeat(5, 1fr);
-      gap:18px;
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
     }
 
-    .category-card{
-      background:rgba(255,255,255,.84);
-      border:1px solid var(--line);
-      border-radius:28px;
-      padding:24px 20px;
-      box-shadow:var(--shadow);
-      transition:.25s ease;
-      text-align:center;
+    .section-title-block small {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--primary-dark);
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 1.4px;
+      font-size: 0.78rem;
     }
 
-    .category-card:hover{
-      transform:translateY(-5px);
-      box-shadow:0 24px 48px rgba(177,116,140,.18);
+    .section-title-block h2 {
+      font-size: clamp(2rem, 3vw, 3.1rem);
+      letter-spacing: -1px;
+      line-height: 1.05;
     }
 
-    .category-icon{
-      width:64px;
-      height:64px;
-      margin:0 auto 14px;
-      border-radius:22px;
-      display:grid;
-      place-items:center;
-      font-size:26px;
-      background:linear-gradient(135deg, #f7e0e7, #fff);
-      border:1px solid rgba(172,98,123,.10);
+    .section-header p {
+      color: var(--muted);
+      max-width: 700px;
+      line-height: 1.68;
     }
 
-    .category-card h3{
-      font-size:1.06rem;
-      margin-bottom:6px;
+    .category-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
     }
 
-    .category-card p{
-      color:var(--muted);
-      font-size:14px;
+    .category-pill {
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,246,250,0.86));
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      box-shadow: var(--shadow-sm);
+      padding: 24px;
+      min-height: 138px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
     }
 
-    .products-grid{
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:22px;
+    .category-pill strong {
+      font-size: 1.05rem;
     }
 
-    .product-card{
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:28px;
-      overflow:hidden;
-      box-shadow:var(--shadow);
-      transition:transform .28s ease, box-shadow .28s ease, opacity .55s ease;
-      display:flex;
-      flex-direction:column;
-      opacity:0;
-      transform:translateY(22px);
+    .category-pill span {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
     }
 
-    .product-card.show{
-      opacity:1;
-      transform:translateY(0);
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 26px;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    .product-card:hover{
-      transform:translateY(-6px);
-      box-shadow:0 24px 48px rgba(177,116,140,.18);
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
-    .product-image{
-      position:relative;
-      background:linear-gradient(180deg, #fffefe 0%, #fff2f6 100%);
-      height:320px;
-      overflow:hidden;
-      display:flex;
-      align-items:flex-start;
-      justify-content:center;
-      border-bottom:1px solid rgba(172,98,123,.08);
-      padding:0;
+    .filter-chip {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.86);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 11px 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.24s ease;
+      box-shadow: var(--shadow-sm);
     }
 
-    .product-image img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      object-position:top center;
-      filter:drop-shadow(0 18px 28px rgba(0,0,0,.08));
-      transition:transform .35s ease;
+    .filter-chip:hover,
+    .filter-chip.active {
+      background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+      color: #fff;
+      border-color: transparent;
     }
 
-    .product-card:hover .product-image img{
-      transform:scale(1.04);
+    .search-wrap {
+      display: flex;
+      align-items: center;
+      min-width: min(100%, 360px);
+      background: rgba(255,255,255,0.88);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0 16px;
+      box-shadow: var(--shadow-sm);
     }
 
-    .promo-badge{
-      position:absolute;
-      top:16px;
-      left:16px;
-      z-index:2;
-      background:linear-gradient(135deg, var(--gold-soft), var(--gold));
-      color:#61411f;
-      font-size:12px;
-      font-weight:800;
-      padding:8px 12px;
-      border-radius:999px;
-      box-shadow:0 12px 24px rgba(199,160,105,.24);
+    .search-wrap input {
+      width: 100%;
+      border: none;
+      outline: none;
+      background: transparent;
+      padding: 15px 8px;
+      color: var(--text);
     }
 
-    .product-body{
-      padding:20px;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      flex:1;
+    .search-wrap span {
+      color: var(--muted);
+      font-size: 1rem;
     }
 
-    .product-body h3{
-      font-size:1.12rem;
-      line-height:1.35;
-      min-height:62px;
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
     }
 
-    .desc{
-      color:var(--muted);
-      font-size:14px;
+    .product-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,249,252,0.92));
+      border: 1px solid rgba(186, 116, 145, 0.16);
+      border-radius: 30px;
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      transform: translateY(16px);
+      opacity: 0;
+      transition: transform 0.5s ease, opacity 0.5s ease, box-shadow 0.24s ease;
     }
 
-    .price-row{
-      display:flex;
-      justify-content:space-between;
-      align-items:end;
-      gap:12px;
-      margin-top:auto;
+    .product-card.show {
+      transform: translateY(0);
+      opacity: 1;
     }
 
-    .price{
-      display:flex;
-      flex-direction:column;
-      line-height:1.1;
+    .product-card:hover {
+      box-shadow: 0 24px 54px rgba(179, 115, 139, 0.22);
     }
 
-    .price strong{
-      font-size:1.42rem;
-      color:var(--primary-dark);
+    .product-badge-wrap {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      right: 16px;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      pointer-events: none;
     }
 
-    .price span{
-      color:var(--muted);
-      font-size:12px;
-      text-decoration:line-through;
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.10);
+      backdrop-filter: blur(10px);
     }
 
-    .social-proof-grid{
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:20px;
+    .badge.left {
+      color: #6a4416;
+      background: linear-gradient(135deg, var(--gold-soft), #f0d1a6);
     }
 
-    .review-card{
-      background:rgba(255,255,255,.84);
-      border:1px solid var(--line);
-      border-radius:26px;
-      padding:24px;
-      box-shadow:var(--shadow);
+    .badge.right {
+      color: var(--primary-dark);
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(186, 116, 145, 0.14);
     }
 
-    .stars{
-      color:var(--gold);
-      letter-spacing:2px;
-      margin-bottom:10px;
-      font-size:18px;
+    .carousel {
+      position: relative;
+      height: 360px;
+      background: linear-gradient(180deg, #fffefe 0%, #fff3f7 100%);
+      border-bottom: 1px solid rgba(186, 116, 145, 0.10);
+      overflow: hidden;
     }
 
-    .review-card p{
-      color:var(--muted);
-      font-size:15px;
-      margin-bottom:12px;
+    .carousel-track {
+      width: 100%;
+      height: 100%;
+      position: relative;
     }
 
-    .review-card strong{
-      font-size:14px;
-      color:var(--text);
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.36s ease;
     }
 
-    .benefits-grid{
-      display:grid;
-      grid-template-columns:repeat(4, 1fr);
-      gap:18px;
+    .carousel-slide.active {
+      opacity: 1;
     }
 
-    .benefit-card{
-      background:rgba(255,255,255,.84);
-      border:1px solid var(--line);
-      border-radius:26px;
-      padding:24px 20px;
-      text-align:center;
-      box-shadow:var(--shadow);
-      transition:.25s ease;
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      background: #fff;
     }
 
-    .benefit-card:hover{
-      transform:translateY(-5px);
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 42px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.78);
+      color: var(--primary-dark);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(8px);
+      cursor: pointer;
+      z-index: 3;
+      transition: 0.24s ease;
     }
 
-    .benefit-icon{
-      width:64px;
-      height:64px;
-      margin:0 auto 14px;
-      border-radius:22px;
-      display:grid;
-      place-items:center;
-      font-size:26px;
-      background:linear-gradient(135deg, #f7e0e7, #fff);
-      border:1px solid rgba(172,98,123,.10);
+    .carousel-btn:hover {
+      background: #fff;
+      transform: translateY(-50%) scale(1.04);
     }
 
-    .benefit-card h3{
-      font-size:1.05rem;
-      margin-bottom:6px;
+    .carousel-btn.prev {
+      left: 14px;
     }
 
-    .benefit-card p{
-      color:var(--muted);
-      font-size:14px;
+    .carousel-btn.next {
+      right: 14px;
     }
 
-    .cta-box{
+    .carousel-dots {
+      position: absolute;
+      left: 50%;
+      bottom: 16px;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 3;
+    }
+
+    .carousel-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,0.66);
+      cursor: pointer;
+      transition: 0.22s ease;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .carousel-dot.active {
+      width: 26px;
+      border-radius: 999px;
+      background: var(--primary-dark);
+    }
+
+    .product-body {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 20px 20px 22px;
+      flex: 1;
+    }
+
+    .product-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .product-topline strong {
+      color: var(--primary-dark);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+    }
+
+    .product-name {
+      font-size: 1.1rem;
+      line-height: 1.4;
+      min-height: 62px;
+    }
+
+    .product-desc {
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.62;
+      min-height: 72px;
+    }
+
+    .product-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .meta-chip {
+      padding: 8px 12px;
+      background: rgba(255,245,249,0.9);
+      border: 1px solid rgba(186, 116, 145, 0.14);
+      border-radius: 999px;
+      color: var(--primary-dark);
+      font-size: 0.74rem;
+      font-weight: 700;
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: auto;
+    }
+
+    .price-box {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .price-box small {
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .price-box strong {
+      font-size: 1.34rem;
+      color: var(--primary-dark);
+      letter-spacing: -0.5px;
+    }
+
+    .product-footer .btn {
+      padding: 14px 18px;
+      min-height: 46px;
+    }
+
+    .empty-state {
+      display: none;
+      padding: 26px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.8);
+      border: 1px dashed rgba(186, 116, 145, 0.26);
+      color: var(--muted);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .split-banner {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 22px;
+    }
+
+    .info-panel,
+    .count-panel {
+      border-radius: 30px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-md);
+      background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(255,247,251,0.88));
+    }
+
+    .info-panel h3,
+    .count-panel h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .info-panel p,
+    .count-panel p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .count-grid {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .count-box {
+      border-radius: 22px;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid var(--line);
+      padding: 20px 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .count-box strong {
+      display: block;
+      color: var(--primary-dark);
+      font-size: 1.32rem;
+      margin-bottom: 6px;
+    }
+
+    .count-box span {
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.5;
+      display: block;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .faq-item {
+      border-radius: 26px;
+      padding: 24px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .faq-item h3 {
+      font-size: 1.02rem;
+      margin-bottom: 8px;
+    }
+
+    .faq-item p {
+      color: var(--muted);
+      line-height: 1.64;
+      font-size: 0.94rem;
+    }
+
+    .cta-panel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      padding: 40px 24px;
+      text-align: center;
       background:
-        radial-gradient(circle at top, rgba(255,255,255,.96), rgba(255,255,255,.78)),
-        linear-gradient(135deg, rgba(255,243,247,.92), rgba(255,235,241,.84));
-      border:1px solid var(--line);
-      border-radius:32px;
-      box-shadow:var(--shadow-strong);
-      padding:44px 28px;
-      text-align:center;
+        radial-gradient(circle at top, rgba(255,255,255,0.95), rgba(255,255,255,0.84)),
+        linear-gradient(135deg, rgba(255,242,247,0.94), rgba(255,232,240,0.90));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-lg);
     }
 
-    .cta-box h2{
-      font-size:clamp(2rem, 3vw, 3.2rem);
-      margin-bottom:10px;
-      letter-spacing:-1px;
+    .cta-panel h2 {
+      font-size: clamp(2rem, 3.2vw, 3.4rem);
+      letter-spacing: -1px;
+      margin-bottom: 12px;
     }
 
-    .cta-box p{
-      max-width:720px;
-      margin:0 auto 22px;
-      color:var(--muted);
+    .cta-panel p {
+      max-width: 780px;
+      margin: 0 auto 22px;
+      color: var(--muted);
+      line-height: 1.72;
     }
 
-    .footer{
-      border-top:1px solid rgba(172,98,123,.10);
-      padding:26px 0 40px;
-      display:flex;
-      justify-content:space-between;
-      gap:16px;
-      flex-wrap:wrap;
-      color:var(--muted);
-      font-size:14px;
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
-    .footer-links{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
+    .site-footer {
+      padding: 28px 0 40px;
+      border-top: 1px solid rgba(186, 116, 145, 0.10);
     }
 
-    .footer-links a{
-      background:#fff;
-      border:1px solid rgba(172,98,123,.14);
-      border-radius:999px;
-      padding:10px 14px;
-      color:var(--primary-dark);
-      font-weight:700;
+    .footer-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.92rem;
     }
 
-    .floating-whatsapp{
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      z-index:999;
-      box-shadow:var(--shadow-strong);
+    .footer-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
-    @media (max-width:1180px){
-      .categories-grid{
-        grid-template-columns:repeat(3, 1fr);
+    .footer-links a {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid var(--line);
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    .floating-whats {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 999;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--success);
+      color: #fff;
+      font-size: 1.7rem;
+      box-shadow: 0 18px 42px rgba(37, 211, 102, 0.28);
+      transition: 0.24s ease;
+    }
+
+    .floating-whats:hover {
+      transform: translateY(-4px) scale(1.04);
+    }
+
+    .notice {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .product-card.hidden {
+      display: none;
+    }
+
+    @media (max-width: 1280px) {
+      .product-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
-      .products-grid,
-      .social-proof-grid{
-        grid-template-columns:repeat(2, 1fr);
-      }
-
-      .benefits-grid{
-        grid-template-columns:repeat(2, 1fr);
+      .category-bar {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    @media (max-width:820px){
-      .menu{
-        display:none;
+    @media (max-width: 980px) {
+      .nav,
+      .header-actions .btn-soft {
+        display: none;
       }
 
-      .menu-toggle{
-        display:inline-grid;
-        place-items:center;
+      .menu-toggle {
+        display: inline-grid;
+        place-items: center;
       }
 
-      .hero-banner{
-        min-height:unset;
+      .hero-card {
+        min-height: auto;
         background:
-          linear-gradient(180deg, rgba(255,249,251,.95) 0%, rgba(255,249,251,.84) 100%),
-          url('imagens/banner-ana-essenci.jpg') center/cover no-repeat;
+          linear-gradient(180deg, rgba(255,249,251,0.96) 0%, rgba(255,249,251,0.90) 100%),
+          url('imagens/banners/banner-ana-essenci.jpg') center center / cover no-repeat;
       }
 
-      .hero-content{
-        padding:30px 22px;
+      .hero-content {
+        padding: 42px 24px;
       }
 
       .hero-stats,
-      .categories-grid,
-      .products-grid,
-      .social-proof-grid,
-      .benefits-grid{
-        grid-template-columns:1fr;
+      .split-banner,
+      .faq-grid,
+      .count-grid {
+        grid-template-columns: 1fr;
       }
 
-      .section-head{
-        align-items:start;
+      .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      :root {
+        --header-h: 78px;
       }
 
-      .btn{
-        width:100%;
+      section {
+        padding: 52px 0;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+        letter-spacing: -1.3px;
+      }
+
+      .hero-text {
+        font-size: 0.98rem;
+      }
+
+      .hero-actions,
+      .cta-actions {
+        flex-direction: column;
+      }
+
+      .btn,
+      .product-footer .btn {
+        width: 100%;
+      }
+
+      .controls {
+        align-items: stretch;
+      }
+
+      .search-wrap {
+        min-width: 100%;
+      }
+
+      .category-bar,
+      .product-grid,
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .carousel {
+        height: 320px;
+      }
+
+      .product-footer {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
       }
     }
   </style>
 </head>
 <body>
-
-  <header class="topbar">
+  <header class="site-header">
     <div class="container">
-      <div class="nav">
-        <a href="#inicio" class="brand">
+      <div class="header-wrap">
+        <a href="#inicio" class="brand" aria-label="Ir para o início da Ana Essenci">
           <div class="brand-logo">
-            <img src="imagens/logo-ana-essenci.png" alt="Logo Ana Essenci">
+            <img src="imagens/logo/logo-ana-essenci.png" alt="Logo Ana Essenci" />
           </div>
-          <div class="brand-text">
+          <div class="brand-copy">
             <strong>Ana Essenci</strong>
-            <span>Perfumes, beleza e cuidado</span>
+            <span>Perfumes femininos e masculinos com visual premium</span>
           </div>
         </a>
 
-        <nav class="menu">
-          <a href="#categorias">Categorias</a>
-          <a href="#produtos">Produtos</a>
-          <a href="#avaliacoes">Avaliações</a>
-          <a href="#diferenciais">Diferenciais</a>
+        <nav class="nav" aria-label="Menu principal">
+          <a href="#destaque">Destaques</a>
+          <a href="#femininos">Femininos</a>
+          <a href="#masculinos">Masculinos</a>
+          <a href="#faq">FAQ</a>
           <a href="#contato">Contato</a>
         </nav>
 
-        <div class="nav-actions">
-          <button class="menu-toggle" id="menuToggle">☰</button>
+        <div class="header-actions">
+          <a class="btn btn-soft" href="#femininos">Ver catálogo</a>
+          <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileNav">☰</button>
         </div>
       </div>
 
-      <div class="mobile-menu" id="mobileMenu">
-        <a href="#categorias">Categorias</a>
-        <a href="#produtos">Produtos</a>
-        <a href="#avaliacoes">Avaliações</a>
-        <a href="#diferenciais">Diferenciais</a>
+      <div class="mobile-nav" id="mobileNav" aria-label="Menu mobile">
+        <a href="#destaque">Destaques</a>
+        <a href="#femininos">Femininos</a>
+        <a href="#masculinos">Masculinos</a>
+        <a href="#faq">FAQ</a>
         <a href="#contato">Contato</a>
       </div>
     </div>
@@ -709,31 +1066,31 @@
   <main>
     <section class="hero" id="inicio">
       <div class="container">
-        <div class="hero-banner">
+        <div class="hero-card">
+          <div class="hero-blur one"></div>
+          <div class="hero-blur two"></div>
           <div class="hero-content">
-            <div class="tag">✨ Curadoria premium com visual sofisticado</div>
-            <h1>Perfumes que <span>marcam presença</span> por onde você passa</h1>
-            <p>
-              Fragrâncias selecionadas com visual elegante, experiência premium e estrutura pronta para crescer com novas categorias de beleza.
+            <div class="eyebrow">✨ Curadoria elegante • Catálogo visual premium</div>
+            <h1 class="hero-title">Perfumes que <span>marcam presença</span> por onde você passa</h1>
+            <p class="hero-text">
+              Um catálogo pensado para vender melhor: visual refinado, carrossel por produto, organização profissional de perfumes femininos e masculinos e uma estrutura pronta para crescer com sua marca.
             </p>
-
             <div class="hero-actions">
-              <a href="#produtos" class="btn btn-primary">Comprar agora</a>
-              <a href="mailto:loja.anaessenci@gmail.com" class="btn btn-soft">Suporte por e-mail</a>
+              <a class="btn btn-primary" href="#femininos">Comprar femininos</a>
+              <a class="btn btn-soft" href="#masculinos">Explorar masculinos</a>
             </div>
-
             <div class="hero-stats">
-              <div class="stat">
-                <strong>Originalidade</strong>
-                <span>catálogo com apresentação premium</span>
+              <div class="hero-stat">
+                <strong>40 produtos</strong>
+                <span>25 femininos e 15 masculinos já estruturados no catálogo.</span>
               </div>
-              <div class="stat">
-                <strong>Conversão</strong>
-                <span>compra rápida via WhatsApp</span>
+              <div class="hero-stat">
+                <strong>Carrossel por item</strong>
+                <span>Cada produto pode exibir 1, 2, 3, 4 ou 5 imagens sem quebrar o layout.</span>
               </div>
-              <div class="stat">
-                <strong>Expansão</strong>
-                <span>site pronto para novas categorias</span>
+              <div class="hero-stat">
+                <strong>Base escalável</strong>
+                <span>Estrutura pronta para crescer até 50 produtos ou mais no futuro.</span>
               </div>
             </div>
           </div>
@@ -741,387 +1098,164 @@
       </div>
     </section>
 
-    <section id="categorias">
+    <section id="destaque">
       <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Categorias da Ana Essenci</h2>
+        <div class="section-header">
+          <div class="section-title-block">
+            <small>Destaque da loja</small>
+            <h2>Uma vitrine mais forte, elegante e organizada</h2>
           </div>
           <p>
-            Estrutura de loja completa para crescimento real. Hoje com foco principal em perfumes femininos e pronta para expansão.
+            O objetivo desta estrutura é simples: apresentar os perfumes com cara de loja premium, facilitar a navegação no celular e no computador e deixar a experiência visual muito mais forte para converter.
           </p>
         </div>
 
-        <div class="categories-grid">
-          <article class="category-card">
-            <div class="category-icon">🌷</div>
-            <h3>Perfumes Femininos</h3>
-            <p>Seleção principal com fragrâncias delicadas, intensas e sofisticadas.</p>
-          </article>
-
-          <article class="category-card">
-            <div class="category-icon">🖤</div>
-            <h3>Perfumes Masculinos</h3>
-            <p>Seção preparada para receber novas fragrâncias masculinas.</p>
-          </article>
-
-          <article class="category-card">
-            <div class="category-icon">💄</div>
-            <h3>Maquiagem</h3>
-            <p>Espaço pronto para batons, bases, blushes e outros itens.</p>
-          </article>
-
-          <article class="category-card">
-            <div class="category-icon">✨</div>
-            <h3>Autocuidado</h3>
-            <p>Área reservada para bem-estar, rotina de cuidado e beleza.</p>
-          </article>
-
-          <article class="category-card">
-            <div class="category-icon">🛁</div>
-            <h3>Corpo e Banho</h3>
-            <p>Seção pronta para cremes, loções, sabonetes e kits.</p>
-          </article>
+        <div class="category-bar">
+          <div class="category-pill">
+            <strong>Perfumes femininos</strong>
+            <span>Seleção com frascos sofisticados, carrosséis visuais e organização por pasta pronta para automação.</span>
+          </div>
+          <div class="category-pill">
+            <strong>Perfumes masculinos</strong>
+            <span>Catálogo objetivo com foco em presença, modernidade e navegação simples para comparar produtos.</span>
+          </div>
+          <div class="category-pill">
+            <strong>Visual de loja premium</strong>
+            <span>Cards com acabamento refinado, botões fortes, sombras suaves e experiência mais profissional.</span>
+          </div>
+          <div class="category-pill">
+            <strong>Estrutura escalável</strong>
+            <span>Seu projeto já está preparado para adicionar novos perfumes sem refazer o site do zero.</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="produtos">
+    <section id="femininos">
       <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Perfumes em destaque</h2>
+        <div class="section-header">
+          <div class="section-title-block">
+            <small>Catálogo feminino</small>
+            <h2>Perfumes femininos</h2>
           </div>
           <p>
-            Cards organizados para vender melhor, com foco no visual do frasco, preço e ação imediata.
+            Seleção completa com apresentação visual premium. Nesta versão, os links de compra dos femininos ficam destacados para revisão manual antes de publicação final, evitando associação errada entre pasta e link.
           </p>
         </div>
 
-        <div class="products-grid">
+        <div class="controls">
+          <div class="filter-group" id="femaleFilters">
+            <button class="filter-chip active" data-filter="all" data-target="female">Todos</button>
+            <button class="filter-chip" data-filter="premium" data-target="female">Premium</button>
+            <button class="filter-chip" data-filter="classico" data-target="female">Clássicos</button>
+            <button class="filter-chip" data-filter="doce" data-target="female">Doces / Intensos</button>
+          </div>
+          <label class="search-wrap" aria-label="Buscar perfume feminino">
+            <span>🔎</span>
+            <input type="search" id="femaleSearch" placeholder="Buscar perfume feminino" />
+          </label>
+        </div>
 
-          <article class="product-card">
-            <div class="product-image">
-              <span class="promo-badge">Oferta</span>
-              <img src="imagens/audaz.jpg" alt="Eudora Magnific Audaz Eau De Parfum 75Ml">
-            </div>
-            <div class="product-body">
-              <h3>Eudora Magnific Audaz Eau De Parfum 75Ml</h3>
-              <p class="desc">Sofisticado, intenso e elegante para quem quer presença marcante.</p>
-              <div class="price-row">
-                <div class="price">
-                  <strong>R$ 209,90</strong>
-                  <span>de R$ 249,90</span>
-                </div>
-                <a class="btn btn-primary" target="_blank" rel="noopener noreferrer" href="https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/eudora/produto/52542/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado">Comprar</a>
+        <div class="product-grid" id="femaleGrid"></div>
+        <div class="empty-state" id="femaleEmpty">Nenhum perfume feminino foi encontrado com esse filtro.</div>
+      </div>
+    </section>
+
+    <section id="masculinos">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-block">
+            <small>Catálogo masculino</small>
+            <h2>Perfumes masculinos</h2>
+          </div>
+          <p>
+            Catálogo masculino com pastas já organizadas no padrão do projeto. Aqui os links foram conectados diretamente com base nos códigos enviados, então a base já está pronta para publicação e expansão.
+          </p>
+        </div>
+
+        <div class="controls">
+          <div class="filter-group" id="maleFilters">
+            <button class="filter-chip active" data-filter="all" data-target="male">Todos</button>
+            <button class="filter-chip" data-filter="intenso" data-target="male">Intensos</button>
+            <button class="filter-chip" data-filter="moderno" data-target="male">Modernos</button>
+            <button class="filter-chip" data-filter="signature" data-target="male">Signature</button>
+          </div>
+          <label class="search-wrap" aria-label="Buscar perfume masculino">
+            <span>🔎</span>
+            <input type="search" id="maleSearch" placeholder="Buscar perfume masculino" />
+          </label>
+        </div>
+
+        <div class="product-grid" id="maleGrid"></div>
+        <div class="empty-state" id="maleEmpty">Nenhum perfume masculino foi encontrado com esse filtro.</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="split-banner">
+          <div class="info-panel">
+            <h3>Base sólida para crescer com sua loja</h3>
+            <p>
+              O projeto foi estruturado para funcionar bem agora e crescer sem dor de cabeça depois. O layout já aceita várias quantidades de imagens por produto, trabalha com pastas organizadas e separa o catálogo em blocos claros para facilitar manutenção, atualização e futuras melhorias.
+            </p>
+            <p style="margin-top: 14px;">
+              Isso permite que você adicione novos perfumes, altere imagens e refine os links sem desmontar o site inteiro. É exatamente a base que um projeto sério precisa para escalar bem.
+            </p>
+          </div>
+          <div class="count-panel">
+            <h3>Resumo do catálogo atual</h3>
+            <p>Contagem baseada na estrutura que você já organizou no projeto.</p>
+            <div class="count-grid">
+              <div class="count-box">
+                <strong>25</strong>
+                <span>Perfumes femininos organizados em pastas nomeadas.</span>
+              </div>
+              <div class="count-box">
+                <strong>15</strong>
+                <span>Perfumes masculinos conectados por código e link.</span>
+              </div>
+              <div class="count-box">
+                <strong>40</strong>
+                <span>Total atual de produtos prontos na estrutura.</span>
               </div>
             </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-image">
-              <span class="promo-badge">Promo</span>
-              <img src="imagens/crazy-feelings.jpg" alt="Boticollection Crazy Feelings Desodorante Colônia 100Ml">
+            <div class="notice">
+              Os femininos estão renderizados por nome de pasta. Os masculinos seguem por código de produto, conforme sua organização atual.
             </div>
-            <div class="product-body">
-              <h3>Boticollection Crazy Feelings Desodorante Colônia 100Ml</h3>
-              <p class="desc">Envolvente e marcante, ideal para quem gosta de perfumes com personalidade.</p>
-              <div class="price-row">
-                <div class="price">
-                  <strong>R$ 174,90</strong>
-                  <span>de R$ 209,90</span>
-                </div>
-                <a class="btn btn-primary" target="_blank" rel="noopener noreferrer" href="https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/71877/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado">Comprar</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-image">
-              <span class="promo-badge">Oferta</span>
-              <img src="imagens/egeo-choc.jpg" alt="Egeo Choc Desodorante Colônia 90Ml">
-            </div>
-            <div class="product-body">
-              <h3>Egeo Choc Desodorante Colônia 90Ml</h3>
-              <p class="desc">Doce, moderno e envolvente para quem ama fragrâncias femininas marcantes.</p>
-              <div class="price-row">
-                <div class="price">
-                  <strong>R$ 159,90</strong>
-                  <span>de R$ 189,90</span>
-                </div>
-                <a class="btn btn-primary" target="_blank" rel="noopener noreferrer" href="https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/82689/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado">Comprar</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-image">
-              <span class="promo-badge">Promo</span>
-              <img src="imagens/floratta-blue.jpg" alt="Floratta Blue Desodorante Colônia 75Ml">
-            </div>
-            <div class="product-body">
-              <h3>Floratta Blue Desodorante Colônia 75Ml</h3>
-              <p class="desc">Leve, delicado e romântico. Um clássico suave para o dia a dia.</p>
-              <div class="price-row">
-                <div class="price">
-                  <strong>R$ 164,90</strong>
-                  <span>de R$ 199,90</span>
-                </div>
-                <a class="btn btn-primary" target="_blank" rel="noopener noreferrer" href="https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/25458/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado">Comprar</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-image">
-              <span class="promo-badge">Oferta</span>
-              <img src="imagens/floratta-red.jpg" alt="Floratta Red Desodorante Colônia 75Ml">
-            </div>
-            <div class="product-body">
-              <h3>Floratta Red Desodorante Colônia 75Ml</h3>
-              <p class="desc">Mais intensa e apaixonante, com presença marcante e visual elegante.</p>
-              <div class="price-row">
-                <div class="price">
-                  <strong>R$ 164,90</strong>
-                  <span>de R$ 194,90</span>
-                </div>
-                <a class="btn btn-primary" href="#">Comprar</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-image">
-              <span class="promo-badge">Promo</span>
-              <img src="imagens/floratta-rose.jpg" alt="Floratta Rose Desodorante Colônia 75Ml">
-            </div>
-            <div class="product-body">
-              <h3>Floratta Rose Desodorante Colônia 75Ml</h3>
-              <p class="desc">Suave, romântico e feminino, perfeito para quem gosta de leveza com charme.</p>
-              <div class="price-row">
-                <div class="price">
-                  <strong>R$ 164,90</strong>
-                  <span>de R$ 194,90</span>
-                </div>
-                <a class="btn btn-primary" target="_blank" rel="noopener noreferrer" href="https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/48635/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado">Comprar</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-image">
-              <span class="promo-badge">Destaque</span>
-              <img src="imagens/glamour-myriad.jpg" alt="Glamour Myriad Desodorante Colônia 75Ml">
-            </div>
-            <div class="product-body">
-              <h3>Glamour Myriad Desodorante Colônia 75Ml</h3>
-              <p class="desc">Escolha elegante e refinada para quem busca um perfume sofisticado.</p>
-              <div class="price-row">
-                <div class="price">
-                  <strong>R$ 154,90</strong>
-                  <span>de R$ 184,90</span>
-                </div>
-                <a class="btn btn-primary" href="#">Comprar</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-image">
-              <span class="promo-badge">Oferta</span>
-              <img src="imagens/imensi.jpg" alt="Imensi Infinite Desodorante Colônia 100Ml">
-            </div>
-            <div class="product-body">
-              <h3>Imensi Infinite Desodorante Colônia 100Ml</h3>
-              <p class="desc">Refinado, versátil e moderno para diversas ocasiões com assinatura elegante.</p>
-              <div class="price-row">
-                <div class="price">
-                  <strong>R$ 154,90</strong>
-                  <span>de R$ 189,90</span>
-                </div>
-                <a class="btn btn-primary" target="_blank" rel="noopener noreferrer" href="https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/eudora/produto/53138/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado">Comprar</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-image">
-              <span class="promo-badge">Premium</span>
-              <img src="imagens/lily.jpg" alt="Lily Eau De Parfum 75Ml">
-            </div>
-            <div class="product-body">
-              <h3>Lily Eau De Parfum 75Ml</h3>
-              <p class="desc">Premium e sofisticado para quem quer um perfume refinado e memorável.</p>
-              <div class="price-row">
-                <div class="price">
-                  <strong>R$ 319,90</strong>
-                  <span>de R$ 359,90</span>
-                </div>
-                <a class="btn btn-primary" target="_blank" rel="noopener noreferrer" href="https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/77524/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado">Comprar</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-image">
-              <span class="promo-badge">Oferta</span>
-              <img src="imagens/lily-soleil.jpg" alt="L'Eau De Lily Soleil Desodorante Colônia 75Ml">
-            </div>
-            <div class="product-body">
-              <h3>L'Eau De Lily Soleil Desodorante Colônia 75Ml</h3>
-              <p class="desc">Elegante e delicado, com toque refinado e presença feminina suave.</p>
-              <div class="price-row">
-                <div class="price">
-                  <strong>R$ 184,89</strong>
-                  <span>de R$ 214,90</span>
-                </div>
-                <a class="btn btn-primary" target="_blank" rel="noopener noreferrer" href="https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/49680/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado">Comprar</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-image">
-              <span class="promo-badge">Destaque</span>
-              <img src="imagens/linda.jpg" alt="Linda Irresistível Desodorante Colônia 100Ml">
-            </div>
-            <div class="product-body">
-              <h3>Linda Irresistível Desodorante Colônia 100Ml</h3>
-              <p class="desc">Delicado e expressivo, ideal para quem quer elegância com charme feminino.</p>
-              <div class="price-row">
-                <div class="price">
-                  <strong>R$ 209,90</strong>
-                  <span>de R$ 239,90</span>
-                </div>
-                <a class="btn btn-primary" target="_blank" rel="noopener noreferrer" href="https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/81756/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado">Comprar</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-image">
-              <span class="promo-badge">Promo</span>
-              <img src="imagens/magnific-rouge.jpg" alt="Eudora Magnific Rouge Camélia Desodorante Colônia 75Ml">
-            </div>
-            <div class="product-body">
-              <h3>Eudora Magnific Rouge Camélia Desodorante Colônia 75Ml</h3>
-              <p class="desc">Sofisticado e impactante, com visual elegante e proposta refinada.</p>
-              <div class="price-row">
-                <div class="price">
-                  <strong>R$ 139,90</strong>
-                  <span>de R$ 169,90</span>
-                </div>
-                <a class="btn btn-primary" target="_blank" rel="noopener noreferrer" href="https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/eudora/produto/52943/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado">Comprar</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-image">
-              <span class="promo-badge">Premium</span>
-              <img src="imagens/sevilla.jpg" alt="Botica 214 Sevilla Dorada Eau De Parfum Floral Frutal 75Ml">
-            </div>
-            <div class="product-body">
-              <h3>Botica 214 Sevilla Dorada Eau De Parfum Floral Frutal 75Ml</h3>
-              <p class="desc">Uma proposta premium, elegante e refinada para presença com sofisticação.</p>
-              <div class="price-row">
-                <div class="price">
-                  <strong>R$ 239,90</strong>
-                  <span>de R$ 279,90</span>
-                </div>
-                <a class="btn btn-primary" target="_blank" rel="noopener noreferrer" href="https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/58733/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado">Comprar</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-image">
-              <span class="promo-badge">Clássico</span>
-              <img src="imagens/thaty.jpg" alt="Boticollection Thaty Desodorante Colônia 100Ml">
-            </div>
-            <div class="product-body">
-              <h3>Boticollection Thaty Desodorante Colônia 100Ml</h3>
-              <p class="desc">Clássico suave e fresco para quem prefere fragrâncias leves e atemporais.</p>
-              <div class="price-row">
-                <div class="price">
-                  <strong>R$ 174,90</strong>
-                  <span>de R$ 199,90</span>
-                </div>
-                <a class="btn btn-primary" target="_blank" rel="noopener noreferrer" href="https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/19734/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado">Comprar</a>
-              </div>
-            </div>
-          </article>
-
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="avaliacoes">
+    <section id="faq">
       <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Quem compra, recomenda</h2>
+        <div class="section-header">
+          <div class="section-title-block">
+            <small>FAQ</small>
+            <h2>Dúvidas frequentes</h2>
           </div>
           <p>
-            Prova social forte para gerar confiança e acelerar a decisão de compra.
+            Uma seção simples para fortalecer a confiança visual e responder as perguntas mais comuns sem poluir a vitrine principal dos produtos.
           </p>
         </div>
 
-        <div class="social-proof-grid">
-          <article class="review-card">
-            <div class="stars">★★★★★</div>
-            <p>"Chegou rápido e o perfume é incrível!"</p>
-            <strong>Cliente verificada</strong>
+        <div class="faq-grid">
+          <article class="faq-item">
+            <h3>Os perfumes têm mais de uma imagem?</h3>
+            <p>Sim. O sistema aceita produtos com quantidades diferentes de imagens. Se a pasta tiver uma imagem, ela aparece sozinha. Se tiver várias, o carrossel funciona normalmente.</p>
           </article>
-
-          <article class="review-card">
-            <div class="stars">★★★★★</div>
-            <p>"A embalagem veio linda e a fragrância fixa muito bem."</p>
-            <strong>Cliente satisfeita</strong>
+          <article class="faq-item">
+            <h3>O site funciona bem no celular?</h3>
+            <p>Sim. O layout foi organizado com foco em responsividade, carrosséis adaptáveis e cards com boa leitura em telas menores.</p>
           </article>
-
-          <article class="review-card">
-            <div class="stars">★★★★★</div>
-            <p>"Atendimento ótimo e o produto superou minha expectativa."</p>
-            <strong>Compra recente</strong>
+          <article class="faq-item">
+            <h3>É possível adicionar mais perfumes depois?</h3>
+            <p>Sim. Essa base foi pensada justamente para crescer. Você pode adicionar mais pastas, novas imagens e novos produtos sem precisar reconstruir tudo.</p>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="diferenciais">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Diferenciais da loja</h2>
-          </div>
-          <p>
-            Estrutura pensada para transmitir segurança, credibilidade e praticidade.
-          </p>
-        </div>
-
-        <div class="benefits-grid">
-          <article class="benefit-card">
-            <div class="benefit-icon">🚚</div>
-            <h3>Entrega rápida</h3>
-            <p>Processo ágil para que seu pedido chegue com praticidade.</p>
-          </article>
-
-          <article class="benefit-card">
-            <div class="benefit-icon">✅</div>
-            <h3>Produto original</h3>
-            <p>Catálogo apresentado com foco em confiança e autenticidade.</p>
-          </article>
-
-          <article class="benefit-card">
-            <div class="benefit-icon">🔒</div>
-            <h3>Pagamento seguro</h3>
-            <p>Compra com mais tranquilidade e sensação de segurança.</p>
-          </article>
-
-          <article class="benefit-card">
-            <div class="benefit-icon">💬</div>
-            <h3>Suporte via WhatsApp</h3>
-            <p>Atendimento rápido para dúvidas, pedidos e orientação.</p>
+          <article class="faq-item">
+            <h3>Os links femininos já estão finais?</h3>
+            <p>Nesta versão, a parte visual está pronta e os femininos podem ser revisados manualmente antes da publicação final, evitando vincular links errados a produtos errados.</p>
           </article>
         </div>
       </div>
@@ -1129,65 +1263,782 @@
 
     <section id="contato">
       <div class="container">
-        <div class="cta-box">
-          <h2>Escolha seu perfume e sinta a diferença</h2>
+        <div class="cta-panel">
+          <h2>Uma loja bonita vende mais quando a estrutura está certa</h2>
           <p>
-            Explore a seleção atual da Ana Essenci e acompanhe as próximas categorias que serão adicionadas à loja.
+            Seu projeto já saiu do nível improvisado e agora tem base visual, organização de mídia e catálogo escalável. A próxima etapa é ajustar o que faltar, conectar tudo e publicar uma versão final pronta para vender com mais força.
           </p>
-          <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
-            <a href="mailto:loja.anaessenci@gmail.com" class="btn btn-primary">Falar no suporte</a>
-            <a href="#produtos" class="btn btn-soft">Ver produtos</a>
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="#femininos">Ver femininos</a>
+            <a class="btn btn-soft" href="#masculinos">Ver masculinos</a>
           </div>
+          <div class="notice">Troque os links femininos manualmente quando quiser publicar a versão definitiva com mapeamento 100% preciso.</div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container footer">
-      <div>
-        <strong>Ana Essenci</strong><br>
-        <span>Perfumes, beleza e cuidado com apresentação premium.</span>
-      </div>
-
-      <div class="footer-links">
-        <a href="#categorias">Categorias</a>
-        <a href="#produtos">Produtos</a>
-        <a href="mailto:loja.anaessenci@gmail.com">Gmail</a>
-      </div>
-
-      <div>
-        Fragrâncias com elegância, charme e uma experiência mais profissional.
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-wrap">
+        <div>
+          <strong>Ana Essenci</strong><br />
+          <span>Catálogo premium de perfumes com organização profissional.</span>
+        </div>
+        <div class="footer-links">
+          <a href="#inicio">Início</a>
+          <a href="#femininos">Femininos</a>
+          <a href="#masculinos">Masculinos</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div>Estrutura visual pronta para crescer com sua loja.</div>
       </div>
     </div>
   </footer>
 
+  <a class="floating-whats" href="https://wa.me/SEUNUMEROAQUI" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp">✆</a>
+
   <script>
-    const cards = document.querySelectorAll('.product-card');
-    const menuToggle = document.getElementById('menuToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
+    const femaleProducts = [
+      {
+        id: "accordes",
+        name: "Accordes",
+        brand: "O Boticário",
+        folder: "imagens/feminino/accordes/",
+        images: ["01.webp", "02.webp", "03.webp"],
+        label: "Clássico",
+        line: "Feminino",
+        description: "Apresentação elegante com visual refinado e atmosfera sofisticada para uma vitrine mais premium.",
+        typeTags: ["classico", "premium"],
+        chips: ["Elegante", "Sofisticado", "Presença"],
+        price: "Consulte",
+        link: "#"
+      },
+      {
+        id: "body-splash",
+        name: "Body Splash",
+        brand: "O Boticário",
+        folder: "imagens/feminino/body-splash/",
+        images: ["01.webp", "02.webp"],
+        label: "Leve",
+        line: "Feminino",
+        description: "Uma opção visual leve para quem gosta de frescor e apresentação suave dentro do catálogo feminino.",
+        typeTags: ["classico"],
+        chips: ["Leve", "Fresco", "Casual"],
+        price: "Consulte",
+        link: "#"
+      },
+      {
+        id: "botica-214-golden",
+        name: "Botica 214 Golden Gardenia",
+        brand: "O Boticário",
+        folder: "imagens/feminino/botica-214-golden/",
+        images: ["01.webp", "02.webp", "03.webp"],
+        label: "Premium",
+        line: "Botica 214",
+        description: "Visual premium com apelo mais sofisticado, ideal para compor a área mais refinada da vitrine.",
+        typeTags: ["premium"],
+        chips: ["Premium", "Refinado", "Luxo"],
+        price: "Consulte",
+        link: "#"
+      },
+      {
+        id: "botica-214-sevilla",
+        name: "Botica 214 Sevilla Dorada",
+        brand: "O Boticário",
+        folder: "imagens/feminino/botica-214-sevilla/",
+        images: ["01.webp", "02.webp", "03.webp", "04.webp", "05.webp"],
+        label: "Premium",
+        line: "Botica 214",
+        description: "Destaque com conjunto visual forte e cinco imagens para um carrossel muito mais rico na apresentação.",
+        typeTags: ["premium"],
+        chips: ["Premium", "Dourado", "Impactante"],
+        price: "Consulte",
+        link: "#"
+      },
+      {
+        id: "boticollection-crazy",
+        name: "Boticollection Crazy Feelings",
+        brand: "O Boticário",
+        folder: "imagens/feminino/boticollection-crazy/",
+        images: ["01.webp", "02.webp", "03.webp"],
+        label: "Clássico",
+        line: "Boticollection",
+        description: "Produto com visual nostálgico e presença marcante para reforçar variedade dentro da coleção feminina.",
+        typeTags: ["classico", "doce"],
+        chips: ["Icônico", "Marcante", "Retrô"],
+        price: "Consulte",
+        link: "#"
+      },
+      {
+        id: "boticollection-thaty",
+        name: "Boticollection Thaty",
+        brand: "O Boticário",
+        folder: "imagens/feminino/boticollection-thaty/",
+        images: ["01.webp", "02.webp", "03.webp", "04.webp", "05.webp"],
+        label: "Clássico",
+        line: "Boticollection",
+        description: "Uma escolha tradicional e conhecida, com bom volume de imagens para fortalecer a vitrine visual.",
+        typeTags: ["classico"],
+        chips: ["Tradicional", "Leve", "Conhecido"],
+        price: "Consulte",
+        link: "#"
+      },
+      {
+        id: "celebre-sua-forca",
+        name: "Celebre Sua Força",
+        brand: "O Boticário",
+        folder: "imagens/feminino/celebre-sua-forca/",
+        images: ["01.webp", "02.webp", "03.webp", "04.webp"],
+        label: "Moderno",
+        line: "Celebre",
+        description: "Vibe contemporânea com comunicação mais vibrante, ótima para dar ritmo ao catálogo feminino.",
+        typeTags: ["premium"],
+        chips: ["Moderno", "Vibrante", "Atual"],
+        price: "Consulte",
+        link: "#"
+      },
+      {
+        id: "coffee-woman-duo",
+        name: "Coffee Woman Duo",
+        brand: "O Boticário",
+        folder: "imagens/feminino/coffee-woman-duo/",
+        images: ["01.webp", "02.webp", "03.webp", "04.webp"],
+        label: "Intenso",
+        line: "Coffee",
+        description: "Visual envolvente com forte apelo para quem gosta de perfumes com personalidade e presença.",
+        typeTags: ["doce", "premium"],
+        chips: ["Envolvente", "Intenso", "Noite"],
+        price: "Consulte",
+        link: "#"
+      },
+      {
+        id: "coffee-woman-seduction",
+        name: "Coffee Woman Seduction",
+        brand: "O Boticário",
+        folder: "imagens/feminino/coffee-woman-seduction/",
+        images: ["01.webp", "02.webp", "03.webp"],
+        label: "Intenso",
+        line: "Coffee",
+        description: "Proposta sedutora e visual forte para uma apresentação mais chamativa e premium no catálogo.",
+        typeTags: ["doce"],
+        chips: ["Sedução", "Marcante", "Impacto"],
+        price: "Consulte",
+        link: "#"
+      },
+      {
+        id: "egeo-choc",
+        name: "Egeo Choc",
+        brand: "O Boticário",
+        folder: "imagens/feminino/egeo-choc/",
+        images: ["01.webp", "02.webp", "03.webp", "04.webp"],
+        label: "Doce",
+        line: "Egeo",
+        description: "Opção doce e moderna, perfeita para destacar variedade e apelo jovem dentro da vitrine feminina.",
+        typeTags: ["doce"],
+        chips: ["Doce", "Jovem", "Moderno"],
+        price: "Consulte",
+        link: "#"
+      },
+      {
+        id: "egeo-dolce",
+        name: "Egeo Dolce",
+        brand: "O Boticário",
+        folder: "imagens/feminino/egeo-dolce/",
+        images: ["01.webp", "02.webp", "03.webp", "04.webp"],
+        label: "Doce",
+        line: "Egeo",
+        description: "Um dos perfis mais chamativos da coleção doce, com boa quantidade de imagens para carrossel.",
+        typeTags: ["doce"],
+        chips: ["Doce", "Divertido", "Assinatura"],
+        price: "Consulte",
+        link: "#"
+      },
+      {
+        id: "eudora-magnific",
+        name: "Eudora Magnific",
+        brand: "Eudora",
+        folder: "imagens/feminino/eudora-magnific/",
+        images: ["01.webp", "02.webp", "03.webp", "04.webp"],
+        label: "Premium",
+        line: "Eudora",
+        description: "Visual refinado com excelente presença de produto, indicado para elevar a percepção premium do site.",
+        typeTags: ["premium"],
+        chips: ["Eudora", "Elegante", "Premium"],
+        price: "Consulte",
+        link: "#"
+      },
+      {
+        id: "floratta-blue",
+        name: "Floratta Blue",
+        brand: "O Boticário",
+        folder: "imagens/feminino/floratta-blue/",
+        images: ["01.webp", "02.webp"],
+        label: "Clássico",
+        line: "Floratta",
+        description: "Clássico muito conhecido da linha feminina, com apresentação delicada e alto reconhecimento visual.",
+        typeTags: ["classico"],
+        chips: ["Clássico", "Romântico", "Leve"],
+        price: "Consulte",
+        link: "#"
+      },
+      {
+        id: "floratta-fleur-de-eclipse",
+        name: "Floratta Fleur de Eclipse",
+        brand: "O Boticário",
+        folder: "imagens/feminino/floratta-fleur-de-eclipse/",
+        images: ["01.webp", "02.webp"],
+        label: "Moderno",
+        line: "Floratta",
+        description: "Variação mais moderna da família Floratta, trazendo frescor e elegância para o catálogo.",
+        typeTags: ["premium", "classico"],
+        chips: ["Floral", "Moderno", "Elegante"],
+        price: "Consulte",
+        link: "#"
+      },
+      {
+        id: "floratta-red",
+        name: "Floratta Red",
+        brand: "O Boticário",
+        folder: "imagens/feminino/floratta-red/",
+        images: ["01.webp", "02.webp", "03.webp"],
+        label: "Destaque",
+        line: "Floratta",
+        description: "Um dos nomes mais fortes da linha feminina, excelente para chamar atenção e ancorar confiança visual.",
+        typeTags: ["classico", "doce"],
+        chips: ["Bestseller", "Romântico", "Popular"],
+        price: "Consulte",
+        link: "#"
+      },
+      {
+        id: "free-desodorante",
+        name: "Free Desodorante",
+        brand: "O Boticário",
+        folder: "imagens/feminino/free-desodorante/",
+        images: ["01.webp", "02.webp", "03.webp", "04.webp"],
+        label: "Versátil",
+        line: "Feminino",
+        description: "Produto com proposta prática e visual limpo, útil para compor variedade no mix do site.",
+        typeTags: ["classico"],
+        chips: ["Versátil", "Leve", "Dia a dia"],
+        price: "Consulte",
+        link: "#"
+      },
+      {
+        id: "her-code-eau",
+        name: "Her Code Eau",
+        brand: "O Boticário",
+        folder: "imagens/feminino/her-code-eau/",
+        images: ["01.webp", "02.webp", "03.webp"],
+        label: "Premium",
+        line: "Her Code",
+        description: "Linha com estética mais moderna e acabamento sofisticado para dar mais força visual ao catálogo premium.",
+        typeTags: ["premium"],
+        chips: ["Atual", "Premium", "Impacto"],
+        price: "Consulte",
+        link: "#"
+      },
+      {
+        id: "leau-de-lily",
+        name: "L'Eau de Lily",
+        brand: "O Boticário",
+        folder: "imagens/feminino/leau-de-lily/",
+        images: ["01.webp", "02.webp", "03.webp"],
+        label: "Elegante",
+        line: "Lily",
+        description: "Uma extensão refinada da família Lily, com excelente apelo visual para uma loja de perfil premium.",
+        typeTags: ["premium", "classico"],
+        chips: ["Lily", "Refinado", "Delicado"],
+        price: "Consulte",
+        link: "#"
+      },
+      {
+        id: "linda-desodorante",
+        name: "Linda Desodorante",
+        brand: "O Boticário",
+        folder: "imagens/feminino/linda-desodorante/",
+        images: ["01.webp", "02.webp", "03.webp", "04.webp"],
+        label: "Clássico",
+        line: "Linda",
+        description: "Visual clássico e reconhecível, funcionando bem como opção tradicional dentro da vitrine feminina.",
+        typeTags: ["classico"],
+        chips: ["Clássico", "Tradicional", "Feminino"],
+        price: "Consulte",
+        link: "#"
+      },
+      {
+        id: "linda-felicidade",
+        name: "Linda Felicidade",
+        brand: "O Boticário",
+        folder: "imagens/feminino/linda-felicidade/",
+        images: ["01.webp", "02.webp", "03.webp"],
+        label: "Leve",
+        line: "Linda",
+        description: "Versão mais suave da linha, ideal para ampliar percepção de variedade no catálogo organizado.",
+        typeTags: ["classico"],
+        chips: ["Leve", "Suave", "Delicado"],
+        price: "Consulte",
+        link: "#"
+      },
+      {
+        id: "liz-desodorante",
+        name: "Liz Desodorante",
+        brand: "O Boticário",
+        folder: "imagens/feminino/liz-desodorante/",
+        images: ["01.webp", "02.webp", "03.webp", "04.webp", "05.webp"],
+        label: "Destaque",
+        line: "Liz",
+        description: "Forte no visual, com cinco imagens e excelente potencial para um card de impacto dentro da seção feminina.",
+        typeTags: ["premium", "doce"],
+        chips: ["Liz", "Assinatura", "Impactante"],
+        price: "Consulte",
+        link: "#"
+      },
+      {
+        id: "liz-sublime",
+        name: "Liz Sublime",
+        brand: "O Boticário",
+        folder: "imagens/feminino/liz-sublime/",
+        images: ["01.webp", "02.webp", "03.webp", "04.webp"],
+        label: "Premium",
+        line: "Liz",
+        description: "Uma versão mais refinada da linha Liz, útil para construir uma sessão feminina forte e aspiracional.",
+        typeTags: ["premium"],
+        chips: ["Sublime", "Elegante", "Premium"],
+        price: "Consulte",
+        link: "#"
+      },
+      {
+        id: "ma-cherie",
+        name: "Ma Chérie",
+        brand: "O Boticário",
+        folder: "imagens/feminino/ma-cherie/",
+        images: ["01.webp", "02.webp", "03.webp"],
+        label: "Clássico",
+        line: "Ma Chérie",
+        description: "Nome reconhecido e afetivo, ótimo para trazer nostalgia e confiança à coleção feminina.",
+        typeTags: ["classico"],
+        chips: ["Icônico", "Afetivo", "Clássico"],
+        price: "Consulte",
+        link: "#"
+      }
+    ];
 
-    menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('active');
-    });
+    const maleProducts = [
+      {
+        id: "55366",
+        name: "Produto 55366",
+        brand: "O Boticário",
+        folder: "imagens/masculino/55366/",
+        images: ["01.webp", "02.webp", "03.webp", "04.webp"],
+        label: "Signature",
+        line: "Masculino",
+        description: "Produto masculino com presença visual forte e boa quantidade de imagens para carrossel refinado.",
+        typeTags: ["signature", "intenso"],
+        chips: ["Intenso", "Presença", "Masculino"],
+        price: "Consulte",
+        link: "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/55366/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+      },
+      {
+        id: "50651",
+        name: "Produto 50651",
+        brand: "O Boticário",
+        folder: "imagens/masculino/50651/",
+        images: ["01.webp", "02.webp"],
+        label: "Moderno",
+        line: "Masculino",
+        description: "Opção de perfil mais limpo e moderno para equilibrar a vitrine masculina com diversidade visual.",
+        typeTags: ["moderno"],
+        chips: ["Moderno", "Visual limpo", "Versátil"],
+        price: "Consulte",
+        link: "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/50651/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+      },
+      {
+        id: "54658",
+        name: "Produto 54658",
+        brand: "O Boticário",
+        folder: "imagens/masculino/54658/",
+        images: ["01.webp", "02.webp", "03.webp"],
+        label: "Signature",
+        line: "Masculino",
+        description: "Visual masculino consistente com carrossel equilibrado e proposta forte para apresentação premium.",
+        typeTags: ["signature"],
+        chips: ["Masculino", "Elegante", "Assinatura"],
+        price: "Consulte",
+        link: "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/54658/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+      },
+      {
+        id: "47552",
+        name: "Produto 47552",
+        brand: "O Boticário",
+        folder: "imagens/masculino/47552/",
+        images: ["01.webp", "02.webp", "03.webp"],
+        label: "Intenso",
+        line: "Masculino",
+        description: "Produto com presença mais marcante para compor a seção de fragrâncias masculinas intensas.",
+        typeTags: ["intenso"],
+        chips: ["Intenso", "Noite", "Forte"],
+        price: "Consulte",
+        link: "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/47552/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+      },
+      {
+        id: "86081",
+        name: "Produto 86081",
+        brand: "O Boticário",
+        folder: "imagens/masculino/86081/",
+        images: ["01.webp", "02.webp", "03.webp"],
+        label: "Moderno",
+        line: "Masculino",
+        description: "Um visual mais atual e elegante para fortalecer a sensação de catálogo masculino atualizado.",
+        typeTags: ["moderno"],
+        chips: ["Atual", "Moderno", "Masculino"],
+        price: "Consulte",
+        link: "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/86081/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+      },
+      {
+        id: "52052",
+        name: "Produto 52052",
+        brand: "O Boticário",
+        folder: "imagens/masculino/52052/",
+        images: ["01.webp", "02.webp"],
+        label: "Versátil",
+        line: "Masculino",
+        description: "Perfil visual equilibrado para quem quer uma seção masculina variada e fácil de navegar.",
+        typeTags: ["moderno"],
+        chips: ["Versátil", "Dia a dia", "Equilíbrio"],
+        price: "Consulte",
+        link: "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/52052/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+      },
+      {
+        id: "82685",
+        name: "Produto 82685",
+        brand: "O Boticário",
+        folder: "imagens/masculino/82685/",
+        images: ["01.webp", "02.webp", "03.webp", "04.webp"],
+        label: "Signature",
+        line: "Masculino",
+        description: "Card forte para reforçar a coleção masculina com uma navegação visual mais impactante.",
+        typeTags: ["signature", "intenso"],
+        chips: ["Signature", "Impacto", "Elegante"],
+        price: "Consulte",
+        link: "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/82685/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+      },
+      {
+        id: "90513",
+        name: "Produto 90513",
+        brand: "O Boticário",
+        folder: "imagens/masculino/90513/",
+        images: ["01.webp"],
+        label: "Novo",
+        line: "Masculino",
+        description: "Mesmo com uma imagem, o card continua funcional e elegante dentro do catálogo masculino.",
+        typeTags: ["moderno"],
+        chips: ["Novo", "Objetivo", "Prático"],
+        price: "Consulte",
+        link: "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/90513/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+      },
+      {
+        id: "50119",
+        name: "Produto 50119",
+        brand: "O Boticário",
+        folder: "imagens/masculino/50119/",
+        images: ["01.webp"],
+        label: "Essencial",
+        line: "Masculino",
+        description: "Produto com apresentação objetiva, bom para compor catálogo mesmo com material visual mais enxuto.",
+        typeTags: ["signature"],
+        chips: ["Essencial", "Direto", "Masculino"],
+        price: "Consulte",
+        link: "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/50119/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+      },
+      {
+        id: "76665",
+        name: "Produto 76665",
+        brand: "O Boticário",
+        folder: "imagens/masculino/76665/",
+        images: ["01.webp", "02.webp", "03.webp"],
+        label: "Moderno",
+        line: "Masculino",
+        description: "Visual atual e carrossel consistente para valorizar melhor a seção masculina no geral.",
+        typeTags: ["moderno"],
+        chips: ["Atual", "Visual forte", "3 imagens"],
+        price: "Consulte",
+        link: "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/76665/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+      },
+      {
+        id: "51244",
+        name: "Produto 51244",
+        brand: "O Boticário",
+        folder: "imagens/masculino/51244/",
+        images: ["01.webp", "02.webp", "03.webp"],
+        label: "Intenso",
+        line: "Masculino",
+        description: "Uma opção com perfil mais sério e presença visual adequada para a parte mais marcante do catálogo.",
+        typeTags: ["intenso"],
+        chips: ["Intenso", "Sério", "Presença"],
+        price: "Consulte",
+        link: "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/51244/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+      },
+      {
+        id: "49766",
+        name: "Produto 49766",
+        brand: "O Boticário",
+        folder: "imagens/masculino/49766/",
+        images: ["01.webp", "02.webp"],
+        label: "Versátil",
+        line: "Masculino",
+        description: "Modelo versátil com visual limpo, bom para ampliar o mix masculino sem pesar o layout.",
+        typeTags: ["moderno"],
+        chips: ["Versátil", "Leve", "Dia a dia"],
+        price: "Consulte",
+        link: "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/49766/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+      },
+      {
+        id: "50732",
+        name: "Produto 50732",
+        brand: "O Boticário",
+        folder: "imagens/masculino/50732/",
+        images: ["01.webp", "02.webp"],
+        label: "Versátil",
+        line: "Masculino",
+        description: "Produto masculino de estrutura objetiva, mantendo boa apresentação com poucas imagens.",
+        typeTags: ["moderno"],
+        chips: ["Objetivo", "Versátil", "Prático"],
+        price: "Consulte",
+        link: "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/50732/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+      },
+      {
+        id: "47951",
+        name: "Produto 47951",
+        brand: "O Boticário",
+        folder: "imagens/masculino/47951/",
+        images: ["01.webp", "02.webp", "03.webp", "04.webp"],
+        label: "Signature",
+        line: "Masculino",
+        description: "Com quatro imagens, este produto ganha um card mais rico e presença mais profissional na vitrine.",
+        typeTags: ["signature"],
+        chips: ["4 imagens", "Assinatura", "Impacto"],
+        price: "Consulte",
+        link: "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/47951/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+      },
+      {
+        id: "54457",
+        name: "Produto 54457",
+        brand: "O Boticário",
+        folder: "imagens/masculino/54457/",
+        images: ["01.webp", "02.webp", "03.webp", "04.webp"],
+        label: "Intenso",
+        line: "Masculino",
+        description: "Boa profundidade visual e excelente encaixe em uma sessão de perfumes masculinos mais marcantes.",
+        typeTags: ["intenso", "signature"],
+        chips: ["Marcante", "4 imagens", "Noturno"],
+        price: "Consulte",
+        link: "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/54457/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+      }
+    ];
 
-    document.querySelectorAll('.mobile-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
+    function createProductCard(product) {
+      const images = product.images.map(file => `${product.folder}${file}`);
+      const imageCountLabel = `${images.length} ${images.length === 1 ? 'imagem' : 'imagens'}`;
+      const card = document.createElement('article');
+      card.className = 'product-card';
+      card.dataset.tags = product.typeTags.join(' ');
+      card.dataset.name = `${product.name} ${product.brand} ${product.line}`.toLowerCase();
+
+      card.innerHTML = `
+        <div class="product-badge-wrap">
+          <span class="badge left">${product.label}</span>
+          <span class="badge right">${imageCountLabel}</span>
+        </div>
+        <div class="carousel" data-carousel>
+          <div class="carousel-track">
+            ${images.map((src, index) => `
+              <div class="carousel-slide ${index === 0 ? 'active' : ''}">
+                <img src="${src}" alt="${product.name} - imagem ${index + 1}" loading="lazy" />
+              </div>
+            `).join('')}
+          </div>
+          ${images.length > 1 ? `
+            <button class="carousel-btn prev" type="button" aria-label="Imagem anterior">‹</button>
+            <button class="carousel-btn next" type="button" aria-label="Próxima imagem">›</button>
+            <div class="carousel-dots">
+              ${images.map((_, index) => `
+                <button class="carousel-dot ${index === 0 ? 'active' : ''}" type="button" aria-label="Ir para imagem ${index + 1}"></button>
+              `).join('')}
+            </div>
+          ` : ''}
+        </div>
+        <div class="product-body">
+          <div class="product-topline">
+            <strong>${product.brand}</strong>
+            <span>${product.line}</span>
+          </div>
+          <h3 class="product-name">${product.name}</h3>
+          <p class="product-desc">${product.description}</p>
+          <div class="product-meta">
+            ${product.chips.map(chip => `<span class="meta-chip">${chip}</span>`).join('')}
+          </div>
+          <div class="product-footer">
+            <div class="price-box">
+              <small>Preço</small>
+              <strong>${product.price}</strong>
+            </div>
+            <a class="btn btn-primary" href="${product.link}" ${product.link === '#' ? '' : 'target="_blank" rel="noopener noreferrer"'}>
+              ${product.link === '#' ? 'Ajustar link' : 'Comprar'}
+            </a>
+          </div>
+        </div>
+      `;
+
+      return card;
+    }
+
+    function renderProducts(products, gridId) {
+      const grid = document.getElementById(gridId);
+      grid.innerHTML = '';
+      products.forEach(product => grid.appendChild(createProductCard(product)));
+    }
+
+    function setupCarousel(scope = document) {
+      const carousels = scope.querySelectorAll('[data-carousel]');
+      carousels.forEach((carousel) => {
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const dots = carousel.querySelectorAll('.carousel-dot');
+        const prev = carousel.querySelector('.carousel-btn.prev');
+        const next = carousel.querySelector('.carousel-btn.next');
+        let current = 0;
+        let intervalId = null;
+
+        if (slides.length <= 1) return;
+
+        const update = (index) => {
+          current = (index + slides.length) % slides.length;
+          slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+          dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
+        };
+
+        const nextSlide = () => update(current + 1);
+        const prevSlide = () => update(current - 1);
+
+        const startAuto = () => {
+          stopAuto();
+          intervalId = setInterval(nextSlide, 2800);
+        };
+
+        const stopAuto = () => {
+          if (intervalId) clearInterval(intervalId);
+        };
+
+        if (next) next.addEventListener('click', () => {
+          nextSlide();
+          startAuto();
+        });
+
+        if (prev) prev.addEventListener('click', () => {
+          prevSlide();
+          startAuto();
+        });
+
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            update(index);
+            startAuto();
+          });
+        });
+
+        carousel.addEventListener('mouseenter', stopAuto);
+        carousel.addEventListener('mouseleave', startAuto);
+        carousel.addEventListener('touchstart', stopAuto, { passive: true });
+        carousel.addEventListener('touchend', startAuto, { passive: true });
+        startAuto();
       });
-    });
+    }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
-        if(entry.isIntersecting){
-          setTimeout(() => {
+    function setupReveal() {
+      const cards = document.querySelectorAll('.product-card');
+      if (!('IntersectionObserver' in window)) {
+        cards.forEach(card => card.classList.add('show'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
             entry.target.classList.add('show');
-          }, index * 70);
-        }
-      });
-    }, { threshold: 0.12 });
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.10 });
 
-    cards.forEach(card => observer.observe(card));
+      cards.forEach(card => observer.observe(card));
+    }
+
+    function setupFilters({
+      gridId,
+      emptyId,
+      searchId,
+      filterContainerId
+    }) {
+      const grid = document.getElementById(gridId);
+      const empty = document.getElementById(emptyId);
+      const search = document.getElementById(searchId);
+      const filterContainer = document.getElementById(filterContainerId);
+      const chips = [...filterContainer.querySelectorAll('.filter-chip')];
+
+      const apply = () => {
+        const activeChip = chips.find(chip => chip.classList.contains('active')) || chips[0];
+        const activeFilter = activeChip.dataset.filter;
+        const query = search.value.trim().toLowerCase();
+        let visible = 0;
+
+        [...grid.children].forEach(card => {
+          const matchesFilter = activeFilter === 'all' || card.dataset.tags.includes(activeFilter);
+          const matchesQuery = !query || card.dataset.name.includes(query);
+          const shouldShow = matchesFilter && matchesQuery;
+          card.classList.toggle('hidden', !shouldShow);
+          if (shouldShow) visible += 1;
+        });
+
+        empty.style.display = visible === 0 ? 'block' : 'none';
+      };
+
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          chips.forEach(item => item.classList.remove('active'));
+          chip.classList.add('active');
+          apply();
+        });
+      });
+
+      search.addEventListener('input', apply);
+      apply();
+    }
+
+    function setupMobileMenu() {
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileNav = document.getElementById('mobileNav');
+      if (!menuToggle || !mobileNav) return;
+
+      menuToggle.addEventListener('click', () => {
+        const isOpen = mobileNav.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileNav.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    renderProducts(femaleProducts, 'femaleGrid');
+    renderProducts(maleProducts, 'maleGrid');
+    setupCarousel(document);
+    setupReveal();
+    setupFilters({ gridId: 'femaleGrid', emptyId: 'femaleEmpty', searchId: 'femaleSearch', filterContainerId: 'femaleFilters' });
+    setupFilters({ gridId: 'maleGrid', emptyId: 'maleEmpty', searchId: 'maleSearch', filterContainerId: 'maleFilters' });
+    setupMobileMenu();
   </script>
 </body>
 </html>

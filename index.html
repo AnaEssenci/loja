@@ -6,450 +6,309 @@
   <title>Ana Essenci | Perfumes femininos em destaque</title>
   <meta name="description" content="Perfumes femininos em destaque, fragrâncias selecionadas e catálogos oficiais da Ana Essenci." />
   <meta name="theme-color" content="#d58aa4" />
-  <link rel="icon" type="image/png" href="imagens/favicon/favicon.png" />
+  <link rel="icon" type="image/x-icon" href="imagens/favicon/favicon.ico" />
   <style>
     :root{
-      --bg:#fff8fb;
-      --bg-soft:#fff1f6;
-      --surface:rgba(255,255,255,.88);
-      --surface-strong:rgba(255,255,255,.96);
-      --text:#24171d;
-      --muted:#7d6570;
-      --line:rgba(192,112,144,.18);
-      --primary:#d07b9a;
-      --primary-dark:#b75d7e;
-      --primary-deep:#8f4362;
-      --gold:#d5b48a;
-      --shadow-xs:0 4px 14px rgba(94, 36, 62, .06);
-      --shadow-sm:0 14px 30px rgba(112, 44, 74, .10);
-      --shadow-md:0 20px 50px rgba(112, 44, 74, .14);
-      --shadow-lg:0 32px 80px rgba(112, 44, 74, .20);
-      --radius-xs:12px;
-      --radius-sm:18px;
-      --radius-md:28px;
-      --radius-lg:40px;
-      --container:1340px;
-      --header-height:84px;
+      --bg:#fff8fb; --bg-soft:#fff1f6; --surface:rgba(255,255,255,.92); --surface-2:rgba(255,255,255,.98);
+      --text:#24171d; --muted:#7d6570; --line:rgba(192,112,144,.18);
+      --primary:#d07b9a; --primary-dark:#b75d7e; --primary-deep:#8f4362;
+      --shadow-xs:0 4px 14px rgba(94,36,62,.06); --shadow-sm:0 14px 30px rgba(112,44,74,.10);
+      --shadow-md:0 20px 50px rgba(112,44,74,.14); --shadow-lg:0 32px 80px rgba(112,44,74,.20);
+      --radius-sm:18px; --radius-md:28px; --radius-lg:40px; --container:1340px; --header-height:84px;
     }
-
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
-      margin:0;
-      color:var(--text);
-      font-family:Inter, Arial, Helvetica, sans-serif;
+      margin:0; color:var(--text); font-family:Inter,Arial,Helvetica,sans-serif;
       background:
         radial-gradient(circle at left top, rgba(255,224,235,.75), transparent 26%),
-        radial-gradient(circle at right bottom, rgba(255,235,243,.8), transparent 30%),
-        linear-gradient(180deg, #fffafc 0%, #fff 100%);
+        radial-gradient(circle at right bottom, rgba(255,235,243,.80), transparent 30%),
+        linear-gradient(180deg,#fffafc 0%,#fff 100%);
     }
     img{max-width:100%;display:block}
     a{text-decoration:none;color:inherit}
     button,input,select{font:inherit}
     button{cursor:pointer}
-    .container{width:min(94%, var(--container));margin:0 auto}
+    .container{width:min(94%,var(--container));margin:0 auto}
     .site-header{
-      position:sticky;top:0;z-index:1100;
-      background:rgba(255,255,255,.75);
-      backdrop-filter:blur(14px);
-      border-bottom:1px solid var(--line);
+      position:sticky; top:0; z-index:1100; background:rgba(255,255,255,.72);
+      backdrop-filter:blur(14px); border-bottom:1px solid var(--line); transition:.25s ease;
     }
-    .header-inner{
-      min-height:var(--header-height);
-      display:flex;align-items:center;justify-content:space-between;gap:18px;
-    }
-    .brand{
-      display:flex;align-items:center;gap:14px;min-width:0;
-    }
+    .site-header.scrolled{background:rgba(255,255,255,.94); box-shadow:0 12px 30px rgba(0,0,0,.06)}
+    .header-inner{min-height:var(--header-height); display:flex; align-items:center; justify-content:space-between; gap:18px}
+    .brand{display:flex; align-items:center; gap:14px}
     .brand-logo{
-      width:54px;height:54px;flex:0 0 54px;
-      border-radius:50%;overflow:hidden;
-      background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm);
+      width:54px; height:54px; flex:0 0 54px; border-radius:50%; overflow:hidden;
+      background:#fff; border:1px solid var(--line); box-shadow:var(--shadow-sm);
     }
-    .brand-copy strong{display:block;font-size:1rem;line-height:1.05}
-    .brand-copy span{display:block;margin-top:4px;color:var(--muted);font-size:12px}
-    .nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .brand-logo img{width:100%; height:100%; object-fit:cover}
+    .brand-copy strong{display:block; font-size:1rem; line-height:1.05}
+    .brand-copy span{display:block; margin-top:4px; color:var(--muted); font-size:12px}
+    .nav{display:flex; align-items:center; gap:8px; flex-wrap:wrap}
     .nav a{
-      padding:12px 16px;border-radius:999px;font-size:14px;font-weight:700;color:var(--muted);
-      transition:.25s ease;
+      padding:12px 16px; border-radius:999px; font-size:14px; font-weight:700; color:var(--muted); transition:.25s ease;
     }
-    .nav a:hover,.nav a.active{
-      color:var(--primary-deep);background:var(--bg-soft);
-    }
+    .nav a:hover{color:var(--primary-deep); background:var(--bg-soft)}
     .nav-action{
-      padding:13px 18px;border-radius:999px;
-      background:linear-gradient(135deg,var(--primary),var(--primary-dark));
-      color:#fff!important;box-shadow:var(--shadow-sm);
+      padding:13px 18px; border-radius:999px; background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+      color:#fff !important; box-shadow:var(--shadow-sm);
     }
-
     .menu-toggle{
-      display:none;width:50px;height:50px;border:none;border-radius:16px;
-      background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-xs);color:var(--primary-deep);
+      display:none; width:50px; height:50px; border:none; border-radius:16px;
+      background:#fff; border:1px solid var(--line); box-shadow:var(--shadow-xs); color:var(--primary-deep);
     }
-    .mobile-panel{
-      display:none;padding:0 0 20px;
-    }
+    .mobile-panel{display:none; padding:0 0 20px}
     .mobile-panel.open{display:block}
-    .mobile-links{
-      display:grid;gap:10px;padding-top:10px;
-    }
+    .mobile-links{display:grid; gap:10px; padding-top:10px}
     .mobile-links a{
-      background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 16px;
-      color:var(--primary-deep);font-weight:700;box-shadow:var(--shadow-xs);
+      background:#fff; border:1px solid var(--line); border-radius:18px; padding:14px 16px;
+      color:var(--primary-deep); font-weight:700; box-shadow:var(--shadow-xs);
     }
 
     .hero{padding:26px 0 14px}
     .hero-card{
-      min-height:720px;position:relative;overflow:hidden;
-      border-radius:var(--radius-lg);
-      border:1px solid var(--line);
-      box-shadow:var(--shadow-lg);
+      min-height:720px; position:relative; overflow:hidden; display:flex; align-items:center;
+      border-radius:var(--radius-lg); border:1px solid var(--line); box-shadow:var(--shadow-lg);
       background:
         linear-gradient(95deg, rgba(255,251,252,.95) 0%, rgba(255,251,252,.88) 38%, rgba(255,251,252,.30) 100%),
         url("imagens/banner/banner-desktop.jpg") center center / cover no-repeat;
-      display:flex;align-items:center;
     }
     .hero-card::after{
-      content:"";position:absolute;inset:0;
+      content:""; position:absolute; inset:0; pointer-events:none;
       background:linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,247,250,.16) 100%);
-      pointer-events:none;
     }
-    .hero-content{
-      position:relative;z-index:1;max-width:760px;padding:68px 56px;
-    }
+    .hero-content{position:relative; z-index:1; max-width:760px; padding:68px 56px}
     .eyebrow{
-      display:inline-flex;align-items:center;gap:10px;
-      min-height:44px;padding:0 16px;border-radius:999px;
-      background:rgba(255,255,255,.86);
-      border:1px solid var(--line);
-      box-shadow:var(--shadow-sm);
-      color:var(--primary-deep);font-size:12px;font-weight:800;letter-spacing:1px;
-      text-transform:uppercase;margin-bottom:18px;
+      display:inline-flex; align-items:center; gap:10px; min-height:44px; padding:0 16px; margin-bottom:18px;
+      border-radius:999px; background:rgba(255,255,255,.86); border:1px solid var(--line); box-shadow:var(--shadow-sm);
+      color:var(--primary-deep); font-size:12px; font-weight:800; letter-spacing:1px; text-transform:uppercase;
     }
-    .hero h1{
-      margin:0 0 18px;
-      font-size:clamp(2.8rem, 5vw, 5.2rem);
-      line-height:.96;letter-spacing:-2.2px;
-    }
+    .hero h1{margin:0 0 18px; font-size:clamp(2.8rem,5vw,5.2rem); line-height:.96; letter-spacing:-2.2px}
     .hero h1 span{color:var(--primary-deep)}
-    .hero p{
-      margin:0 0 28px;max-width:620px;
-      color:var(--muted);font-size:1.06rem;line-height:1.85;
-    }
-    .hero-actions{
-      display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px;
-    }
+    .hero p{margin:0 0 28px; max-width:620px; color:var(--muted); font-size:1.06rem; line-height:1.85}
+    .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:28px}
     .btn{
-      min-height:54px;padding:0 24px;border:none;border-radius:999px;
-      display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      font-weight:800;transition:.25s ease;
+      min-height:54px; padding:0 24px; border:none; border-radius:999px;
+      display:inline-flex; align-items:center; justify-content:center; gap:10px; font-weight:800; transition:.25s ease;
     }
-    .btn-primary{
-      color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary-dark));
-      box-shadow:var(--shadow-sm);
-    }
-    .btn-primary:hover{transform:translateY(-2px)}
-    .btn-soft{
-      background:rgba(255,255,255,.92);color:var(--primary-deep);
-      border:1px solid var(--line);box-shadow:var(--shadow-xs);
-    }
-    .btn-soft:hover{background:#fff;transform:translateY(-2px)}
+    .btn-primary{color:#fff; background:linear-gradient(135deg,var(--primary),var(--primary-dark)); box-shadow:var(--shadow-sm)}
+    .btn-primary:hover,.offer-btn:hover{transform:translateY(-2px)}
+    .btn-soft{background:rgba(255,255,255,.92); color:var(--primary-deep); border:1px solid var(--line); box-shadow:var(--shadow-xs)}
+    .btn-soft:hover{background:#fff; transform:translateY(-2px)}
     .hero-points{
-      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;
-      max-width:820px;
+      display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; max-width:820px;
     }
     .hero-point{
-      background:rgba(255,255,255,.85);border:1px solid var(--line);border-radius:24px;
-      padding:18px;box-shadow:var(--shadow-sm)
+      background:rgba(255,255,255,.85); border:1px solid var(--line); border-radius:24px; padding:18px; box-shadow:var(--shadow-sm);
     }
-    .hero-point strong{
-      display:block;font-size:1.04rem;color:var(--primary-deep);margin-bottom:6px
-    }
-    .hero-point span{
-      display:block;color:var(--muted);font-size:13px;line-height:1.6
-    }
+    .hero-point strong{display:block; font-size:1.04rem; color:var(--primary-deep); margin-bottom:6px}
+    .hero-point span{display:block; color:var(--muted); font-size:13px; line-height:1.6}
 
     section{padding:74px 0}
     .section-head{
-      display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;
-      margin-bottom:28px;
+      display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap; margin-bottom:28px;
     }
     .section-head small{
-      display:block;margin-bottom:10px;text-transform:uppercase;letter-spacing:1.3px;
-      color:var(--primary-deep);font-size:12px;font-weight:800;
+      display:block; margin-bottom:10px; text-transform:uppercase; letter-spacing:1.3px;
+      color:var(--primary-deep); font-size:12px; font-weight:800;
     }
-    .section-head h2{
-      margin:0;font-size:clamp(2rem, 3vw, 3.2rem);line-height:1.04;letter-spacing:-1px;
-    }
-    .section-head p{
-      margin:0;max-width:760px;color:var(--muted);line-height:1.8;
-    }
-
+    .section-head h2{margin:0; font-size:clamp(2rem,3vw,3.2rem); line-height:1.04; letter-spacing:-1px}
+    .section-head p{margin:0; max-width:760px; color:var(--muted); line-height:1.8}
     .pill-note{
-      display:inline-flex;align-items:center;gap:10px;
-      min-height:42px;padding:0 16px;border-radius:999px;
-      color:var(--primary-deep);background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-xs);
-      font-size:13px;font-weight:700;
+      display:inline-flex; align-items:center; gap:10px; min-height:42px; padding:0 16px; border-radius:999px;
+      color:var(--primary-deep); background:#fff; border:1px solid var(--line); box-shadow:var(--shadow-xs);
+      font-size:13px; font-weight:700;
     }
 
     .collection-shell{
-      border:1px solid var(--line);background:rgba(255,255,255,.66);
-      border-radius:34px;padding:24px;box-shadow:var(--shadow-md);
+      border:1px solid var(--line); background:rgba(255,255,255,.66); border-radius:34px; padding:24px; box-shadow:var(--shadow-md);
     }
-    .toolbar{
-      display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
-      margin-bottom:22px;
-    }
-    .chips{display:flex;gap:10px;flex-wrap:wrap}
+    .toolbar{display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:22px}
+    .chips{display:flex; gap:10px; flex-wrap:wrap}
     .chip{
-      min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--line);
-      background:#fff;color:var(--muted);font-weight:800;box-shadow:var(--shadow-xs);
-      transition:.25s ease;
+      min-height:44px; padding:0 16px; border-radius:999px; border:1px solid var(--line);
+      background:#fff; color:var(--muted); font-weight:800; box-shadow:var(--shadow-xs); transition:.25s ease;
     }
-    .chip:hover,.chip.active{
-      color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary-dark));border-color:transparent;
-    }
-    .tools-right{
-      display:flex;gap:10px;flex-wrap:wrap;align-items:center;
-    }
+    .chip:hover,.chip.active{color:#fff; background:linear-gradient(135deg,var(--primary),var(--primary-dark)); border-color:transparent}
+    .tools-right{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
     .searchbox,.sortbox{
-      display:flex;align-items:center;min-height:48px;
-      background:#fff;border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow-xs);
+      display:flex; align-items:center; min-height:48px; background:#fff; border:1px solid var(--line); border-radius:999px; box-shadow:var(--shadow-xs);
     }
-    .searchbox{padding:0 14px;min-width:min(100%, 320px)}
-    .searchbox input{
-      border:none;background:transparent;outline:none;width:100%;padding:12px 6px;
-    }
+    .searchbox{padding:0 14px; min-width:min(100%,320px)}
+    .searchbox input{border:none; background:transparent; outline:none; width:100%; padding:12px 6px}
     .sortbox{padding:0 12px}
-    .sortbox select{border:none;background:transparent;outline:none;padding:12px 6px;color:var(--primary-deep);font-weight:700}
+    .sortbox select{border:none; background:transparent; outline:none; padding:12px 6px; color:var(--primary-deep); font-weight:700}
 
-    .product-grid{
-      display:grid;grid-template-columns:repeat(4, minmax(0,1fr));gap:24px;
-    }
+    .product-grid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:24px}
     .product-card{
-      position:relative;display:flex;flex-direction:column;overflow:hidden;
-      background:var(--surface);border:1px solid var(--line);border-radius:30px;
-      box-shadow:var(--shadow-md);transition:.28s ease;
+      position:relative; display:flex; flex-direction:column; overflow:hidden; background:var(--surface);
+      border:1px solid var(--line); border-radius:30px; box-shadow:var(--shadow-md); transition:.28s ease; -webkit-tap-highlight-color:transparent;
     }
-    .product-card:hover{transform:translateY(-7px);box-shadow:var(--shadow-lg)}
+    .product-card:hover{transform:translateY(-7px); box-shadow:var(--shadow-lg)}
     .product-badges{
-      position:absolute;top:14px;left:14px;right:14px;z-index:2;
-      display:flex;justify-content:space-between;gap:10px;pointer-events:none;
+      position:absolute; top:14px; left:14px; right:14px; z-index:2; display:flex; justify-content:space-between; gap:10px; pointer-events:none;
     }
     .badge{
-      min-height:30px;padding:0 12px;border-radius:999px;
-      display:inline-flex;align-items:center;justify-content:center;
-      font-size:11px;font-weight:800;box-shadow:var(--shadow-sm)
+      min-height:30px; padding:0 12px; border-radius:999px; display:inline-flex; align-items:center; justify-content:center;
+      font-size:11px; font-weight:800; box-shadow:var(--shadow-sm)
     }
-    .badge-hot{background:linear-gradient(135deg,#ffe6ef,#ffd5e2);color:var(--primary-deep)}
-    .badge-cat{background:rgba(255,255,255,.9);border:1px solid var(--line);color:var(--primary-deep)}
+    .badge-hot{background:linear-gradient(135deg,#ffe6ef,#ffd5e2); color:var(--primary-deep)}
+    .badge-cat{background:rgba(255,255,255,.9); border:1px solid var(--line); color:var(--primary-deep)}
     .thumb-wrap{
-      height:320px;padding:24px;background:linear-gradient(180deg,#fffefe 0%,#fff3f7 100%);
-      border-bottom:1px solid var(--line);
-      display:flex;align-items:center;justify-content:center;
+      height:320px; padding:24px; background:linear-gradient(180deg,#fffefe 0%,#fff3f7 100%);
+      border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:center;
     }
-    .thumb-wrap img{
-      width:100%;height:100%;object-fit:contain;
-      transition:transform .28s ease;
-    }
+    .thumb-wrap img{width:100%; height:100%; object-fit:contain; transition:transform .28s ease}
     .product-card:hover .thumb-wrap img{transform:scale(1.04)}
-    .card-body{
-      padding:20px;display:flex;flex-direction:column;gap:14px;flex:1;
-    }
-    .mini-top{
-      display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--muted);font-size:12px;
-    }
-    .mini-top strong{
-      color:var(--primary-deep);text-transform:uppercase;letter-spacing:1.2px;
-    }
-    .card-title{
-      margin:0;font-size:1.06rem;line-height:1.45;min-height:56px;
-    }
-    .price{
-      display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;
-    }
-    .price span{font-size:12px;text-transform:uppercase;font-weight:800;color:var(--muted)}
-    .price strong{font-size:1.45rem;line-height:1;color:var(--primary-deep)}
-    .card-text{
-      margin:0;color:var(--muted);font-size:14px;line-height:1.75;min-height:96px;
-    }
-    .meta{
-      display:flex;gap:8px;flex-wrap:wrap;
-    }
+    .card-body{padding:20px; display:flex; flex-direction:column; gap:14px; flex:1}
+    .mini-top{display:flex; align-items:center; justify-content:space-between; gap:10px; color:var(--muted); font-size:12px}
+    .mini-top strong{color:var(--primary-deep); text-transform:uppercase; letter-spacing:1.2px}
+    .card-title{margin:0; font-size:1.06rem; line-height:1.45; min-height:56px}
+    .price{display:flex; flex-direction:column; gap:4px}
+    .price-top{display:flex; align-items:baseline; gap:8px; flex-wrap:wrap}
+    .price span{font-size:12px; text-transform:uppercase; font-weight:800; color:var(--muted)}
+    .price strong{font-size:1.45rem; line-height:1; color:var(--primary-deep)}
+    .old-price{font-size:13px; color:#a08a94; text-decoration:line-through}
+    .card-text{margin:0; color:var(--muted); font-size:14px; line-height:1.75; min-height:96px}
+    .meta{display:flex; gap:8px; flex-wrap:wrap}
     .meta span{
-      padding:8px 12px;border-radius:999px;background:var(--bg-soft);border:1px solid var(--line);
-      font-size:12px;font-weight:700;color:var(--primary-deep);
+      padding:8px 12px; border-radius:999px; background:var(--bg-soft); border:1px solid var(--line);
+      font-size:12px; font-weight:700; color:var(--primary-deep);
     }
-    .card-actions{
-      margin-top:auto;display:grid;grid-template-columns:1fr auto;gap:10px;
-    }
+    .card-actions{margin-top:auto; display:grid; grid-template-columns:1fr auto; gap:10px}
     .offer-btn{
-      min-height:50px;border:none;border-radius:18px;color:#fff;font-weight:800;
-      background:linear-gradient(135deg,var(--primary),var(--primary-dark));box-shadow:var(--shadow-sm);
+      min-height:50px; border:none; border-radius:18px; color:#fff; font-weight:800;
+      background:linear-gradient(135deg,var(--primary),var(--primary-dark)); box-shadow:var(--shadow-sm);
     }
-    .offer-btn:hover{transform:translateY(-2px)}
     .detail-btn{
-      min-height:50px;padding:0 16px;border-radius:18px;background:#fff;
-      border:1px solid var(--line);font-weight:800;color:var(--primary-deep);
+      min-height:50px; padding:0 16px; border-radius:18px; background:#fff; border:1px solid var(--line);
+      font-weight:800; color:var(--primary-deep);
     }
     .detail-btn:hover{background:var(--bg-soft)}
     .empty{
-      display:none;margin-top:20px;padding:28px;text-align:center;border-radius:24px;
-      background:#fff;border:1px dashed var(--line);color:var(--muted);
+      display:none; margin-top:20px; padding:28px; text-align:center; border-radius:24px;
+      background:#fff; border:1px dashed var(--line); color:var(--muted);
     }
 
-    .catalog-grid{
-      display:grid;grid-template-columns:repeat(2, minmax(0,1fr));gap:24px;
-    }
+    .catalog-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px}
     .catalog-card{
-      position:relative;overflow:hidden;padding:28px;border-radius:32px;
-      border:1px solid var(--line);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,243,247,.88));
-      box-shadow:var(--shadow-md);
+      position:relative; overflow:hidden; padding:28px; border-radius:32px; border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,243,247,.88)); box-shadow:var(--shadow-md);
     }
     .catalog-card::before{
-      content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;
+      content:""; position:absolute; right:-60px; top:-60px; width:180px; height:180px; border-radius:50%;
       background:radial-gradient(circle, rgba(213,180,138,.20), transparent 70%);
     }
-    .catalog-card h3{margin:0 0 10px;font-size:1.8rem}
-    .catalog-card p{margin:0 0 20px;color:var(--muted);line-height:1.8}
-    .catalog-badges{
-      display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;
-    }
+    .catalog-card h3{margin:0 0 10px; font-size:1.8rem}
+    .catalog-card p{margin:0 0 20px; color:var(--muted); line-height:1.8}
+    .catalog-badges{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px}
     .catalog-badges span{
-      padding:8px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);
-      color:var(--primary-deep);font-size:12px;font-weight:800;
+      padding:8px 12px; border-radius:999px; background:#fff; border:1px solid var(--line); color:var(--primary-deep);
+      font-size:12px; font-weight:800;
     }
 
-    .info-grid{
-      display:grid;grid-template-columns:1.05fr .95fr;gap:24px;
-    }
+    .info-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:24px}
     .info-card{
       background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,245,248,.90));
-      border:1px solid var(--line);border-radius:32px;padding:28px;box-shadow:var(--shadow-md);
+      border:1px solid var(--line); border-radius:32px; padding:28px; box-shadow:var(--shadow-md);
     }
-    .info-card h3{margin:0 0 10px;font-size:1.55rem}
-    .info-card p{margin:0 0 12px;color:var(--muted);line-height:1.85}
-    .faq-list{display:grid;gap:14px}
+    .info-card h3{margin:0 0 10px; font-size:1.55rem}
+    .info-card p{margin:0 0 12px; color:var(--muted); line-height:1.85}
+    .faq-list{display:grid; gap:14px}
     .faq-item{
-      padding:20px;border-radius:22px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-xs);
+      padding:20px; border-radius:22px; background:#fff; border:1px solid var(--line); box-shadow:var(--shadow-xs);
     }
-    .faq-item strong{display:block;margin-bottom:6px;font-size:1rem}
-    .faq-item span{display:block;color:var(--muted);line-height:1.72;font-size:14px}
+    .faq-item strong{display:block; margin-bottom:6px; font-size:1rem}
+    .faq-item span{display:block; color:var(--muted); line-height:1.72; font-size:14px}
 
     .cta-panel{
-      text-align:center;padding:42px 26px;border-radius:36px;border:1px solid var(--line);
-      background:linear-gradient(135deg, rgba(255,244,248,.96), rgba(255,236,242,.92));
-      box-shadow:var(--shadow-lg);
+      text-align:center; padding:42px 26px; border-radius:36px; border:1px solid var(--line);
+      background:linear-gradient(135deg, rgba(255,244,248,.96), rgba(255,236,242,.92)); box-shadow:var(--shadow-lg);
     }
-    .cta-panel h2{
-      margin:0 0 12px;font-size:clamp(2rem,3vw,3.4rem);line-height:1.04;letter-spacing:-1px;
-    }
-    .cta-panel p{
-      max-width:760px;margin:0 auto 22px;color:var(--muted);line-height:1.84;
-    }
+    .cta-panel h2{margin:0 0 12px; font-size:clamp(2rem,3vw,3.4rem); line-height:1.04; letter-spacing:-1px}
+    .cta-panel p{max-width:760px; margin:0 auto 22px; color:var(--muted); line-height:1.84}
 
     .footer{padding:28px 0 46px}
-    .footer-inner{
-      display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;color:var(--muted);
-    }
-    .footer-links{display:flex;gap:10px;flex-wrap:wrap}
+    .footer-inner{display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; color:var(--muted)}
+    .footer-links{display:flex; gap:10px; flex-wrap:wrap}
     .footer-links a{
-      padding:10px 14px;border-radius:999px;background:#fff;border:1px solid var(--line);
-      color:var(--primary-deep);font-weight:700;
+      padding:10px 14px; border-radius:999px; background:#fff; border:1px solid var(--line); color:var(--primary-deep); font-weight:700;
     }
 
     .modal{
-      position:fixed;inset:0;display:none;align-items:center;justify-content:center;
-      padding:24px;background:rgba(17,10,14,.78);backdrop-filter:blur(8px);z-index:1500;
+      position:fixed; inset:0; display:none; align-items:center; justify-content:center; padding:24px;
+      background:rgba(17,10,14,.78); backdrop-filter:blur(8px); z-index:1500;
     }
     .modal.active{display:flex}
     .modal-box{
-      width:min(1100px,100%);max-height:92vh;overflow:auto;background:#fff;
-      border-radius:30px;border:1px solid var(--line);box-shadow:0 40px 100px rgba(0,0,0,.30);
+      width:min(1100px,100%); max-height:92vh; overflow:auto; background:#fff; border-radius:30px;
+      border:1px solid var(--line); box-shadow:0 40px 100px rgba(0,0,0,.30);
     }
-    .modal-grid{display:grid;grid-template-columns:1fr 1fr}
-    .modal-media{
-      padding:24px;border-right:1px solid var(--line);
-      background:linear-gradient(180deg,#fffefe 0%, #fff1f5 100%);
-    }
+    .modal-grid{display:grid; grid-template-columns:1fr 1fr}
+    .modal-media{padding:24px; border-right:1px solid var(--line); background:linear-gradient(180deg,#fffefe 0%, #fff1f5 100%)}
     .modal-main{
-      min-height:470px;display:flex;align-items:center;justify-content:center;overflow:hidden;
-      border-radius:24px;border:1px solid var(--line);background:rgba(255,255,255,.9)
+      min-height:470px; display:flex; align-items:center; justify-content:center; overflow:hidden;
+      border-radius:24px; border:1px solid var(--line); background:rgba(255,255,255,.9)
     }
-    .modal-main img{width:100%;height:100%;object-fit:contain;padding:26px}
-    .modal-thumbs{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .modal-main img{width:100%; height:100%; object-fit:contain; padding:26px}
+    .modal-thumbs{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
     .modal-thumb{
-      width:76px;height:76px;border-radius:16px;border:1px solid var(--line);overflow:hidden;background:#fff;
+      width:76px; height:76px; border-radius:16px; border:1px solid var(--line); overflow:hidden; background:#fff;
     }
-    .modal-thumb img{width:100%;height:100%;object-fit:cover}
-    .modal-body{padding:28px;display:flex;flex-direction:column;gap:16px}
+    .modal-thumb img{width:100%; height:100%; object-fit:cover}
+    .modal-body{padding:28px; display:flex; flex-direction:column; gap:16px}
     .modal-close{
-      width:46px;height:46px;border:none;border-radius:14px;background:#fff;
-      color:var(--primary-deep);box-shadow:var(--shadow-sm);margin-left:auto;
-      position:sticky;top:0;
+      width:46px; height:46px; border:none; border-radius:14px; background:#fff; color:var(--primary-deep);
+      box-shadow:var(--shadow-sm); margin-left:auto; position:sticky; top:0;
     }
-    .modal-kicker{
-      text-transform:uppercase;letter-spacing:1.3px;font-size:12px;font-weight:800;color:var(--primary-deep)
-    }
-    .modal-title{margin:0;font-size:clamp(2rem,3vw,3rem);line-height:1.04;letter-spacing:-1px}
-    .modal-desc{margin:0;color:var(--muted);line-height:1.84}
-    .modal-price{
-      display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;
-    }
-    .modal-price span{font-size:12px;text-transform:uppercase;font-weight:800;color:var(--muted)}
-    .modal-price strong{font-size:2rem;color:var(--primary-deep)}
-    .modal-actions{display:flex;gap:12px;flex-wrap:wrap}
-    .modal-tags{display:flex;gap:8px;flex-wrap:wrap}
+    .modal-kicker{text-transform:uppercase; letter-spacing:1.3px; font-size:12px; font-weight:800; color:var(--primary-deep)}
+    .modal-title{margin:0; font-size:clamp(2rem,3vw,3rem); line-height:1.04; letter-spacing:-1px}
+    .modal-desc{margin:0; color:var(--muted); line-height:1.84}
+    .modal-price{display:flex; align-items:baseline; gap:8px; flex-wrap:wrap}
+    .modal-price span{font-size:12px; text-transform:uppercase; font-weight:800; color:var(--muted)}
+    .modal-price strong{font-size:2rem; color:var(--primary-deep)}
+    .modal-actions{display:flex; gap:12px; flex-wrap:wrap}
+    .modal-tags{display:flex; gap:8px; flex-wrap:wrap}
     .modal-tags span{
-      padding:8px 12px;border-radius:999px;background:var(--bg-soft);border:1px solid var(--line);
-      font-size:12px;font-weight:800;color:var(--primary-deep)
+      padding:8px 12px; border-radius:999px; background:var(--bg-soft); border:1px solid var(--line);
+      font-size:12px; font-weight:800; color:var(--primary-deep)
     }
 
-    @media (max-width: 1220px){
-      .product-grid{grid-template-columns:repeat(3, minmax(0,1fr))}
-    }
-    @media (max-width: 980px){
+    @media (max-width:1220px){.product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    @media (max-width:980px){
       .nav{display:none}
-      .menu-toggle{display:inline-flex;align-items:center;justify-content:center}
+      .menu-toggle{display:inline-flex; align-items:center; justify-content:center}
       .hero-card{
         min-height:auto;
         background:
           linear-gradient(180deg, rgba(255,251,252,.94) 0%, rgba(255,251,252,.82) 45%, rgba(255,251,252,.25) 100%),
-          url("assets/images/banner/banner-mobile.jpg") center center / cover no-repeat;
+          url("imagens/banner/banner-mobile.jpg") center center / cover no-repeat;
       }
       .hero-content{padding:42px 24px}
       .hero-points,.info-grid,.catalog-grid,.modal-grid{grid-template-columns:1fr}
-      .modal-media{border-right:none;border-bottom:1px solid var(--line)}
-      .product-grid{grid-template-columns:repeat(2, minmax(0,1fr))}
+      .modal-media{border-right:none; border-bottom:1px solid var(--line)}
+      .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
     }
-    @media (max-width: 760px){
-      .hero h1{font-size:2.5rem;letter-spacing:-1.2px}
+    @media (max-width:760px){
+      .hero h1{font-size:2.5rem; letter-spacing:-1.2px}
       .hero-actions,.modal-actions{flex-direction:column}
       .hero-points,.product-grid,.catalog-grid{grid-template-columns:1fr}
       .card-actions{grid-template-columns:1fr}
       .toolbar{align-items:stretch}
       .tools-right{width:100%}
       .searchbox,.sortbox{width:100%}
-      .footer-inner{flex-direction:column;align-items:flex-start}
+      .footer-inner{flex-direction:column; align-items:flex-start}
     }
   </style>
 </head>
 <body>
-  <header class="site-header">
+  <header class="site-header" id="siteHeader">
     <div class="container">
       <div class="header-inner">
         <a class="brand" href="#inicio" aria-label="Ana Essenci">
-          <div class="brand-logo">
-            <img src="imagens/logo/logo.png" alt="Logo Ana Essenci" />
-          </div>
-          <div class="brand-copy">
-            <strong>Ana Essenci</strong>
-            <span>Perfumes femininos em destaque</span>
-          </div>
+          <div class="brand-logo"><img src="imagens/logo/logo-ana-essenci.png" alt="Logo Ana Essenci" /></div>
+          <div class="brand-copy"><strong>Ana Essenci</strong><span>Perfumes femininos em destaque</span></div>
         </a>
-
         <nav class="nav" aria-label="Navegação principal">
           <a href="#destaques">Mais vendidos</a>
           <a href="#produtos">Perfumes</a>
@@ -457,10 +316,8 @@
           <a href="#duvidas">Dúvidas</a>
           <a class="nav-action" href="https://instagram.com/anaessenci" target="_blank" rel="noopener noreferrer">Atendimento via Direct</a>
         </nav>
-
         <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
       </div>
-
       <div class="mobile-panel" id="mobilePanel">
         <div class="mobile-links">
           <a href="#destaques">Mais vendidos</a>
@@ -480,29 +337,15 @@
           <div class="hero-content">
             <div class="eyebrow">Seleção feminina • Ana Essenci</div>
             <h1>Perfumes que <span>marcam presença</span> por onde você passa</h1>
-            <p>
-              Descubra fragrâncias femininas escolhidas para destacar elegância, personalidade e presença.
-              Navegue pelos produtos em destaque e acesse os catálogos oficiais para encontrar sua próxima fragrância favorita.
-            </p>
-
+            <p>Descubra fragrâncias femininas escolhidas para destacar elegância, personalidade e presença. Navegue pelos produtos em destaque e acesse os catálogos oficiais para encontrar sua próxima fragrância favorita.</p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="#destaques">Ver mais vendidos</a>
               <a class="btn btn-soft" href="#catalogos">Abrir catálogos</a>
             </div>
-
             <div class="hero-points">
-              <div class="hero-point">
-                <strong>20 fragrâncias</strong>
-                <span>Seleção feminina organizada com foco nos perfumes mais desejados.</span>
-              </div>
-              <div class="hero-point">
-                <strong>Catálogos oficiais</strong>
-                <span>Acesso direto para promoções, lançamentos e outras opções da marca.</span>
-              </div>
-              <div class="hero-point">
-                <strong>Atendimento via Direct</strong>
-                <span>Dúvidas e suporte com direcionamento simples pelo Instagram.</span>
-              </div>
+              <div class="hero-point"><strong>20 fragrâncias</strong><span>Seleção feminina organizada com foco nos perfumes mais desejados.</span></div>
+              <div class="hero-point"><strong>Catálogos oficiais</strong><span>Acesso direto para promoções, lançamentos e outras opções da marca.</span></div>
+              <div class="hero-point"><strong>Atendimento via Direct</strong><span>Dúvidas e suporte com direcionamento simples pelo Instagram.</span></div>
             </div>
           </div>
         </div>
@@ -512,16 +355,9 @@
     <section id="destaques">
       <div class="container">
         <div class="section-head">
-          <div>
-            <small>Mais vendidos</small>
-            <h2>Os destaques que mais chamam atenção</h2>
-          </div>
-          <p>
-            Uma seleção de fragrâncias femininas com forte apelo de compra, ótimo impacto visual e perfil ideal para presentear,
-            usar no dia a dia ou marcar momentos especiais.
-          </p>
+          <div><small>Mais vendidos</small><h2>Os destaques que mais chamam atenção</h2></div>
+          <p>Uma seleção de fragrâncias femininas com forte apelo de compra, ótimo impacto visual e perfil ideal para presentear, usar no dia a dia ou marcar momentos especiais.</p>
         </div>
-
         <div class="collection-shell">
           <div class="toolbar">
             <div class="chips">
@@ -531,12 +367,8 @@
               <button class="chip" data-filter="premium">Premium</button>
               <button class="chip" data-filter="sensual">Marcantes</button>
             </div>
-
             <div class="tools-right">
-              <label class="searchbox">
-                <span>🔎</span>
-                <input id="searchInput" type="search" placeholder="Buscar perfume..." />
-              </label>
+              <label class="searchbox"><span>🔎</span><input id="searchInput" type="search" placeholder="Buscar perfume..." /></label>
               <label class="sortbox">
                 <select id="sortSelect" aria-label="Ordenar produtos">
                   <option value="default">Ordenar</option>
@@ -547,7 +379,6 @@
               </label>
             </div>
           </div>
-
           <div class="product-grid" id="featuredGrid"></div>
           <div class="empty" id="emptyState">Nenhum perfume encontrado com esse filtro ou busca.</div>
         </div>
@@ -557,14 +388,8 @@
     <section id="produtos">
       <div class="container">
         <div class="section-head">
-          <div>
-            <small>Perfumes</small>
-            <h2>Mais opções para completar sua vitrine</h2>
-          </div>
-          <p>
-            Produtos complementares para ampliar variedade, manter o site elegante e oferecer escolhas com perfis mais doces,
-            sofisticados, modernos ou intensos.
-          </p>
+          <div><small>Perfumes</small><h2>Mais opções para completar sua vitrine</h2></div>
+          <p>Produtos complementares para ampliar variedade, manter o site elegante e oferecer escolhas com perfis mais doces, sofisticados, modernos ou intensos.</p>
         </div>
         <div class="product-grid" id="moreGrid"></div>
       </div>
@@ -573,42 +398,22 @@
     <section id="catalogos">
       <div class="container">
         <div class="section-head">
-          <div>
-            <small>Catálogos oficiais</small>
-            <h2>Explore mais promoções e lançamentos</h2>
-          </div>
-          <p>
-            Além dos perfumes em destaque, você também pode acessar diretamente os catálogos oficiais para ver novas fragrâncias,
-            promoções e outras opções disponíveis.
-          </p>
+          <div><small>Catálogos oficiais</small><h2>Explore mais promoções e lançamentos</h2></div>
+          <p>Além dos perfumes em destaque, você também pode acessar diretamente os catálogos oficiais para ver novas fragrâncias, promoções e outras opções disponíveis.</p>
         </div>
-
         <div class="catalog-grid">
           <article class="catalog-card">
             <div class="pill-note">Catálogo oficial</div>
             <h3>O Boticário</h3>
-            <p>
-              Acesse a área oficial com promoções, fragrâncias em destaque e outras opções femininas para ampliar sua escolha com praticidade.
-            </p>
-            <div class="catalog-badges">
-              <span>Promoções</span>
-              <span>Lançamentos</span>
-              <span>Fragrâncias femininas</span>
-            </div>
+            <p>Acesse a área oficial com promoções, fragrâncias em destaque e outras opções femininas para ampliar sua escolha com praticidade.</p>
+            <div class="catalog-badges"><span>Promoções</span><span>Lançamentos</span><span>Fragrâncias femininas</span></div>
             <a class="btn btn-primary" href="https://minhaloja.boticario.com.br/loja-ana-essenci-25300224/categoria?category=promocao&utm_source=ab&utm_medium=home_cf_genericas&utm_campaign=general" target="_blank" rel="noopener noreferrer">Ver catálogo O Boticário</a>
           </article>
-
           <article class="catalog-card">
             <div class="pill-note">Catálogo oficial</div>
             <h3>Eudora</h3>
-            <p>
-              Explore ofertas e novidades diretamente pelo catálogo oficial, com acesso rápido para complementar o que você encontrou no site.
-            </p>
-            <div class="catalog-badges">
-              <span>Ofertas</span>
-              <span>Mais opções</span>
-              <span>Compra simplificada</span>
-            </div>
+            <p>Explore ofertas e novidades diretamente pelo catálogo oficial, com acesso rápido para complementar o que você encontrou no site.</p>
+            <div class="catalog-badges"><span>Ofertas</span><span>Mais opções</span><span>Compra simplificada</span></div>
             <a class="btn btn-primary" href="https://minhaloja.eudora.com.br/loja-ana-essenci-25300224/categoria?category=promocao&utm_source=ab&utm_medium=home_cf_genericas&utm_campaign=general" target="_blank" rel="noopener noreferrer">Ver catálogo Eudora</a>
           </article>
         </div>
@@ -621,30 +426,16 @@
           <article class="info-card">
             <small class="pill-note">Dúvidas e atendimento</small>
             <h3>Precisa de ajuda para escolher?</h3>
-            <p>
-              Se ficar em dúvida entre fragrâncias doces, florais, sofisticadas ou mais marcantes, o atendimento pode continuar pelo Instagram.
-            </p>
-            <p>
-              A proposta do site é facilitar sua navegação, destacar os perfumes principais e deixar o caminho até os catálogos mais direto e elegante.
-            </p>
+            <p>Se ficar em dúvida entre fragrâncias doces, florais, sofisticadas ou mais marcantes, o atendimento pode continuar pelo Instagram.</p>
+            <p>A proposta do site é facilitar sua navegação, destacar os perfumes principais e deixar o caminho até os catálogos mais direto e elegante.</p>
             <a class="btn btn-primary" href="https://instagram.com/anaessenci" target="_blank" rel="noopener noreferrer">Atendimento via Direct</a>
           </article>
-
           <article class="info-card">
             <small class="pill-note">Perguntas rápidas</small>
             <div class="faq-list">
-              <div class="faq-item">
-                <strong>Como funciona a escolha dos perfumes?</strong>
-                <span>O site mostra fragrâncias femininas em destaque para facilitar a busca por opções populares, modernas e com bom apelo de compra.</span>
-              </div>
-              <div class="faq-item">
-                <strong>Posso ver mais opções além das destacadas?</strong>
-                <span>Sim. Os botões dos catálogos levam você para as áreas oficiais, onde há promoções, lançamentos e outros produtos.</span>
-              </div>
-              <div class="faq-item">
-                <strong>Ficou alguma dúvida antes de comprar?</strong>
-                <span>Nesse caso, o atendimento segue via Direct no Instagram da Ana Essenci.</span>
-              </div>
+              <div class="faq-item"><strong>Como funciona a escolha dos perfumes?</strong><span>O site mostra fragrâncias femininas em destaque para facilitar a busca por opções populares, modernas e com bom apelo de compra.</span></div>
+              <div class="faq-item"><strong>Posso ver mais opções além das destacadas?</strong><span>Sim. Os botões dos catálogos levam você para as áreas oficiais, onde há promoções, lançamentos e outros produtos.</span></div>
+              <div class="faq-item"><strong>Ficou alguma dúvida antes de comprar?</strong><span>Nesse caso, o atendimento segue via Direct no Instagram da Ana Essenci.</span></div>
             </div>
           </article>
         </div>
@@ -655,9 +446,7 @@
       <div class="container">
         <div class="cta-panel">
           <h2>Encontre sua fragrância ideal com uma vitrine mais leve, clara e elegante</h2>
-          <p>
-            Produtos em destaque, acesso rápido aos catálogos e um site pensado para navegação agradável no celular e no computador.
-          </p>
+          <p>Produtos em destaque, acesso rápido aos catálogos e um site pensado para navegação agradável no celular e no computador.</p>
           <div class="hero-actions" style="justify-content:center;margin-bottom:0">
             <a class="btn btn-primary" href="#destaques">Ver perfumes</a>
             <a class="btn btn-soft" href="https://instagram.com/anaessenci" target="_blank" rel="noopener noreferrer">Falar no Direct</a>
@@ -670,10 +459,7 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-inner">
-        <div>
-          <strong>Ana Essenci</strong><br />
-          <span>Perfumes selecionados para destacar presença, elegância e feminilidade.</span>
-        </div>
+        <div><strong>Ana Essenci</strong><br /><span>Perfumes selecionados para destacar presença, elegância e feminilidade.</span></div>
         <div class="footer-links">
           <a href="#destaques">Mais vendidos</a>
           <a href="#catalogos">Catálogos</a>
@@ -688,22 +474,17 @@
       <div class="modal-grid">
         <div class="modal-media">
           <button class="modal-close" id="modalClose" aria-label="Fechar">✕</button>
-          <div class="modal-main">
-            <img id="modalMainImage" src="" alt="" />
-          </div>
+          <div class="modal-main"><img id="modalMainImage" src="" alt="" /></div>
           <div class="modal-thumbs" id="modalThumbs"></div>
         </div>
         <div class="modal-body">
           <div class="modal-kicker" id="modalCategory"></div>
           <h3 class="modal-title" id="modalTitle"></h3>
-          <div class="modal-price">
-            <span>Preço</span>
-            <strong id="modalPrice"></strong>
-          </div>
+          <div class="modal-price"><span>Preço</span><strong id="modalPrice"></strong></div>
           <p class="modal-desc" id="modalDescription"></p>
           <div class="modal-tags" id="modalTags"></div>
           <div class="modal-actions">
-            <a class="btn btn-primary" id="modalOfferLink" target="_blank" rel="noopener noreferrer">Ver oferta</a>
+            <a class="btn btn-primary" id="modalOfferLink" target="_blank" rel="noopener noreferrer">Comprar com desconto</a>
             <a class="btn btn-soft" href="https://instagram.com/anaessenci" target="_blank" rel="noopener noreferrer">Atendimento via Direct</a>
           </div>
         </div>
@@ -713,297 +494,396 @@
 
   <script>
     const products = [
-      {
-        section: "featured",
-        slug: "floratta-red",
-        name: "Floratta Red",
-        price: 164.90,
-        priceLabel: "R$ 164,90",
-        category: "floral",
-        mood: "sensual",
-        badge: "Mais vendido",
-        shortDescription: "Fragrância feminina marcante e delicada, ideal para destacar sua presença com elegância.",
-        description: "Floratta Red combina feminilidade, presença e uma assinatura envolvente para quem gosta de perfumes que chamam atenção sem perder delicadeza. Excelente escolha para momentos especiais e uso versátil no dia a dia.",
-        tags: ["Floral", "Marcante", "Presenteável"],
-        link: "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/75792/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
-      },
-      {
-        section: "featured",
-        slug: "floratta-blue",
-        name: "Floratta Blue",
-        price: 164.90,
-        priceLabel: "R$ 164,90",
-        category: "floral",
-        mood: "leve",
-        badge: "Destaque",
-        shortDescription: "Uma fragrância feminina leve e sofisticada para quem prefere frescor com elegância.",
-        description: "Floratta Blue entrega leveza, suavidade e uma sensação de perfume limpo e refinado. É uma opção excelente para quem gosta de presença suave, confortável e muito fácil de usar em diferentes ocasiões.",
-        tags: ["Floral", "Leve", "Elegante"],
-        link: "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/25458/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
-      },
-      {
-        section: "featured",
-        slug: "floratta-rose",
-        name: "Floratta Rose",
-        price: 164.90,
-        priceLabel: "R$ 164,90",
-        category: "floral",
-        mood: "romantico",
-        badge: "Clássico",
-        shortDescription: "Romântico e delicado, com perfil feminino suave para quem gosta de fragrâncias encantadoras.",
-        description: "Floratta Rose é uma escolha delicada e acolhedora, pensada para mulheres que preferem fragrâncias femininas com toque romântico, suave e agradável para o dia a dia.",
-        tags: ["Floral", "Romântico", "Dia a dia"],
-        link: "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/48656/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
-      },
-      {
-        section: "featured",
-        slug: "egeo-dolce",
-        name: "Egeo Dolce",
-        price: 159.90,
-        priceLabel: "R$ 159,90",
-        category: "doce",
-        mood: "sensual",
-        badge: "Queridinho",
-        shortDescription: "Doce, divertido e envolvente para quem gosta de perfumes com personalidade irresistível.",
-        description: "Egeo Dolce é um dos perfumes femininos mais lembrados por quem ama fragrâncias doces e marcantes. Tem ótima presença, apelo jovem e excelente potencial de destaque na vitrine.",
-        tags: ["Doce", "Jovem", "Marcante"],
-        link: "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/82688/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
-      },
-      {
-        section: "featured",
-        slug: "coffee-woman-seduction",
-        name: "Coffee Woman Seduction",
-        price: 219.90,
-        priceLabel: "R$ 219,90",
-        category: "sensual",
-        mood: "premium",
-        badge: "Impacto",
-        shortDescription: "Sensual e sofisticado, com perfil envolvente para noites e ocasiões especiais.",
-        description: "Coffee Woman Seduction entrega uma assinatura mais intensa, feminina e sofisticada. É ideal para quem procura um perfume com presença elegante e sensação de perfumação mais marcante.",
-        tags: ["Sensual", "Noite", "Sofisticado"],
-        link: "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/48139/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
-      },
-      {
-        section: "featured",
-        slug: "lily-edp",
-        name: "Lily Eau de Parfum",
-        price: 319.90,
-        priceLabel: "R$ 319,90",
-        category: "premium",
-        mood: "elegante",
-        badge: "Premium",
-        shortDescription: "Sofisticação e elegância em uma fragrância intensa e inesquecível.",
-        description: "Lily Eau de Parfum reforça o posicionamento premium da sua vitrine. É uma fragrância refinada, elegante e muito valorizada por quem busca sensação de luxo e presença mais sofisticada.",
-        tags: ["Premium", "Elegante", "Luxo"],
-        link: "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/77524/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
-      },
-      {
-        section: "featured",
-        slug: "glamour-secrets-black",
-        name: "Glamour Secrets Black",
-        price: 194.90,
-        priceLabel: "R$ 194,90",
-        category: "sensual",
-        mood: "marcante",
-        badge: "Sedutor",
-        shortDescription: "Uma fragrância intensa e feminina para quem gosta de deixar impressão forte.",
-        description: "Glamour Secrets Black tem pegada mais sensual e envolvente, ótima para quem busca um perfume de personalidade forte, com sensação de presença e atitude.",
-        tags: ["Sensual", "Marcante", "Presença"],
-        link: "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/89311/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
-      },
-      {
-        section: "featured",
-        slug: "egeo-choc-berry",
-        name: "Egeo Choc Berry",
-        price: 159.90,
-        priceLabel: "R$ 159,90",
-        category: "doce",
-        mood: "divertido",
-        badge: "Doce",
-        shortDescription: "Doçura envolvente com perfil feminino criativo e muito fácil de chamar atenção.",
-        description: "Egeo Choc Berry reforça a parte divertida e mais adocicada da seleção. É ótimo para quem ama perfumes femininos doces com toque moderno e destaque jovem.",
-        tags: ["Doce", "Moderno", "Jovem"],
-        link: "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/82689/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
-      },
-      {
-        section: "featured",
-        slug: "egeo-vanilla-vibe",
-        name: "Egeo Vanilla Vibe",
-        price: 159.90,
-        priceLabel: "R$ 159,90",
-        category: "doce",
-        mood: "moderno",
-        badge: "Tendência",
-        shortDescription: "Baunilha moderna e confortável para quem gosta de fragrâncias doces e atuais.",
-        description: "Egeo Vanilla Vibe entra como uma opção atual, doce e muito convidativa, ajudando a equilibrar a vitrine com uma fragrância de perfil mais cremoso e agradável.",
-        tags: ["Baunilha", "Doce", "Atual"],
-        link: "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/84213/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
-      },
-      {
-        section: "featured",
-        slug: "nativa-spa-ameixa-baunilha",
-        name: "Nativa Spa Ameixa & Baunilha",
-        price: 99.90,
-        priceLabel: "R$ 99,90",
-        category: "doce",
-        mood: "leve",
-        badge: "Preço especial",
-        shortDescription: "Opção acessível e feminina com perfil adocicado e confortável para várias ocasiões.",
-        description: "Nativa Spa Ameixa & Baunilha ajuda a trazer uma alternativa com valor mais leve, mantendo o apelo doce e acolhedor para quem deseja uma fragrância feminina gostosa e acessível.",
-        tags: ["Acessível", "Doce", "Confortável"],
-        link: "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/89366/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
-      },
+  {
+    "section": "featured",
+    "slug": "floratta-red",
+    "name": "Floratta Red",
+    "price": 164.9,
+    "priceLabel": "R$ 164,90",
+    "oldPrice": "R$ 189,90",
+    "category": "floral",
+    "mood": "sensual",
+    "badge": "Mais vendido",
+    "shortDescription": "Fragrância feminina marcante e delicada, ideal para destacar sua presença com elegância.",
+    "description": "Floratta Red combina feminilidade, presença e uma assinatura envolvente para quem gosta de perfumes que chamam atenção sem perder delicadeza. Excelente escolha para momentos especiais e uso versátil no dia a dia.",
+    "tags": [
+      "Floral",
+      "Marcante",
+      "Presenteável"
+    ],
+    "link": "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/75792/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+  },
+  {
+    "section": "featured",
+    "slug": "floratta-blue",
+    "name": "Floratta Blue",
+    "price": 164.9,
+    "priceLabel": "R$ 164,90",
+    "oldPrice": "R$ 189,90",
+    "category": "floral",
+    "mood": "leve",
+    "badge": "Destaque",
+    "shortDescription": "Uma fragrância feminina leve e sofisticada para quem prefere frescor com elegância.",
+    "description": "Floratta Blue entrega leveza, suavidade e uma sensação de perfume limpo e refinado. É uma opção excelente para quem gosta de presença suave, confortável e muito fácil de usar em diferentes ocasiões.",
+    "tags": [
+      "Floral",
+      "Leve",
+      "Elegante"
+    ],
+    "link": "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/25458/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+  },
+  {
+    "section": "featured",
+    "slug": "floratta-rose",
+    "name": "Floratta Rose",
+    "price": 164.9,
+    "priceLabel": "R$ 164,90",
+    "oldPrice": "R$ 189,90",
+    "category": "floral",
+    "mood": "romantico",
+    "badge": "Clássico",
+    "shortDescription": "Romântico e delicado, com perfil feminino suave para quem gosta de fragrâncias encantadoras.",
+    "description": "Floratta Rose é uma escolha delicada e acolhedora, pensada para mulheres que preferem fragrâncias femininas com toque romântico, suave e agradável para o dia a dia.",
+    "tags": [
+      "Floral",
+      "Romântico",
+      "Dia a dia"
+    ],
+    "link": "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/48656/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+  },
+  {
+    "section": "featured",
+    "slug": "egeo-dolce",
+    "name": "Egeo Dolce",
+    "price": 159.9,
+    "priceLabel": "R$ 159,90",
+    "oldPrice": "R$ 179,90",
+    "category": "doce",
+    "mood": "sensual",
+    "badge": "Queridinho",
+    "shortDescription": "Doce, divertido e envolvente para quem gosta de perfumes com personalidade irresistível.",
+    "description": "Egeo Dolce é um dos perfumes femininos mais lembrados por quem ama fragrâncias doces e marcantes. Tem ótima presença, apelo jovem e excelente potencial de destaque na vitrine.",
+    "tags": [
+      "Doce",
+      "Jovem",
+      "Marcante"
+    ],
+    "link": "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/82688/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+  },
+  {
+    "section": "featured",
+    "slug": "coffee-woman-seduction",
+    "name": "Coffee Woman Seduction",
+    "price": 219.9,
+    "priceLabel": "R$ 219,90",
+    "oldPrice": "R$ 249,90",
+    "category": "sensual",
+    "mood": "premium",
+    "badge": "Impacto",
+    "shortDescription": "Sensual e sofisticado, com perfil envolvente para noites e ocasiões especiais.",
+    "description": "Coffee Woman Seduction entrega uma assinatura mais intensa, feminina e sofisticada. É ideal para quem procura um perfume com presença elegante e sensação de perfumação mais marcante.",
+    "tags": [
+      "Sensual",
+      "Noite",
+      "Sofisticado"
+    ],
+    "link": "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/48139/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+  },
+  {
+    "section": "featured",
+    "slug": "lily-edp",
+    "name": "Lily Eau de Parfum",
+    "price": 319.9,
+    "priceLabel": "R$ 319,90",
+    "oldPrice": "R$ 349,90",
+    "category": "premium",
+    "mood": "elegante",
+    "badge": "Premium",
+    "shortDescription": "Sofisticação e elegância em uma fragrância intensa e inesquecível.",
+    "description": "Lily Eau de Parfum reforça o posicionamento premium da sua vitrine. É uma fragrância refinada, elegante e muito valorizada por quem busca sensação de luxo e presença mais sofisticada.",
+    "tags": [
+      "Premium",
+      "Elegante",
+      "Luxo"
+    ],
+    "link": "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/77524/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+  },
+  {
+    "section": "featured",
+    "slug": "glamour-secrets-black",
+    "name": "Glamour Secrets Black",
+    "price": 194.9,
+    "priceLabel": "R$ 194,90",
+    "oldPrice": "R$ 219,90",
+    "category": "sensual",
+    "mood": "marcante",
+    "badge": "Sedutor",
+    "shortDescription": "Uma fragrância intensa e feminina para quem gosta de deixar impressão forte.",
+    "description": "Glamour Secrets Black tem pegada mais sensual e envolvente, ótima para quem busca um perfume de personalidade forte, com sensação de presença e atitude.",
+    "tags": [
+      "Sensual",
+      "Marcante",
+      "Presença"
+    ],
+    "link": "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/89311/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+  },
+  {
+    "section": "featured",
+    "slug": "egeo-choc-berry",
+    "name": "Egeo Choc Berry",
+    "price": 159.9,
+    "priceLabel": "R$ 159,90",
+    "oldPrice": "R$ 179,90",
+    "category": "doce",
+    "mood": "divertido",
+    "badge": "Doce",
+    "shortDescription": "Doçura envolvente com perfil feminino criativo e muito fácil de chamar atenção.",
+    "description": "Egeo Choc Berry reforça a parte divertida e mais adocicada da seleção. É ótimo para quem ama perfumes femininos doces com toque moderno e destaque jovem.",
+    "tags": [
+      "Doce",
+      "Moderno",
+      "Jovem"
+    ],
+    "link": "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/82689/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+  },
+  {
+    "section": "featured",
+    "slug": "egeo-vanilla-vibe",
+    "name": "Egeo Vanilla Vibe",
+    "price": 159.9,
+    "priceLabel": "R$ 159,90",
+    "oldPrice": "R$ 179,90",
+    "category": "doce",
+    "mood": "moderno",
+    "badge": "Tendência",
+    "shortDescription": "Baunilha moderna e confortável para quem gosta de fragrâncias doces e atuais.",
+    "description": "Egeo Vanilla Vibe entra como uma opção atual, doce e muito convidativa, ajudando a equilibrar a vitrine com uma fragrância de perfil mais cremoso e agradável.",
+    "tags": [
+      "Baunilha",
+      "Doce",
+      "Atual"
+    ],
+    "link": "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/84213/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+  },
+  {
+    "section": "featured",
+    "slug": "nativa-spa-ameixa-baunilha",
+    "name": "Nativa Spa Ameixa & Baunilha",
+    "price": 99.9,
+    "priceLabel": "R$ 99,90",
+    "oldPrice": "R$ 119,90",
+    "category": "doce",
+    "mood": "leve",
+    "badge": "Preço especial",
+    "shortDescription": "Opção acessível e feminina com perfil adocicado e confortável para várias ocasiões.",
+    "description": "Nativa Spa Ameixa & Baunilha ajuda a trazer uma alternativa com valor mais leve, mantendo o apelo doce e acolhedor para quem deseja uma fragrância feminina gostosa e acessível.",
+    "tags": [
+      "Acessível",
+      "Doce",
+      "Confortável"
+    ],
+    "link": "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/89366/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+  },
+  {
+    "section": "more",
+    "slug": "floratta-fleur-declipse",
+    "name": "Floratta Fleur D'Eclipse",
+    "price": 219.19,
+    "priceLabel": "R$ 219,19",
+    "oldPrice": "R$ 239,90",
+    "category": "floral",
+    "mood": "premium",
+    "badge": "Elegante",
+    "shortDescription": "Um floral mais sofisticado para deixar a seleção com ainda mais valor percebido.",
+    "description": "Floratta Fleur D'Eclipse amplia a linha Floratta com uma leitura mais refinada e sofisticada. Excelente para quem quer uma fragrância feminina elegante com sensação mais especial.",
+    "tags": [
+      "Floral",
+      "Refinado",
+      "Premium"
+    ],
+    "link": "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/48621/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+  },
+  {
+    "section": "more",
+    "slug": "glamour-midnight",
+    "name": "Glamour Midnight",
+    "price": 189.9,
+    "priceLabel": "R$ 189,90",
+    "oldPrice": "R$ 209,90",
+    "category": "sensual",
+    "mood": "noturno",
+    "badge": "Noite",
+    "shortDescription": "Perfume feminino com perfil intenso e misterioso para quem quer sair do comum.",
+    "description": "Glamour Midnight adiciona contraste à vitrine com uma proposta mais intensa e noturna. Ideal para clientes que buscam algo mais ousado, marcante e diferente.",
+    "tags": [
+      "Noturno",
+      "Misterioso",
+      "Intenso"
+    ],
+    "link": "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/51704/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+  },
+  {
+    "section": "more",
+    "slug": "her-code",
+    "name": "Her Code",
+    "price": 244.9,
+    "priceLabel": "R$ 244,90",
+    "oldPrice": "R$ 269,90",
+    "category": "premium",
+    "mood": "moderno",
+    "badge": "Moderno",
+    "shortDescription": "Uma opção feminina moderna e sofisticada para elevar ainda mais a seleção.",
+    "description": "Her Code fortalece o lado contemporâneo e premium do site, trazendo uma proposta mais atual para quem quer um perfume feminino com personalidade e acabamento elegante.",
+    "tags": [
+      "Premium",
+      "Atual",
+      "Sofisticado"
+    ],
+    "link": "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/50022/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+  },
+  {
+    "section": "more",
+    "slug": "egeo-bomb-purple",
+    "name": "Egeo Bomb Purple",
+    "price": 159.9,
+    "priceLabel": "R$ 159,90",
+    "oldPrice": "R$ 179,90",
+    "category": "doce",
+    "mood": "jovem",
+    "badge": "Vibrante",
+    "shortDescription": "Fragrância divertida e intensa para reforçar a parte jovem e ousada da vitrine.",
+    "description": "Egeo Bomb Purple traz energia, doçura e uma presença divertida para a seleção. É uma escolha eficiente para deixar o site com opções femininas mais vibrantes e chamativas.",
+    "tags": [
+      "Doce",
+      "Jovem",
+      "Vibrante"
+    ],
+    "link": "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/82685/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+  },
+  {
+    "section": "more",
+    "slug": "lily-absolu",
+    "name": "Lily Absolu",
+    "price": 319.9,
+    "priceLabel": "R$ 319,90",
+    "oldPrice": "R$ 349,90",
+    "category": "premium",
+    "mood": "elegante",
+    "badge": "Luxo",
+    "shortDescription": "Uma leitura ainda mais sofisticada para clientes que buscam alto valor percebido.",
+    "description": "Lily Absolu aprofunda o posicionamento premium da vitrine, trazendo uma sensação de sofisticação elevada e uma opção ideal para quem quer investir em algo mais refinado.",
+    "tags": [
+      "Luxo",
+      "Premium",
+      "Elegância"
+    ],
+    "link": "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/85699/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+  },
+  {
+    "section": "more",
+    "slug": "egeo-blue",
+    "name": "Egeo Blue",
+    "price": 159.9,
+    "priceLabel": "R$ 159,90",
+    "oldPrice": "R$ 179,90",
+    "category": "doce",
+    "mood": "moderno",
+    "badge": "Popular",
+    "shortDescription": "Uma opção feminina atual para ampliar as escolhas com perfil moderno e agradável.",
+    "description": "Egeo Blue ajuda a diversificar a linha Egeo no site, mantendo a proposta moderna, prática e com boa aceitação para quem busca algo jovem e chamativo.",
+    "tags": [
+      "Atual",
+      "Jovem",
+      "Versátil"
+    ],
+    "link": "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/82686/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+  },
+  {
+    "section": "more",
+    "slug": "coffee-woman-duo",
+    "name": "Coffee Woman Duo",
+    "price": 219.9,
+    "priceLabel": "R$ 219,90",
+    "oldPrice": "R$ 244,90",
+    "category": "sensual",
+    "mood": "sofisticado",
+    "badge": "Refinado",
+    "shortDescription": "Uma variação elegante da linha Coffee para quem gosta de perfumes femininos com mais presença.",
+    "description": "Coffee Woman Duo reforça a parte sofisticada da seleção e oferece mais uma alternativa com assinatura feminina envolvente, madura e elegante.",
+    "tags": [
+      "Sofisticado",
+      "Marcante",
+      "Elegante"
+    ],
+    "link": "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/73613/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+  },
+  {
+    "section": "more",
+    "slug": "floratta-romance-de-verao",
+    "name": "Floratta Romance de Verão",
+    "price": 164.9,
+    "priceLabel": "R$ 164,90",
+    "oldPrice": "R$ 189,90",
+    "category": "floral",
+    "mood": "leve",
+    "badge": "Delicado",
+    "shortDescription": "Uma fragrância feminina suave e encantadora para completar a linha Floratta.",
+    "description": "Floratta Romance de Verão entra como uma opção delicada, feminina e agradável para equilibrar a vitrine com algo leve, bonito e fácil de gostar.",
+    "tags": [
+      "Leve",
+      "Floral",
+      "Suave"
+    ],
+    "link": "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/55659/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+  },
+  {
+    "section": "more",
+    "slug": "floratta-rose-sucree",
+    "name": "Floratta Rose Sucrée",
+    "price": 184.89,
+    "priceLabel": "R$ 184,89",
+    "oldPrice": "R$ 209,90",
+    "category": "doce",
+    "mood": "sensual",
+    "badge": "Novo destaque",
+    "shortDescription": "Doce, elegante e moderno para aumentar o apelo de desejo na parte complementar.",
+    "description": "Floratta Rose Sucrée é uma ótima atualização da seleção por trazer um perfil feminino doce, moderno e muito mais alinhado ao apelo de compra visual da vitrine.",
+    "tags": [
+      "Doce",
+      "Moderno",
+      "Desejo"
+    ],
+    "link": "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/88135/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+  },
+  {
+    "section": "more",
+    "slug": "floratta-my-blue",
+    "name": "Floratta My Blue",
+    "price": 164.9,
+    "priceLabel": "R$ 164,90",
+    "oldPrice": "R$ 189,90",
+    "category": "floral",
+    "mood": "elegante",
+    "badge": "Versátil",
+    "shortDescription": "Opção refinada e feminina para ampliar a linha Floratta com mais variedade.",
+    "description": "Floratta My Blue traz um perfil elegante e versátil, ajudando a completar a vitrine com uma fragrância feminina que transmite suavidade e sofisticação ao mesmo tempo.",
+    "tags": [
+      "Floral",
+      "Versátil",
+      "Elegante"
+    ],
+    "link": "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/01004/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
+  }
+];
+    const pathBase = "products/";
+    const fallbackImage = "imagens/logo/logo-ana-essenci.png";
 
-      {
-        section: "more",
-        slug: "floratta-fleur-declipse",
-        name: "Floratta Fleur D'Eclipse",
-        price: 219.19,
-        priceLabel: "R$ 219,19",
-        category: "floral",
-        mood: "premium",
-        badge: "Elegante",
-        shortDescription: "Um floral mais sofisticado para deixar a seleção com ainda mais valor percebido.",
-        description: "Floratta Fleur D'Eclipse amplia a linha Floratta com uma leitura mais refinada e sofisticada. Excelente para quem quer uma fragrância feminina elegante com sensação mais especial.",
-        tags: ["Floral", "Refinado", "Premium"],
-        link: "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/48621/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
-      },
-      {
-        section: "more",
-        slug: "glamour-midnight",
-        name: "Glamour Midnight",
-        price: 189.90,
-        priceLabel: "R$ 189,90",
-        category: "sensual",
-        mood: "noturno",
-        badge: "Noite",
-        shortDescription: "Perfume feminino com perfil intenso e misterioso para quem quer sair do comum.",
-        description: "Glamour Midnight adiciona contraste à vitrine com uma proposta mais intensa e noturna. Ideal para clientes que buscam algo mais ousado, marcante e diferente.",
-        tags: ["Noturno", "Misterioso", "Intenso"],
-        link: "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/51704/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
-      },
-      {
-        section: "more",
-        slug: "her-code",
-        name: "Her Code",
-        price: 244.90,
-        priceLabel: "R$ 244,90",
-        category: "premium",
-        mood: "moderno",
-        badge: "Moderno",
-        shortDescription: "Uma opção feminina moderna e sofisticada para elevar ainda mais a seleção.",
-        description: "Her Code fortalece o lado contemporâneo e premium do site, trazendo uma proposta mais atual para quem quer um perfume feminino com personalidade e acabamento elegante.",
-        tags: ["Premium", "Atual", "Sofisticado"],
-        link: "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/50022/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
-      },
-      {
-        section: "more",
-        slug: "egeo-bomb-purple",
-        name: "Egeo Bomb Purple",
-        price: 159.90,
-        priceLabel: "R$ 159,90",
-        category: "doce",
-        mood: "jovem",
-        badge: "Vibrante",
-        shortDescription: "Fragrância divertida e intensa para reforçar a parte jovem e ousada da vitrine.",
-        description: "Egeo Bomb Purple traz energia, doçura e uma presença divertida para a seleção. É uma escolha eficiente para deixar o site com opções femininas mais vibrantes e chamativas.",
-        tags: ["Doce", "Jovem", "Vibrante"],
-        link: "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/82685/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
-      },
-      {
-        section: "more",
-        slug: "lily-absolu",
-        name: "Lily Absolu",
-        price: 319.90,
-        priceLabel: "R$ 319,90",
-        category: "premium",
-        mood: "elegante",
-        badge: "Luxo",
-        shortDescription: "Uma leitura ainda mais sofisticada para clientes que buscam alto valor percebido.",
-        description: "Lily Absolu aprofunda o posicionamento premium da vitrine, trazendo uma sensação de sofisticação elevada e uma opção ideal para quem quer investir em algo mais refinado.",
-        tags: ["Luxo", "Premium", "Elegância"],
-        link: "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/85699/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
-      },
-      {
-        section: "more",
-        slug: "egeo-blue",
-        name: "Egeo Blue",
-        price: 159.90,
-        priceLabel: "R$ 159,90",
-        category: "doce",
-        mood: "moderno",
-        badge: "Popular",
-        shortDescription: "Uma opção feminina atual para ampliar as escolhas com perfil moderno e agradável.",
-        description: "Egeo Blue ajuda a diversificar a linha Egeo no site, mantendo a proposta moderna, prática e com boa aceitação para quem busca algo jovem e chamativo.",
-        tags: ["Atual", "Jovem", "Versátil"],
-        link: "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/82686/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
-      },
-      {
-        section: "more",
-        slug: "coffee-woman-duo",
-        name: "Coffee Woman Duo",
-        price: 219.90,
-        priceLabel: "R$ 219,90",
-        category: "sensual",
-        mood: "sofisticado",
-        badge: "Refinado",
-        shortDescription: "Uma variação elegante da linha Coffee para quem gosta de perfumes femininos com mais presença.",
-        description: "Coffee Woman Duo reforça a parte sofisticada da seleção e oferece mais uma alternativa com assinatura feminina envolvente, madura e elegante.",
-        tags: ["Sofisticado", "Marcante", "Elegante"],
-        link: "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/73613/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
-      },
-      {
-        section: "more",
-        slug: "floratta-romance-de-verao",
-        name: "Floratta Romance de Verão",
-        price: 164.90,
-        priceLabel: "R$ 164,90",
-        category: "floral",
-        mood: "leve",
-        badge: "Delicado",
-        shortDescription: "Uma fragrância feminina suave e encantadora para completar a linha Floratta.",
-        description: "Floratta Romance de Verão entra como uma opção delicada, feminina e agradável para equilibrar a vitrine com algo leve, bonito e fácil de gostar.",
-        tags: ["Leve", "Floral", "Suave"],
-        link: "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/55659/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
-      },
-      {
-        section: "more",
-        slug: "floratta-rose-sucree",
-        name: "Floratta Rose Sucrée",
-        price: 184.89,
-        priceLabel: "R$ 184,89",
-        category: "doce",
-        mood: "sensual",
-        badge: "Novo destaque",
-        shortDescription: "Doce, elegante e moderno para aumentar o apelo de desejo na parte complementar.",
-        description: "Floratta Rose Sucrée é uma ótima atualização da seleção por trazer um perfil feminino doce, moderno e muito mais alinhado ao apelo de compra visual da vitrine.",
-        tags: ["Doce", "Moderno", "Desejo"],
-        link: "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/88135/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
-      },
-      {
-        section: "more",
-        slug: "floratta-my-blue",
-        name: "Floratta My Blue",
-        price: 164.90,
-        priceLabel: "R$ 164,90",
-        category: "floral",
-        mood: "elegante",
-        badge: "Versátil",
-        shortDescription: "Opção refinada e feminina para ampliar a linha Floratta com mais variedade.",
-        description: "Floratta My Blue traz um perfil elegante e versátil, ajudando a completar a vitrine com uma fragrância feminina que transmite suavidade e sofisticação ao mesmo tempo.",
-        tags: ["Floral", "Versátil", "Elegante"],
-        link: "https://minhaloja.grupoboticario.com.br/loja-ana-essenci-25300224/boticario/produto/01004/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado"
-      }
-    ];
-
-    const pathBase = "assets/images/products/feminino/";
     const featuredGrid = document.getElementById("featuredGrid");
     const moreGrid = document.getElementById("moreGrid");
     const chips = [...document.querySelectorAll(".chip")];
     const searchInput = document.getElementById("searchInput");
     const sortSelect = document.getElementById("sortSelect");
     const emptyState = document.getElementById("emptyState");
-
     const modal = document.getElementById("productModal");
     const modalClose = document.getElementById("modalClose");
     const modalMainImage = document.getElementById("modalMainImage");
@@ -1014,34 +894,21 @@
     const modalTags = document.getElementById("modalTags");
     const modalOfferLink = document.getElementById("modalOfferLink");
     const modalThumbs = document.getElementById("modalThumbs");
-
     const menuToggle = document.getElementById("menuToggle");
     const mobilePanel = document.getElementById("mobilePanel");
-
+    const siteHeader = document.getElementById("siteHeader");
     let activeFilter = "todos";
 
-    const getProductImages = (slug) => {
-      return [
-        `${pathBase}${slug}/01.webp`,
-        `${pathBase}${slug}/02.webp`,
-        `${pathBase}${slug}/03.webp`
-      ];
-    };
+    const getProductImages = (slug) => [
+      `${pathBase}${slug}/01.webp`,
+      `${pathBase}${slug}/02.webp`,
+      `${pathBase}${slug}/03.webp`
+    ];
 
-    const normalize = (text) =>
-      text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const normalize = (text) => text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const formatCategory = (category) => ({ floral:"Floral", doce:"Doce", premium:"Premium", sensual:"Marcante" }[category] || "Perfume");
 
-    const formatCategory = (category) => {
-      const map = {
-        floral: "Floral",
-        doce: "Doce",
-        premium: "Premium",
-        sensual: "Marcante"
-      };
-      return map[category] || "Perfume";
-    };
-
-    function renderCards(list, target, allowFilter = false) {
+    function renderCards(list, target, allowFilter=false){
       target.innerHTML = "";
       list.forEach(product => {
         const article = document.createElement("article");
@@ -1052,25 +919,19 @@
             <span class="badge badge-cat">${formatCategory(product.category)}</span>
           </div>
           <div class="thumb-wrap">
-            <img src="${pathBase}${product.slug}/01.webp" alt="${product.name}" loading="lazy"
-              onerror="this.onerror=null;this.src='${pathBase}${product.slug}/01.webp';" />
+            <img src="${pathBase}${product.slug}/01.webp" alt="${product.name}" loading="lazy" onerror="this.onerror=null;this.src='${fallbackImage}';" />
           </div>
           <div class="card-body">
-            <div class="mini-top">
-              <strong>Perfume feminino</strong>
-              <span>${formatCategory(product.category)}</span>
-            </div>
+            <div class="mini-top"><strong>Perfume feminino</strong><span>${formatCategory(product.category)}</span></div>
             <h3 class="card-title">${product.name}</h3>
             <div class="price">
-              <span>Preço</span>
-              <strong>${product.priceLabel}</strong>
+              <div class="price-top"><span>Preço</span><strong>${product.priceLabel}</strong></div>
+              <small class="old-price">${product.oldPrice}</small>
             </div>
             <p class="card-text">${product.shortDescription}</p>
-            <div class="meta">
-              ${product.tags.slice(0,3).map(tag => `<span>${tag}</span>`).join("")}
-            </div>
+            <div class="meta">${product.tags.slice(0,3).map(tag => `<span>${tag}</span>`).join("")}</div>
             <div class="card-actions">
-              <a class="offer-btn btn" href="${product.link}" target="_blank" rel="noopener noreferrer">Ver oferta</a>
+              <a class="offer-btn btn" href="${product.link}" target="_blank" rel="noopener noreferrer">Comprar com desconto</a>
               <button class="detail-btn" type="button" data-slug="${product.slug}">Detalhes</button>
             </div>
           </div>
@@ -1081,36 +942,29 @@
       target.querySelectorAll(".detail-btn").forEach(btn => {
         btn.addEventListener("click", () => {
           const product = products.find(item => item.slug === btn.dataset.slug);
-          if (product) openModal(product);
+          if(product) openModal(product);
         });
       });
 
-      if (allowFilter) {
-        emptyState.style.display = list.length ? "none" : "block";
-      }
+      if(allowFilter) emptyState.style.display = list.length ? "none" : "block";
     }
 
-    function applyFilters() {
+    function applyFilters(){
       const query = normalize(searchInput.value.trim());
       let list = products.filter(p => p.section === "featured");
 
-      if (activeFilter !== "todos") {
+      if(activeFilter !== "todos"){
         list = list.filter(p => p.category === activeFilter || p.mood === activeFilter);
       }
 
-      if (query) {
-        list = list.filter(p => {
-          const combined = normalize(
-            `${p.name} ${p.shortDescription} ${p.description} ${p.tags.join(" ")} ${p.category} ${p.mood}`
-          );
-          return combined.includes(query);
-        });
+      if(query){
+        list = list.filter(p => normalize(`${p.name} ${p.shortDescription} ${p.description} ${p.tags.join(" ")} ${p.category} ${p.mood}`).includes(query));
       }
 
       const sortValue = sortSelect.value;
-      if (sortValue === "name-asc") list.sort((a,b) => a.name.localeCompare(b.name, "pt-BR"));
-      if (sortValue === "price-asc") list.sort((a,b) => a.price - b.price);
-      if (sortValue === "price-desc") list.sort((a,b) => b.price - a.price);
+      if(sortValue === "name-asc") list.sort((a,b) => a.name.localeCompare(b.name,"pt-BR"));
+      if(sortValue === "price-asc") list.sort((a,b) => a.price - b.price);
+      if(sortValue === "price-desc") list.sort((a,b) => b.price - a.price);
 
       renderCards(list, featuredGrid, true);
     }
@@ -1118,69 +972,57 @@
     function openModal(product){
       modalMainImage.src = `${pathBase}${product.slug}/01.webp`;
       modalMainImage.alt = product.name;
+      modalMainImage.onerror = () => { modalMainImage.src = fallbackImage; };
       modalTitle.textContent = product.name;
       modalCategory.textContent = `Perfume feminino • ${formatCategory(product.category)}`;
       modalPrice.textContent = product.priceLabel;
       modalDescription.textContent = product.description;
       modalOfferLink.href = product.link;
-
       modalTags.innerHTML = product.tags.map(tag => `<span>${tag}</span>`).join("");
 
       const images = getProductImages(product.slug);
-      modalThumbs.innerHTML = images.map((src, index) => `
-        <button class="modal-thumb" type="button" data-src="${src}" aria-label="Ver imagem ${index+1}">
-          <img src="${src}" alt="${product.name} imagem ${index+1}"
-            onerror="this.parentElement.style.display='none';" />
+      modalThumbs.innerHTML = images.map((src,index) => `
+        <button class="modal-thumb" type="button" data-src="${src}" aria-label="Ver imagem ${index + 1}">
+          <img src="${src}" alt="${product.name} imagem ${index + 1}" onerror="this.parentElement.style.display='none';" />
         </button>
       `).join("");
 
-      [...modalThumbs.querySelectorAll(".modal-thumb")].forEach((thumb, index) => {
+      [...modalThumbs.querySelectorAll(".modal-thumb")].forEach((thumb,index) => {
         if(index === 0) thumb.style.outline = "2px solid var(--primary-deep)";
         thumb.addEventListener("click", () => {
           modalMainImage.src = thumb.dataset.src;
+          modalMainImage.onerror = () => { modalMainImage.src = fallbackImage; };
           [...modalThumbs.querySelectorAll(".modal-thumb")].forEach(el => el.style.outline = "none");
           thumb.style.outline = "2px solid var(--primary-deep)";
         });
       });
 
       modal.classList.add("active");
-      modal.setAttribute("aria-hidden", "false");
+      modal.setAttribute("aria-hidden","false");
       document.body.style.overflow = "hidden";
     }
 
     function closeModal(){
       modal.classList.remove("active");
-      modal.setAttribute("aria-hidden", "true");
+      modal.setAttribute("aria-hidden","true");
       document.body.style.overflow = "";
     }
 
-    chips.forEach(chip => {
-      chip.addEventListener("click", () => {
-        chips.forEach(c => c.classList.remove("active"));
-        chip.classList.add("active");
-        activeFilter = chip.dataset.filter;
-        applyFilters();
-      });
-    });
+    chips.forEach(chip => chip.addEventListener("click", () => {
+      chips.forEach(c => c.classList.remove("active"));
+      chip.classList.add("active");
+      activeFilter = chip.dataset.filter;
+      applyFilters();
+    }));
 
     searchInput.addEventListener("input", applyFilters);
     sortSelect.addEventListener("change", applyFilters);
-
     modalClose.addEventListener("click", closeModal);
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) closeModal();
-    });
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeModal();
-    });
-
-    menuToggle.addEventListener("click", () => {
-      mobilePanel.classList.toggle("open");
-    });
-
-    document.querySelectorAll(".mobile-links a").forEach(link => {
-      link.addEventListener("click", () => mobilePanel.classList.remove("open"));
-    });
+    modal.addEventListener("click", (e) => { if(e.target === modal) closeModal(); });
+    document.addEventListener("keydown", (e) => { if(e.key === "Escape") closeModal(); });
+    menuToggle.addEventListener("click", () => mobilePanel.classList.toggle("open"));
+    document.querySelectorAll(".mobile-links a").forEach(link => link.addEventListener("click", () => mobilePanel.classList.remove("open")));
+    window.addEventListener("scroll", () => siteHeader.classList.toggle("scrolled", window.scrollY > 20));
 
     renderCards(products.filter(p => p.section === "featured"), featuredGrid, true);
     renderCards(products.filter(p => p.section === "more"), moreGrid);

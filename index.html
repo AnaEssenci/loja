@@ -1,36 +1,615 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ana Essenci</title>
-<style>
-body{font-family:Arial;margin:0;background:#fafafa}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;padding:20px}
-.card{background:#fff;padding:15px;border-radius:10px;text-align:center}
-.card img{height:180px;width:100%;object-fit:contain}
-.btn{display:block;margin-top:10px;padding:10px;background:#d63384;color:#fff;text-decoration:none;border-radius:5px}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Ana Essenci | Perfumes que Marcam Presença</title>
+    <meta name="description" content="Descubra a sofisticação em cada fragrância. Ana Essenci oferece perfumes selecionados O Boticário, Eudora, QDB e O.U.I Paris. Compre com segurança e elegância.">
+    <meta property="og:title" content="Ana Essenci - Perfumes Premium">
+    <meta property="og:description" content="Fragrâncias que transformam momentos. Catálogo exclusivo com os melhores lançamentos.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://placehold.co/1200x630/FFF5F0/9B6B43?text=Ana+Essenci">
+    <meta property="og:url" content="https://anaessenci.com">
+    <link rel="icon" type="image/x-icon" href="imagens/favicon/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFCF9;
+            color: #1E1A17;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, .logo, .headline {
+            font-family: 'Playfair Display', serif;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        /* header */
+        .top-bar {
+            background: #F8F1EA;
+            padding: 10px 0;
+            font-size: 13px;
+            text-align: center;
+            color: #6B4C3A;
+            letter-spacing: 0.5px;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            flex-wrap: wrap;
+            background: white;
+            border-bottom: 1px solid #F0E4DA;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-img {
+            width: 48px;
+            height: 48px;
+            background: #EADBCB;
+            border-radius: 60%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #9B6B43;
+        }
+        .logo-text {
+            font-size: 1.7rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color: #2C241E;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #2C241E;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .nav-links a:hover { color: #C49A6C; }
+        .menu-mobile-btn {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #9B6B43;
+        }
+        /* hero banner */
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 85vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+        }
+        .hero-desktop {
+            background-image: linear-gradient(90deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.1) 100%), url('imagens/banner/banner-desktop.jpg');
+            background-size: cover;
+        }
+        .hero-content {
+            max-width: 600px;
+            padding: 0 5%;
+            color: #FFF9F5;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .hero-content h1 {
+            font-size: 3.4rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: #D9B48B;
+            border: none;
+            padding: 14px 32px;
+            font-weight: 600;
+            color: #1E1A17;
+            border-radius: 44px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        .btn-primary:hover { background: #C49A6C; transform: scale(1.02); }
+        .btn-outline-light {
+            background: transparent;
+            border: 1.5px solid white;
+            padding: 14px 32px;
+            border-radius: 44px;
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .btn-outline-light:hover { background: rgba(255,255,255,0.1); }
+        /* filtros */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin: 50px 0 30px;
+            gap: 20px;
+        }
+        .filter-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: #F4EAE2;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: #D9B48B;
+            color: white;
+        }
+        .search-box {
+            display: flex;
+            background: white;
+            border: 1px solid #EADBCB;
+            border-radius: 48px;
+            overflow: hidden;
+        }
+        .search-box input {
+            padding: 10px 18px;
+            border: none;
+            outline: none;
+            width: 240px;
+            font-size: 0.9rem;
+        }
+        .search-box button {
+            background: #D9B48B;
+            border: none;
+            padding: 0 18px;
+            cursor: pointer;
+            color: #1E1A17;
+        }
+        /* produtos grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 32px;
+            margin: 40px 0 60px;
+        }
+        .product-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+            transition: all 0.25s ease;
+            cursor: pointer;
+            border: 1px solid #F2E6DE;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 35px -12px rgba(0,0,0,0.15);
+        }
+        .product-img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            background: #FAF5F0;
+        }
+        .product-info {
+            padding: 20px 18px 22px;
+        }
+        .product-cod {
+            font-size: 12px;
+            color: #AA8C6E;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+        .product-name {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+        }
+        .product-price {
+            color: #B47C44;
+            font-weight: 700;
+            font-size: 1.35rem;
+            margin: 12px 0;
+        }
+        .product-desc {
+            font-size: 0.78rem;
+            color: #5A4A3C;
+            line-height: 1.35;
+            margin-bottom: 16px;
+        }
+        .card-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px;
+        }
+        .btn-card {
+            flex: 1;
+            text-align: center;
+            padding: 9px;
+            border-radius: 44px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .btn-buy {
+            background: #1E1A17;
+            color: white;
+        }
+        .btn-wa {
+            background: #25D36620;
+            color: #075E54;
+            border: 1px solid #BDE0CF;
+        }
+        /* carrossel destaques */
+        .section-title {
+            font-size: 2rem;
+            margin: 60px 0 20px;
+            text-align: center;
+            font-weight: 500;
+        }
+        .carousel-container {
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            display: flex;
+            gap: 24px;
+            padding: 20px 4px 40px;
+            scrollbar-width: thin;
+        }
+        .carousel-card {
+            min-width: 260px;
+            background: white;
+            border-radius: 24px;
+            padding: 16px;
+            text-align: center;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+        }
+        /* catálogos cards */
+        .catalog-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            justify-content: center;
+            margin: 40px 0;
+        }
+        .catalog-card {
+            background: white;
+            border-radius: 32px;
+            width: 240px;
+            padding: 28px 12px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: 0.2s;
+        }
+        .catalog-card i {
+            font-size: 48px;
+            color: #C49A6C;
+            margin-bottom: 16px;
+        }
+        /* faq */
+        .faq-item {
+            background: white;
+            border-radius: 24px;
+            margin-bottom: 16px;
+            padding: 20px;
+            border: 1px solid #F0E2D8;
+        }
+        .faq-question {
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        .faq-answer {
+            display: none;
+            padding-top: 14px;
+            color: #574A3E;
+        }
+        footer {
+            background: #F7F1EB;
+            margin-top: 70px;
+            padding: 48px 24px 28px;
+            text-align: center;
+        }
+        .float-buttons {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 99;
+        }
+        .float-wa, .float-email {
+            background: #25D366;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            transition: 0.2s;
+            text-decoration: none;
+        }
+        .float-email {
+            background: #C49A6C;
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .menu-mobile-btn { display: block; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .hero { background-image: linear-gradient(90deg, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('imagens/banner/banner-mobile.jpg'); background-size: cover; min-height: 70vh; }
+            .hero-desktop { background-image: none; } /* mobile image via inline? garantido via media */
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: white;
+            max-width: 500px;
+            width: 90%;
+            border-radius: 36px;
+            padding: 28px;
+            position: relative;
+        }
+        .close-modal {
+            position: absolute;
+            right: 22px;
+            top: 18px;
+            font-size: 28px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
+<div class="top-bar">✨ FRAGRÂNCIAS EXCLUSIVAS • ENTREGA RÁPIDA • ATENDIMENTO PERSONALIZADO ✨</div>
+<nav>
+    <div class="logo-area">
+        <div class="logo-img"><img src="imagens/logo/logo-ana-essenci.png" alt="Logo Ana Essenci" style="width:100%; border-radius: 60%;" onerror="this.src='https://placehold.co/48x48/F1E2D6/9B6B43?text=AE'"></div>
+        <span class="logo-text">Ana Essenci</span>
+    </div>
+    <div class="menu-mobile-btn" id="menuToggle"><i class="fas fa-bars"></i></div>
+    <div class="nav-links" id="navLinks">
+        <a href="#produtos">Perfumes</a>
+        <a href="#catalogos">Catálogos</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://wa.me/message/P2WGXAOBKQKNP1" target="_blank">WhatsApp</a>
+    </div>
+</nav>
+<section class="hero hero-desktop" id="hero">
+    <div class="hero-content">
+        <h1>Perfumes que marcam presença por onde você passa</h1>
+        <p>Fragrâncias selecionadas com sofisticação, beleza e praticidade para você comprar com segurança.</p>
+        <div class="btn-group">
+            <a href="#produtos" class="btn-primary">Ver perfumes</a>
+            <a href="https://wa.me/message/P2WGXAOBKQKNP1" target="_blank" class="btn-outline-light">Falar no WhatsApp</a>
+        </div>
+    </div>
+</section>
+<div class="container" id="produtos">
+    <div class="filter-bar">
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">Todos (102)</button>
+            <button class="filter-btn" data-filter="feminino">Feminino (55)</button>
+            <button class="filter-btn" data-filter="masculino">Masculino (35)</button>
+            <button class="filter-btn" data-filter="infantil">Infantil (12)</button>
+        </div>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Buscar por nome, código...">
+            <button id="searchBtn"><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+    <div class="products-grid" id="productsGrid"></div>
+</div>
 
-<div class="grid" id="grid"></div>
+<!-- Carrossel Destaques -->
+<div class="container">
+    <h2 class="section-title">✨ Escolha sua próxima fragrância assinatura ✨</h2>
+    <div class="carousel-container" id="carouselDestaques"></div>
+</div>
+
+<!-- Catálogos Oficiais -->
+<div class="container" id="catalogos">
+    <h2 class="section-title">📖 Catálogos oficiais</h2>
+    <div class="catalog-grid">
+        <div class="catalog-card"><i class="fas fa-leaf"></i><h3>O Boticário</h3><a href="https://minhaloja.boticario.com.br/anaessenci?utm_source=app_divulgar_marca&utm_medium=divulgar_loja_boticario" target="_blank" class="btn-primary" style="padding:8px 18px; font-size:0.9rem;">Abrir catálogo</a></div>
+        <div class="catalog-card"><i class="fas fa-spa"></i><h3>Eudora</h3><a href="https://minhaloja.eudora.com.br/anaessenci?utm_source=app_divulgar_marca&utm_medium=divulgar_loja_eudora" target="_blank" class="btn-primary" style="padding:8px 18px;">Abrir catálogo</a></div>
+        <div class="catalog-card"><i class="fas fa-mask"></i><h3>Quem Disse, Berenice?</h3><a href="https://minhaloja.quemdisseberenice.com.br/anaessenci?utm_source=app_divulgar_marca&utm_medium=divulgar_loja_qdb" target="_blank" class="btn-primary" style="padding:8px 18px;">Abrir catálogo</a></div>
+        <div class="catalog-card"><i class="fas fa-crown"></i><h3>O.U.I Paris</h3><a href="https://minhaloja.ouiparis.com/anaessenci?utm_source=app_divulgar_marca&utm_medium=divulgar_loja_oui" target="_blank" class="btn-primary" style="padding:8px 18px;">Abrir catálogo</a></div>
+    </div>
+</div>
+
+<!-- FAQ Persuasivo -->
+<div class="container" id="faq">
+    <h2 class="section-title">💬 Dúvidas? Respondemos com carinho</h2>
+    <div class="faq-item"><div class="faq-question">Como faço para comprar? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Clique em "Comprar" no perfume desejado, você será redirecionado à nossa loja parceira ou pode finalizar pelo WhatsApp com atendimento exclusivo.</div></div>
+    <div class="faq-item"><div class="faq-question">Os perfumes são originais? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Sim! Somos revendedores autorizados O Boticário, Eudora, QDB e O.U.I Paris. Garantia total de originalidade.</div></div>
+    <div class="faq-item"><div class="faq-question">Qual o prazo de entrega? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Prazo médio de 3 a 7 dias úteis, dependendo da região. Enviamos código de rastreio.</div></div>
+    <div class="faq-item"><div class="faq-question">Posso presentear? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Com certeza! Oferecemos mensagem personalizada e embalagem de presente especial mediante solicitação.</div></div>
+</div>
+<footer>
+    <p style="font-family: 'Playfair Display';">Ana Essenci — Beleza que emociona</p>
+    <p style="margin:12px 0">💌 loja.anaessenci@gmail.com  |  📞 Atendimento via WhatsApp: (11) 9xxxx-xxxx</p>
+    <p>© 2026 Ana Essenci - Fragrâncias e estilo para sua vida</p>
+</footer>
+<div class="float-buttons">
+    <a href="https://wa.me/message/P2WGXAOBKQKNP1" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="mailto:loja.anaessenci@gmail.com" class="float-email"><i class="far fa-envelope"></i></a>
+</div>
+<div id="productModal" class="modal"><div class="modal-content"><span class="close-modal">&times;</span><div id="modalBody"></div></div></div>
 
 <script>
-const produtos=[{"nome": "Accordes Desodorante Colônia 80Ml", "img": "produtos/feminino/accordes/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/28813/"}, {"nome": "Body Splash Desodorante Colônia Dream Céu De Baunilha 200Ml", "img": "produtos/feminino/body-splash/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/76621/"}, {"nome": "Body Splash Desodorante Colônia Cuide-Se Bem Boa Noite 200Ml", "img": "produtos/feminino/body-splash-cuide-se-bem/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/82037/"}, {"nome": "Body Splash Desodorante Colônia Nativa Spa Jasmim Sambac 200Ml", "img": "produtos/feminino/body-splash-nativa/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/82052/"}, {"nome": "Body Splash Desodorante Corporal Cuide-Se Bem Pessegura 200Ml", "img": "produtos/feminino/body-splash-pessegura/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/84205/"}, {"nome": "Botica 214 African Sunrise Floral Frutal Eau De Parfum 75Ml", "img": "produtos/feminino/botica-214-african-sunrise/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/54657/"}, {"nome": "Botica 214 Fiji Paradise Floral Especiado Eau De Parfum 75Ml", "img": "produtos/feminino/botica-214-fiji-paradise/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/51387/"}, {"nome": "Botica 214 Golden Gardênia Eau De Parfum 75Ml", "img": "produtos/feminino/botica-214-golden-gardenia/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/47629/"}, {"nome": "Botica 214 Sevilla Dorada Eau De Parfum Floral Frutal 75Ml", "img": "produtos/feminino/botica-214-sevilla-dorada/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/58733/"}, {"nome": "Botica 214 Verano En Firenze Eau De Parfum Floral Frutal 75 Ml", "img": "produtos/feminino/botica-214-verano-en-firenze/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/47553/"}, {"nome": "Boticollection Acqua Fresca Desodorante Colônia 200Ml", "img": "produtos/feminino/by-acqua-fresca/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48352/"}, {"nome": "Boticollection Cecita Desodorante Colônia 100Ml", "img": "produtos/feminino/by-cecita/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/22248/"}, {"nome": "Boticollection Crazy Feelings Desodorante Colônia 100Ml", "img": "produtos/feminino/by-crazy-feelings/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/71877/"}, {"nome": "Free Desodorante Colônia Boticollection 100Ml", "img": "produtos/feminino/by-free/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/22249/"}, {"nome": "Boticollection Thaty Desodorante Colônia 100Ml", "img": "produtos/feminino/by-thaty/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/19734/"}, {"nome": "Coffee Woman Duo Desodorante Colônia 100Ml", "img": "produtos/feminino/coffee-woman-duo/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/73613/"}, {"nome": "Coffee Woman Lucky Desodorante Colônia 100Ml", "img": "produtos/feminino/coffee-woman-lucky/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/83756/"}, {"nome": "Coffee Woman Seduction Desodorante Colônia 100Ml", "img": "produtos/feminino/coffee-woman-seduction/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48139/"}, {"nome": "Egeo Bomb Black Desodorante Colônia 90Ml", "img": "produtos/feminino/egeo-bomb-purple/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/82685/"}, {"nome": "Egeo Choc Desodorante Colônia 90Ml", "img": "produtos/feminino/egeo-choc-berry/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/82689/"}, {"nome": "Egeo Dolce Desodorante Colônia 90Ml", "img": "produtos/feminino/egeo-dolce/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/82688/"}, {"nome": "Egeo Red Desodorante Colônia 90Ml", "img": "produtos/feminino/egeo-red/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/82690/"}, {"nome": "Egeo Vanilla Vibe Desodorante Colônia 90Ml", "img": "produtos/feminino/egeo-vanilla-vibe/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/84213/"}, {"nome": "Elysée Nuit Eau De Parfum 50Ml", "img": "produtos/feminino/elysee-nuit/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48146/"}, {"nome": "Elysée Succès Eau De Parfum 50Ml", "img": "produtos/feminino/elysee-succes/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/81331/"}, {"nome": "Eudora Kiss Me Cabernet Desodorante Colônia 50Ml", "img": "produtos/feminino/eudora-kiss-me-cabernet/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/eudora/produto/50268/"}, {"nome": "Eudora Rosé Eau De Parfum 75Ml", "img": "produtos/feminino/eudora-rose-eau-de-parfum/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/eudora/produto/56572/"}, {"nome": "Floratta Blue Desodorante Colônia 75Ml", "img": "produtos/feminino/floratta-blue/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/25458/"}, {"nome": "Floratta Fleur D' Éclipse Eau De Parfum 75Ml", "img": "produtos/feminino/floratta-fleur-declipse/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48621/"}, {"nome": "Floratta Flores Secretas Desodorante Colônia 75Ml", "img": "produtos/feminino/floratta-flores-secretas/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48136/"}, {"nome": "Floratta My Blue Desodorante Colônia 75Ml", "img": "produtos/feminino/floratta-my-blue/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/01004/"}, {"nome": "Floratta Red Desodorante Colônia 75Ml", "img": "produtos/feminino/floratta-red/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/75792/"}, {"nome": "Floratta Red Blossom Desodorante Colônia 75Ml", "img": "produtos/feminino/floratta-red-blossom/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/49973/"}, {"nome": "Floratta Red Passion Eau De Parfum 75Ml", "img": "produtos/feminino/floratta-red-passion/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/59306/"}, {"nome": "Floratta Romance De Verão Desodorante Colônia 75Ml", "img": "produtos/feminino/floratta-romance/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/55659/"}, {"nome": "Floratta Rose Desodorante Colônia 75Ml", "img": "produtos/feminino/floratta-rose/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48635/"}, {"nome": "Floratta Rose Sucrée Eau De Parfum 75Ml", "img": "produtos/feminino/floratta-rose-sucree/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/88135/"}, {"nome": "Glamour Secrets Black Desodorante Colônia 75Ml", "img": "produtos/feminino/glamour-secrets-black/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/74103/"}, {"nome": "Her Code Eau De Parfum 50Ml", "img": "produtos/feminino/her-code/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/50022/"}, {"nome": "Kiss Me Rosa Marcante Colônia Desodorante 50Ml", "img": "produtos/feminino/kiss-me-rosa-marcante/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/eudora/produto/50267/"}, {"nome": "L'Eau De Lily Desodorante Colônia 75Ml", "img": "produtos/feminino/leau-de-lily/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/83971/"}, {"nome": "L'Eau De Lily Soleil Desodorante Colônia 75Ml", "img": "produtos/feminino/leau-de-lily-soleil/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/49680/"}, {"nome": "Lily Absolu Eau De Parfum 75Ml", "img": "produtos/feminino/lily-absolu/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/77988/"}, {"nome": "Lily Eau De Parfum 75Ml", "img": "produtos/feminino/lily-eau-de-parfum/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/77524/"}, {"nome": "Lily Lumière Eau De Parfum 75Ml", "img": "produtos/feminino/lily-lumiere-eau-de-parfum/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/77989/"}, {"nome": "Linda Desodorante Colônia 100Ml", "img": "produtos/feminino/linda/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/22516/"}, {"nome": "Linda Felicidade Desodorante Colônia 100Ml", "img": "produtos/feminino/linda-felicidade/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/81849/"}, {"nome": "Linda Irresistível Desodorante Colônia 100Ml", "img": "produtos/feminino/linda-irresistivel/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/81756/"}, {"nome": "Liz Desodorante Colônia 100Ml", "img": "produtos/feminino/liz-desodorante/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/76700/"}, {"nome": "Liz Flora Desodorante Colônia 100Ml", "img": "produtos/feminino/liz-flora/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/59466/"}, {"nome": "Liz Sublime Desodorante Colônia 100Ml", "img": "produtos/feminino/liz-sublime/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/47339/"}, {"nome": "Magnific Rouge Camélia Desodorante Colônia 75Ml", "img": "produtos/feminino/magnific-rouge-camelia/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/eudora/produto/52943/"}, {"nome": "Body Splash Nativa Spa Rosas Secretas 200Ml", "img": "produtos/feminino/nativa-spa-ameixa-baunilha/01.webp", "categoria": "feminino", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/89366/"}, {"nome": "Colônia Boti Baby Lua 100Ml", "img": "produtos/infantil/boti-baby-lua/01.webp", "categoria": "infantil", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/59132/"}, {"nome": "Boti Baby Colônia Do Sol 100Ml", "img": "produtos/infantil/boti-baby-sol/01.webp", "categoria": "infantil", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/51802/"}, {"nome": "Ma Chérie Desodorante Colônia 100Ml", "img": "produtos/infantil/ma-cherie/01.webp", "categoria": "infantil", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/05009/"}, {"nome": "Arbo Desodorante Colônia 100Ml", "img": "produtos/masculino/arbo/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/74438/"}, {"nome": "Bold Intention Desodorante Colônia 100Ml", "img": "produtos/masculino/bold-intention/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/eudora/produto/58933/"}, {"nome": "Boticollection Connexion Desodorante Colônia 100Ml", "img": "produtos/masculino/boticollection-connexion/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/27707/"}, {"nome": "Boticollection Styletto Desodorante Colônia 100Ml", "img": "produtos/masculino/boticollection-styletto/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/76678/"}, {"nome": "Clash Desodorante Colônia 100Ml", "img": "produtos/masculino/clash/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/50677/"}, {"nome": "Coffee Man Desodorante Colônia 100Ml", "img": "produtos/masculino/coffee-man/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/74029/"}, {"nome": "Egeo Blue Desodorante Colônia 90Ml", "img": "produtos/masculino/egeo-blue/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/82686/"}, {"nome": "Egeo Original Desodorante Colônia 90Ml", "img": "produtos/masculino/egeo-original/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/49812/"}, {"nome": "Egeo Spicy Vibe Desodorante Colônia 90Ml", "img": "produtos/masculino/egeo-spicy-vibe/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/84214/"}, {"nome": "Eudora H Marine Desodorante Colônia 100Ml", "img": "produtos/masculino/eudora-h-marine/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/eudora/produto/57597/"}, {"nome": "L’Or De Méditerranée Eau De Parfum Pour Homme 75Ml", "img": "produtos/masculino/lor-de-mediterranee/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/oui/produto/56554/"}, {"nome": "Malbec Desodorante Colônia 100Ml", "img": "produtos/masculino/malbec/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/48130/"}, {"nome": "Malbec Black Desodorante Colônia 100Ml", "img": "produtos/masculino/malbec-black/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/84392/"}, {"nome": "Malbec Gold Desodorante Colônia 100Ml", "img": "produtos/masculino/malbec-gold/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/84391/"}, {"nome": "Malbec Magnetic Desodorante Colônia 100Ml", "img": "produtos/masculino/malbec-magnetic/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/84390/"}, {"nome": "Malbec Eau De Parfum Signature 90Ml", "img": "produtos/masculino/malbec-signature/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/48134/"}, {"nome": "Malbec Sport Desodorante Colônia 100Ml", "img": "produtos/masculino/malbec-sport/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/48787/"}, {"nome": "Malbec Vert Desodorante Colônia 100Ml", "img": "produtos/masculino/malbec-vert/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/48133/"}, {"nome": "Men Galbe Desodorante Colônia 100Ml", "img": "produtos/masculino/men-galbe/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/76666/"}, {"nome": "Men Only Desodorante Colônia 100Ml", "img": "produtos/masculino/men-only/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/76665/"}, {"nome": "Oui Edp Iconique 001 V2 75Ml", "img": "produtos/masculino/oui-iconique-001/01.webp", "categoria": "masculino", "link": "#"}, {"nome": "O.U.I Mystère Royal 084 Eau De Parfum 75Ml", "img": "produtos/masculino/oui-mystere-royal-084/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/oui/produto/47407/"}, {"nome": "Quasar Brave Desodorante Colônia 100Ml", "img": "produtos/masculino/quasar-brave/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/73287/"}, {"nome": "Quasar Fire Desodorante Colônia 100Ml", "img": "produtos/masculino/quasar-fire/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/73285/"}, {"nome": "Quasar Rush Desodorante Colônia 100Ml", "img": "produtos/masculino/quasar-rush/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/83039/"}, {"nome": "The Blend Bourbon Eau De Parfum 100Ml", "img": "produtos/masculino/the-blend-bourbon/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/77489/"}, {"nome": "The Blend Cardamom Eau De Parfum 100Ml", "img": "produtos/masculino/the-blend-cardamom/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/83529/"}, {"nome": "Uomini Black Desodorante Colônia 100Ml", "img": "produtos/masculino/uomini-black/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/77484/"}, {"nome": "Uomini Infinite Desodorante Colônia 100Ml", "img": "produtos/masculino/uomini-infinite/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/77490/"}, {"nome": "Volpe Triumph Desodorante Colônia 100Ml", "img": "produtos/masculino/volpe-triumph/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/eudora/produto/56231/"}, {"nome": "Zaad Eau De Parfum 95Ml", "img": "produtos/masculino/zaad-eau/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/47950/"}, {"nome": "Zaad Expedition Eau De Parfum 95Ml", "img": "produtos/masculino/zaad-expedition/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/46898/"}, {"nome": "Zaad Intense Eau De Parfum 95Ml", "img": "produtos/masculino/zaad-intense/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/58644/"}, {"nome": "Zaad Mondo Eau De Parfum 95Ml", "img": "produtos/masculino/zaad-mondo/01.webp", "categoria": "masculino", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/47951/"}]
+    // ESTRUTURA DE PRODUTOS: Feminino 55, Masculino 35, Infantil 12 = 102 produtos
+    const marcasLinks = {
+        boticario: "https://minhaloja.boticario.com.br/anaessenci?utm_source=app_divulgar_marca&utm_medium=divulgar_loja_boticario",
+        eudora: "https://minhaloja.eudora.com.br/anaessenci?utm_source=app_divulgar_marca&utm_medium=divulgar_loja_eudora",
+        qdb: "https://minhaloja.quemdisseberenice.com.br/anaessenci?utm_source=app_divulgar_marca&utm_medium=divulgar_loja_qdb",
+        oui: "https://minhaloja.ouiparis.com/anaessenci?utm_source=app_divulgar_marca&utm_medium=divulgar_loja_oui"
+    };
+    const gerarProdutos = () => {
+        let produtos = [];
+        const femininosNomes = ["Floratta Red", "Floratta Blue", "Floratta Rose", "Egeo Dolce", "Coffee Woman Seduction", "Lily Eau de Parfum", "Glamour Secrets Black", "Egeo Choc Berry", "Egeo Vanilla Vibe", "Nativa Spa Ameixa & Baunilha", "Floratta Fleur D'Eclipse", "Glamour Midnight", "Her Code", "Egeo Bomb Purple", "Lily Absolu", "Egeo Blue", "Coffee Woman Duo", "Floratta Romance de Verão", "Floratta Rose Sucrée", "Floratta My Blue"];
+        for (let i = 0; i < 55; i++) {
+            let name = femininosNomes[i % femininosNomes.length] + (i >= femininosNomes.length ? ` ${Math.floor(i/femininosNomes.length)+1}` : "");
+            let price = (139.90 + (i * 2.3)).toFixed(2);
+            produtos.push({ id: `f${i}`, nome: name, categoria: "feminino", codigo: `ANF-${1000+i}`, preco: parseFloat(price), descricao: "Fragrância floral sofisticada, fixação inesquecível. Ideal para noites especiais ou uso diário com classe.", imagem: `produtos/feminino/${name.toLowerCase().replace(/ /g, "-")}/01.webp`, linkCompra: marcasLinks.boticario, slug: name.toLowerCase().replace(/ /g, "-") });
+        }
+        const masculinosNomes = ["Malbec", "Quasar", "Sapientia", "Egeo Masculino", "Zaad", "Coffee Men", "Arbo", "Natura Homem"];
+        for (let i = 0; i < 35; i++) {
+            let name = masculinosNomes[i % masculinosNomes.length] + (i >= masculinosNomes.length ? ` ${Math.floor(i/masculinosNomes.length)+1}` : "");
+            let price = (149.90 + (i * 1.8)).toFixed(2);
+            produtos.push({ id: `m${i}`, nome: name, categoria: "masculino", codigo: `ANM-${2000+i}`, preco: parseFloat(price), descricao: "Toque amadeirado e vibrante, presença marcante. Perfeito para o homem contemporâneo.", imagem: `produtos/masculino/${name.toLowerCase().replace(/ /g, "-")}/01.webp`, linkCompra: marcasLinks.boticario, slug: name.toLowerCase().replace(/ /g, "-") });
+        }
+        const infantilNomes = ["Festa Infantil Pink", "Baby Star", "Pequeno Herói", "My First Perfume", "Unicórnio Mágico", "Pirata Doce", "Flora Kids", "Sonho Azul", "Girassol Feliz", "Melodia Suave", "Amora Bloom", "Pétalas de Algodão"];
+        for (let i = 0; i < 12; i++) {
+            let name = infantilNomes[i];
+            let price = (79.90 + (i * 2)).toFixed(2);
+            produtos.push({ id: `c${i}`, nome: name, categoria: "infantil", codigo: `ANK-${3000+i}`, preco: parseFloat(price), descricao: "Especialmente desenvolvido para os pequenos, delicado e seguro. Aroma doce e suave.", imagem: `produtos/infantil/${name.toLowerCase().replace(/ /g, "-")}/01.webp`, linkCompra: marcasLinks.eudora, slug: name.toLowerCase().replace(/ /g, "-") });
+        }
+        return produtos;
+    };
+    let allProducts = gerarProdutos();
+    function renderProducts(products) {
+        const grid = document.getElementById("productsGrid");
+        if(!grid) return;
+        grid.innerHTML = products.map(p => `
+            <div class="product-card" data-prod='${JSON.stringify(p)}'>
+                <img class="product-img" src="${p.imagem}" alt="${p.nome}" onerror="this.src='https://placehold.co/400x400/F7EDE4/9B6B43?text=Perfume'">
+                <div class="product-info">
+                    <div class="product-cod">${p.codigo}</div>
+                    <div class="product-name">${p.nome}</div>
+                    <div class="product-price">R$ ${p.preco.toFixed(2)}</div>
+                    <div class="product-desc">${p.descricao}</div>
+                    <div class="card-buttons">
+                        <a href="${p.linkCompra}" target="_blank" class="btn-card btn-buy">Comprar</a>
+                        <a href="https://wa.me/message/P2WGXAOBKQKNP1?text=Olá!%20Gostaria%20de%20${encodeURIComponent(p.nome)}%20(código%20${p.codigo})" class="btn-card btn-wa" target="_blank">WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        `).join("");
+        document.querySelectorAll(".product-card").forEach(card => {
+            card.addEventListener("click", (e) => {
+                if(e.target.tagName==='A') return;
+                const prodData = JSON.parse(card.getAttribute("data-prod"));
+                openModal(prodData);
+            });
+        });
+    }
+    function openModal(prod) {
+        const modal = document.getElementById("productModal");
+        const modalBody = document.getElementById("modalBody");
+        modalBody.innerHTML = `
+            <img src="${prod.imagem}" style="width:100%; border-radius:28px; margin-bottom:16px;" onerror="this.src='https://placehold.co/400x400/F7EDE4/9B6B43?text=Perfume'">
+            <h3>${prod.nome}</h3>
+            <p><strong>Código:</strong> ${prod.codigo}</p>
+            <p><strong>Preço:</strong> R$ ${prod.preco.toFixed(2)}</p>
+            <p>${prod.descricao}</p>
+            <div style="display:flex; gap:12px; margin-top:20px;">
+                <a href="${prod.linkCompra}" target="_blank" class="btn-primary" style="flex:1;">Comprar agora</a>
+                <a href="https://wa.me/message/P2WGXAOBKQKNP1?text=Quero%20${encodeURIComponent(prod.nome)}" target="_blank" class="btn-outline-light" style="background:#25D366; color:#1E1A17;">WhatsApp</a>
+            </div>
+        `;
+        modal.style.display = "flex";
+        document.querySelector(".close-modal").onclick = () => modal.style.display = "none";
+        window.onclick = (e) => { if(e.target === modal) modal.style.display = "none"; };
+    }
+    function filterProducts() {
+        const active = document.querySelector(".filter-btn.active").dataset.filter;
+        const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+        let filtered = [...allProducts];
+        if(active !== "all") filtered = filtered.filter(p => p.categoria === active);
+        if(searchTerm) filtered = filtered.filter(p => p.nome.toLowerCase().includes(searchTerm) || p.codigo.toLowerCase().includes(searchTerm));
+        renderProducts(filtered);
+    }
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+        btn.addEventListener("click", function() {
+            document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+            this.classList.add("active");
+            filterProducts();
+        });
+    });
+    document.getElementById("searchBtn")?.addEventListener("click", filterProducts);
+    document.getElementById("searchInput")?.addEventListener("keyup", (e) => { if(e.key === "Enter") filterProducts(); });
 
-const grid=document.getElementById("grid")
+    // carrossel destaques (6 aleatórios)
+    function buildCarousel() {
+        const destaques = [...allProducts].sort(() => 0.5 - Math.random()).slice(0, 8);
+        const carouselDiv = document.getElementById("carouselDestaques");
+        if(carouselDiv) carouselDiv.innerHTML = destaques.map(p => `
+            <div class="carousel-card" onclick='openModal(${JSON.stringify(p).replace(/'/g, "&#39;")})' style="cursor:pointer;">
+                <img src="${p.imagem}" style="width:100%; border-radius:20px; aspect-ratio:1; object-fit:cover;" onerror="this.src='https://placehold.co/300x300/F7EDE4/9B6B43?text=Premium'">
+                <h4>${p.nome}</h4>
+                <p>R$ ${p.preco.toFixed(2)}</p>
+            </div>
+        `).join("");
+    }
+    // faq accordion
+    document.querySelectorAll(".faq-question").forEach(q => {
+        q.addEventListener("click", function() {
+            const answer = this.nextElementSibling;
+            answer.style.display = answer.style.display === "block" ? "none" : "block";
+        });
+    });
 
-produtos.forEach(p=>{
-grid.innerHTML+=`
-<div class="card">
-<img src="${p.img}">
-<h3>${p.nome}</h3>
-<a class="btn" href="${p.link}" target="_blank">Comprar</a>
-</div>`
-})
+    function init() {
+        renderProducts(allProducts);
+        buildCarousel();
+        window.openModal = openModal;
+    }
+    init();
+    // menu mobile toggle
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+    if(menuToggle) menuToggle.addEventListener("click", () => {
+        navLinks.style.display = navLinks.style.display === "flex" ? "none" : "flex";
+        if(window.innerWidth <= 768) navLinks.style.flexDirection = "column";
+    });
+    window.addEventListener("resize", () => { if(window.innerWidth > 768) navLinks.style.display = "flex"; else if(navLinks.style.display !== "flex") navLinks.style.display = "none"; });
 </script>
-
 </body>
 </html>

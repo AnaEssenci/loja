@@ -95,6 +95,361 @@ section{padding:50px 0}.toolbar input{min-width:100%;width:100%}.grid{grid-templ
 .catalogs{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.support{right:12px;bottom:12px}.support a{min-width:auto;font-size:13px}
 .featured-wrap{overflow-x:auto}.carousel{gap:18px}.carousel .card{flex:0 0 82%;max-width:82%}
 }
+
+/* ===== MOBILE ROSA PREMIUM — NÃO ALTERA DESKTOP ===== */
+@media (max-width: 820px) {
+  body {
+    background:
+      radial-gradient(circle at 20% 0%, rgba(255, 220, 232, .85), transparent 28%),
+      linear-gradient(180deg, #fff7fa 0%, #fff 46%, #fff5f8 100%);
+    color: var(--ink);
+  }
+
+  .topbar {
+    display: none;
+  }
+
+  .header {
+    background: rgba(255, 255, 255, .96);
+    border-bottom: 1px solid rgba(182,47,85,.14);
+    box-shadow: 0 8px 24px rgba(120, 45, 70, .08);
+  }
+
+  .header-inner {
+    min-height: auto;
+    padding: 14px 0 16px;
+    align-items: center;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .brand {
+    width: 100%;
+    justify-content: center;
+    min-width: auto;
+  }
+
+  .brand-logo {
+    width: 58px;
+    height: 58px;
+    border-radius: 22px;
+    border: 1px solid rgba(182,47,85,.18);
+    box-shadow: 0 12px 28px rgba(182,47,85,.12);
+  }
+
+  .brand-title {
+    font-size: 23px;
+  }
+
+  .brand-sub {
+    font-size: 9px;
+    letter-spacing: .15em;
+  }
+
+  .nav {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .nav a {
+    text-align: center;
+    background: #fff;
+    border: 1px solid rgba(182,47,85,.14);
+    color: var(--rose);
+    border-radius: 999px;
+    padding: 11px 8px;
+    font-size: 12px;
+    box-shadow: 0 8px 20px rgba(120,45,70,.06);
+  }
+
+  .hero {
+    display: none;
+  }
+
+  #produtos {
+    padding-top: 18px;
+  }
+
+  .section-head {
+    margin-bottom: 15px;
+  }
+
+  .section-head h2 {
+    font-size: 29px;
+    color: var(--ink);
+  }
+
+  .section-head p {
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  .toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 75;
+    background: rgba(255,247,250,.96);
+    backdrop-filter: blur(14px);
+    border: 0;
+    border-radius: 0;
+    box-shadow: 0 10px 24px rgba(120,45,70,.08);
+    padding: 14px 0 16px;
+    margin-bottom: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 11px;
+  }
+
+  .toolbar input {
+    grid-column: 1 / -1;
+    width: 100%;
+    min-width: 100%;
+    height: 60px;
+    border-radius: 999px;
+    border: 2px solid rgba(182,47,85,.45);
+    background: #fff;
+    color: var(--ink);
+    padding: 0 22px;
+    font-size: 16px;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.7), 0 10px 24px rgba(182,47,85,.08);
+  }
+
+  .toolbar input::placeholder {
+    color: #8c717b;
+  }
+
+  .chip {
+    height: 46px;
+    padding: 0 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(182,47,85,.22);
+    background: #fff;
+    color: var(--rose);
+    font-weight: 900;
+    font-size: 13px;
+    box-shadow: 0 8px 18px rgba(120,45,70,.06);
+  }
+
+  .chip.active,
+  .chip:hover {
+    background: linear-gradient(135deg, var(--rose), var(--rose2));
+    color: #fff;
+    border-color: transparent;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .card {
+    border-radius: 18px;
+    background: #fff;
+    border: 1px solid rgba(182,47,85,.18);
+    box-shadow: 0 12px 28px rgba(120,45,70,.10);
+    overflow: hidden;
+  }
+
+  .card::before {
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--rose), var(--rose2));
+  }
+
+  .product-image {
+    height: 175px;
+    background: linear-gradient(180deg, #fff, #fff0f5);
+    border-bottom: 1px solid rgba(182,47,85,.10);
+  }
+
+  .product-image img {
+    padding: 10px;
+    object-fit: contain;
+  }
+
+  .badge {
+    left: 9px;
+    top: 9px;
+    padding: 6px 8px;
+    background: rgba(255,255,255,.94);
+    color: var(--rose);
+    border: 1px solid rgba(182,47,85,.14);
+    font-size: 9px;
+    letter-spacing: .05em;
+  }
+
+  .tag {
+    right: 9px;
+    top: 9px;
+    padding: 6px 8px;
+    font-size: 9px;
+    max-width: 88px;
+    text-align: center;
+  }
+
+  .product-body {
+    padding: 13px;
+    gap: 8px;
+  }
+
+  .code {
+    font-size: 10px;
+    color: #9b7381;
+  }
+
+  .product-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.15;
+    min-height: 40px;
+    color: var(--ink);
+  }
+
+  .product-desc {
+    display: none;
+  }
+
+  .price {
+    font-size: 20px;
+    color: var(--rose);
+    font-weight: 950;
+  }
+
+  .buy {
+    min-height: 46px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--rose), var(--rose2));
+    color: #fff;
+    font-size: 14px;
+    box-shadow: 0 10px 22px rgba(182,47,85,.22);
+  }
+
+  #desejados {
+    padding-top: 34px;
+  }
+
+  .featured-wrap {
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .carousel {
+    transform: none !important;
+    gap: 14px;
+    padding-bottom: 8px;
+  }
+
+  .carousel .card {
+    flex: 0 0 72%;
+    max-width: 72%;
+  }
+
+  .catalogs {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .catalog-card {
+    border-radius: 20px;
+    background: #fff;
+    border: 1px solid rgba(182,47,85,.18);
+    box-shadow: 0 12px 28px rgba(120,45,70,.10);
+    min-height: 190px;
+  }
+
+  .catalog-card strong {
+    color: var(--rose);
+    font-size: 27px;
+  }
+
+  .catalog-card .btn {
+    border-radius: 999px;
+  }
+
+  .support {
+    right: 14px;
+    bottom: 86px;
+    gap: 8px;
+  }
+
+  .support a {
+    min-width: 58px;
+    width: 58px;
+    height: 58px;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 0;
+    border: 0;
+    box-shadow: 0 12px 28px rgba(120,45,70,.18);
+  }
+
+  .support a:first-child {
+    background: #25d366;
+    color: #fff;
+  }
+
+  .support a:first-child::before {
+    content: "☎";
+    font-size: 26px;
+  }
+
+  .support a:nth-child(2) {
+    background: #fff;
+    color: var(--rose);
+    border: 1px solid rgba(182,47,85,.18);
+  }
+
+  .support a:nth-child(2)::before {
+    content: "✉";
+    font-size: 24px;
+  }
+
+  footer {
+    padding-bottom: 128px;
+  }
+
+  .cookie-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 130;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 18px;
+    background: rgba(255,255,255,.98);
+    color: var(--ink);
+    border-top: 1px solid rgba(182,47,85,.14);
+    box-shadow: 0 -10px 28px rgba(120,45,70,.12);
+  }
+
+  .cookie-bar p {
+    flex: 1;
+    font-size: 14px;
+    line-height: 1.35;
+    color: var(--text);
+  }
+
+  .cookie-bar button {
+    border: 1px solid var(--rose);
+    color: var(--rose);
+    background: #fff;
+    border-radius: 999px;
+    padding: 11px 16px;
+    font-size: 14px;
+    font-weight: 800;
+  }
+}
+
+@media (min-width: 821px) {
+  .cookie-bar {
+    display: none !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -151,6 +506,12 @@ section{padding:50px 0}.toolbar input{min-width:100%;width:100%}.grid{grid-templ
 </section>
 </main>
 <div class="support" id="atendimento"><a href="https://wa.me/5562981479674?text=Ol%C3%A1%2C%20quero%20atendimento%20da%20Ana%20Essenci." target="_blank" rel="noopener">WhatsApp</a><a href="mailto:loja.anaessenci@gmail.com?subject=Atendimento%20Ana%20Essenci&body=Ol%C3%A1%2C%20quero%20atendimento%20sobre%20um%20produto.%0A%0AC%C3%B3digo%20do%20produto%3A%20">E-mail</a></div>
+
+<div class="cookie-bar" id="cookieBar">
+  <p>Ao navegar neste site, você aceita o uso de cookies para melhorar sua experiência.</p>
+  <button type="button" onclick="document.getElementById('cookieBar').style.display='none'">Entendi</button>
+</div>
+
 <footer>
 <div class="container footer-grid"><div><h3>Ana Essenci</h3><p>Perfumaria & conteúdo. Uma vitrine organizada para escolher produtos por código com atendimento assistido.</p></div><div><h3>Atendimento</h3><p><a href="mailto:loja.anaessenci@gmail.com">loja.anaessenci@gmail.com</a><br><a href="https://wa.me/5562981479674" target="_blank" rel="noopener">(62) 98147-9674</a></p></div></div>
 <div class="container copy">© 2026 Ana Essenci. Todos os direitos reservados.</div>

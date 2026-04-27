@@ -1,463 +1,980 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ana Essenci - Catálogo de perfumes importados e nacionais. Encontre fragrâncias femininas, masculinas e infantis com os melhores preços.">
-    <meta name="theme-color" content="#c2185b">
-    <link rel="icon" href="imagens/favicon/favicon.ico" type="image/x-icon">
-    <title>Ana Essenci | Catálogo de Perfumes</title>
-    <style>
-        :root {
-            --rose-600: #c2185b;
-            --rose-700: #9c1450;
-            --rose-50: #fdf2f8;
-            --rose-100: #fce7f2;
-            --gold-400: #c9a96e;
-            --gray-50: #f9f6f8;
-            --gray-100: #f3eff2;
-            --gray-200: #e8e1e5;
-            --gray-500: #8a7d84;
-            --gray-700: #4a3d43;
-            --white: #ffffff;
-            --dark: #1f1419;
-            --text: #3d2c35;
-            --text-light: #7a6b73;
-            --shadow-card: 0 1px 3px rgba(31,20,25,.04), 0 4px 14px rgba(31,20,25,.06);
-            --shadow-hover: 0 8px 28px rgba(31,20,25,.1);
-            --radius-lg: 16px;
-            --radius-full: 9999px;
-            --font-heading: 'Playfair Display', Georgia, serif;
-            --font-body: 'Inter', system-ui, sans-serif;
-            --header-h: 68px;
-        }
-        *{box-sizing:border-box;margin:0;padding:0}
-        html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-        body{
-            font-family:var(--font-body);
-            background:var(--gray-50);
-            color:var(--text);
-            line-height:1.6;
-            padding-top:var(--header-h);
-        }
-        /* HEADER */
-        .header{
-            position:fixed;top:0;left:0;right:0;z-index:1000;
-            height:var(--header-h);
-            background:rgba(255,255,255,.88);
-            backdrop-filter:blur(16px);
-            border-bottom:1px solid rgba(194,24,91,.08);
-            display:flex;align-items:center;
-            transition:box-shadow .3s;
-        }
-        .header.scrolled{box-shadow:0 4px 20px rgba(31,20,25,.08)}
-        .header-inner{
-            width:100%;max-width:1260px;margin:0 auto;padding:0 20px;
-            display:flex;align-items:center;justify-content:space-between;gap:12px;
-        }
-        .logo-link{
-            display:flex;align-items:center;gap:6px;
-            background:var(--white);border-radius:var(--radius-lg);
-            padding:6px 18px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 0 0 1px rgba(201,169,110,.18);
-            text-decoration:none;transition:.25s;
-        }
-        .logo-link:hover{box-shadow:0 3px 12px rgba(0,0,0,.08);transform:translateY(-1px)}
-        .logo-img{width:36px;height:36px;object-fit:contain;border-radius:50%}
-        .logo-text{font-family:var(--font-heading);font-size:1.3rem;font-weight:700;color:var(--dark)}
-        .logo-text .highlight{color:var(--rose-600)}
-        .search-box{position:relative}
-        .search-input{
-            width:190px;padding:9px 36px 9px 14px;
-            border:1.5px solid var(--gray-200);border-radius:var(--radius-full);
-            font-size:.85rem;background:var(--white);outline:none;transition:.25s;
-        }
-        .search-input:focus{border-color:var(--rose-600);box-shadow:0 0 0 4px rgba(194,24,91,.06);width:240px}
-        .search-btn{
-            position:absolute;right:4px;top:50%;transform:translateY(-50%);
-            background:var(--rose-600);border:none;width:30px;height:30px;border-radius:50%;
-            display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;
-        }
-        /* HERO BANNER */
-        .hero{
-            position:relative;display:flex;align-items:center;justify-content:center;
-            min-height:380px;background:linear-gradient(135deg,#fce7f2,#fdf2f8);
-            overflow:hidden;text-align:center;padding:30px 20px;
-        }
-        .hero-bg{
-            position:absolute;inset:0;background-size:cover;background-position:center;
-            opacity:.25;z-index:0;
-            background-image:url('imagens/banner/banner-desktop.jpg');
-        }
-        @media(max-width:768px){.hero-bg{background-image:url('imagens/banner/banner-mobile.jpg')}}
-        .hero-content{position:relative;z-index:1;max-width:600px}
-        .hero-title{font-family:var(--font-heading);font-size:clamp(2rem,4.5vw,3rem);font-weight:700;color:var(--dark)}
-        .hero-sub{color:var(--text-light);margin:10px 0 24px;font-size:1rem}
-        .btn{
-            display:inline-flex;align-items:center;gap:6px;padding:12px 24px;border-radius:var(--radius-full);
-            font-weight:600;font-size:.9rem;text-decoration:none;transition:.25s;cursor:pointer;
-            border:none;white-space:nowrap;
-        }
-        .btn-primary{background:var(--rose-600);color:#fff;box-shadow:0 4px 14px rgba(194,24,91,.25)}
-        .btn-primary:hover{background:var(--rose-700);transform:translateY(-2px)}
-        .btn-outline{background:transparent;color:var(--rose-600);border:2px solid rgba(194,24,91,.25)}
-        .btn-outline:hover{background:rgba(194,24,91,.04);border-color:var(--rose-600)}
-        /* FILTERS */
-        .filter-bar{
-            max-width:1260px;margin:14px auto 0;padding:10px 20px;
-            display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:center;
-        }
-        .filter-pill{
-            padding:8px 16px;border-radius:var(--radius-full);
-            background:var(--white);border:1.5px solid var(--gray-200);
-            font-size:.82rem;font-weight:500;cursor:pointer;transition:.2s;
-        }
-        .filter-pill.active{background:var(--rose-600);color:#fff;border-color:var(--rose-600)}
-        .result-count{margin-left:auto;font-size:.8rem;color:var(--text-light)}
-        /* PRODUCT GRID */
-        .products-section{max-width:1260px;margin:0 auto;padding:20px 20px 50px}
-        .products-grid{
-            display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
-            gap:18px;
-        }
-        .product-card{
-            background:var(--white);border-radius:var(--radius-lg);
-            overflow:hidden;box-shadow:var(--shadow-card);
-            transition:.3s;display:flex;flex-direction:column;
-            border:1px solid transparent;
-        }
-        .product-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-3px);border-color:rgba(194,24,91,.1)}
-        .product-img-wrap{
-            aspect-ratio:1/1;background:linear-gradient(140deg,var(--rose-50),#fff);
-            display:flex;align-items:center;justify-content:center;position:relative;
-        }
-        .product-img{max-width:70%;max-height:70%;object-fit:contain;transition:.3s}
-        .product-card:hover .product-img{transform:scale(1.05)}
-        .fallback-img{display:none;max-width:50%;max-height:50%;opacity:.6}
-        .product-info{padding:14px 16px 16px;flex:1;display:flex;flex-direction:column;gap:6px}
-        .product-cat{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--text-light)}
-        .product-name{font-family:var(--font-heading);font-size:1rem;font-weight:600;color:var(--dark);line-height:1.3}
-        .product-desc{font-size:.78rem;color:var(--text-light);line-height:1.4}
-        .product-code{font-size:.7rem;color:var(--gray-500)}
-        .product-price{font-family:var(--font-heading);font-size:1.2rem;font-weight:700;color:var(--rose-600)}
-        .card-buttons{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
-        .btn-sm{
-            flex:1;min-width:70px;padding:7px 8px;border-radius:var(--radius-full);
-            font-size:.7rem;font-weight:600;text-decoration:none;text-align:center;
-            display:inline-flex;align-items:center;justify-content:center;gap:3px;
-            transition:.2s;border:none;cursor:pointer;
-        }
-        .btn-buy{background:var(--rose-600);color:#fff}
-        .btn-buy:hover{background:var(--rose-700)}
-        .btn-wpp{background:#25D366;color:#fff}
-        .btn-wpp:hover{background:#1da851}
-        .btn-email{background:var(--gray-100);color:var(--gray-700);border:1px solid var(--gray-200)}
-        .btn-email:hover{background:var(--gray-200)}
-        /* FOOTER */
-        .footer{
-            background:var(--white);border-top:1px solid var(--gray-100);
-            padding:24px 20px;text-align:center;font-size:.8rem;color:var(--text-light);
-        }
-        .footer a{color:var(--rose-600);font-weight:600;text-decoration:none}
-        .float-btns{
-            position:fixed;bottom:18px;right:18px;z-index:999;
-            display:flex;flex-direction:column;gap:10px;
-        }
-        .float-btn{
-            width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-            text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.1);transition:.25s;
-        }
-        .float-btn:hover{transform:translateY(-2px)}
-        .float-wpp{background:#25D366;color:#fff}
-        .float-email{background:var(--white);color:var(--rose-600);border:1.5px solid var(--gray-200)}
-        @media(max-width:768px){
-            .products-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
-            .product-info{padding:10px 10px 12px}
-            .product-name{font-size:.85rem}
-            .btn-sm{font-size:.65rem;padding:6px}
-            .hero{min-height:280px}
-        }
-    </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ana Essenci | Perfumes Premium</title>
+  <meta name="description" content="Ana Essenci: catálogo premium de perfumes femininos, masculinos e infantis com links oficiais de compra.">
+  <link rel="icon" href="imagens/favicon/favicon.ico">
+
+  <style>
+    :root {
+      --rose: #c95674;
+      --rose-2: #a93653;
+      --rose-soft: #fff1f5;
+      --rose-soft-2: #fbe0e8;
+      --gold: #c6a35b;
+      --ink: #24181d;
+      --text: #4d3b42;
+      --muted: #816f76;
+      --line: rgba(201, 86, 116, .18);
+      --bg: #fff9fb;
+      --white: #ffffff;
+      --shadow: 0 18px 48px rgba(135, 54, 82, .14);
+      --shadow-soft: 0 10px 24px rgba(135, 54, 82, .10);
+      --radius-lg: 30px;
+      --radius-md: 20px;
+      --radius-sm: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(255, 221, 232, .85), transparent 28%),
+        radial-gradient(circle at 90% 5%, rgba(198, 163, 91, .18), transparent 26%),
+        linear-gradient(180deg, #fffafd 0%, #ffffff 55%, #fffafd 100%);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button, input {
+      font: inherit;
+    }
+
+    .container {
+      width: min(94%, 1320px);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: linear-gradient(90deg, var(--rose-2), var(--rose));
+      color: #fff;
+      text-align: center;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 12px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 230px;
+    }
+
+    .brand-logo {
+      width: 62px;
+      height: 62px;
+      border-radius: 22px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-title {
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--rose-2);
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .brand-subtitle {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      padding: 10px 13px;
+      border-radius: 999px;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 800;
+      transition: .2s ease;
+    }
+
+    .nav a:hover {
+      background: var(--rose-soft);
+      color: var(--rose-2);
+    }
+
+    .hero {
+      padding: 30px 0 68px;
+    }
+
+    .hero-panel {
+      position: relative;
+      min-height: 620px;
+      border-radius: 42px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 30px 90px rgba(135,54,82,.16);
+      background:
+        linear-gradient(90deg, rgba(255,250,252,.98) 0%, rgba(255,250,252,.88) 46%, rgba(255,250,252,.25) 72%),
+        url('imagens/banner/banner-desktop.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-panel::after {
+      content: "";
+      position: absolute;
+      inset: 26px;
+      border-radius: 32px;
+      border: 1px solid rgba(255,255,255,.72);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 710px;
+      padding: 66px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.90);
+      border: 1px solid var(--line);
+      color: var(--rose-2);
+      box-shadow: var(--shadow-soft);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(42px, 6vw, 82px);
+      line-height: .96;
+      letter-spacing: -2px;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    h1 em {
+      color: var(--rose);
+      font-style: italic;
+    }
+
+    .hero-text {
+      color: var(--muted);
+      max-width: 620px;
+      font-size: 18px;
+      line-height: 1.75;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 24px;
+      border-radius: 999px;
+      border: 0;
+      cursor: pointer;
+      font-weight: 900;
+      transition: .25s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--rose), var(--rose-2));
+      box-shadow: 0 14px 32px rgba(201,86,116,.26);
+    }
+
+    .btn-secondary {
+      color: var(--rose-2);
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .stats {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(95px, 1fr));
+      gap: 12px;
+      max-width: 620px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,.86);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 14px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .stat strong {
+      display: block;
+      font-family: Georgia, serif;
+      color: var(--rose-2);
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 22px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .section-head h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1;
+      letter-spacing: -1px;
+      color: var(--ink);
+    }
+
+    .section-head p {
+      max-width: 640px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+      padding: 14px;
+      border-radius: 26px;
+      background: rgba(255,255,255,.92);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .toolbar input {
+      height: 50px;
+      flex: 1;
+      min-width: 240px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0 18px;
+      background: #fff;
+      color: var(--ink);
+      outline: none;
+      font-size: 15px;
+    }
+
+    .toolbar input:focus {
+      border-color: var(--rose);
+      box-shadow: 0 0 0 4px rgba(201,86,116,.10);
+    }
+
+    .chip {
+      height: 50px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--rose-2);
+      font-weight: 900;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .chip.active,
+    .chip:hover {
+      background: var(--rose);
+      color: #fff;
+      border-color: var(--rose);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      transition: .28s ease;
+      animation: fadeInCard .45s ease both;
+    }
+
+    @keyframes fadeInCard {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .product-image {
+      height: 270px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, #fff 0%, #fff1f6 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 24px;
+      transition: .35s ease;
+    }
+
+    .card:hover .product-image img {
+      transform: scale(1.04);
+    }
+
+    .badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 2;
+      padding: 7px 11px;
+      background: rgba(255,255,255,.92);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--rose-2);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .product-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 11px;
+    }
+
+    .code {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .08em;
+    }
+
+    .product-title {
+      font-family: Georgia, serif;
+      font-size: 22px;
+      line-height: 1.14;
+      color: var(--ink);
+      min-height: 52px;
+    }
+
+    .product-desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 66px;
+    }
+
+    .product-price {
+      color: var(--rose-2);
+      font-size: 24px;
+      font-weight: 950;
+    }
+
+    .buy {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 48px;
+      padding: 0 14px;
+      border-radius: 18px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--rose), var(--rose-2));
+      font-weight: 950;
+      box-shadow: 0 10px 24px rgba(201,86,116,.22);
+      transition: .22s ease;
+    }
+
+    .buy:hover {
+      transform: translateY(-1px);
+      filter: brightness(.98);
+    }
+
+    .carousel {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 10px 4px 24px;
+    }
+
+    .carousel .card {
+      min-width: 280px;
+      max-width: 280px;
+      scroll-snap-align: start;
+    }
+
+    .carousel::-webkit-scrollbar {
+      height: 9px;
+    }
+
+    .carousel::-webkit-scrollbar-thumb {
+      background: var(--rose-soft-2);
+      border-radius: 999px;
+    }
+
+    .catalogs {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .catalog-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 220px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 26px;
+      transition: .25s ease;
+    }
+
+    .catalog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .catalog-card strong {
+      font-family: Georgia, serif;
+      color: var(--rose-2);
+      font-size: 30px;
+      display: block;
+    }
+
+    .catalog-card p {
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 10px 0 20px;
+    }
+
+    .support {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 120;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .support a {
+      min-width: 132px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 17px;
+      border-radius: 999px;
+      font-weight: 950;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.96);
+      color: var(--rose-2);
+      backdrop-filter: blur(12px);
+    }
+
+    .support a:first-child {
+      background: linear-gradient(135deg, #25d366, #19a954);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .empty {
+      display: none;
+      text-align: center;
+      color: var(--muted);
+      background: #fff;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius-lg);
+      padding: 44px 20px;
+      margin-top: 16px;
+    }
+
+    footer {
+      margin-top: 50px;
+      padding: 48px 0 34px;
+      background: #24181d;
+      color: #fff;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    footer h3 {
+      font-family: Georgia, serif;
+      font-size: 30px;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    footer p,
+    footer a {
+      color: #ead8df;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .copyright {
+      margin-top: 32px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      color: #d7c5cc;
+      font-size: 13px;
+    }
+
+    @media (max-width: 1180px) {
+      .grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .catalogs {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 820px) {
+      .topbar {
+        font-size: 12px;
+      }
+
+      .header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .nav a {
+        padding: 9px 11px;
+        font-size: 12px;
+      }
+
+      .hero {
+        padding: 18px 0 48px;
+      }
+
+      .hero-panel {
+        min-height: 560px;
+        border-radius: 28px;
+        background:
+          linear-gradient(180deg, rgba(255,250,252,.97) 0%, rgba(255,250,252,.90) 62%, rgba(255,250,252,.68) 100%),
+          url('imagens/banner/banner-mobile.jpg') center/cover no-repeat;
+      }
+
+      .hero-panel::after {
+        inset: 14px;
+        border-radius: 20px;
+      }
+
+      .hero-content {
+        padding: 34px 22px;
+      }
+
+      .hero-text {
+        font-size: 16px;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      section {
+        padding: 50px 0;
+      }
+
+      .toolbar {
+        position: relative;
+        top: auto;
+      }
+
+      .toolbar input {
+        width: 100%;
+        min-width: 100%;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-image {
+        height: 300px;
+      }
+
+      .product-title {
+        min-height: auto;
+      }
+
+      .product-desc {
+        min-height: auto;
+      }
+
+      .catalogs {
+        grid-template-columns: 1fr;
+      }
+
+      .support {
+        right: 12px;
+        bottom: 12px;
+      }
+
+      .support a {
+        min-width: auto;
+        padding: 12px 14px;
+        font-size: 13px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <header class="header" id="header">
-        <div class="header-inner">
-            <a href="#" class="logo-link">
-                <img src="imagens/logo/logo-ana-essenci.png" alt="Ana Essenci" class="logo-img"
-                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                <span style="display:none;width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#c2185b,#9c1450);color:#fff;align-items:center;justify-content:center;font-weight:700;font-size:.9rem" class="logo-fallback">AE</span>
-                <span class="logo-text"><span class="highlight">Ana</span>Essenci</span>
-            </a>
-            <div class="search-box">
-                <input type="text" class="search-input" id="searchInput" placeholder="Buscar perfume..." aria-label="Buscar">
-                <button class="search-btn" aria-label="Pesquisar" onclick="document.getElementById('searchInput').focus()">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                </button>
-            </div>
-        </div>
-    </header>
+  <div class="topbar">Catálogo com 102 produtos • Compra por links oficiais • Atendimento Ana Essenci</div>
 
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="brand" aria-label="Ana Essenci">
+        <span class="brand-logo">
+          <img src="imagens/logo/logo-ana-essenci.png" alt="Logo Ana Essenci" onerror="this.style.display='none'">
+        </span>
+        <span>
+          <span class="brand-title">Ana Essenci</span>
+          <span class="brand-subtitle">Perfumaria premium</span>
+        </span>
+      </a>
+
+      <nav class="nav">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#mais-vendidos">Mais vendidos</a>
+        <a href="#catalogos">Catálogos</a>
+        <a href="#atendimento">Atendimento</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
     <section class="hero">
-        <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container hero-panel">
         <div class="hero-content">
-            <h1 class="hero-title">Perfumes que <em style="color:var(--rose-600);font-style:italic">marcam</em> presença</h1>
-            <p class="hero-sub">Fragrâncias selecionadas para quem busca elegância, presença e autoestima.</p>
-            <a href="#products" class="btn btn-primary">Ver Catálogo</a>
+          <span class="eyebrow">Curadoria de fragrâncias</span>
+          <h1>Perfumes que <em>marcam presença</em></h1>
+          <p class="hero-text">Escolha fragrâncias femininas, masculinas e infantis com links oficiais de compra. Uma vitrine simples, elegante e feita para comprar com praticidade.</p>
+          <div class="hero-actions">
+            <a href="#catalogo" class="btn btn-primary">Comprar Agora</a>
+            <a href="#catalogos" class="btn btn-secondary">Ver Catálogos</a>
+          </div>
+
+          <div class="stats">
+            <div class="stat"><strong>102</strong><span>produtos</span></div>
+            <div class="stat"><strong>55</strong><span>femininos</span></div>
+            <div class="stat"><strong>35</strong><span>masculinos</span></div>
+            <div class="stat"><strong>12</strong><span>infantis</span></div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <div class="filter-bar" id="filterBar">
-        <button class="filter-pill active" data-filter="all">Todos</button>
-        <button class="filter-pill" data-filter="feminino">Feminino</button>
-        <button class="filter-pill" data-filter="masculino">Masculino</button>
-        <button class="filter-pill" data-filter="infantil">Infantil</button>
-        <span class="result-count" id="resultCount">102 produtos</span>
-    </div>
-
-    <section class="products-section" id="products">
-        <div class="products-grid" id="productsGrid"></div>
+    <section id="mais-vendidos">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Mais vendidos</h2>
+            <p>Uma seleção inicial para quem quer escolher rápido entre perfumes de destaque do catálogo.</p>
+          </div>
+        </div>
+        <div class="carousel" id="featuredGrid" aria-label="Carrossel de mais vendidos"></div>
+      </div>
     </section>
 
-    <footer class="footer">
-        <p><strong>Ana Essenci</strong> — Perfumaria Premium &copy; 2026</p>
-        <p>
-            <a href="https://wa.me/message/P2WGXAOBKQKNP1" target="_blank" rel="noopener noreferrer">WhatsApp</a> |
-            <a href="mailto:contato@anaessenci.com.br?subject=Interesse%20em%20produto%20Ana%20Essenci">contato@anaessenci.com.br</a>
-        </p>
-    </footer>
+    <section id="catalogo">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Catálogo completo</h2>
+            <p>Todos os produtos com imagem, preço, descrição, código e botão de compra com link oficial.</p>
+          </div>
+        </div>
 
-    <div class="float-btns">
-        <a href="https://wa.me/message/P2WGXAOBKQKNP1" target="_blank" rel="noopener noreferrer" class="float-btn float-wpp" title="WhatsApp">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
-        </a>
-        <a href="mailto:contato@anaessenci.com.br?subject=Interesse%20em%20produto%20Ana%20Essenci" class="float-btn float-email" title="E-mail">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
-        </a>
+        <div class="toolbar">
+          <input id="searchInput" type="search" placeholder="Buscar por nome, código ou categoria...">
+          <button class="chip active" data-filter="todos">Todos</button>
+          <button class="chip" data-filter="feminino">Feminino</button>
+          <button class="chip" data-filter="masculino">Masculino</button>
+          <button class="chip" data-filter="infantil">Infantil</button>
+        </div>
+
+        <div class="grid" id="productGrid"></div>
+        <div class="empty" id="emptyState">Nenhum produto encontrado.</div>
+      </div>
+    </section>
+
+    <section id="catalogos">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Catálogos oficiais</h2>
+            <p>Acesse também as lojas por marca para ver mais opções e novidades.</p>
+          </div>
+        </div>
+
+        <div class="catalogs">
+          <a class="catalog-card" target="_blank" rel="noopener" href="https://minhaloja.boticario.com.br/anaessenci">
+            <div><strong>O Boticário</strong><p>Perfumes, cuidados e fragrâncias selecionadas.</p></div>
+            <span class="btn btn-primary">Abrir catálogo</span>
+          </a>
+          <a class="catalog-card" target="_blank" rel="noopener" href="https://minhaloja.eudora.com.br/anaessenci">
+            <div><strong>Eudora</strong><p>Perfumes sofisticados e itens de beleza.</p></div>
+            <span class="btn btn-primary">Abrir catálogo</span>
+          </a>
+          <a class="catalog-card" target="_blank" rel="noopener" href="https://minhaloja.quemdisseberenice.com.br/anaessenci">
+            <div><strong>QDB</strong><p>Maquiagem, beleza e personalidade.</p></div>
+            <span class="btn btn-primary">Abrir catálogo</span>
+          </a>
+          <a class="catalog-card" target="_blank" rel="noopener" href="https://minhaloja.ouiparis.com/anaessenci">
+            <div><strong>O.U.I Paris</strong><p>Fragrâncias premium com proposta sofisticada.</p></div>
+            <span class="btn btn-primary">Abrir catálogo</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="support" id="atendimento" aria-label="Atendimento">
+    <a target="_blank" rel="noopener" href="https://wa.me/5562981479674">WhatsApp</a>
+    <a href="mailto:loja.anaessenci@gmail.com">Gmail</a>
+  </div>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <h3>Ana Essenci</h3>
+        <p>Perfumaria & conteúdo. Catálogo organizado para facilitar sua escolha e compra por links oficiais.</p>
+      </div>
+      <div>
+        <h3>Atendimento</h3>
+        <p>Gmail: loja.anaessenci@gmail.com<br>WhatsApp: (62) 98147-9674</p>
+      </div>
+      <div>
+        <h3>Catálogo</h3>
+        <p>Produtos femininos, masculinos e infantis com preço, código e imagem.</p>
+      </div>
     </div>
+    <div class="container copyright">
+      © 2026 Ana Essenci. Todos os direitos reservados.
+    </div>
+  </footer>
 
-    <script>
-        (function() {
-            // ==================== DADOS OFICIAIS (102 PRODUTOS) ====================
-            const allProducts = [
-                // FEMININO (55)
-                {id:1,slug:'accordes',code:'28813',name:'Accordes Desodorante Colônia 80ml',price:'R$ 244,90',category:'feminino',desc:'Fragrância envolvente com notas florais e amadeiradas.',img:'produtos/feminino/accordes/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/28813/'},
-                {id:2,slug:'body-splash',code:'76621',name:'Body Splash Dream Céu De Baunilha 200ml',price:'R$ 109,90',category:'feminino',desc:'Hidratação e perfume suave com notas de baunilha.',img:'produtos/feminino/body-splash/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/76621/'},
-                {id:3,slug:'body-splash-cuide-se-bem',code:'82037',name:'Body Splash Cuide-Se Bem Boa Noite 200ml',price:'R$ 92,90',category:'feminino',desc:'Aroma relaxante para momentos de autocuidado.',img:'produtos/feminino/body-splash-cuide-se-bem/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/82037/'},
-                {id:4,slug:'body-splash-nativa',code:'82052',name:'Body Splash Nativa Spa Jasmim Sambac 200ml',price:'R$ 69,90',category:'feminino',desc:'Frescura floral do jasmim para o dia a dia.',img:'produtos/feminino/body-splash-nativa/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/82052/'},
-                {id:5,slug:'body-splash-pessegura',code:'84205',name:'Body Splash Cuide-Se Bem Pessegura 200ml',price:'R$ 92,90',category:'feminino',desc:'Doçura do pêssego em fragrância corporal leve.',img:'produtos/feminino/body-splash-pessegura/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/84205/'},
-                {id:6,slug:'botica-214-african-sunrise',code:'54657',name:'Botica 214 African Sunrise Eau De Parfum 75ml',price:'R$ 239,90',category:'feminino',desc:'Floral frutal inspirado nas cores do amanhecer africano.',img:'produtos/feminino/botica-214-african-sunrise/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/54657/'},
-                {id:7,slug:'botica-214-fiji-paradise',code:'51387',name:'Botica 214 Fiji Paradise Eau De Parfum 75ml',price:'R$ 239,90',category:'feminino',desc:'Floral especiado que transporta para ilhas paradisíacas.',img:'produtos/feminino/botica-214-fiji-paradise/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/51387/'},
-                {id:8,slug:'botica-214-golden-gardenia',code:'47629',name:'Botica 214 Golden Gardênia Eau De Parfum 75ml',price:'R$ 239,90',category:'feminino',desc:'Elegância atemporal com notas de gardênia.',img:'produtos/feminino/botica-214-golden-gardenia/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/47629/'},
-                {id:9,slug:'botica-214-sevilla-dorada',code:'58733',name:'Botica 214 Sevilla Dorada Eau De Parfum 75ml',price:'R$ 239,90',category:'feminino',desc:'Floral frutal com toque dourado e marcante.',img:'produtos/feminino/botica-214-sevilla-dorada/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/58733/'},
-                {id:10,slug:'botica-214-verano-en-firenze',code:'47553',name:'Botica 214 Verano En Firenze Eau De Parfum 75ml',price:'R$ 239,90',category:'feminino',desc:'Verão italiano em uma fragrância floral frutal.',img:'produtos/feminino/botica-214-verano-en-firenze/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/47553/'},
-                {id:11,slug:'by-acqua-fresca',code:'48352',name:'Bolicollection Acqua Fresca Desodorante Colônia 200ml',price:'R$ 224,90',category:'feminino',desc:'Frescor aquoso em uma colônia de longa duração.',img:'produtos/feminino/by-acqua-fresca/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48352/'},
-                {id:12,slug:'by-cecita',code:'22248',name:'Bolicollection Cecita Desodorante Colônia 100ml',price:'R$ 174,90',category:'feminino',desc:'Clássico que atravessa gerações.',img:'produtos/feminino/by-cecita/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/22248/'},
-                {id:13,slug:'by-crazy-feelings',code:'71877',name:'Bolicollection Crazy Feelings Desodorante Colônia 100ml',price:'R$ 174,90',category:'feminino',desc:'Para mulheres ousadas e cheias de atitude.',img:'produtos/feminino/by-crazy-feelings/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/71877/'},
-                {id:14,slug:'by-free',code:'22249',name:'Free Desodorante Colônia Boticollection 100ml',price:'R$ 174,90',category:'feminino',desc:'Liberdade e leveza em cada borrifada.',img:'produtos/feminino/by-free/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/22249/'},
-                {id:15,slug:'by-thaty',code:'19734',name:'Bolicollection Thaty Desodorante Colônia 100ml',price:'R$ 174,90',category:'feminino',desc:'Romantismo e delicadeza em uma fragrância icônica.',img:'produtos/feminino/by-thaty/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/19734/'},
-                {id:16,slug:'celebre-agora',code:'52044',name:'Celebre Agora Feminino Desodorante Colônia 100ml',price:'R$ 119,90',category:'feminino',desc:'Celebre cada momento com esta fragrância vibrante.',img:'produtos/feminino/celebre-agora/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/52044/'},
-                {id:17,slug:'celebre-sua-forca',code:'83060',name:'Celebre Sua Força Desodorante Colônia Feminino 100ml',price:'R$ 119,90',category:'feminino',desc:'Força e empoderamento em uma fragrância única.',img:'produtos/feminino/celebre-sua-forca/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/83060/'},
-                {id:18,slug:'coffee-woman-duo',code:'73613',name:'Coffee Woman Duo Desodorante Colônia 100ml',price:'R$ 219,90',category:'feminino',desc:'Notas de café combinadas com dulçor sofisticado.',img:'produtos/feminino/coffee-woman-duo/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/73613/'},
-                {id:19,slug:'coffee-woman-lucky',code:'83756',name:'Coffee Woman Lucky Desodorante Colônia 100ml',price:'R$ 219,90',category:'feminino',desc:'Sorte e charme em uma fragrância com notas de café.',img:'produtos/feminino/coffee-woman-lucky/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/83756/'},
-                {id:20,slug:'coffee-woman-seduction',code:'48139',name:'Coffee Woman Seduction Desodorante Colônia 100ml',price:'R$ 219,90',category:'feminino',desc:'Sedução e mistério em cada gota.',img:'produtos/feminino/coffee-woman-seduction/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48139/'},
-                {id:21,slug:'egeo-bomb-purple',code:'82685',name:'Egeo Bomb Black Desodorante Colônia 90ml',price:'R$ 124,90',category:'feminino',desc:'Explosão de notas marcantes e modernas.',img:'produtos/feminino/egeo-bomb-purple/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/82685/'},
-                {id:22,slug:'egeo-choc-berry',code:'82689',name:'Egeo Choc Desodorante Colônia 90ml',price:'R$ 159,90',category:'feminino',desc:'Doçura irresistível com notas de chocolate.',img:'produtos/feminino/egeo-choc-berry/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/82689/'},
-                {id:23,slug:'egeo-dolce',code:'82688',name:'Egeo Dolce Desodorante Colônia 90ml',price:'R$ 159,90',category:'feminino',desc:'Dulçor envolvente que vicia.',img:'produtos/feminino/egeo-dolce/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/82688/'},
-                {id:24,slug:'egeo-red',code:'82690',name:'Egeo Red Desodorante Colônia 90ml',price:'R$ 159,90',category:'feminino',desc:'Vermelho vibrante em uma fragrância intensa.',img:'produtos/feminino/egeo-red/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/82690/'},
-                {id:25,slug:'egeo-vanilla-vibe',code:'84213',name:'Egeo Vanilla Vibe Desodorante Colônia 90ml',price:'R$ 143,91',category:'feminino',desc:'Baunilha cremosa com toque moderno.',img:'produtos/feminino/egeo-vanilla-vibe/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/84213/'},
-                {id:26,slug:'elysee-nuit',code:'48146',name:'Elysée Nuit Eau De Parfum 50ml',price:'R$ 319,90',category:'feminino',desc:'Sofisticação noturna em um perfume marcante.',img:'produtos/feminino/elysee-nuit/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48146/'},
-                {id:27,slug:'elysee-succes',code:'81331',name:'Elysée Succès Eau De Parfum 50ml',price:'R$ 319,90',category:'feminino',desc:'Sucesso traduzido em notas olfativas nobres.',img:'produtos/feminino/elysee-succes/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/81331/'},
-                {id:28,slug:'eudora-kiss-me-cabemet',code:'50268',name:'Eudora Kiss Me Cabemet Desodorante Colônia 50ml',price:'R$ 89,89',category:'feminino',desc:'Beijo de cabemet em uma colônia ousada.',img:'produtos/feminino/eudora-kiss-me-cabemet/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/eudora/produto/50268/'},
-                {id:29,slug:'eudora-rose-eau-de-parfum',code:'56572',name:'Eudora Rosé Eau De Parfum 75ml',price:'R$ 239,90',category:'feminino',desc:'Rosé sofisticado com notas frutais elegantes.',img:'produtos/feminino/eudora-rose-eau-de-parfum/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/eudora/produto/56572/'},
-                {id:30,slug:'floratta-blue',code:'25458',name:'Floratta Blue Desodorante Colônia 75ml',price:'R$ 164,90',category:'feminino',desc:'Azul floral que encanta.',img:'produtos/feminino/floratta-blue/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/25458/'},
-                {id:31,slug:'floratta-fleur-declipse',code:'48621',name:'Floratta Fleur D\'Éclipse Eau De Parfum 75ml',price:'R$ 219,90',category:'feminino',desc:'Raridade floral que eclipsa sentidos.',img:'produtos/feminino/floratta-fleur-declipse/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48621/'},
-                {id:32,slug:'floratta-flores-secretas',code:'48136',name:'Floratta Flores Secretas Desodorante Colônia 75ml',price:'R$ 164,90',category:'feminino',desc:'Segredos florais revelados em cada nota.',img:'produtos/feminino/floratta-flores-secretas/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48136/'},
-                {id:33,slug:'floratta-my-blue',code:'01004',name:'Floratta My Blue Desodorante Colônia 75ml',price:'R$ 164,90',category:'feminino',desc:'O azul que é a sua cara.',img:'produtos/feminino/floratta-my-blue/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/01004/'},
-                {id:34,slug:'floratta-red',code:'75792',name:'Floratta Red Desodorante Colônia 75ml',price:'R$ 164,90',category:'feminino',desc:'Vermelho apaixonante.',img:'produtos/feminino/floratta-red/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/75792/'},
-                {id:35,slug:'floratta-red-blossom',code:'49973',name:'Floratta Red Blossom Desodorante Colônia 75ml',price:'R$ 164,90',category:'feminino',desc:'Florescimento vermelho em fragrância.',img:'produtos/feminino/floratta-red-blossom/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/49973/'},
-                {id:36,slug:'floratta-red-passion',code:'59306',name:'Floratta Red Passion Eau De Parfum 75ml',price:'R$ 219,90',category:'feminino',desc:'Paixão ardente em perfume.',img:'produtos/feminino/floratta-red-passion/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/59306/'},
-                {id:37,slug:'floratta-romance',code:'55659',name:'Floratta Romance De Verão Desodorante Colônia 75ml',price:'R$ 164,90',category:'feminino',desc:'Romance de verão em notas leves.',img:'produtos/feminino/floratta-romance/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/55659/'},
-                {id:38,slug:'floratta-rose',code:'48635',name:'Floratta Rose Desodorante Colônia 75ml',price:'R$ 164,90',category:'feminino',desc:'Rosas que inspiram poesia.',img:'produtos/feminino/floratta-rose/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48635/'},
-                {id:39,slug:'floratta-rose-sucree',code:'88135',name:'Floratta Rose Sucrée Eau De Parfum 75ml',price:'R$ 184,89',category:'feminino',desc:'Rosa adocicada com toque gourmand.',img:'produtos/feminino/floratta-rose-sucree/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/88135/'},
-                {id:40,slug:'glamour-secrets-black',code:'74103',name:'Glamour Secrets Black Desodorante Colônia 75ml',price:'R$ 189,90',category:'feminino',desc:'Segredos glamourosos em frasco preto.',img:'produtos/feminino/glamour-secrets-black/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/74103/'},
-                {id:41,slug:'her-code',code:'50022',name:'Her Code Eau De Parfum 50ml',price:'R$ 244,90',category:'feminino',desc:'O código dela: elegância e mistério.',img:'produtos/feminino/her-code/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/50022/'},
-                {id:42,slug:'kiss-me-rosa-marcante',code:'50267',name:'Kiss Me Rosa Marcante Colônia Desodorante 50ml',price:'R$ 109,99',category:'feminino',desc:'Rosa marcante que deixa rastro.',img:'produtos/feminino/kiss-me-rosa-marcante/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/eudora/produto/50267/'},
-                {id:43,slug:'leau-de-lily',code:'83971',name:'L\'Eau De Lily Desodorante Colônia 75ml',price:'R$ 219,90',category:'feminino',desc:'Lírio aquático em fragrância pura.',img:'produtos/feminino/leau-de-lily/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/83971/'},
-                {id:44,slug:'leau-de-lily-soleil',code:'49680',name:'L\'Eau De Lily Soleil Desodorante Colônia 75ml',price:'R$ 219,90',category:'feminino',desc:'Lírio ao sol com notas radiantes.',img:'produtos/feminino/leau-de-lily-soleil/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/49680/'},
-                {id:45,slug:'lily-absolu',code:'77988',name:'Lily Absolu Eau De Parfum 75ml',price:'R$ 319,90',category:'feminino',desc:'Absoluto de lírio em perfume luxuoso.',img:'produtos/feminino/lily-absolu/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/77988/'},
-                {id:46,slug:'lily-eau-de-parfum',code:'77524',name:'Lily Eau De Parfum 75ml',price:'R$ 284,90',category:'feminino',desc:'O lírio em sua forma mais pura.',img:'produtos/feminino/lily-eau-de-parfum/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/77524/'},
-                {id:47,slug:'lily-lumiere-eau-de-parfum',code:'77989',name:'Lily Lumière Eau De Parfum 75ml',price:'R$ 319,90',category:'feminino',desc:'Luz de lírio em perfume radiante.',img:'produtos/feminino/lily-lumiere-eau-de-parfum/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/77989/'},
-                {id:48,slug:'linda',code:'22516',name:'Linda Desodorante Colônia 100ml',price:'R$ 209,90',category:'feminino',desc:'Simplesmente linda em fragrância.',img:'produtos/feminino/linda/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/22516/'},
-                {id:49,slug:'linda-felicidade',code:'81849',name:'Linda Felicidade Desodorante Colônia 100ml',price:'R$ 209,90',category:'feminino',desc:'Felicidade em forma de perfume.',img:'produtos/feminino/linda-felicidade/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/81849/'},
-                {id:50,slug:'linda-irresistivel',code:'81756',name:'Linda Irresistivel Desodorante Colônia 100ml',price:'R$ 209,90',category:'feminino',desc:'Irresistível como você.',img:'produtos/feminino/linda-irresistivel/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/81756/'},
-                {id:51,slug:'liz-desodorante',code:'76700',name:'Liz Desodorante Colônia 100ml',price:'R$ 174,90',category:'feminino',desc:'Liz: clássica e atemporal.',img:'produtos/feminino/liz-desodorante/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/76700/'},
-                {id:52,slug:'liz-flora',code:'59466',name:'Liz Flora Desodorante Colônia 100ml',price:'R$ 174,90',category:'feminino',desc:'Floral delicado com assinatura Liz.',img:'produtos/feminino/liz-flora/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/59466/'},
-                {id:53,slug:'liz-sublime',code:'47339',name:'Liz Sublime Desodorante Colônia 100ml',price:'R$ 174,90',category:'feminino',desc:'Sublime como um momento perfeito.',img:'produtos/feminino/liz-sublime/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/47339/'},
-                {id:54,slug:'magnific-rouge-camelia',code:'52943',name:'Magnific Rouge Camélia Desodorante Colônia 75ml',price:'R$ 139,90',category:'feminino',desc:'Camélia vermelha em fragrância magnífica.',img:'produtos/feminino/magnific-rouge-camelia/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/eudora/produto/52943/'},
-                {id:55,slug:'nativa-spa-ameixa-baunilha',code:'89366',name:'Body Splash Nativa Spa Rosas Secretas 200ml',price:'R$ 99,90',category:'feminino',desc:'Rosas secretas em body splash hidratante.',img:'produtos/feminino/nativa-spa-ameixa-baunilha/01.webp',link:'https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/89366/'},
-                // INFANTIL (12) - links atualizados com UTM
-                {id:56,slug:'boti-baby-lua',code:'59132',name:'Colônia Boti Baby Lua 100ml',price:'R$ 95,90',category:'infantil',desc:'Suavidade de lua para os pequenos.',img:'produtos/infantil/boti-baby-lua/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/59132/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado'},
-                {id:57,slug:'boti-baby-sol',code:'51802',name:'Boti Baby Colônia Do Sol 100ml',price:'R$ 75,90',category:'infantil',desc:'Alegria do sol em colônia infantil.',img:'produtos/infantil/boti-baby-sol/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/51802/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado'},
-                {id:58,slug:'dr-botica-pocao-da-amizade',code:'70674',name:'Dr. Botica Poção Da Amizade Colônia Infantil 120ml',price:'R$ 96,90',category:'infantil',desc:'Poção mágica que celebra a amizade.',img:'produtos/infantil/dr-botica-pocao-da-amizade/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/70674/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado'},
-                {id:59,slug:'dr-botica-pocao-da-aventura',code:'83684',name:'Dr. Botica Poção Da Aventura Colônia Infantil 120ml',price:'R$ 96,90',category:'infantil',desc:'Aventura em cada borrifada.',img:'produtos/infantil/dr-botica-pocao-da-aventura/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/83684/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado'},
-                {id:60,slug:'dr-botica-pocao-da-coragem',code:'51521',name:'Dr. Botica Poção Da Coragem Colônia Infantil 120ml',price:'R$ 77,90',category:'infantil',desc:'Coragem em frasco para pequenos heróis.',img:'produtos/infantil/dr-botica-pocao-da-coragem/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/51521/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado'},
-                {id:61,slug:'dr-botica-pocao-da-criatividade',code:'55221',name:'Dr. Botica Poção Da Criatividade Colônia Infantil 120ml',price:'R$ 96,90',category:'infantil',desc:'Inspire criatividade com esta poção.',img:'produtos/infantil/dr-botica-pocao-da-criatividade/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/55221/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado'},
-                {id:62,slug:'dr-botica-pocao-da-forca',code:'51441',name:'Dr. Botica Poção Da Força Colônia Infantil 120ml',price:'R$ 96,90',category:'infantil',desc:'Força mágica para o dia a dia.',img:'produtos/infantil/dr-botica-pocao-da-forca/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/51441/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado'},
-                {id:63,slug:'dr-botica-pocao-do-coracao',code:'70672',name:'Dr. Botica Poção Do Coração Colônia Infantil 120ml',price:'R$ 77,90',category:'infantil',desc:'Poção que aquece corações.',img:'produtos/infantil/dr-botica-pocao-do-coracao/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/70672/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado'},
-                {id:64,slug:'ma-cherie',code:'05009',name:'Ma Cherie Desodorante Colônia 100ml',price:'R$ 149,90',category:'infantil',desc:'Querida e delicada como uma flor.',img:'produtos/infantil/ma-cherie/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/05009/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado'},
-                {id:65,slug:'sophie-candy',code:'51500',name:'Colônia Infantil Sophie Candy 100ml',price:'R$ 119,90',category:'infantil',desc:'Doçura de candy para meninas.',img:'produtos/infantil/sophie-candy/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/51500/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado'},
-                {id:66,slug:'sophie-hello',code:'70668',name:'Sophie Hello Colônia Infantil 100ml',price:'R$ 119,90',category:'infantil',desc:'Hello para um dia cheio de sorrisos.',img:'produtos/infantil/sophie-hello/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/70668/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado'},
-                {id:67,slug:'sophie-like',code:'70669',name:'Sophie Like Colônia Infantil 100ml',price:'R$ 119,90',category:'infantil',desc:'Like: a colônia que toda menina ama.',img:'produtos/infantil/sophie-like/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/70669/?utm_source=ab&utm_medium=pdp&utm_campaign=fluxo_personalizado'},
-                // MASCULINO (35) - somente os que possuem pasta
-                {id:68,slug:'arbo',code:'74438',name:'Arbo Desodorante Colônia 100ml',price:'R$ 131,90',category:'masculino',desc:'Amadeirado clássico para o homem moderno.',img:'produtos/masculino/arbo/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/74438/'},
-                {id:69,slug:'bold-intention',code:'58933',name:'Bold Intention Desodorante Colônia 100ml',price:'R$ 154,90',category:'masculino',desc:'Intenção ousada em fragrância marcante.',img:'produtos/masculino/bold-intention/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/eudora/produto/58933/'},
-                {id:70,slug:'boticollection-connexion',code:'27707',name:'Boticollection Connexion Desodorante Colônia 100ml',price:'R$ 139,90',category:'masculino',desc:'Conexão perfeita entre notas amadeiradas.',img:'produtos/masculino/boticollection-connexion/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/27707/'},
-                {id:71,slug:'boticollection-stylettto',code:'76678',name:'Boticollection Stylettto Desodorante Colônia 100ml',price:'R$ 174,90',category:'masculino',desc:'Estilo afiado em fragrância.',img:'produtos/masculino/boticollection-stylettto/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/76678/'},
-                {id:72,slug:'celebre-sua-forca-masculino',code:'83059',name:'Celebre Sua Força Desodorante Colônia Masculino 100ml',price:'R$ 119,90',category:'masculino',desc:'Força masculina celebrada em perfume.',img:'produtos/masculino/celebre-sua-forca-masculino/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/83059/'},
-                {id:73,slug:'clash',code:'50677',name:'Clash Desodorante Colônia 100ml',price:'R$ 134,90',category:'masculino',desc:'Impacto e atitude em cada borrifada.',img:'produtos/masculino/clash/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/50677/'},
-                {id:74,slug:'coffee-man',code:'74029',name:'Coffee Man Desodorante Colônia 100ml',price:'R$ 219,90',category:'masculino',desc:'Notas de café para homens intensos.',img:'produtos/masculino/coffee-man/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/74029/'},
-                {id:75,slug:'egoe-blue',code:'82686',name:'Egoe Blue Desodorante Colônia 90ml',price:'R$ 159,90',category:'masculino',desc:'Azul vibrante com atitude.',img:'produtos/masculino/egoe-blue/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/82686/'},
-                {id:76,slug:'egoe-original',code:'49812',name:'Egoe Original Desodorante Colônia 90ml',price:'R$ 159,90',category:'masculino',desc:'Originalidade em fragrância jovem.',img:'produtos/masculino/egoe-original/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/49812/'},
-                {id:77,slug:'egoe-spicy-vibe',code:'84214',name:'Egoe Spicy Vibe Desodorante Colônia 90ml',price:'R$ 159,90',category:'masculino',desc:'Vibe especiada para homens ousados.',img:'produtos/masculino/egoe-spicy-vibe/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/84214/'},
-                {id:78,slug:'eudora-h-marine',code:'57597',name:'Eudora H Marine Desodorante Colônia 100ml',price:'R$ 114,90',category:'masculino',desc:'Frescor marinho com toque Eudora.',img:'produtos/masculino/eudora-h-marine/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/eudora/produto/57597/'},
-                {id:79,slug:'lor-de-mediterranee',code:'56554',name:'L\'Or De Méditerranée Eau De Parfum Pour Homme 75ml',price:'R$ 379,00',category:'masculino',desc:'Ouro do Mediterrâneo em perfume luxuoso.',img:'produtos/masculino/lor-de-mediterranee/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/oui/produto/56554/'},
-                {id:80,slug:'malbec',code:'48130',name:'Malbec Desodorante Colônia 100ml',price:'R$ 184,90',category:'masculino',desc:'O ícone. Malbec clássico e inconfundível.',img:'produtos/masculino/malbec/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/48130/'},
-                {id:81,slug:'malbec-black',code:'84392',name:'Malbec Black Desodorante Colônia 100ml',price:'R$ 259,90',category:'masculino',desc:'Malbec Black: intensidade absoluta.',img:'produtos/masculino/malbec-black/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/84392/'},
-                {id:82,slug:'malbec-gold',code:'84391',name:'Malbec Gold Desodorante Colônia 100ml',price:'R$ 249,90',category:'masculino',desc:'Ouro em fragrância Malbec.',img:'produtos/masculino/malbec-gold/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/84391/'},
-                {id:83,slug:'malbec-magnetic',code:'84390',name:'Malbec Magnetic Desodorante Colônia 100ml',price:'R$ 249,90',category:'masculino',desc:'Magnetismo irresistível.',img:'produtos/masculino/malbec-magnetic/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/84390/'},
-                {id:84,slug:'malbec-signature',code:'48134',name:'Malbec Eau De Parfum Signature 90ml',price:'R$ 359,90',category:'masculino',desc:'Assinatura Malbec em Eau de Parfum.',img:'produtos/masculino/malbec-signature/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/48134/'},
-                {id:85,slug:'malbec-sport',code:'48787',name:'Malbec Sport Desodorante Colônia 100ml',price:'R$ 229,90',category:'masculino',desc:'Energia esportiva com assinatura Malbec.',img:'produtos/masculino/malbec-sport/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/48787/'},
-                {id:86,slug:'malbec-vert',code:'48133',name:'Malbec Vert Desodorante Colônia 100ml',price:'R$ 229,90',category:'masculino',desc:'Verde e vibrante como a natureza.',img:'produtos/masculino/malbec-vert/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/48133/'},
-                {id:87,slug:'men-galbe',code:'76666',name:'Men Galbe Desodorante Colônia 100ml',price:'R$ 164,90',category:'masculino',desc:'Galbe: curvas de estilo masculino.',img:'produtos/masculino/men-galbe/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/76666/'},
-                {id:88,slug:'men-only',code:'76665',name:'Men Only Desodorante Colônia 100ml',price:'R$ 164,90',category:'masculino',desc:'Exclusivo para homens.',img:'produtos/masculino/men-only/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/76665/'},
-                {id:89,slug:'oui-iconique-001',code:'85827',name:'Oui Edp Iconique 001 V2 75ml',price:'R$ 379,00',category:'masculino',desc:'Icônico parisiense em versão luxuosa.',img:'produtos/masculino/oui-iconique-001/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/oui/produto/85827/'},
-                {id:90,slug:'oui-mystere-royal-084',code:'47407',name:'O.U.I Mystère Royal 084 Eau De Parfum 75ml',price:'R$ 379,00',category:'masculino',desc:'Mistério real em fragrância parisiense.',img:'produtos/masculino/oui-mystere-royal-084/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/oui/produto/47407/'},
-                {id:91,slug:'quasar-brave',code:'73287',name:'Quasar Brave Desodorante Colônia 100ml',price:'R$ 174,90',category:'masculino',desc:'Bravura em fragrância Quasar.',img:'produtos/masculino/quasar-brave/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/73287/'},
-                {id:92,slug:'quasar-fire',code:'73285',name:'Quasar Fire Desodorante Colônia 100ml',price:'R$ 174,90',category:'masculino',desc:'Fogo e intensidade.',img:'produtos/masculino/quasar-fire/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/73285/'},
-                {id:93,slug:'quasar-rush',code:'83039',name:'Quasar Rush Desodorante Colônia 100ml',price:'R$ 174,90',category:'masculino',desc:'Rush de adrenalina olfativa.',img:'produtos/masculino/quasar-rush/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/83039/'},
-                {id:94,slug:'the-blend-bourbon',code:'77489',name:'The Blend Bourbon Eau De Parfum 100ml',price:'R$ 359,90',category:'masculino',desc:'Bourbon sofisticado em perfume.',img:'produtos/masculino/the-blend-bourbon/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/77489/'},
-                {id:95,slug:'the-blend-cardamom',code:'83529',name:'The Blend Cardamom Eau De Parfum 100ml',price:'R$ 359,90',category:'masculino',desc:'Cardamomo exótico em blend Premium.',img:'produtos/masculino/the-blend-cardamom/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/83529/'},
-                {id:96,slug:'uomini-black',code:'77484',name:'Uomini Black Desodorante Colônia 100ml',price:'R$ 199,90',category:'masculino',desc:'Black: o preto elegante dos homens.',img:'produtos/masculino/uomini-black/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/77484/'},
-                {id:97,slug:'uomini-infinite',code:'77490',name:'Uomini Infinite Desodorante Colônia 100ml',price:'R$ 169,90',category:'masculino',desc:'Infinito em possibilidades olfativas.',img:'produtos/masculino/uomini-infinite/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/77490/'},
-                {id:98,slug:'volpe-triumph',code:'56231',name:'Volpe Triumph Desodorante Colônia 100ml',price:'R$ 169,90',category:'masculino',desc:'Triunfo em fragrância Eudora.',img:'produtos/masculino/volpe-triumph/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/eudora/produto/56231/'},
-                {id:99,slug:'zaad-expedition',code:'46898',name:'Zaad Expedition Eau De Parfum 95ml',price:'R$ 294,90',category:'masculino',desc:'Expedição olfativa com notas orientais.',img:'produtos/masculino/zaad-expedition/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/46898/'},
-                {id:100,slug:'zaad-intense',code:'58644',name:'Zaad Intense Eau De Parfum 95ml',price:'R$ 299,90',category:'masculino',desc:'Intensidade que não passa despercebida.',img:'produtos/masculino/zaad-intense/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/58644/'},
-                {id:101,slug:'zaad-mondo',code:'47951',name:'Zaad Mondo Eau De Parfum 95ml',price:'R$ 263,89',category:'masculino',desc:'Mondo: mundo de sofisticação.',img:'produtos/masculino/zaad-mondo/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/47951/'},
-                {id:102,slug:'zaad-eau-de-parfum',code:'47950',name:'Zaad Eau De Parfum 95ml',price:'R$ 329,90',category:'masculino',desc:'Zaad original em Eau de Parfum.',img:'produtos/masculino/zaad-eau-de-parfum/01.webp',link:'https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/47950/'}
-            ];
+  <script>
+    const products = [{"id": 1, "slug": "accordes", "code": "28813", "name": "Accordes", "fullName": "Accordes Desodorante Colônia 80ml", "price": 244.9, "category": "feminino", "image": "produtos/feminino/accordes/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/28813/", "desc": "Fragrância feminina selecionada para uso diário, encontros e momentos especiais."}, {"id": 2, "slug": "body-splash", "code": "76621", "name": "Body Splash Dream", "fullName": "Body Splash Desodorante Colônia Dream Céu de Baunilha 200ml", "price": 109.9, "category": "feminino", "image": "produtos/feminino/body-splash/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/76621/", "desc": "Fragrância leve para usar no dia a dia, com sensação de frescor e conforto na pele."}, {"id": 3, "slug": "body-splash-cuide-se-bem", "code": "82037", "name": "Body Splash Cuide-se Bem Boa Noite", "fullName": "Body Splash Desodorante Colônia Cuide-se Bem Boa Noite 200ml", "price": 92.9, "category": "feminino", "image": "produtos/feminino/body-splash-cuide-se-bem/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/82037/", "desc": "Fragrância leve para usar no dia a dia, com sensação de frescor e conforto na pele."}, {"id": 4, "slug": "body-splash-nativa", "code": "82052", "name": "Body Splash Nativa Spa Jasmim Sambac", "fullName": "Body Splash Desodorante Colônia Nativa Spa Jasmim Sambac 200ml", "price": 69.9, "category": "feminino", "image": "produtos/feminino/body-splash-nativa/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/82052/", "desc": "Fragrância leve para usar no dia a dia, com sensação de frescor e conforto na pele."}, {"id": 5, "slug": "body-splash-pessegura", "code": "84205", "name": "Body Splash Cuide-se Bem Pessegura", "fullName": "Body Splash Desodorante Corporal Cuide-se Bem Pessegura 200ml", "price": 92.9, "category": "feminino", "image": "produtos/feminino/body-splash-pessegura/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/84205/", "desc": "Fragrância leve para usar no dia a dia, com sensação de frescor e conforto na pele."}, {"id": 6, "slug": "botica-214-african-sunrise", "code": "54657", "name": "Botica 214 African Sunrise", "fullName": "Botica 214 African Sunrise Floral Frutal Eau de Parfum 75ml", "price": 239.9, "category": "feminino", "image": "produtos/feminino/botica-214-african-sunrise/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/54657/", "desc": "Perfume refinado, com construção mais elegante e boa presença."}, {"id": 7, "slug": "botica-214-fiji-paradise", "code": "51387", "name": "Botica 214 Fiji Paradise", "fullName": "Botica 214 Fiji Paradise Floral Especiado Eau de Parfum 75ml", "price": 239.9, "category": "feminino", "image": "produtos/feminino/botica-214-fiji-paradise/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/51387/", "desc": "Perfume refinado, com construção mais elegante e boa presença."}, {"id": 8, "slug": "botica-214-golden-gardenia", "code": "47629", "name": "Botica 214 Golden Gardênia", "fullName": "Botica 214 Golden Gardênia Eau de Parfum 75ml", "price": 239.9, "category": "feminino", "image": "produtos/feminino/botica-214-golden-gardenia/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/47629/", "desc": "Perfume refinado, com construção mais elegante e boa presença."}, {"id": 9, "slug": "botica-214-sevilla-dorada", "code": "58733", "name": "Botica 214 Sevilla Dorada", "fullName": "Botica 214 Sevilla Dorada Eau de Parfum Floral Frutal 75ml", "price": 239.9, "category": "feminino", "image": "produtos/feminino/botica-214-sevilla-dorada/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/58733/", "desc": "Perfume refinado, com construção mais elegante e boa presença."}, {"id": 10, "slug": "botica-214-verano-en-firenze", "code": "47553", "name": "Botica 214 Verano en Firenze", "fullName": "Botica 214 Verano en Firenze Eau de Parfum Floral Frutal 75ml", "price": 239.9, "category": "feminino", "image": "produtos/feminino/botica-214-verano-en-firenze/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/47553/", "desc": "Perfume refinado, com construção mais elegante e boa presença."}, {"id": 11, "slug": "by-acqua-fresca", "code": "48352", "name": "Boticollection Acqua Fresca", "fullName": "Boticollection Acqua Fresca Desodorante Colônia 200ml", "price": 224.9, "category": "feminino", "image": "produtos/feminino/by-acqua-fresca/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48352/", "desc": "Fragrância feminina selecionada para uso diário, encontros e momentos especiais."}, {"id": 12, "slug": "by-cecita", "code": "22248", "name": "Boticollection Cecita", "fullName": "Boticollection Cecita Desodorante Colônia 100ml", "price": 174.9, "category": "feminino", "image": "produtos/feminino/by-cecita/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/22248/", "desc": "Fragrância feminina selecionada para uso diário, encontros e momentos especiais."}, {"id": 13, "slug": "by-crazy-feelings", "code": "71877", "name": "Boticollection Crazy Feelings", "fullName": "Boticollection Crazy Feelings Desodorante Colônia 100ml", "price": 174.9, "category": "feminino", "image": "produtos/feminino/by-crazy-feelings/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/71877/", "desc": "Fragrância feminina selecionada para uso diário, encontros e momentos especiais."}, {"id": 14, "slug": "by-free", "code": "22249", "name": "Free Boticollection", "fullName": "Free Desodorante Colônia Boticollection 100ml", "price": 174.9, "category": "feminino", "image": "produtos/feminino/by-free/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/22249/", "desc": "Fragrância feminina selecionada para uso diário, encontros e momentos especiais."}, {"id": 15, "slug": "by-thaty", "code": "19734", "name": "Boticollection Thaty", "fullName": "Boticollection Thaty Desodorante Colônia 100ml", "price": 174.9, "category": "feminino", "image": "produtos/feminino/by-thaty/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/19734/", "desc": "Fragrância feminina selecionada para uso diário, encontros e momentos especiais."}, {"id": 16, "slug": "celebre-agora", "code": "52044", "name": "Celebre Agora", "fullName": "Celebre Agora Feminino Desodorante Colônia 100ml", "price": 119.9, "category": "feminino", "image": "produtos/feminino/celebre-agora/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/52044/", "desc": "Fragrância feminina selecionada para uso diário, encontros e momentos especiais."}, {"id": 17, "slug": "celebre-sua-forca", "code": "83060", "name": "Celebre Sua Força", "fullName": "Celebre Sua Força Desodorante Colônia Feminino 100ml", "price": 119.9, "category": "feminino", "image": "produtos/feminino/celebre-sua-forca/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/83060/", "desc": "Fragrância feminina selecionada para uso diário, encontros e momentos especiais."}, {"id": 18, "slug": "coffee-woman-duo", "code": "73613", "name": "Coffee Woman Duo", "fullName": "Coffee Woman Duo Desodorante Colônia 100ml", "price": 219.9, "category": "feminino", "image": "produtos/feminino/coffee-woman-duo/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/73613/", "desc": "Fragrância envolvente, levemente adocicada e com personalidade marcante."}, {"id": 19, "slug": "coffee-woman-lucky", "code": "83756", "name": "Coffee Woman Lucky", "fullName": "Coffee Woman Lucky Desodorante Colônia 100ml", "price": 219.9, "category": "feminino", "image": "produtos/feminino/coffee-woman-lucky/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/83756/", "desc": "Fragrância envolvente, levemente adocicada e com personalidade marcante."}, {"id": 20, "slug": "coffee-woman-seduction", "code": "48139", "name": "Coffee Woman Seduction", "fullName": "Coffee Woman Seduction Desodorante Colônia 100ml", "price": 219.9, "category": "feminino", "image": "produtos/feminino/coffee-woman-seduction/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48139/", "desc": "Fragrância envolvente, levemente adocicada e com personalidade marcante."}, {"id": 21, "slug": "egeo-bomb-purple", "code": "82685", "name": "Egeo Bomb Black", "fullName": "Egeo Bomb Black Desodorante Colônia 90ml", "price": 124.9, "category": "feminino", "image": "produtos/feminino/egeo-bomb-purple/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/82685/", "desc": "Perfume moderno, jovem e versátil, ideal para quem gosta de fragrâncias presentes."}, {"id": 22, "slug": "egeo-choc-berry", "code": "82689", "name": "Egeo Choc", "fullName": "Egeo Choc Desodorante Colônia 90ml", "price": 159.9, "category": "feminino", "image": "produtos/feminino/egeo-choc-berry/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/82689/", "desc": "Perfume moderno, jovem e versátil, ideal para quem gosta de fragrâncias presentes."}, {"id": 23, "slug": "egeo-dolce", "code": "82688", "name": "Egeo Dolce", "fullName": "Egeo Dolce Desodorante Colônia 90ml", "price": 159.9, "category": "feminino", "image": "produtos/feminino/egeo-dolce/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/82688/", "desc": "Perfume moderno, jovem e versátil, ideal para quem gosta de fragrâncias presentes."}, {"id": 24, "slug": "egeo-red", "code": "82690", "name": "Egeo Red", "fullName": "Egeo Red Desodorante Colônia 90ml", "price": 159.9, "category": "feminino", "image": "produtos/feminino/egeo-red/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/82690/", "desc": "Perfume moderno, jovem e versátil, ideal para quem gosta de fragrâncias presentes."}, {"id": 25, "slug": "egeo-vanilla-vibe", "code": "84213", "name": "Egeo Vanilla Vibe", "fullName": "Egeo Vanilla Vibe Desodorante Colônia 90ml", "price": 143.91, "category": "feminino", "image": "produtos/feminino/egeo-vanilla-vibe/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/84213/", "desc": "Perfume moderno, jovem e versátil, ideal para quem gosta de fragrâncias presentes."}, {"id": 26, "slug": "elysee-nuit", "code": "48146", "name": "Elysée Nuit", "fullName": "Elysée Nuit Eau de Parfum 50ml", "price": 319.9, "category": "feminino", "image": "produtos/feminino/elysee-nuit/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48146/", "desc": "Perfume sofisticado, com presença elegante para ocasiões especiais."}, {"id": 27, "slug": "elysee-succes", "code": "81331", "name": "Elysée Succès", "fullName": "Elysée Succès Eau de Parfum 50ml", "price": 319.9, "category": "feminino", "image": "produtos/feminino/elysee-succes/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/81331/", "desc": "Perfume sofisticado, com presença elegante para ocasiões especiais."}, {"id": 28, "slug": "eudora-kiss-me-cabernet", "code": "50268", "name": "Eudora Kiss Me Cabernet", "fullName": "Eudora Kiss Me Cabernet Desodorante Colônia 50ml", "price": 89.89, "category": "feminino", "image": "produtos/feminino/eudora-kiss-me-cabernet/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/eudora/produto/50268/", "desc": "Fragrância feminina selecionada para uso diário, encontros e momentos especiais."}, {"id": 29, "slug": "eudora-rose-eau-de-parfum", "code": "56572", "name": "Eudora Rosé Eau de Parfum", "fullName": "Eudora Rosé Eau de Parfum 75ml", "price": 239.9, "category": "feminino", "image": "produtos/feminino/eudora-rose-eau-de-parfum/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/eudora/produto/56572/", "desc": "Fragrância feminina selecionada para uso diário, encontros e momentos especiais."}, {"id": 30, "slug": "floratta-blue", "code": "25458", "name": "Floratta Blue", "fullName": "Floratta Blue Desodorante Colônia 75ml", "price": 164.9, "category": "feminino", "image": "produtos/feminino/floratta-blue/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/25458/", "desc": "Floral feminino delicado, fácil de usar e indicado para rotina ou encontros casuais."}, {"id": 31, "slug": "floratta-fleur-declipse", "code": "48621", "name": "Floratta Fleur D'Éclipse", "fullName": "Floratta Fleur D'Éclipse Eau de Parfum 75ml", "price": 219.9, "category": "feminino", "image": "produtos/feminino/floratta-fleur-declipse/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48621/", "desc": "Floral feminino delicado, fácil de usar e indicado para rotina ou encontros casuais."}, {"id": 32, "slug": "floratta-flores-secretas", "code": "48136", "name": "Floratta Flores Secretas", "fullName": "Floratta Flores Secretas Desodorante Colônia 75ml", "price": 164.9, "category": "feminino", "image": "produtos/feminino/floratta-flores-secretas/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48136/", "desc": "Floral feminino delicado, fácil de usar e indicado para rotina ou encontros casuais."}, {"id": 33, "slug": "floratta-my-blue", "code": "01004", "name": "Floratta My Blue", "fullName": "Floratta My Blue Desodorante Colônia 75ml", "price": 164.9, "category": "feminino", "image": "produtos/feminino/floratta-my-blue/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/01004/", "desc": "Floral feminino delicado, fácil de usar e indicado para rotina ou encontros casuais."}, {"id": 34, "slug": "floratta-red", "code": "75792", "name": "Floratta Red", "fullName": "Floratta Red Desodorante Colônia 75ml", "price": 164.9, "category": "feminino", "image": "produtos/feminino/floratta-red/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/75792/", "desc": "Floral feminino delicado, fácil de usar e indicado para rotina ou encontros casuais."}, {"id": 35, "slug": "floratta-red-blossom", "code": "49973", "name": "Floratta Red Blossom", "fullName": "Floratta Red Blossom Desodorante Colônia 75ml", "price": 164.9, "category": "feminino", "image": "produtos/feminino/floratta-red-blossom/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/49973/", "desc": "Floral feminino delicado, fácil de usar e indicado para rotina ou encontros casuais."}, {"id": 36, "slug": "floratta-red-passion", "code": "59306", "name": "Floratta Red Passion", "fullName": "Floratta Red Passion Eau de Parfum 75ml", "price": 219.9, "category": "feminino", "image": "produtos/feminino/floratta-red-passion/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/59306/", "desc": "Floral feminino delicado, fácil de usar e indicado para rotina ou encontros casuais."}, {"id": 37, "slug": "floratta-romance", "code": "55659", "name": "Floratta Romance de Verão", "fullName": "Floratta Romance de Verão Desodorante Colônia 75ml", "price": 164.9, "category": "feminino", "image": "produtos/feminino/floratta-romance/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/55659/", "desc": "Floral feminino delicado, fácil de usar e indicado para rotina ou encontros casuais."}, {"id": 38, "slug": "floratta-rose", "code": "48635", "name": "Floratta Rose", "fullName": "Floratta Rose Desodorante Colônia 75ml", "price": 164.9, "category": "feminino", "image": "produtos/feminino/floratta-rose/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48635/", "desc": "Floral feminino delicado, fácil de usar e indicado para rotina ou encontros casuais."}, {"id": 39, "slug": "floratta-rose-sucree", "code": "88135", "name": "Floratta Rose Sucrée", "fullName": "Floratta Rose Sucrée Eau de Parfum 75ml", "price": 184.89, "category": "feminino", "image": "produtos/feminino/floratta-rose-sucree/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/88135/", "desc": "Floral feminino delicado, fácil de usar e indicado para rotina ou encontros casuais."}, {"id": 40, "slug": "glamour-secrets-black", "code": "74103", "name": "Glamour Secrets Black", "fullName": "Glamour Secrets Black Desodorante Colônia 75ml", "price": 189.9, "category": "feminino", "image": "produtos/feminino/glamour-secrets-black/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/74103/", "desc": "Fragrância feminina selecionada para uso diário, encontros e momentos especiais."}, {"id": 41, "slug": "her-code", "code": "50022", "name": "Her Code", "fullName": "Her Code Eau de Parfum 50ml", "price": 244.9, "category": "feminino", "image": "produtos/feminino/her-code/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/50022/", "desc": "Fragrância feminina selecionada para uso diário, encontros e momentos especiais."}, {"id": 42, "slug": "kiss-me-rosa-marcante", "code": "50267", "name": "Kiss Me Rosa Marcante", "fullName": "Kiss Me Rosa Marcante Colônia Desodorante 50ml", "price": 109.99, "category": "feminino", "image": "produtos/feminino/kiss-me-rosa-marcante/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/eudora/produto/50267/", "desc": "Fragrância feminina selecionada para uso diário, encontros e momentos especiais."}, {"id": 43, "slug": "leau-de-lily", "code": "83971", "name": "L'Eau de Lily", "fullName": "L'Eau de Lily Desodorante Colônia 75ml", "price": 219.9, "category": "feminino", "image": "produtos/feminino/leau-de-lily/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/83971/", "desc": "Perfume sofisticado, com presença elegante para ocasiões especiais."}, {"id": 44, "slug": "leau-de-lily-soleil", "code": "49680", "name": "L'Eau de Lily Soleil", "fullName": "L'Eau de Lily Soleil Desodorante Colônia 75ml", "price": 219.9, "category": "feminino", "image": "produtos/feminino/leau-de-lily-soleil/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/49680/", "desc": "Perfume sofisticado, com presença elegante para ocasiões especiais."}, {"id": 45, "slug": "lily-absolu", "code": "77988", "name": "Lily Absolu", "fullName": "Lily Absolu Eau de Parfum 75ml", "price": 319.9, "category": "feminino", "image": "produtos/feminino/lily-absolu/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/77988/", "desc": "Perfume sofisticado, com presença elegante para ocasiões especiais."}, {"id": 46, "slug": "lily-eau-de-parfum", "code": "77524", "name": "Lily Eau de Parfum", "fullName": "Lily Eau de Parfum 75ml", "price": 284.9, "category": "feminino", "image": "produtos/feminino/lily-eau-de-parfum/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/77524/", "desc": "Perfume sofisticado, com presença elegante para ocasiões especiais."}, {"id": 47, "slug": "lily-lumiere-eau-de-parfum", "code": "77989", "name": "Lily Lumière", "fullName": "Lily Lumière Eau de Parfum 75ml", "price": 319.9, "category": "feminino", "image": "produtos/feminino/lily-lumiere-eau-de-parfum/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/77989/", "desc": "Perfume sofisticado, com presença elegante para ocasiões especiais."}, {"id": 48, "slug": "linda", "code": "22516", "name": "Linda", "fullName": "Linda Desodorante Colônia 100ml", "price": 209.9, "category": "feminino", "image": "produtos/feminino/linda/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/22516/", "desc": "Fragrância feminina selecionada para uso diário, encontros e momentos especiais."}, {"id": 49, "slug": "linda-felicidade", "code": "81849", "name": "Linda Felicidade", "fullName": "Linda Felicidade Desodorante Colônia 100ml", "price": 209.9, "category": "feminino", "image": "produtos/feminino/linda-felicidade/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/81849/", "desc": "Fragrância feminina selecionada para uso diário, encontros e momentos especiais."}, {"id": 50, "slug": "linda-irresistivel", "code": "81756", "name": "Linda Irresistível", "fullName": "Linda Irresistível Desodorante Colônia 100ml", "price": 209.9, "category": "feminino", "image": "produtos/feminino/linda-irresistivel/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/81756/", "desc": "Fragrância feminina selecionada para uso diário, encontros e momentos especiais."}, {"id": 51, "slug": "liz-desodorante", "code": "76700", "name": "Liz", "fullName": "Liz Desodorante Colônia 100ml", "price": 174.9, "category": "feminino", "image": "produtos/feminino/liz-desodorante/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/76700/", "desc": "Fragrância feminina confortável, elegante e fácil de combinar com diferentes momentos."}, {"id": 52, "slug": "liz-flora", "code": "59466", "name": "Liz Flora", "fullName": "Liz Flora Desodorante Colônia 100ml", "price": 174.9, "category": "feminino", "image": "produtos/feminino/liz-flora/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/59466/", "desc": "Fragrância feminina confortável, elegante e fácil de combinar com diferentes momentos."}, {"id": 53, "slug": "liz-sublime", "code": "47339", "name": "Liz Sublime", "fullName": "Liz Sublime Desodorante Colônia 100ml", "price": 174.9, "category": "feminino", "image": "produtos/feminino/liz-sublime/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/47339/", "desc": "Fragrância feminina confortável, elegante e fácil de combinar com diferentes momentos."}, {"id": 54, "slug": "magnific-rouge-camelia", "code": "52943", "name": "Magnific Rouge Camélia", "fullName": "Magnific Rouge Camélia Desodorante Colônia 75ml", "price": 139.9, "category": "feminino", "image": "produtos/feminino/magnific-rouge-camelia/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/eudora/produto/52943/", "desc": "Fragrância feminina selecionada para uso diário, encontros e momentos especiais."}, {"id": 55, "slug": "nativa-spa-ameixa-baunilha", "code": "89366", "name": "Body Splash Nativa Spa Rosas Secretas", "fullName": "Body Splash Nativa Spa Rosas Secretas 200ml", "price": 99.9, "category": "feminino", "image": "produtos/feminino/nativa-spa-ameixa-baunilha/01.webp", "link": "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/89366/", "desc": "Fragrância leve para usar no dia a dia, com sensação de frescor e conforto na pele."}, {"id": 56, "slug": "boti-baby-lua", "code": "59132", "name": "Colônia Boti Baby Lua", "fullName": "Colônia Boti Baby Lua 100ml", "price": 95.9, "category": "infantil", "image": "produtos/infantil/boti-baby-lua/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/59132/", "desc": "Colônia infantil suave, pensada para perfumar com delicadeza e leveza."}, {"id": 57, "slug": "boti-baby-sol", "code": "51802", "name": "Boti Baby Sol", "fullName": "Boti Baby Colônia do Sol 100ml", "price": 75.9, "category": "infantil", "image": "produtos/infantil/boti-baby-sol/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/51802/", "desc": "Colônia infantil suave, pensada para perfumar com delicadeza e leveza."}, {"id": 58, "slug": "dr-botica-pocao-da-amizade", "code": "70674", "name": "Dr. Botica Poção da Amizade", "fullName": "Dr. Botica Poção da Amizade Colônia Infantil 120ml", "price": 96.9, "category": "infantil", "image": "produtos/infantil/dr-botica-pocao-da-amizade/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/70674/", "desc": "Colônia infantil suave, pensada para perfumar com delicadeza e leveza."}, {"id": 59, "slug": "dr-botica-pocao-da-aventura", "code": "83684", "name": "Dr. Botica Poção da Aventura", "fullName": "Dr. Botica Poção da Aventura Colônia Infantil 120ml", "price": 96.9, "category": "infantil", "image": "produtos/infantil/dr-botica-pocao-da-aventura/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/83684/", "desc": "Colônia infantil suave, pensada para perfumar com delicadeza e leveza."}, {"id": 60, "slug": "dr-botica-pocao-da-coragem", "code": "51521", "name": "Dr. Botica Poção da Coragem", "fullName": "Dr. Botica Poção da Coragem Colônia Infantil 120ml", "price": 77.9, "category": "infantil", "image": "produtos/infantil/dr-botica-pocao-da-coragem/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/51521/", "desc": "Colônia infantil suave, pensada para perfumar com delicadeza e leveza."}, {"id": 61, "slug": "dr-botica-pocao-da-criatividade", "code": "55221", "name": "Dr. Botica Poção da Criatividade", "fullName": "Dr. Botica Poção da Criatividade Colônia Infantil 120ml", "price": 96.9, "category": "infantil", "image": "produtos/infantil/dr-botica-pocao-da-criatividade/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/55221/", "desc": "Colônia infantil suave, pensada para perfumar com delicadeza e leveza."}, {"id": 62, "slug": "dr-botica-pocao-da-forca", "code": "51441", "name": "Dr. Botica Poção da Força", "fullName": "Dr. Botica Poção da Força Colônia Infantil 120ml", "price": 96.9, "category": "infantil", "image": "produtos/infantil/dr-botica-pocao-da-forca/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/51441/", "desc": "Colônia infantil suave, pensada para perfumar com delicadeza e leveza."}, {"id": 63, "slug": "dr-botica-pocao-do-coracao", "code": "70672", "name": "Dr. Botica Poção do Coração", "fullName": "Dr. Botica Poção do Coração Colônia Infantil 120ml", "price": 77.9, "category": "infantil", "image": "produtos/infantil/dr-botica-pocao-do-coracao/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/70672/", "desc": "Colônia infantil suave, pensada para perfumar com delicadeza e leveza."}, {"id": 64, "slug": "ma-cherie", "code": "05009", "name": "Ma Chérie", "fullName": "Ma Chérie Desodorante Colônia 100ml", "price": 149.9, "category": "infantil", "image": "produtos/infantil/ma-cherie/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/05009/", "desc": "Colônia infantil suave, pensada para perfumar com delicadeza e leveza."}, {"id": 65, "slug": "sophie-candy", "code": "51500", "name": "Sophie Candy", "fullName": "Colônia Infantil Sophie Candy 100ml", "price": 119.9, "category": "infantil", "image": "produtos/infantil/sophie-candy/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/51500/", "desc": "Colônia infantil suave, pensada para perfumar com delicadeza e leveza."}, {"id": 66, "slug": "sophie-hello", "code": "70668", "name": "Sophie Hello", "fullName": "Sophie Hello Colônia Infantil 100ml", "price": 119.9, "category": "infantil", "image": "produtos/infantil/sophie-hello/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/70668/", "desc": "Colônia infantil suave, pensada para perfumar com delicadeza e leveza."}, {"id": 67, "slug": "sophie-like", "code": "70669", "name": "Sophie Like", "fullName": "Sophie Like Colônia Infantil 100ml", "price": 119.9, "category": "infantil", "image": "produtos/infantil/sophie-like/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/70669/", "desc": "Colônia infantil suave, pensada para perfumar com delicadeza e leveza."}, {"id": 68, "slug": "arbo", "code": "74438", "name": "Arbo", "fullName": "Arbo Desodorante Colônia 100ml", "price": 131.9, "category": "masculino", "image": "produtos/masculino/arbo/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/74438/", "desc": "Fragrância masculina fresca e versátil, boa para rotina e momentos casuais."}, {"id": 69, "slug": "bold-intention", "code": "58933", "name": "Bold Intention", "fullName": "Bold Intention Desodorante Colônia 100ml", "price": 154.9, "category": "masculino", "image": "produtos/masculino/bold-intention/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/eudora/produto/58933/", "desc": "Fragrância masculina versátil, boa para uso diário e ocasiões especiais."}, {"id": 70, "slug": "boticollection-connexion", "code": "27707", "name": "Boticollection Connexion", "fullName": "Boticollection Connexion Desodorante Colônia 100ml", "price": 139.9, "category": "masculino", "image": "produtos/masculino/boticollection-connexion/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/27707/", "desc": "Fragrância masculina versátil, boa para uso diário e ocasiões especiais."}, {"id": 71, "slug": "boticollection-styletto", "code": "76678", "name": "Boticollection Styletto", "fullName": "Boticollection Styletto Desodorante Colônia 100ml", "price": 174.9, "category": "masculino", "image": "produtos/masculino/boticollection-styletto/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/76678/", "desc": "Fragrância masculina versátil, boa para uso diário e ocasiões especiais."}, {"id": 72, "slug": "celebre-sua-forca-masculino", "code": "83059", "name": "Celebre Sua Força Masculino", "fullName": "Celebre Sua Força Desodorante Colônia Masculino 100ml", "price": 119.9, "category": "masculino", "image": "produtos/masculino/celebre-sua-forca-masculino/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/83059/", "desc": "Fragrância masculina versátil, boa para uso diário e ocasiões especiais."}, {"id": 73, "slug": "clash", "code": "50677", "name": "Clash", "fullName": "Clash Desodorante Colônia 100ml", "price": 134.9, "category": "masculino", "image": "produtos/masculino/clash/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/50677/", "desc": "Fragrância masculina versátil, boa para uso diário e ocasiões especiais."}, {"id": 74, "slug": "coffee-man", "code": "74029", "name": "Coffee Man", "fullName": "Coffee Man Desodorante Colônia 100ml", "price": 219.9, "category": "masculino", "image": "produtos/masculino/coffee-man/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/74029/", "desc": "Fragrância envolvente, levemente adocicada e com personalidade marcante."}, {"id": 75, "slug": "egeo-blue", "code": "82686", "name": "Egeo Blue", "fullName": "Egeo Blue Desodorante Colônia 90ml", "price": 159.9, "category": "masculino", "image": "produtos/masculino/egeo-blue/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/82686/", "desc": "Perfume moderno, jovem e versátil, ideal para quem gosta de fragrâncias presentes."}, {"id": 76, "slug": "egeo-original", "code": "49812", "name": "Egeo Original", "fullName": "Egeo Original Desodorante Colônia 90ml", "price": 159.9, "category": "masculino", "image": "produtos/masculino/egeo-original/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/49812/", "desc": "Perfume moderno, jovem e versátil, ideal para quem gosta de fragrâncias presentes."}, {"id": 77, "slug": "egeo-spicy-vibe", "code": "84214", "name": "Egeo Spicy Vibe", "fullName": "Egeo Spicy Vibe Desodorante Colônia 90ml", "price": 159.9, "category": "masculino", "image": "produtos/masculino/egeo-spicy-vibe/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/84214/", "desc": "Perfume moderno, jovem e versátil, ideal para quem gosta de fragrâncias presentes."}, {"id": 78, "slug": "eudora-h-marine", "code": "57597", "name": "Eudora H Marine", "fullName": "Eudora H Marine Desodorante Colônia 100ml", "price": 114.9, "category": "masculino", "image": "produtos/masculino/eudora-h-marine/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/eudora/produto/57597/", "desc": "Fragrância masculina versátil, boa para uso diário e ocasiões especiais."}, {"id": 79, "slug": "lor-de-mediterranee", "code": "56554", "name": "L'Or de Méditerranée", "fullName": "L'Or de Méditerranée Eau de Parfum Pour Homme 75ml", "price": 379.0, "category": "masculino", "image": "produtos/masculino/lor-de-mediterranee/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/oui/produto/56554/", "desc": "Perfume masculino premium, com proposta sofisticada e acabamento mais intenso."}, {"id": 80, "slug": "malbec", "code": "48130", "name": "Malbec", "fullName": "Malbec Desodorante Colônia 100ml", "price": 184.9, "category": "masculino", "image": "produtos/masculino/malbec/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/48130/", "desc": "Clássico masculino de perfil marcante, ideal para quem gosta de perfumes presentes."}, {"id": 81, "slug": "malbec-black", "code": "84392", "name": "Malbec Black", "fullName": "Malbec Black Desodorante Colônia 100ml", "price": 259.9, "category": "masculino", "image": "produtos/masculino/malbec-black/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/84392/", "desc": "Clássico masculino de perfil marcante, ideal para quem gosta de perfumes presentes."}, {"id": 82, "slug": "malbec-gold", "code": "84391", "name": "Malbec Gold", "fullName": "Malbec Gold Desodorante Colônia 100ml", "price": 249.9, "category": "masculino", "image": "produtos/masculino/malbec-gold/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/84391/", "desc": "Clássico masculino de perfil marcante, ideal para quem gosta de perfumes presentes."}, {"id": 83, "slug": "malbec-magnetic", "code": "84390", "name": "Malbec Magnetic", "fullName": "Malbec Magnetic Desodorante Colônia 100ml", "price": 249.9, "category": "masculino", "image": "produtos/masculino/malbec-magnetic/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/84390/", "desc": "Clássico masculino de perfil marcante, ideal para quem gosta de perfumes presentes."}, {"id": 84, "slug": "malbec-signature", "code": "48134", "name": "Malbec Signature", "fullName": "Malbec Eau de Parfum Signature 90ml", "price": 359.9, "category": "masculino", "image": "produtos/masculino/malbec-signature/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/48134/", "desc": "Clássico masculino de perfil marcante, ideal para quem gosta de perfumes presentes."}, {"id": 85, "slug": "malbec-sport", "code": "48787", "name": "Malbec Sport", "fullName": "Malbec Sport Desodorante Colônia 100ml", "price": 229.9, "category": "masculino", "image": "produtos/masculino/malbec-sport/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/48787/", "desc": "Clássico masculino de perfil marcante, ideal para quem gosta de perfumes presentes."}, {"id": 86, "slug": "malbec-vert", "code": "48133", "name": "Malbec Vert", "fullName": "Malbec Vert Desodorante Colônia 100ml", "price": 229.9, "category": "masculino", "image": "produtos/masculino/malbec-vert/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/48133/", "desc": "Clássico masculino de perfil marcante, ideal para quem gosta de perfumes presentes."}, {"id": 87, "slug": "men-galbe", "code": "76666", "name": "Men Galbe", "fullName": "Men Galbe Desodorante Colônia 100ml", "price": 164.9, "category": "masculino", "image": "produtos/masculino/men-galbe/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/76666/", "desc": "Fragrância masculina versátil, boa para uso diário e ocasiões especiais."}, {"id": 88, "slug": "men-only", "code": "76665", "name": "Men Only", "fullName": "Men Only Desodorante Colônia 100ml", "price": 164.9, "category": "masculino", "image": "produtos/masculino/men-only/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/76665/", "desc": "Fragrância masculina versátil, boa para uso diário e ocasiões especiais."}, {"id": 89, "slug": "oui-iconique-001", "code": "85827", "name": "O.U.I Iconique 001", "fullName": "O.U.I Iconique 001 Eau de Parfum 75ml", "price": 379.0, "category": "masculino", "image": "produtos/masculino/oui-iconique-001/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/oui/produto/85827/", "desc": "Perfume masculino premium, com proposta sofisticada e acabamento mais intenso."}, {"id": 90, "slug": "oui-mystere-royal-084", "code": "47407", "name": "O.U.I Mystère Royal 084", "fullName": "O.U.I Mystère Royal 084 Eau de Parfum 75ml", "price": 379.0, "category": "masculino", "image": "produtos/masculino/oui-mystere-royal-084/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/oui/produto/47407/", "desc": "Perfume masculino premium, com proposta sofisticada e acabamento mais intenso."}, {"id": 91, "slug": "quasar-brave", "code": "73287", "name": "Quasar Brave", "fullName": "Quasar Brave Desodorante Colônia 100ml", "price": 174.9, "category": "masculino", "image": "produtos/masculino/quasar-brave/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/73287/", "desc": "Fragrância masculina fresca e versátil, boa para rotina e momentos casuais."}, {"id": 92, "slug": "quasar-fire", "code": "73285", "name": "Quasar Fire", "fullName": "Quasar Fire Desodorante Colônia 100ml", "price": 174.9, "category": "masculino", "image": "produtos/masculino/quasar-fire/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/73285/", "desc": "Fragrância masculina fresca e versátil, boa para rotina e momentos casuais."}, {"id": 93, "slug": "quasar-rush", "code": "83039", "name": "Quasar Rush", "fullName": "Quasar Rush Desodorante Colônia 100ml", "price": 174.9, "category": "masculino", "image": "produtos/masculino/quasar-rush/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/83039/", "desc": "Fragrância masculina fresca e versátil, boa para rotina e momentos casuais."}, {"id": 94, "slug": "the-blend-bourbon", "code": "77489", "name": "The Blend Bourbon", "fullName": "The Blend Bourbon Eau de Parfum 100ml", "price": 359.9, "category": "masculino", "image": "produtos/masculino/the-blend-bourbon/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/77489/", "desc": "Perfume masculino premium, com proposta sofisticada e acabamento mais intenso."}, {"id": 95, "slug": "the-blend-cardamom", "code": "83529", "name": "The Blend Cardamom", "fullName": "The Blend Cardamom Eau de Parfum 100ml", "price": 359.9, "category": "masculino", "image": "produtos/masculino/the-blend-cardamom/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/83529/", "desc": "Perfume masculino premium, com proposta sofisticada e acabamento mais intenso."}, {"id": 96, "slug": "uomini-black", "code": "77484", "name": "Uomini Black", "fullName": "Uomini Black Desodorante Colônia 100ml", "price": 199.9, "category": "masculino", "image": "produtos/masculino/uomini-black/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/77484/", "desc": "Fragrância masculina versátil, boa para uso diário e ocasiões especiais."}, {"id": 97, "slug": "uomini-infinite", "code": "77490", "name": "Uomini Infinite", "fullName": "Uomini Infinite Desodorante Colônia 100ml", "price": 169.9, "category": "masculino", "image": "produtos/masculino/uomini-infinite/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/77490/", "desc": "Fragrância masculina versátil, boa para uso diário e ocasiões especiais."}, {"id": 98, "slug": "volpe-triumph", "code": "56231", "name": "Volpe Triumph", "fullName": "Volpe Triumph Desodorante Colônia 100ml", "price": 169.9, "category": "masculino", "image": "produtos/masculino/volpe-triumph/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/eudora/produto/56231/", "desc": "Fragrância masculina versátil, boa para uso diário e ocasiões especiais."}, {"id": 99, "slug": "zaad-expedition", "code": "46898", "name": "Zaad Expedition", "fullName": "Zaad Expedition Eau de Parfum 95ml", "price": 294.9, "category": "masculino", "image": "produtos/masculino/zaad-expedition/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/46898/", "desc": "Perfume masculino premium, com proposta sofisticada e acabamento mais intenso."}, {"id": 100, "slug": "zaad-intense", "code": "58644", "name": "Zaad Intense", "fullName": "Zaad Intense Eau de Parfum 95ml", "price": 299.9, "category": "masculino", "image": "produtos/masculino/zaad-intense/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/58644/", "desc": "Perfume masculino premium, com proposta sofisticada e acabamento mais intenso."}, {"id": 101, "slug": "zaad-mondo", "code": "47951", "name": "Zaad Mondo", "fullName": "Zaad Mondo Eau de Parfum 95ml", "price": 263.89, "category": "masculino", "image": "produtos/masculino/zaad-mondo/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/47951/", "desc": "Perfume masculino premium, com proposta sofisticada e acabamento mais intenso."}, {"id": 102, "slug": "zaad-eau-de-parfum", "code": "47950", "name": "Zaad Eau de Parfum", "fullName": "Zaad Eau de Parfum 95ml", "price": 329.9, "category": "masculino", "image": "produtos/masculino/zaad-eau-de-parfum/01.webp", "link": "https://minhaloja.grupoboticario.com.br/loja-aldianeinaciodasilva-25300224/boticario/produto/47950/", "desc": "Perfume masculino premium, com proposta sofisticada e acabamento mais intenso."}];
+    const bestsellerCodes = ["75792", "77524", "48139", "50022", "48130", "47950", "83529", "73287", "05009", "70669", "51387", "84214"];
 
-            // Validação final
-            const fem = allProducts.filter(p=>p.category==='feminino');
-            const masc = allProducts.filter(p=>p.category==='masculino');
-            const inf = allProducts.filter(p=>p.category==='infantil');
-            console.log(`✅ TOTAL: ${allProducts.length} | Feminino: ${fem.length}/55 | Masculino: ${masc.length}/35 | Infantil: ${inf.length}/12`);
-            console.log('🔗 Links infantis atualizados com UTM. Código 52943 sem duplicação. 35 códigos masculinos oficiais (5 links excedentes removidos).');
-            console.log('📱 WhatsApp: https://wa.me/message/P2WGXAOBKQKNP1');
-            console.log('📧 E-mail: contato@anaessenci.com.br');
+    const productGrid = document.getElementById("productGrid");
+    const featuredGrid = document.getElementById("featuredGrid");
+    const searchInput = document.getElementById("searchInput");
+    const emptyState = document.getElementById("emptyState");
+    const chips = document.querySelectorAll(".chip");
 
-            // ==================== RENDER ====================
-            const grid = document.getElementById('productsGrid');
-            const searchInput = document.getElementById('searchInput');
-            const resultCount = document.getElementById('resultCount');
-            const filterPills = document.querySelectorAll('.filter-pill');
-            let currentFilter = 'all';
-            let currentSearch = '';
+    let currentFilter = "todos";
 
-            const whatsappLink = 'https://wa.me/message/P2WGXAOBKQKNP1';
-            const emailLink = 'mailto:contato@anaessenci.com.br?subject=Interesse%20em%20produto%20Ana%20Essenci';
+    function formatPrice(price) {
+      return Number(price).toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+      });
+    }
 
-            function createCard(p) {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.innerHTML = `
-                <div class="product-img-wrap">
-                    <img src="${p.img}" alt="${p.name}" class="product-img" loading="lazy"
-                         onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-                    <img src="imagens/logo/logo-ana-essenci.png" alt="Fallback" class="fallback-img" style="display:none">
-                </div>
-                <div class="product-info">
-                    <span class="product-cat">${p.category}</span>
-                    <h3 class="product-name">${p.name}</h3>
-                    <p class="product-desc">${p.desc}</p>
-                    <span class="product-code">Cód. ${p.code}</span>
-                    <div class="product-price">${p.price}</div>
-                    <div class="card-buttons">
-                        <a href="${p.link}" target="_blank" rel="noopener noreferrer" class="btn-sm btn-buy">Comprar</a>
-                        <a href="${whatsappLink}" target="_blank" rel="noopener noreferrer" class="btn-sm btn-wpp">WhatsApp</a>
-                        <a href="${emailLink}" target="_blank" class="btn-sm btn-email">E-mail</a>
-                    </div>
-                </div>`;
-                return card;
-            }
+    function categoryLabel(category) {
+      if (category === "feminino") return "Feminino";
+      if (category === "masculino") return "Masculino";
+      return "Infantil";
+    }
 
-            function render(prods) {
-                grid.innerHTML = '';
-                if(prods.length===0) {
-                    grid.innerHTML = `<p style="grid-column:1/-1;text-align:center;padding:40px;">Nenhum produto encontrado.</p>`;
-                } else {
-                    prods.forEach(p => grid.appendChild(createCard(p)));
-                }
-                resultCount.textContent = `${prods.length} produto${prods.length!==1?'s':''}`;
-            }
+    function card(product) {
+      return `
+        <article class="card">
+          <div class="product-image">
+            <span class="badge">${categoryLabel(product.category)}</span>
+            <img loading="lazy" src="${product.image}" alt="${product.fullName}" onerror="this.src='imagens/logo/logo-ana-essenci.png'">
+          </div>
+          <div class="product-body">
+            <span class="code">CÓDIGO ${product.code}</span>
+            <h3 class="product-title">${product.name}</h3>
+            <p class="product-desc">${product.desc}</p>
+            <strong class="product-price">${formatPrice(product.price)}</strong>
+            <a class="buy" href="${product.link}" target="_blank" rel="noopener">Comprar Agora</a>
+          </div>
+        </article>
+      `;
+    }
 
-            function filter() {
-                let filtered = allProducts;
-                if(currentFilter!=='all') filtered = filtered.filter(p=>p.category===currentFilter);
-                if(currentSearch.trim()) {
-                    const s = currentSearch.trim().toLowerCase();
-                    filtered = filtered.filter(p=> p.name.toLowerCase().includes(s) || p.desc.toLowerCase().includes(s) || p.category.includes(s));
-                }
-                render(filtered);
-            }
+    function filteredProducts() {
+      const q = searchInput.value.trim().toLowerCase();
 
-            searchInput.addEventListener('input', ()=>{
-                currentSearch = searchInput.value;
-                filter();
-            });
+      return products.filter(product => {
+        const okCategory = currentFilter === "todos" || product.category === currentFilter;
+        const text = `${product.name} ${product.fullName} ${product.code} ${product.category} ${product.slug}`.toLowerCase();
+        const okSearch = !q || text.includes(q);
+        return okCategory && okSearch;
+      });
+    }
 
-            filterPills.forEach(pill=>{
-                pill.addEventListener('click', function(){
-                    filterPills.forEach(p=>p.classList.remove('active'));
-                    this.classList.add('active');
-                    currentFilter = this.dataset.filter;
-                    filter();
-                });
-            });
+    function renderProducts() {
+      const list = filteredProducts();
+      productGrid.innerHTML = list.map(card).join("");
+      emptyState.style.display = list.length ? "none" : "block";
+    }
 
-            // Header scroll
-            window.addEventListener('scroll', ()=>{
-                document.getElementById('header').classList.toggle('scrolled', window.scrollY>40);
-            });
+    function renderFeatured() {
+      const list = products.filter(product => bestsellerCodes.includes(product.code)).slice(0, 12);
+      featuredGrid.innerHTML = list.map(card).join("");
+    }
 
-            // Inicial
-            render(allProducts);
-        })();
-    </script>
+    chips.forEach(chip => {
+      chip.addEventListener("click", () => {
+        chips.forEach(item => item.classList.remove("active"));
+        chip.classList.add("active");
+        currentFilter = chip.dataset.filter;
+        renderProducts();
+      });
+    });
 
-    <!--
-    ============================================================
-    RELATÓRIO DE VALIDAÇÃO DO CATÁLOGO
-    ============================================================
-    ✅ Produtos OK: 102 (55 feminino, 35 masculino, 12 infantil)
-    ✅ Todos os produtos possuem link afiliado válido.
-    ✅ Todos os produtos possuem caminho de imagem (pasta correspondente).
-    ❌ Produtos sem link: 0
-    ❌ Produtos sem imagem: 0
-    ⚠️ Links duplicados: Corrigido – código 52943 estava duplicado na lista feminina; mantido apenas uma ocorrência (Magnific Rouge Camélia).
-    ⚠️ Links sobrando (masculino): A lista original continha 40 links, mas apenas 35 pastas/imagens existem.
-       Os 5 links excedentes foram removidos para alinhar com as pastas reais.
-       Caso queira reinseri-los, verifique se as pastas/imagens foram criadas.
+    searchInput.addEventListener("input", renderProducts);
 
-    CATEGORIA INFANTIL: 12 links atualizados com UTM conforme solicitado.
+    renderFeatured();
+    renderProducts();
 
-    BOTÕES: Cada card agora possui três botões:
-      - Comprar agora (link do produto)
-      - WhatsApp (https://wa.me/message/P2WGXAOBKQKNP1)
-      - E-mail (contato@anaessenci.com.br)
-
-    DESIGN: Responsivo, paleta rosa premium, busca e filtros funcionais.
-    ============================================================
-    -->
+    console.log("Ana Essenci validado:", {
+      total: products.length,
+      feminino: products.filter(p => p.category === "feminino").length,
+      masculino: products.filter(p => p.category === "masculino").length,
+      infantil: products.filter(p => p.category === "infantil").length,
+      linksInvalidos: products.filter(p => !p.link || p.link === "#").length
+    });
+  </script>
 </body>
 </html>

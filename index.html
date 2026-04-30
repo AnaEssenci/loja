@@ -1,683 +1,764 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ana Essenci | Perfumaria Premium</title>
-<meta name="description" content="Catálogo Ana Essenci com perfumes femininos, masculinos e infantis. Escolha pelo código e receba atendimento.">
-<link rel="icon" href="imagens/favicon/favicon.ico">
-<style>
-:root{
-  --rose:#b62f55;--rose2:#8f2441;--soft:#fff3f6;--soft2:#fde7ee;
-  --gold:#c8a75e;--ink:#191316;--text:#46353b;--muted:#75646b;
-  --line:rgba(182,47,85,.16);--white:#fff;--shadow:0 20px 55px rgba(80,32,48,.12);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Inter,Arial,sans-serif;background:#fff9fb;color:var(--ink);overflow-x:hidden}
-a{text-decoration:none;color:inherit}
-img{max-width:100%;display:block}
-.container{width:min(94%,1340px);margin:auto}
-.topbar{background:#191316;color:#fff;text-align:center;padding:10px 14px;font-size:13px;font-weight:800;letter-spacing:.03em}
-.header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
-.header-inner{min-height:86px;display:flex;align-items:center;justify-content:space-between;gap:22px;padding:12px 0}
-.brand{display:flex;align-items:center;gap:12px}
-.brand-logo{width:64px;height:64px;border-radius:22px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 10px 28px rgba(0,0,0,.08)}
-.brand-logo img{width:100%;height:100%;object-fit:cover}
-.brand-title{font-family:Georgia,serif;color:var(--rose);font-size:25px;font-weight:800;line-height:1}
-.brand-sub{display:block;margin-top:4px;color:var(--muted);font-size:10px;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
-.nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
-.nav a{font-size:13px;font-weight:900;color:var(--text);padding:10px 14px;border-radius:999px}
-.nav a:hover{background:var(--soft);color:var(--rose)}
-.hero{padding:32px 0 58px}
-.hero-card{min-height:610px;border-radius:42px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:linear-gradient(90deg,rgba(255,249,251,.98),rgba(255,249,251,.94) 52%,rgba(255,249,251,.72)),url('imagens/banner/banner-desktop.jpg') right center/cover no-repeat;display:flex;align-items:center}
-.hero-content{max-width:730px;padding:66px}
-.eyebrow{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 16px;color:var(--rose);font-size:12px;font-weight:950;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px;box-shadow:0 8px 24px rgba(0,0,0,.06)}
-h1{font-family:Georgia,serif;font-size:clamp(42px,6vw,82px);line-height:.96;letter-spacing:-2px;margin-bottom:22px}
-h1 em{color:var(--rose);font-style:italic}
-.hero p{font-size:18px;line-height:1.75;color:var(--muted);max-width:650px;margin-bottom:28px}
-.actions{display:flex;gap:12px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;border-radius:999px;font-weight:950;transition:.22s}
-.btn:hover{transform:translateY(-2px)}
-.btn-primary{background:linear-gradient(135deg,var(--rose),var(--rose2));color:#fff;box-shadow:0 14px 32px rgba(182,47,85,.25)}
-.btn-light{background:#fff;color:var(--rose);border:1px solid var(--line)}
-.stats{margin-top:34px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:620px}
-.stat{background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:22px;padding:14px;box-shadow:0 8px 24px rgba(0,0,0,.06)}
-.stat strong{display:block;font-family:Georgia,serif;color:var(--rose);font-size:27px}
-.stat span{display:block;margin-top:4px;color:var(--muted);font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
-section{padding:70px 0}
-.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:28px}
-.section-head h2{font-family:Georgia,serif;font-size:clamp(32px,4vw,52px);line-height:1}
-.section-head p{max-width:650px;color:var(--muted);line-height:1.7}
-.toolbar{display:flex;gap:10px;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:26px;padding:14px;margin-bottom:28px;box-shadow:0 10px 28px rgba(0,0,0,.05)}
-.toolbar input{height:50px;flex:1;min-width:240px;border:1px solid var(--line);border-radius:999px;padding:0 18px;outline:none}
-.chip{height:50px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--rose);font-weight:950;cursor:pointer}
-.chip.active,.chip:hover{background:var(--rose);color:#fff}
-.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
-.card{background:#fff;border:1px solid var(--line);border-radius:30px;box-shadow:0 12px 34px rgba(80,32,48,.09);overflow:hidden;display:flex;flex-direction:column;transition:.25s;min-height:100%;animation:fade .35s ease both}
-.card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
-.card::before{content:"";height:4px;background:linear-gradient(90deg,var(--gold),var(--rose),var(--rose2))}
-@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-.product-image{height:270px;background:linear-gradient(180deg,#fff,#fff0f5);position:relative;display:grid;place-items:center;overflow:hidden}
-.product-image img{width:100%;height:100%;object-fit:contain;padding:24px;transition:.3s}
-.card:hover img{transform:scale(1.035)}
-.badge,.tag{position:absolute;top:14px;border-radius:999px;padding:7px 11px;font-size:11px;font-weight:950;letter-spacing:.07em;text-transform:uppercase;z-index:2}
-.badge{left:14px;background:#fff;color:var(--rose);border:1px solid var(--line)}
-.tag{right:14px;background:linear-gradient(135deg,var(--gold),#ead48a);color:#3b2b12}
-.product-body{padding:20px;display:flex;flex-direction:column;gap:11px;flex:1}
-.code{color:var(--muted);font-size:12px;font-weight:950;letter-spacing:.08em}
-.product-title{font-family:Georgia,serif;font-size:22px;line-height:1.13;min-height:52px}
-.product-desc{font-size:14px;line-height:1.6;color:var(--muted);min-height:88px}
-.price{font-size:24px;font-weight:950;color:var(--rose)}
-.buy{margin-top:auto;min-height:48px;display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(135deg,var(--rose),var(--rose2));color:#fff;border-radius:18px;font-weight:950}
-.featured-wrap{overflow:hidden}
-.carousel{display:flex;gap:22px;transition:transform .6s ease;will-change:transform}
-.carousel .card{flex:0 0 calc((100% - 66px)/4);max-width:calc((100% - 66px)/4)}
-.catalogs{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.catalog-card{background:#fff;border:1px solid var(--line);border-radius:30px;box-shadow:0 12px 34px rgba(80,32,48,.09);padding:26px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between}
-.catalog-card strong{font-family:Georgia,serif;font-size:30px;color:var(--rose)}
-.catalog-card p{color:var(--muted);line-height:1.6;margin:10px 0 18px}
-.support{position:fixed;right:18px;bottom:18px;z-index:120;display:flex;flex-direction:column;gap:10px}
-.support a{min-width:132px;display:flex;justify-content:center;align-items:center;padding:13px 17px;border-radius:999px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);color:var(--rose);font-weight:950}
-.support a:first-child{background:#1fb85b;color:#fff;border-color:#1fb85b}
-footer{margin-top:50px;background:#191316;color:#fff;padding:48px 0 32px}
-.footer-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:28px}
-footer h3{font-family:Georgia,serif;font-size:30px;margin-bottom:10px}
-footer p,footer a{color:#ead8df;line-height:1.7;font-size:14px}
-.copy{border-top:1px solid rgba(255,255,255,.12);margin-top:30px;padding-top:20px;color:#d7c5cc;font-size:13px}
-.empty{display:none;background:#fff;border:1px dashed var(--line);border-radius:24px;padding:40px;text-align:center;color:var(--muted)}
-@media(max-width:1180px){.grid{grid-template-columns:repeat(3,1fr)}.catalogs{grid-template-columns:repeat(2,1fr)}.carousel .card{flex-basis:calc((100% - 44px)/3);max-width:calc((100% - 44px)/3)}}
-@media(max-width:820px){
-.header-inner{align-items:flex-start;flex-direction:column}.nav{justify-content:flex-start}
-.hero-card{min-height:540px;border-radius:28px;background:linear-gradient(180deg,rgba(255,249,251,.98),rgba(255,249,251,.92)),url('imagens/banner/banner-mobile.jpg') center/cover no-repeat}
-.hero-content{padding:34px 22px}.hero p{font-size:16px}.stats{grid-template-columns:repeat(2,1fr)}
-section{padding:50px 0}.toolbar input{min-width:100%;width:100%}.grid{grid-template-columns:1fr}.product-desc,.product-title{min-height:auto}.product-image{height:300px}
-.catalogs{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.support{right:12px;bottom:12px}.support a{min-width:auto;font-size:13px}
-.featured-wrap{overflow-x:auto}.carousel{gap:18px}.carousel .card{flex:0 0 82%;max-width:82%}
-}
-
-/* ===== MOBILE ROSA PREMIUM — NÃO ALTERA DESKTOP ===== */
-@media (max-width: 820px) {
-  body {
-    background:
-      radial-gradient(circle at 20% 0%, rgba(255, 220, 232, .85), transparent 28%),
-      linear-gradient(180deg, #fff7fa 0%, #fff 46%, #fff5f8 100%);
-    color: var(--ink);
-  }
-
-  .topbar {
-    display: none;
-  }
-
-  .header {
-    background: rgba(255, 255, 255, .96);
-    border-bottom: 1px solid rgba(182,47,85,.14);
-    box-shadow: 0 8px 24px rgba(120, 45, 70, .08);
-  }
-
-  .header-inner {
-    min-height: auto;
-    padding: 14px 0 16px;
-    align-items: center;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .brand {
-    width: 100%;
-    justify-content: center;
-    min-width: auto;
-  }
-
-  .brand-logo {
-    width: 58px;
-    height: 58px;
-    border-radius: 22px;
-    border: 1px solid rgba(182,47,85,.18);
-    box-shadow: 0 12px 28px rgba(182,47,85,.12);
-  }
-
-  .brand-title {
-    font-size: 23px;
-  }
-
-  .brand-sub {
-    font-size: 9px;
-    letter-spacing: .15em;
-  }
-
-  .nav {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
-  }
-
-  .nav a {
-    text-align: center;
-    background: #fff;
-    border: 1px solid rgba(182,47,85,.14);
-    color: var(--rose);
-    border-radius: 999px;
-    padding: 11px 8px;
-    font-size: 12px;
-    box-shadow: 0 8px 20px rgba(120,45,70,.06);
-  }
-
-  .hero {
-    display: none;
-  }
-
-  #produtos {
-    padding-top: 18px;
-  }
-
-  .section-head {
-    margin-bottom: 15px;
-  }
-
-  .section-head h2 {
-    font-size: 29px;
-    color: var(--ink);
-  }
-
-  .section-head p {
-    font-size: 14px;
-    color: var(--muted);
-  }
-
-  .toolbar {
-    position: sticky;
-    top: 0;
-    z-index: 75;
-    background: rgba(255,247,250,.96);
-    backdrop-filter: blur(14px);
-    border: 0;
-    border-radius: 0;
-    box-shadow: 0 10px 24px rgba(120,45,70,.08);
-    padding: 14px 0 16px;
-    margin-bottom: 18px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 11px;
-  }
-
-  .toolbar input {
-    grid-column: 1 / -1;
-    width: 100%;
-    min-width: 100%;
-    height: 60px;
-    border-radius: 999px;
-    border: 2px solid rgba(182,47,85,.45);
-    background: #fff;
-    color: var(--ink);
-    padding: 0 22px;
-    font-size: 16px;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.7), 0 10px 24px rgba(182,47,85,.08);
-  }
-
-  .toolbar input::placeholder {
-    color: #8c717b;
-  }
-
-  .chip {
-    height: 46px;
-    padding: 0 10px;
-    border-radius: 999px;
-    border: 1px solid rgba(182,47,85,.22);
-    background: #fff;
-    color: var(--rose);
-    font-weight: 900;
-    font-size: 13px;
-    box-shadow: 0 8px 18px rgba(120,45,70,.06);
-  }
-
-  .chip.active,
-  .chip:hover {
-    background: linear-gradient(135deg, var(--rose), var(--rose2));
-    color: #fff;
-    border-color: transparent;
-  }
-
-  .grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-  }
-
-  .card {
-    border-radius: 18px;
-    background: #fff;
-    border: 1px solid rgba(182,47,85,.18);
-    box-shadow: 0 12px 28px rgba(120,45,70,.10);
-    overflow: hidden;
-  }
-
-  .card::before {
-    height: 3px;
-    background: linear-gradient(90deg, var(--gold), var(--rose), var(--rose2));
-  }
-
-  .product-image {
-    height: 175px;
-    background: linear-gradient(180deg, #fff, #fff0f5);
-    border-bottom: 1px solid rgba(182,47,85,.10);
-  }
-
-  .product-image img {
-    padding: 10px;
-    object-fit: contain;
-  }
-
-  .badge {
-    left: 9px;
-    top: 9px;
-    padding: 6px 8px;
-    background: rgba(255,255,255,.94);
-    color: var(--rose);
-    border: 1px solid rgba(182,47,85,.14);
-    font-size: 9px;
-    letter-spacing: .05em;
-  }
-
-  .tag {
-    right: 9px;
-    top: 9px;
-    padding: 6px 8px;
-    font-size: 9px;
-    max-width: 88px;
-    text-align: center;
-  }
-
-  .product-body {
-    padding: 13px;
-    gap: 8px;
-  }
-
-  .code {
-    font-size: 10px;
-    color: #9b7381;
-  }
-
-  .product-title {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 17px;
-    font-weight: 700;
-    line-height: 1.15;
-    min-height: 40px;
-    color: var(--ink);
-  }
-
-  .product-desc {
-    display: none;
-  }
-
-  .price {
-    font-size: 20px;
-    color: var(--rose);
-    font-weight: 950;
-  }
-
-  .buy {
-    min-height: 46px;
-    border-radius: 999px;
-    background: linear-gradient(135deg, var(--rose), var(--rose2));
-    color: #fff;
-    font-size: 14px;
-    box-shadow: 0 10px 22px rgba(182,47,85,.22);
-  }
-
-  #desejados {
-    padding-top: 34px;
-  }
-
-  .featured-wrap {
-    overflow-x: auto;
-    padding-bottom: 4px;
-  }
-
-  .carousel {
-    transform: none !important;
-    gap: 14px;
-    padding-bottom: 8px;
-  }
-
-  .carousel .card {
-    flex: 0 0 72%;
-    max-width: 72%;
-  }
-
-  .catalogs {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .catalog-card {
-    border-radius: 20px;
-    background: #fff;
-    border: 1px solid rgba(182,47,85,.18);
-    box-shadow: 0 12px 28px rgba(120,45,70,.10);
-    min-height: 190px;
-  }
-
-  .catalog-card strong {
-    color: var(--rose);
-    font-size: 27px;
-  }
-
-  .catalog-card .btn {
-    border-radius: 999px;
-  }
-
-  .support {
-    right: 14px;
-    bottom: 86px;
-    gap: 8px;
-  }
-
-  .support a {
-    min-width: 58px;
-    width: 58px;
-    height: 58px;
-    padding: 0;
-    border-radius: 50%;
-    font-size: 0;
-    border: 0;
-    box-shadow: 0 12px 28px rgba(120,45,70,.18);
-  }
-
-  .support a:first-child {
-    background: #25d366;
-    color: #fff;
-  }
-
-  .support a:first-child::before {
-    content: "☎";
-    font-size: 26px;
-  }
-
-  .support a:nth-child(2) {
-    background: #fff;
-    color: var(--rose);
-    border: 1px solid rgba(182,47,85,.18);
-  }
-
-  .support a:nth-child(2)::before {
-    content: "✉";
-    font-size: 24px;
-  }
-
-  footer {
-    padding-bottom: 128px;
-  }
-
-  .cookie-bar {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 130;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 18px;
-    background: rgba(255,255,255,.98);
-    color: var(--ink);
-    border-top: 1px solid rgba(182,47,85,.14);
-    box-shadow: 0 -10px 28px rgba(120,45,70,.12);
-  }
-
-  .cookie-bar p {
-    flex: 1;
-    font-size: 14px;
-    line-height: 1.35;
-    color: var(--text);
-  }
-
-  .cookie-bar button {
-    border: 1px solid var(--rose);
-    color: var(--rose);
-    background: #fff;
-    border-radius: 999px;
-    padding: 11px 16px;
-    font-size: 14px;
-    font-weight: 800;
-  }
-}
-
-@media (min-width: 821px) {
-  .cookie-bar {
-    display: none !important;
-  }
-}
-
-
-/* ===== CORREÇÃO MOBILE: CARROSSEL + ATENDIMENTO ===== */
-@media (max-width: 820px) {
-  #desejados {
-    overflow: hidden;
-  }
-
-  #desejados .container {
-    width: 100%;
-    padding-left: 18px;
-    padding-right: 0;
-    overflow: hidden;
-  }
-
-  .featured-wrap {
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding: 0 18px 8px 0;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .carousel {
-    transform: none !important;
-    display: flex;
-    gap: 14px;
-    overflow: visible;
-    padding: 0 0 12px 0;
-    scroll-snap-type: x mandatory;
-  }
-
-  .carousel .card {
-    flex: 0 0 78vw !important;
-    max-width: 78vw !important;
-    min-width: 78vw !important;
-    scroll-snap-align: start;
-  }
-
-  .carousel .product-image {
-    height: 250px;
-  }
-
-  .carousel .product-image img {
-    object-fit: contain;
-    padding: 16px;
-  }
-
-  .carousel .product-title {
-    font-size: 20px;
-    min-height: auto;
-  }
-
-  .carousel .product-desc {
-    display: none;
-  }
-
-  .carousel .buy {
-    min-height: 50px;
-  }
-
-  .support {
-    right: 14px;
-    bottom: 84px;
-    gap: 8px;
-    align-items: flex-end;
-  }
-
-  .support a {
-    width: auto !important;
-    min-width: 112px !important;
-    height: 46px !important;
-    padding: 0 16px !important;
-    border-radius: 999px !important;
-    font-size: 14px !important;
-    font-weight: 900 !important;
-    letter-spacing: .01em;
-    box-shadow: 0 12px 28px rgba(120,45,70,.18);
-  }
-
-  .support a:first-child {
-    background: #25d366 !important;
-    color: #fff !important;
-    border: 0 !important;
-  }
-
-  .support a:first-child::before {
-    content: "" !important;
-  }
-
-  .support a:nth-child(2) {
-    display: flex !important;
-    background: #fff !important;
-    color: var(--rose) !important;
-    border: 1px solid rgba(182,47,85,.18) !important;
-  }
-
-  .support a:nth-child(2)::before {
-    content: "" !important;
-  }
-}
-
-
-/* FUSÃO SUPREMA FINAL */
-.card{border:1px solid rgba(182,47,85,.14)}
-.card::before{content:"";display:block;height:4px;background:linear-gradient(90deg,#c8a75e,#b62f55,#8f2441)}
-.buy{background:linear-gradient(135deg,#c8a75e,#b62f55 48%,#8f2441)!important}
-.support a:first-child{background:#25d366!important;color:#fff!important}
-.support a:nth-child(2){background:#fff!important;color:var(--rose)!important}
-@media(max-width:820px){
-body{background:linear-gradient(180deg,#fff7fa 0%,#fff 48%,#fff5f8 100%)!important}
-.hero{display:none!important}
-.grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important}
-.product-image{height:175px!important}
-.product-image img{object-fit:contain!important;padding:10px!important}
-.product-desc{display:none!important}
-.product-title{font-size:17px!important;line-height:1.15!important;min-height:40px!important}
-.featured-wrap{width:100%;overflow-x:auto!important;overflow-y:hidden!important;padding:0 18px 8px 0;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
-.carousel{transform:none!important;display:flex!important;gap:14px!important;overflow:visible!important;padding:0 0 12px 0!important}
-.carousel .card{flex:0 0 78vw!important;max-width:78vw!important;min-width:78vw!important;scroll-snap-align:start}
-.carousel .product-image{height:250px!important}
-.support{right:14px!important;bottom:84px!important;gap:8px!important;align-items:flex-end!important}
-.support a{width:auto!important;min-width:106px!important;height:46px!important;padding:0 16px!important;border-radius:999px!important;font-size:14px!important;font-weight:900!important}
-.support a::before{content:""!important}
-.support a:nth-child(2){display:flex!important}
-}
-
-
-/* ===== APRIMORAMENTO FINAL: WHATSAPP PREMIUM + CONVERSÃO ===== */
-:root{
-  --ae-rose:#b62f55;
-  --ae-rose-dark:#8f2441;
-  --ae-gold:#c8a75e;
-}
-
-.support a:first-child,
-.float .wa,
-.float-whats{
-  background:#25d366!important;
-  color:#fff!important;
-  border:0!important;
-  box-shadow:0 16px 34px rgba(37,211,102,.28)!important;
-}
-
-.support a:first-child{
-  position:relative;
-  overflow:hidden;
-}
-
-.support a:first-child::before{
-  content:"";
-  width:19px;
-  height:19px;
-  display:inline-block;
-  margin-right:8px;
-  background:currentColor;
-  -webkit-mask:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.5 0 .16 5.34.16 11.91c0 2.1.55 4.15 1.6 5.96L0 24l6.29-1.65a11.9 11.9 0 0 0 5.78 1.47h.01c6.57 0 11.91-5.34 11.91-11.91 0-3.18-1.24-6.17-3.47-8.43ZM12.08 21.8h-.01a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-3.73.98.99-3.64-.24-.37a9.84 9.84 0 0 1-1.51-5.27c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.45-4.44 9.89-9.9 9.89Zm5.42-7.4c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.88 1.21 3.08c.15.2 2.09 3.19 5.06 4.47.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35Z'/%3E%3C/svg%3E") center/contain no-repeat;
-          mask:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.5 0 .16 5.34.16 11.91c0 2.1.55 4.15 1.6 5.96L0 24l6.29-1.65a11.9 11.9 0 0 0 5.78 1.47h.01c6.57 0 11.91-5.34 11.91-11.91 0-3.18-1.24-6.17-3.47-8.43ZM12.08 21.8h-.01a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-3.73.98.99-3.64-.24-.37a9.84 9.84 0 0 1-1.51-5.27c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.45-4.44 9.89-9.9 9.89Zm5.42-7.4c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.88 1.21 3.08c.15.2 2.09 3.19 5.06 4.47.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35Z'/%3E%3C/svg%3E") center/contain no-repeat;
-}
-
-.support a:nth-child(2)::before{
-  content:"✉";
-  margin-right:8px;
-}
-
-.hero h1,.hero h2{
-  text-wrap:balance;
-}
-
-.section-head p,
-.hero p{
-  max-width:720px;
-}
-
-.card:hover{
-  transform:translateY(-6px) scale(1.005);
-}
-
-.buy{
-  letter-spacing:.01em;
-}
-
-/* Mini barra de confiança */
-.ae-confidence{
-  background:linear-gradient(90deg,var(--ae-rose-dark),var(--ae-rose));
-  color:#fff;
-  padding:10px 16px;
-  text-align:center;
-  font-size:13px;
-  font-weight:800;
-}
-
-/* Mobile premium limpo */
-@media(max-width:820px){
-  .support a:first-child::before,
-  .support a:nth-child(2)::before{
-    margin-right:0;
-  }
-
-  .support a{
-    min-width:50px!important;
-  }
-
-  .support a:first-child{
-    font-size:0!important;
-  }
-
-  .support a:first-child::before{
-    width:24px;
-    height:24px;
-  }
-
-  .support a:nth-child(2){
-    font-size:0!important;
-  }
-
-  .support a:nth-child(2)::before{
-    font-size:22px;
-  }
-
-  .ae-confidence{
-    font-size:12px;
-    padding:9px 12px;
-  }
-}
-
-
-/* CORREÇÃO FINAL MOBILE PRO */
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ana Essenci | Perfumes Premium</title>
+  <meta name="description" content="Ana Essenci: catálogo premium de perfumes femininos, masculinos e infantis com links oficiais de compra.">
+  <link rel="icon" href="imagens/favicon/favicon.ico">
+
+  <style>
+    :root {
+      --rose: #c95674;
+      --rose-2: #a93653;
+      --rose-soft: #fff1f5;
+      --rose-soft-2: #fbe0e8;
+      --gold: #c6a35b;
+      --ink: #24181d;
+      --text: #4d3b42;
+      --muted: #816f76;
+      --line: rgba(201, 86, 116, .18);
+      --bg: #fff9fb;
+      --white: #ffffff;
+      --shadow: 0 18px 48px rgba(135, 54, 82, .14);
+      --shadow-soft: 0 10px 24px rgba(135, 54, 82, .10);
+      --radius-lg: 30px;
+      --radius-md: 20px;
+      --radius-sm: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(255, 221, 232, .85), transparent 28%),
+        radial-gradient(circle at 90% 5%, rgba(198, 163, 91, .18), transparent 26%),
+        linear-gradient(180deg, #fffafd 0%, #ffffff 55%, #fffafd 100%);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button, input {
+      font: inherit;
+    }
+
+    .container {
+      width: min(94%, 1320px);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: linear-gradient(90deg, var(--rose-2), var(--rose));
+      color: #fff;
+      text-align: center;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 12px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 230px;
+    }
+
+    .brand-logo {
+      width: 62px;
+      height: 62px;
+      border-radius: 22px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-title {
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--rose-2);
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .brand-subtitle {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      padding: 10px 13px;
+      border-radius: 999px;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 800;
+      transition: .2s ease;
+    }
+
+    .nav a:hover {
+      background: var(--rose-soft);
+      color: var(--rose-2);
+    }
+
+    .hero {
+      padding: 30px 0 68px;
+    }
+
+    .hero-panel {
+      position: relative;
+      min-height: 620px;
+      border-radius: 42px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 30px 90px rgba(135,54,82,.16);
+      background:
+        linear-gradient(90deg, rgba(255,250,252,.98) 0%, rgba(255,250,252,.88) 46%, rgba(255,250,252,.25) 72%),
+        url('imagens/banner/banner-desktop.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-panel::after {
+      content: "";
+      position: absolute;
+      inset: 26px;
+      border-radius: 32px;
+      border: 1px solid rgba(255,255,255,.72);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 710px;
+      padding: 66px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.90);
+      border: 1px solid var(--line);
+      color: var(--rose-2);
+      box-shadow: var(--shadow-soft);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(42px, 6vw, 82px);
+      line-height: .96;
+      letter-spacing: -2px;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    h1 em {
+      color: var(--rose);
+      font-style: italic;
+    }
+
+    .hero-text {
+      color: var(--muted);
+      max-width: 620px;
+      font-size: 18px;
+      line-height: 1.75;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 24px;
+      border-radius: 999px;
+      border: 0;
+      cursor: pointer;
+      font-weight: 900;
+      transition: .25s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--rose), var(--rose-2));
+      box-shadow: 0 14px 32px rgba(201,86,116,.26);
+    }
+
+    .btn-secondary {
+      color: var(--rose-2);
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .stats {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(95px, 1fr));
+      gap: 12px;
+      max-width: 620px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,.86);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 14px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .stat strong {
+      display: block;
+      font-family: Georgia, serif;
+      color: var(--rose-2);
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 22px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .section-head h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1;
+      letter-spacing: -1px;
+      color: var(--ink);
+    }
+
+    .section-head p {
+      max-width: 640px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+      padding: 14px;
+      border-radius: 26px;
+      background: rgba(255,255,255,.92);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .toolbar input {
+      height: 50px;
+      flex: 1;
+      min-width: 240px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0 18px;
+      background: #fff;
+      color: var(--ink);
+      outline: none;
+      font-size: 15px;
+    }
+
+    .toolbar input:focus {
+      border-color: var(--rose);
+      box-shadow: 0 0 0 4px rgba(201,86,116,.10);
+    }
+
+    .chip {
+      height: 50px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--rose-2);
+      font-weight: 900;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .chip.active,
+    .chip:hover {
+      background: var(--rose);
+      color: #fff;
+      border-color: var(--rose);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      transition: .28s ease;
+      animation: fadeInCard .45s ease both;
+    }
+
+    @keyframes fadeInCard {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .product-image {
+      height: 270px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, #fff 0%, #fff1f6 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 24px;
+      transition: .35s ease;
+    }
+
+    .card:hover .product-image img {
+      transform: scale(1.04);
+    }
+
+    .badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 2;
+      padding: 7px 11px;
+      background: rgba(255,255,255,.92);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--rose-2);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .product-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 11px;
+    }
+
+    .code {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .08em;
+    }
+
+    .product-title {
+      font-family: Georgia, serif;
+      font-size: 22px;
+      line-height: 1.14;
+      color: var(--ink);
+      min-height: 52px;
+    }
+
+    .product-desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 66px;
+    }
+
+    .product-price {
+      color: var(--rose-2);
+      font-size: 24px;
+      font-weight: 950;
+    }
+
+    .buy {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 48px;
+      padding: 0 14px;
+      border-radius: 18px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--rose), var(--rose-2));
+      font-weight: 950;
+      box-shadow: 0 10px 24px rgba(201,86,116,.22);
+      transition: .22s ease;
+    }
+
+    .buy:hover {
+      transform: translateY(-1px);
+      filter: brightness(.98);
+    }
+
+    .carousel {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 10px 4px 24px;
+    }
+
+    .carousel .card {
+      min-width: 280px;
+      max-width: 280px;
+      scroll-snap-align: start;
+    }
+
+    .carousel::-webkit-scrollbar {
+      height: 9px;
+    }
+
+    .carousel::-webkit-scrollbar-thumb {
+      background: var(--rose-soft-2);
+      border-radius: 999px;
+    }
+
+    .catalogs {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .catalog-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 220px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 26px;
+      transition: .25s ease;
+    }
+
+    .catalog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .catalog-card strong {
+      font-family: Georgia, serif;
+      color: var(--rose-2);
+      font-size: 30px;
+      display: block;
+    }
+
+    .catalog-card p {
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 10px 0 20px;
+    }
+
+    .support {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 120;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .support a {
+      min-width: 132px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 17px;
+      border-radius: 999px;
+      font-weight: 950;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.96);
+      color: var(--rose-2);
+      backdrop-filter: blur(12px);
+    }
+
+    .support a:first-child {
+      background: linear-gradient(135deg, #25d366, #19a954);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .empty {
+      display: none;
+      text-align: center;
+      color: var(--muted);
+      background: #fff;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius-lg);
+      padding: 44px 20px;
+      margin-top: 16px;
+    }
+
+    footer {
+      margin-top: 50px;
+      padding: 48px 0 34px;
+      background: #24181d;
+      color: #fff;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    footer h3 {
+      font-family: Georgia, serif;
+      font-size: 30px;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    footer p,
+    footer a {
+      color: #ead8df;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .copyright {
+      margin-top: 32px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      color: #d7c5cc;
+      font-size: 13px;
+    }
+
+    @media (max-width: 1180px) {
+      .grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .catalogs {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 820px) {
+      .topbar {
+        font-size: 12px;
+      }
+
+      .header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .nav a {
+        padding: 9px 11px;
+        font-size: 12px;
+      }
+
+      .hero {
+        padding: 18px 0 48px;
+      }
+
+      .hero-panel {
+        min-height: 560px;
+        border-radius: 28px;
+        background:
+          linear-gradient(180deg, rgba(255,250,252,.97) 0%, rgba(255,250,252,.90) 62%, rgba(255,250,252,.68) 100%),
+          url('imagens/banner/banner-mobile.jpg') center/cover no-repeat;
+      }
+
+      .hero-panel::after {
+        inset: 14px;
+        border-radius: 20px;
+      }
+
+      .hero-content {
+        padding: 34px 22px;
+      }
+
+      .hero-text {
+        font-size: 16px;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      section {
+        padding: 50px 0;
+      }
+
+      .toolbar {
+        position: relative;
+        top: auto;
+      }
+
+      .toolbar input {
+        width: 100%;
+        min-width: 100%;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-image {
+        height: 300px;
+      }
+
+      .product-title {
+        min-height: auto;
+      }
+
+      .product-desc {
+        min-height: auto;
+      }
+
+      .catalogs {
+        grid-template-columns: 1fr;
+      }
+
+      .support {
+        right: 12px;
+        bottom: 12px;
+      }
+
+      .support a {
+        min-width: auto;
+        padding: 12px 14px;
+        font-size: 13px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  
+/* FINAL 102 PRODUTOS + MOBILE PRO + DEPOIMENTOS */
+.testimonials{padding:70px 0;background:linear-gradient(180deg,#fff,#fff7fa);overflow:hidden}
+.testimonials-grid{display:flex!important;gap:18px;width:max-content;animation:aeDepo 36s linear infinite}
+.testimonials-grid:hover{animation-play-state:paused}
+.testimonial-card{width:320px;flex:0 0 320px;background:#fff;border:1px solid rgba(182,47,85,.16);border-radius:24px;box-shadow:0 12px 30px rgba(120,45,70,.09);overflow:hidden}
+.testimonial-card img{width:100%;height:320px;object-fit:cover;background:#fff0f5}
+.testimonial-card p{padding:14px 16px;color:#715e66;font-size:13px;line-height:1.5}
+@keyframes aeDepo{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .product-modal{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:14px}
 .product-modal.active{display:flex}
 .product-modal__bg{position:absolute;inset:0;background:rgba(20,12,16,.72);backdrop-filter:blur(8px)}
@@ -694,384 +775,263 @@ body{background:linear-gradient(180deg,#fff7fa 0%,#fff 48%,#fff5f8 100%)!importa
 @media(max-width:820px){
 body{background:linear-gradient(180deg,#fff7fa,#fff 50%,#fff5f8)!important}
 .hero{display:none!important}.topbar{display:none!important}
-.nav{display:grid!important;grid-template-columns:repeat(2,1fr)!important;gap:8px!important;width:100%!important}
-.nav a{text-align:center!important;background:#fff!important;color:#b62f55!important;border:1px solid rgba(182,47,85,.15)!important;border-radius:999px!important;padding:11px 8px!important;font-size:12px!important}
-.toolbar{position:sticky!important;top:0!important;z-index:80!important;background:rgba(255,247,250,.97)!important;border:0!important;border-radius:0!important;box-shadow:0 10px 24px rgba(120,45,70,.08)!important;padding:14px 0!important;display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important}
-.toolbar input{grid-column:1/-1!important;width:100%!important;min-width:100%!important;height:60px!important;border-radius:999px!important;border:2px solid rgba(182,47,85,.38)!important;background:#fff!important}
 .grid{grid-template-columns:repeat(2,1fr)!important;gap:14px!important}
-.card{border-radius:18px!important;background:#fff!important;border:1px solid rgba(182,47,85,.16)!important;box-shadow:0 10px 25px rgba(120,45,70,.09)!important}
-.product-image{height:172px!important;background:linear-gradient(180deg,#fff,#fff0f5)!important}
+.product-image{height:172px!important;background:linear-gradient(180deg,#fff,#fff0f5)!important;cursor:zoom-in}
 .product-image img{object-fit:contain!important;padding:10px!important}
-.product-body{padding:13px!important;gap:8px!important}
-.product-title{font-size:16px!important;line-height:1.18!important;min-height:38px!important;color:#1d1519!important;font-weight:800!important}
+.product-title{font-size:16px!important;line-height:1.18!important;min-height:38px!important;font-weight:800!important}
 .product-desc{display:block!important;min-height:54px!important;max-height:54px!important;overflow:hidden!important;font-size:12px!important;line-height:1.5!important;color:#75636b!important}
 .price,.product-price{font-size:19px!important;color:#b62f55!important}
 .buy{min-height:44px!important;border-radius:999px!important;font-size:13px!important}
-.support{right:14px!important;bottom:82px!important;gap:8px!important}
-.support a{width:auto!important;min-width:92px!important;height:44px!important;padding:0 14px!important;border-radius:999px!important;font-size:13px!important;font-weight:900!important}
-.support a::before{content:''!important}
+.support a{min-width:92px!important;height:44px!important;font-size:13px!important}
+.testimonial-card{width:78vw!important;flex-basis:78vw!important}
+.testimonial-card img{height:420px!important}
 .product-modal__box{grid-template-columns:1fr!important;border-radius:24px!important}
 .product-modal__pic{min-height:270px!important;padding:22px!important}
-.product-modal__info{padding:24px 22px 28px!important;gap:12px!important}
+.product-modal__info{padding:24px 22px 28px!important}
 .product-modal__info h2{font-size:29px!important}
-.product-modal__info p{font-size:14px!important}
-.modal-price{font-size:25px!important}
-}
-
-
-/* ===== DEPOIMENTOS ANA ESSENCI ===== */
-.testimonials{
-  padding:70px 0;
-  background:linear-gradient(180deg,#fff,#fff7fa);
-}
-.testimonials .section-head{
-  text-align:center;
-  margin-bottom:30px;
-}
-.testimonials-grid{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:18px;
-}
-.testimonial-card{
-  background:#fff;
-  border:1px solid rgba(182,47,85,.14);
-  border-radius:24px;
-  box-shadow:0 12px 30px rgba(120,45,70,.09);
-  overflow:hidden;
-  transition:.25s ease;
-}
-.testimonial-card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 18px 44px rgba(120,45,70,.14);
-}
-.testimonial-card img{
-  width:100%;
-  height:320px;
-  object-fit:cover;
-  background:#fff0f5;
-}
-.testimonial-caption{
-  padding:14px 16px;
-  color:#715e66;
-  font-size:13px;
-  line-height:1.5;
-}
-@media(max-width:820px){
-  .testimonials{
-    padding:50px 0;
-  }
-  .testimonials-grid{
-    display:flex;
-    gap:14px;
-    overflow-x:auto;
-    scroll-snap-type:x mandatory;
-    padding-bottom:10px;
-  }
-  .testimonial-card{
-    flex:0 0 78%;
-    max-width:78%;
-    scroll-snap-align:start;
-    border-radius:20px;
-  }
-  .testimonial-card img{
-    height:420px;
-  }
-}
-
-
-/* ===== CARROSSEL AUTOMÁTICO DEPOIMENTOS ===== */
-.testimonials-grid{
-  overflow:hidden;
-  position:relative;
-}
-.testimonials-track{
-  display:flex !important;
-  gap:18px;
-  width:max-content;
-  animation:aeTestimonials 38s linear infinite;
-}
-.testimonials-track:hover{
-  animation-play-state:paused;
-}
-.testimonials-track .testimonial-card{
-  width:320px;
-  flex:0 0 320px;
-}
-@keyframes aeTestimonials{
-  0%{transform:translateX(0)}
-  100%{transform:translateX(calc(-338px * 3))}
-}
-
-@media(max-width:820px){
-  .testimonials-grid{
-    overflow:hidden !important;
-    padding-bottom:0 !important;
-  }
-  .testimonials-track{
-    gap:14px !important;
-    animation:aeTestimonialsMobile 26s linear infinite !important;
-  }
-  .testimonials-track .testimonial-card{
-    width:78vw !important;
-    flex:0 0 78vw !important;
-    max-width:78vw !important;
-  }
-  @keyframes aeTestimonialsMobile{
-    0%{transform:translateX(0)}
-    100%{transform:translateX(calc(-82vw * 4))}
-  }
 }
 
 </style>
 </head>
+
 <body>
-<div class=\"ae-confidence\">Atendimento rápido • Compra por código • Marcas oficiais • Ana Essenci</div>
-<div class="topbar">Coleção Ana Essenci • Compra assistida por código • Atendimento rápido</div>
-<header class="header">
-<div class="container header-inner">
-<a class="brand" href="#">
-<span class="brand-logo"><img src="imagens/logo/logo-ana-essenci.png" alt="Ana Essenci" onerror="this.style.display='none'"></span>
-<span><span class="brand-title">Ana Essenci</span><span class="brand-sub">Perfumaria premium</span></span>
-</a>
-<nav class="nav">
-<a href="#produtos">Produtos</a>
-<a href="#desejados">Mais desejados</a>
-<a href="#depoimentos">Depoimentos</a><a href="#marcas">Marcas oficiais</a>
-<a href="#atendimento">Atendimento</a>
-</nav>
-</div>
-</header>
-<main>
-<section class="hero">
-<div class="container hero-card">
-<div class="hero-content">
-<span class="eyebrow">Vitrine premium 2026</span>
-<h1>Fragrâncias para quem <em>não passa despercebida</em></h1>
-<p>Escolha seu perfume, envie o código e receba orientação para finalizar com segurança. Produtos sujeitos à disponibilidade e variação de preço.</p>
-<div class="actions"><a class="btn btn-primary" href="#produtos">Ver coleção</a><a class="btn btn-light" href="#marcas">Marcas oficiais</a></div>
-<div class="stats"><div class="stat"><strong>102</strong><span>produtos</span></div><div class="stat"><strong>55</strong><span>femininos</span></div><div class="stat"><strong>35</strong><span>masculinos</span></div><div class="stat"><strong>12</strong><span>infantis</span></div></div>
-</div>
-</div>
-</section>
-<section id="desejados">
-<div class="container">
-<div class="section-head"><div><h2>Mais desejados</h2><p>Seleção especial com produtos de alto interesse para facilitar sua escolha.</p></div></div>
-<div class="featured-wrap"><div class="carousel" id="featuredGrid"></div></div>
-</div>
-</section>
-<section id="produtos">
-<div class="container">
-<div class="section-head"><div><h2>Coleção Ana Essenci</h2><p>Produtos organizados por nome, código e preço. Clique em reservar para enviar a mensagem pronta.</p></div></div>
-<div class="toolbar"><input id="searchInput" type="search" placeholder="Buscar por nome, código ou categoria..."><button class="chip active" data-filter="todos">Todos</button><button class="chip" data-filter="feminino">Feminino</button><button class="chip" data-filter="masculino">Masculino</button><button class="chip" data-filter="infantil">Infantil</button></div>
-<div class="grid" id="productGrid"></div><div class="empty" id="emptyState">Nenhum produto encontrado.</div>
-</div>
-</section>
+  <div class="topbar">Catálogo com 102 produtos • Compra por links oficiais • Atendimento Ana Essenci</div>
 
-<section class="testimonials" id="depoimentos">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Depoimentos</span>
-      <h2>Quem compra, recomenda</h2>
-      <p>Alguns retornos de clientes sobre atendimento, fragrâncias e experiência com a Ana Essenci.</p>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="brand" aria-label="Ana Essenci">
+        <span class="brand-logo">
+          <img src="imagens/logo/logo-ana-essenci.png" alt="Logo Ana Essenci" onerror="this.style.display='none'">
+        </span>
+        <span>
+          <span class="brand-title">Ana Essenci</span>
+          <span class="brand-subtitle">Perfumaria premium</span>
+        </span>
+      </a>
+
+      <nav class="nav">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#mais-vendidos">Mais vendidos</a>
+        <a href="#catalogos">Catálogos</a>
+        <a href="#atendimento">Atendimento</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="testimonials-grid testimonials-track">
-      <article class="testimonial-card">
-        <picture>
-          <source srcset="depoimentos/01.webp" type="image/webp">
-          <img loading="lazy" src="depoimentos/01.jpg" alt="Depoimento de cliente Ana Essenci 1">
-        </picture>
-        <div class="testimonial-caption">Atendimento com cuidado e escolha orientada.</div>
-      </article>
+  <main>
+    <section class="hero">
+      <div class="container hero-panel">
+        <div class="hero-content">
+          <span class="eyebrow">Curadoria de fragrâncias</span>
+          <h1>Perfumes que <em>marcam presença</em></h1>
+          <p class="hero-text">Escolha fragrâncias femininas, masculinas e infantis com links oficiais de compra. Uma vitrine simples, elegante e feita para comprar com praticidade.</p>
+          <div class="hero-actions">
+            <a href="#catalogo" class="btn btn-primary">Reservar pelo código</a>
+            <a href="#catalogos" class="btn btn-secondary">Ver Catálogos</a>
+          </div>
 
-      <article class="testimonial-card">
-        <picture>
-          <source srcset="depoimentos/02.webp" type="image/webp">
-          <img loading="lazy" src="depoimentos/02.jpg" alt="Depoimento de cliente Ana Essenci 2">
-        </picture>
-        <div class="testimonial-caption">Experiência prática para comprar pelo código.</div>
-      </article>
+          <div class="stats">
+            <div class="stat"><strong>102</strong><span>produtos</span></div>
+            <div class="stat"><strong>55</strong><span>femininos</span></div>
+            <div class="stat"><strong>35</strong><span>masculinos</span></div>
+            <div class="stat"><strong>12</strong><span>infantis</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <article class="testimonial-card">
-        <picture>
-          <source srcset="depoimentos/03.webp" type="image/webp">
-          <img loading="lazy" src="depoimentos/03.jpg" alt="Depoimento de cliente Ana Essenci 3">
-        </picture>
-        <div class="testimonial-caption">Produtos selecionados com atenção aos detalhes.</div>
-      </article>
+    <section id="mais-vendidos">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Mais vendidos</h2>
+            <p>Uma seleção inicial para quem quer escolher rápido entre perfumes de destaque do catálogo.</p>
+          </div>
+        </div>
+        <div class="carousel" id="featuredGrid" aria-label="Carrossel de mais vendidos"></div>
+      </div>
+    </section>
 
-      <article class="testimonial-card">
-        <picture>
-          <source srcset="depoimentos/04.webp" type="image/webp">
-          <img loading="lazy" src="depoimentos/04.jpg" alt="Depoimento de cliente Ana Essenci 4">
-        </picture>
-        <div class="testimonial-caption">Compra simples, rápida e com atendimento próximo.</div>
-      </article>
+    <section id="catalogo">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Coleção Ana Essenci</h2>
+            <p>Produtos organizados com nome, código, preço e descrição para escolher com clareza.</p>
+          </div>
+        </div>
 
-      <article class="testimonial-card">
-        <picture>
-          <source srcset="depoimentos/05.webp" type="image/webp">
-          <img loading="lazy" src="depoimentos/05.jpg" alt="Depoimento de cliente Ana Essenci 5">
-        </picture>
-        <div class="testimonial-caption">Ajuda na escolha da fragrância ideal.</div>
-      </article>
+        <div class="toolbar">
+          <input id="searchInput" type="search" placeholder="Buscar por nome, código ou categoria...">
+          <button class="chip active" data-filter="todos">Todos</button>
+          <button class="chip" data-filter="feminino">Feminino</button>
+          <button class="chip" data-filter="masculino">Masculino</button>
+          <button class="chip" data-filter="infantil">Infantil</button>
+        </div>
 
-      <article class="testimonial-card">
-        <picture>
-          <source srcset="depoimentos/06.webp" type="image/webp">
-          <img loading="lazy" src="depoimentos/06.jpg" alt="Depoimento de cliente Ana Essenci 6">
-        </picture>
-        <div class="testimonial-caption">Atendimento organizado e direto pelo WhatsApp.</div>
-      </article>
+        <div class="grid" id="productGrid"></div>
+        <div class="empty" id="emptyState">Nenhum produto encontrado.</div>
+      </div>
+    </section>
 
-      <article class="testimonial-card">
-        <picture>
-          <source srcset="depoimentos/07.webp" type="image/webp">
-          <img loading="lazy" src="depoimentos/07.jpg" alt="Depoimento de cliente Ana Essenci 7">
-        </picture>
-        <div class="testimonial-caption">Uma vitrine fácil de navegar e escolher.</div>
-      </article>
-    
-      <article class="testimonial-card">
-        <picture>
-          <source srcset="depoimentos/01.webp" type="image/webp">
-          <img loading="lazy" src="depoimentos/01.jpg" alt="Depoimento de cliente Ana Essenci 1">
-        </picture>
-        <div class="testimonial-caption">Atendimento com cuidado e escolha orientada.</div>
-      </article>
+    <section id="catalogos">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Marcas oficiais</h2>
+            <p>Acesse também as lojas por marca para ver mais opções e novidades.</p>
+          </div>
+        </div>
 
-      <article class="testimonial-card">
-        <picture>
-          <source srcset="depoimentos/02.webp" type="image/webp">
-          <img loading="lazy" src="depoimentos/02.jpg" alt="Depoimento de cliente Ana Essenci 2">
-        </picture>
-        <div class="testimonial-caption">Experiência prática para comprar pelo código.</div>
-      </article>
+        <div class="catalogs">
+          <a class="catalog-card" target="_blank" rel="noopener" href="https://minhaloja.boticario.com.br/anaessenci">
+            <div><strong>O Boticário</strong><p>Perfumes, cuidados e fragrâncias selecionadas.</p></div>
+            <span class="btn btn-primary">Abrir catálogo</span>
+          </a>
+          <a class="catalog-card" target="_blank" rel="noopener" href="https://minhaloja.eudora.com.br/anaessenci">
+            <div><strong>Eudora</strong><p>Perfumes sofisticados e itens de beleza.</p></div>
+            <span class="btn btn-primary">Abrir catálogo</span>
+          </a>
+          <a class="catalog-card" target="_blank" rel="noopener" href="https://minhaloja.quemdisseberenice.com.br/anaessenci">
+            <div><strong>QDB</strong><p>Maquiagem, beleza e personalidade.</p></div>
+            <span class="btn btn-primary">Abrir catálogo</span>
+          </a>
+          <a class="catalog-card" target="_blank" rel="noopener" href="https://minhaloja.ouiparis.com/anaessenci">
+            <div><strong>O.U.I Paris</strong><p>Fragrâncias premium com proposta sofisticada.</p></div>
+            <span class="btn btn-primary">Abrir catálogo</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  <section class="testimonials" id="depoimentos"><div class="container"><div class="section-head"><div><h2>Depoimentos</h2><p>Retornos de clientes sobre atendimento, fragrâncias e experiência com a Ana Essenci.</p></div></div><div class="testimonials-grid"><article class="testimonial-card"><picture><source srcset="depoimentos/01.webp" type="image/webp"><img loading="lazy" src="depoimentos/01.jpg" alt="Depoimento Ana Essenci 1"></picture><p>Atendimento cuidadoso e experiência de compra organizada.</p></article><article class="testimonial-card"><picture><source srcset="depoimentos/02.webp" type="image/webp"><img loading="lazy" src="depoimentos/02.jpg" alt="Depoimento Ana Essenci 2"></picture><p>Atendimento cuidadoso e experiência de compra organizada.</p></article><article class="testimonial-card"><picture><source srcset="depoimentos/03.webp" type="image/webp"><img loading="lazy" src="depoimentos/03.jpg" alt="Depoimento Ana Essenci 3"></picture><p>Atendimento cuidadoso e experiência de compra organizada.</p></article><article class="testimonial-card"><picture><source srcset="depoimentos/04.webp" type="image/webp"><img loading="lazy" src="depoimentos/04.jpg" alt="Depoimento Ana Essenci 4"></picture><p>Atendimento cuidadoso e experiência de compra organizada.</p></article><article class="testimonial-card"><picture><source srcset="depoimentos/05.webp" type="image/webp"><img loading="lazy" src="depoimentos/05.jpg" alt="Depoimento Ana Essenci 5"></picture><p>Atendimento cuidadoso e experiência de compra organizada.</p></article><article class="testimonial-card"><picture><source srcset="depoimentos/06.webp" type="image/webp"><img loading="lazy" src="depoimentos/06.jpg" alt="Depoimento Ana Essenci 6"></picture><p>Atendimento cuidadoso e experiência de compra organizada.</p></article><article class="testimonial-card"><picture><source srcset="depoimentos/07.webp" type="image/webp"><img loading="lazy" src="depoimentos/07.jpg" alt="Depoimento Ana Essenci 7"></picture><p>Atendimento cuidadoso e experiência de compra organizada.</p></article><article class="testimonial-card"><picture><source srcset="depoimentos/01.webp" type="image/webp"><img loading="lazy" src="depoimentos/01.jpg" alt="Depoimento Ana Essenci 1"></picture><p>Atendimento cuidadoso e experiência de compra organizada.</p></article><article class="testimonial-card"><picture><source srcset="depoimentos/02.webp" type="image/webp"><img loading="lazy" src="depoimentos/02.jpg" alt="Depoimento Ana Essenci 2"></picture><p>Atendimento cuidadoso e experiência de compra organizada.</p></article><article class="testimonial-card"><picture><source srcset="depoimentos/03.webp" type="image/webp"><img loading="lazy" src="depoimentos/03.jpg" alt="Depoimento Ana Essenci 3"></picture><p>Atendimento cuidadoso e experiência de compra organizada.</p></article><article class="testimonial-card"><picture><source srcset="depoimentos/04.webp" type="image/webp"><img loading="lazy" src="depoimentos/04.jpg" alt="Depoimento Ana Essenci 4"></picture><p>Atendimento cuidadoso e experiência de compra organizada.</p></article><article class="testimonial-card"><picture><source srcset="depoimentos/05.webp" type="image/webp"><img loading="lazy" src="depoimentos/05.jpg" alt="Depoimento Ana Essenci 5"></picture><p>Atendimento cuidadoso e experiência de compra organizada.</p></article><article class="testimonial-card"><picture><source srcset="depoimentos/06.webp" type="image/webp"><img loading="lazy" src="depoimentos/06.jpg" alt="Depoimento Ana Essenci 6"></picture><p>Atendimento cuidadoso e experiência de compra organizada.</p></article><article class="testimonial-card"><picture><source srcset="depoimentos/07.webp" type="image/webp"><img loading="lazy" src="depoimentos/07.jpg" alt="Depoimento Ana Essenci 7"></picture><p>Atendimento cuidadoso e experiência de compra organizada.</p></article></div></div></section></main>
 
-      <article class="testimonial-card">
-        <picture>
-          <source srcset="depoimentos/03.webp" type="image/webp">
-          <img loading="lazy" src="depoimentos/03.jpg" alt="Depoimento de cliente Ana Essenci 3">
-        </picture>
-        <div class="testimonial-caption">Produtos selecionados com atenção aos detalhes.</div>
-      </article>
-
-      <article class="testimonial-card">
-        <picture>
-          <source srcset="depoimentos/04.webp" type="image/webp">
-          <img loading="lazy" src="depoimentos/04.jpg" alt="Depoimento de cliente Ana Essenci 4">
-        </picture>
-        <div class="testimonial-caption">Compra simples, rápida e com atendimento próximo.</div>
-      </article>
-
-      <article class="testimonial-card">
-        <picture>
-          <source srcset="depoimentos/05.webp" type="image/webp">
-          <img loading="lazy" src="depoimentos/05.jpg" alt="Depoimento de cliente Ana Essenci 5">
-        </picture>
-        <div class="testimonial-caption">Ajuda na escolha da fragrância ideal.</div>
-      </article>
-
-      <article class="testimonial-card">
-        <picture>
-          <source srcset="depoimentos/06.webp" type="image/webp">
-          <img loading="lazy" src="depoimentos/06.jpg" alt="Depoimento de cliente Ana Essenci 6">
-        </picture>
-        <div class="testimonial-caption">Atendimento organizado e direto pelo WhatsApp.</div>
-      </article>
-
-      <article class="testimonial-card">
-        <picture>
-          <source srcset="depoimentos/07.webp" type="image/webp">
-          <img loading="lazy" src="depoimentos/07.jpg" alt="Depoimento de cliente Ana Essenci 7">
-        </picture>
-        <div class="testimonial-caption">Uma vitrine fácil de navegar e escolher.</div>
-      </article>
-    </div>
+  <div class="support" id="atendimento" aria-label="Atendimento">
+    <a target="_blank" rel="noopener" href="https://wa.me/5562981479674">WhatsApp</a>
+    <a href="mailto:loja.anaessenci@gmail.com">E-mail</a>
   </div>
-</section>
 
-<section id="marcas">
-<div class="container">
-<div class="section-head"><div><h2>Marcas oficiais</h2><p>Acesse os catálogos oficiais por marca para conferir disponibilidade e novidades.</p></div></div>
-<div class="catalogs">
-<a class="catalog-card" target="_blank" rel="noopener" href="https://minhaloja.boticario.com.br/anaessenci"><div><strong>O Boticário</strong><p>Perfumes e cuidados selecionados.</p></div><span class="btn btn-primary">Abrir marca</span></a>
-<a class="catalog-card" target="_blank" rel="noopener" href="https://minhaloja.eudora.com.br/anaessenci"><div><strong>Eudora</strong><p>Fragrâncias sofisticadas e beleza.</p></div><span class="btn btn-primary">Abrir marca</span></a>
-<a class="catalog-card" target="_blank" rel="noopener" href="https://minhaloja.quemdisseberenice.com.br/anaessenci"><div><strong>QDB</strong><p>Maquiagem e personalidade.</p></div><span class="btn btn-primary">Abrir marca</span></a>
-<a class="catalog-card" target="_blank" rel="noopener" href="https://minhaloja.ouiparis.com/anaessenci"><div><strong>O.U.I Paris</strong><p>Fragrâncias premium.</p></div><span class="btn btn-primary">Abrir marca</span></a>
-</div>
-</div>
-</section>
-</main>
-<div class="support" id="atendimento"><a href="https://wa.me/5562981479674?text=Ol%C3%A1%2C%20quero%20atendimento%20da%20Ana%20Essenci." target="_blank" rel="noopener">WhatsApp</a><a href="mailto:loja.anaessenci@gmail.com?subject=Atendimento%20Ana%20Essenci&body=Ol%C3%A1%2C%20quero%20atendimento%20sobre%20um%20produto.%0A%0AC%C3%B3digo%20do%20produto%3A%20">E-mail</a></div>
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <h3>Ana Essenci</h3>
+        <p>Perfumaria & conteúdo. Catálogo organizado para facilitar sua escolha e compra por links oficiais.</p>
+      </div>
+      <div>
+        <h3>Atendimento</h3>
+        <p>Gmail: loja.anaessenci@gmail.com<br>WhatsApp: (62) 98147-9674</p>
+      </div>
+      <div>
+        <h3>Catálogo</h3>
+        <p></p>
+      </div>
+    </div>
+    <div class="container copyright">
+      © 2026 Ana Essenci. Todos os direitos reservados.
+    </div>
+  </footer>
 
-<div class="cookie-bar" id="cookieBar">
-  <p>Ao navegar neste site, você aceita o uso de cookies para melhorar sua experiência.</p>
-  <button type="button" onclick="document.getElementById('cookieBar').style.display='none'">Entendi</button>
-</div>
+  <script>
+    const products = [{"id": 1, "slug": "accordes", "code": "28813", "name": "Accordes", "fullName": "Accordes Desodorante Colônia 80ml", "price": 244.9, "category": "feminino", "image": "produtos/feminino/accordes/01.webp", "link": "", "desc": "Fragrância feminina elegante para rotina e momentos especiais.", "tag": "Premium"}, {"id": 2, "slug": "body-splash", "code": "76621", "name": "Body Splash Dream", "fullName": "Body Splash Desodorante Colônia Dream Céu de Baunilha 200ml", "price": 109.9, "category": "feminino", "image": "produtos/feminino/body-splash/01.webp", "link": "", "desc": "Perfume versátil, delicado e marcante na medida certa.", "tag": ""}, {"id": 3, "slug": "body-splash-cuide-se-bem", "code": "82037", "name": "Body Splash Cuide-se Bem Boa Noite", "fullName": "Body Splash Desodorante Colônia Cuide-se Bem Boa Noite 200ml", "price": 92.9, "category": "feminino", "image": "produtos/feminino/body-splash-cuide-se-bem/01.webp", "link": "", "desc": "Opção charmosa para quem gosta de presença com leveza.", "tag": ""}, {"id": 4, "slug": "body-splash-nativa", "code": "82052", "name": "Body Splash Nativa Spa Jasmim Sambac", "fullName": "Body Splash Desodorante Colônia Nativa Spa Jasmim Sambac 200ml", "price": 69.9, "category": "feminino", "image": "produtos/feminino/body-splash-nativa/01.webp", "link": "", "desc": "Fragrância confortável, bonita e fácil de usar.", "tag": ""}, {"id": 5, "slug": "body-splash-pessegura", "code": "84205", "name": "Body Splash Cuide-se Bem Pessegura", "fullName": "Body Splash Desodorante Corporal Cuide-se Bem Pessegura 200ml", "price": 92.9, "category": "feminino", "image": "produtos/feminino/body-splash-pessegura/01.webp", "link": "", "desc": "Perfume com toque refinado para destacar sua presença.", "tag": ""}, {"id": 6, "slug": "botica-214-african-sunrise", "code": "54657", "name": "Botica 214 African Sunrise", "fullName": "Botica 214 African Sunrise Floral Frutal Eau de Parfum 75ml", "price": 239.9, "category": "feminino", "image": "produtos/feminino/botica-214-african-sunrise/01.webp", "link": "", "desc": "Escolha feminina agradável, moderna e sofisticada.", "tag": "Premium"}, {"id": 7, "slug": "botica-214-fiji-paradise", "code": "51387", "name": "Botica 214 Fiji Paradise", "fullName": "Botica 214 Fiji Paradise Floral Especiado Eau de Parfum 75ml", "price": 239.9, "category": "feminino", "image": "produtos/feminino/botica-214-fiji-paradise/01.webp", "link": "", "desc": "Fragrância feminina elegante para rotina e momentos especiais.", "tag": "Mais vendido"}, {"id": 8, "slug": "botica-214-golden-gardenia", "code": "47629", "name": "Botica 214 Golden Gardênia", "fullName": "Botica 214 Golden Gardênia Eau de Parfum 75ml", "price": 239.9, "category": "feminino", "image": "produtos/feminino/botica-214-golden-gardenia/01.webp", "link": "", "desc": "Perfume versátil, delicado e marcante na medida certa.", "tag": "Premium"}, {"id": 9, "slug": "botica-214-sevilla-dorada", "code": "58733", "name": "Botica 214 Sevilla Dorada", "fullName": "Botica 214 Sevilla Dorada Eau de Parfum Floral Frutal 75ml", "price": 239.9, "category": "feminino", "image": "produtos/feminino/botica-214-sevilla-dorada/01.webp", "link": "", "desc": "Opção charmosa para quem gosta de presença com leveza.", "tag": "Premium"}, {"id": 10, "slug": "botica-214-verano-en-firenze", "code": "47553", "name": "Botica 214 Verano en Firenze", "fullName": "Botica 214 Verano en Firenze Eau de Parfum Floral Frutal 75ml", "price": 239.9, "category": "feminino", "image": "produtos/feminino/botica-214-verano-en-firenze/01.webp", "link": "", "desc": "Fragrância confortável, bonita e fácil de usar.", "tag": "Premium"}, {"id": 11, "slug": "by-acqua-fresca", "code": "48352", "name": "Boticollection Acqua Fresca", "fullName": "Boticollection Acqua Fresca Desodorante Colônia 200ml", "price": 224.9, "category": "feminino", "image": "produtos/feminino/by-acqua-fresca/01.webp", "link": "", "desc": "Perfume com toque refinado para destacar sua presença.", "tag": ""}, {"id": 12, "slug": "by-cecita", "code": "22248", "name": "Boticollection Cecita", "fullName": "Boticollection Cecita Desodorante Colônia 100ml", "price": 174.9, "category": "feminino", "image": "produtos/feminino/by-cecita/01.webp", "link": "", "desc": "Escolha feminina agradável, moderna e sofisticada.", "tag": ""}, {"id": 13, "slug": "by-crazy-feelings", "code": "71877", "name": "Boticollection Crazy Feelings", "fullName": "Boticollection Crazy Feelings Desodorante Colônia 100ml", "price": 174.9, "category": "feminino", "image": "produtos/feminino/by-crazy-feelings/01.webp", "link": "", "desc": "Fragrância feminina elegante para rotina e momentos especiais.", "tag": ""}, {"id": 14, "slug": "by-free", "code": "22249", "name": "Free Boticollection", "fullName": "Free Desodorante Colônia Boticollection 100ml", "price": 174.9, "category": "feminino", "image": "produtos/feminino/by-free/01.webp", "link": "", "desc": "Perfume versátil, delicado e marcante na medida certa.", "tag": ""}, {"id": 15, "slug": "by-thaty", "code": "19734", "name": "Boticollection Thaty", "fullName": "Boticollection Thaty Desodorante Colônia 100ml", "price": 174.9, "category": "feminino", "image": "produtos/feminino/by-thaty/01.webp", "link": "", "desc": "Opção charmosa para quem gosta de presença com leveza.", "tag": ""}, {"id": 16, "slug": "celebre-agora", "code": "52044", "name": "Celebre Agora", "fullName": "Celebre Agora Feminino Desodorante Colônia 100ml", "price": 119.9, "category": "feminino", "image": "produtos/feminino/celebre-agora/01.webp", "link": "", "desc": "Fragrância confortável, bonita e fácil de usar.", "tag": ""}, {"id": 17, "slug": "celebre-sua-forca", "code": "83060", "name": "Celebre Sua Força", "fullName": "Celebre Sua Força Desodorante Colônia Feminino 100ml", "price": 119.9, "category": "feminino", "image": "produtos/feminino/celebre-sua-forca/01.webp", "link": "", "desc": "Perfume com toque refinado para destacar sua presença.", "tag": ""}, {"id": 18, "slug": "coffee-woman-duo", "code": "73613", "name": "Coffee Woman Duo", "fullName": "Coffee Woman Duo Desodorante Colônia 100ml", "price": 219.9, "category": "feminino", "image": "produtos/feminino/coffee-woman-duo/01.webp", "link": "", "desc": "Escolha feminina agradável, moderna e sofisticada.", "tag": ""}, {"id": 19, "slug": "coffee-woman-lucky", "code": "83756", "name": "Coffee Woman Lucky", "fullName": "Coffee Woman Lucky Desodorante Colônia 100ml", "price": 219.9, "category": "feminino", "image": "produtos/feminino/coffee-woman-lucky/01.webp", "link": "", "desc": "Fragrância feminina elegante para rotina e momentos especiais.", "tag": ""}, {"id": 20, "slug": "coffee-woman-seduction", "code": "48139", "name": "Coffee Woman Seduction", "fullName": "Coffee Woman Seduction Desodorante Colônia 100ml", "price": 219.9, "category": "feminino", "image": "produtos/feminino/coffee-woman-seduction/01.webp", "link": "", "desc": "Perfume versátil, delicado e marcante na medida certa.", "tag": "Mais vendido"}, {"id": 21, "slug": "egeo-bomb-purple", "code": "82685", "name": "Egeo Bomb Black", "fullName": "Egeo Bomb Black Desodorante Colônia 90ml", "price": 124.9, "category": "feminino", "image": "produtos/feminino/egeo-bomb-purple/01.webp", "link": "", "desc": "Opção charmosa para quem gosta de presença com leveza.", "tag": ""}, {"id": 22, "slug": "egeo-choc-berry", "code": "82689", "name": "Egeo Choc", "fullName": "Egeo Choc Desodorante Colônia 90ml", "price": 159.9, "category": "feminino", "image": "produtos/feminino/egeo-choc-berry/01.webp", "link": "", "desc": "Fragrância confortável, bonita e fácil de usar.", "tag": ""}, {"id": 23, "slug": "egeo-dolce", "code": "82688", "name": "Egeo Dolce", "fullName": "Egeo Dolce Desodorante Colônia 90ml", "price": 159.9, "category": "feminino", "image": "produtos/feminino/egeo-dolce/01.webp", "link": "", "desc": "Perfume com toque refinado para destacar sua presença.", "tag": ""}, {"id": 24, "slug": "egeo-red", "code": "82690", "name": "Egeo Red", "fullName": "Egeo Red Desodorante Colônia 90ml", "price": 159.9, "category": "feminino", "image": "produtos/feminino/egeo-red/01.webp", "link": "", "desc": "Escolha feminina agradável, moderna e sofisticada.", "tag": ""}, {"id": 25, "slug": "egeo-vanilla-vibe", "code": "84213", "name": "Egeo Vanilla Vibe", "fullName": "Egeo Vanilla Vibe Desodorante Colônia 90ml", "price": 143.91, "category": "feminino", "image": "produtos/feminino/egeo-vanilla-vibe/01.webp", "link": "", "desc": "Fragrância feminina elegante para rotina e momentos especiais.", "tag": ""}, {"id": 26, "slug": "elysee-nuit", "code": "48146", "name": "Elysée Nuit", "fullName": "Elysée Nuit Eau de Parfum 50ml", "price": 319.9, "category": "feminino", "image": "produtos/feminino/elysee-nuit/01.webp", "link": "", "desc": "Perfume versátil, delicado e marcante na medida certa.", "tag": "Premium"}, {"id": 27, "slug": "elysee-succes", "code": "81331", "name": "Elysée Succès", "fullName": "Elysée Succès Eau de Parfum 50ml", "price": 319.9, "category": "feminino", "image": "produtos/feminino/elysee-succes/01.webp", "link": "", "desc": "Opção charmosa para quem gosta de presença com leveza.", "tag": "Premium"}, {"id": 28, "slug": "eudora-kiss-me-cabernet", "code": "50268", "name": "Eudora Kiss Me Cabernet", "fullName": "Eudora Kiss Me Cabernet Desodorante Colônia 50ml", "price": 89.89, "category": "feminino", "image": "produtos/feminino/eudora-kiss-me-cabernet/01.webp", "link": "", "desc": "Fragrância confortável, bonita e fácil de usar.", "tag": ""}, {"id": 29, "slug": "eudora-rose-eau-de-parfum", "code": "56572", "name": "Eudora Rosé Eau de Parfum", "fullName": "Eudora Rosé Eau de Parfum 75ml", "price": 239.9, "category": "feminino", "image": "produtos/feminino/eudora-rose-eau-de-parfum/01.webp", "link": "", "desc": "Perfume com toque refinado para destacar sua presença.", "tag": "Premium"}, {"id": 30, "slug": "floratta-blue", "code": "25458", "name": "Floratta Blue", "fullName": "Floratta Blue Desodorante Colônia 75ml", "price": 164.9, "category": "feminino", "image": "produtos/feminino/floratta-blue/01.webp", "link": "", "desc": "Escolha feminina agradável, moderna e sofisticada.", "tag": ""}, {"id": 31, "slug": "floratta-fleur-declipse", "code": "48621", "name": "Floratta Fleur D'Éclipse", "fullName": "Floratta Fleur D'Éclipse Eau de Parfum 75ml", "price": 219.9, "category": "feminino", "image": "produtos/feminino/floratta-fleur-declipse/01.webp", "link": "", "desc": "Fragrância feminina elegante para rotina e momentos especiais.", "tag": ""}, {"id": 32, "slug": "floratta-flores-secretas", "code": "48136", "name": "Floratta Flores Secretas", "fullName": "Floratta Flores Secretas Desodorante Colônia 75ml", "price": 164.9, "category": "feminino", "image": "produtos/feminino/floratta-flores-secretas/01.webp", "link": "", "desc": "Perfume versátil, delicado e marcante na medida certa.", "tag": ""}, {"id": 33, "slug": "floratta-my-blue", "code": "01004", "name": "Floratta My Blue", "fullName": "Floratta My Blue Desodorante Colônia 75ml", "price": 164.9, "category": "feminino", "image": "produtos/feminino/floratta-my-blue/01.webp", "link": "", "desc": "Opção charmosa para quem gosta de presença com leveza.", "tag": ""}, {"id": 34, "slug": "floratta-red", "code": "75792", "name": "Floratta Red", "fullName": "Floratta Red Desodorante Colônia 75ml", "price": 164.9, "category": "feminino", "image": "produtos/feminino/floratta-red/01.webp", "link": "", "desc": "Fragrância confortável, bonita e fácil de usar.", "tag": "Mais vendido"}, {"id": 35, "slug": "floratta-red-blossom", "code": "49973", "name": "Floratta Red Blossom", "fullName": "Floratta Red Blossom Desodorante Colônia 75ml", "price": 164.9, "category": "feminino", "image": "produtos/feminino/floratta-red-blossom/01.webp", "link": "", "desc": "Perfume com toque refinado para destacar sua presença.", "tag": ""}, {"id": 36, "slug": "floratta-red-passion", "code": "59306", "name": "Floratta Red Passion", "fullName": "Floratta Red Passion Eau de Parfum 75ml", "price": 219.9, "category": "feminino", "image": "produtos/feminino/floratta-red-passion/01.webp", "link": "", "desc": "Escolha feminina agradável, moderna e sofisticada.", "tag": ""}, {"id": 37, "slug": "floratta-romance", "code": "55659", "name": "Floratta Romance de Verão", "fullName": "Floratta Romance de Verão Desodorante Colônia 75ml", "price": 164.9, "category": "feminino", "image": "produtos/feminino/floratta-romance/01.webp", "link": "", "desc": "Fragrância feminina elegante para rotina e momentos especiais.", "tag": ""}, {"id": 38, "slug": "floratta-rose", "code": "48635", "name": "Floratta Rose", "fullName": "Floratta Rose Desodorante Colônia 75ml", "price": 164.9, "category": "feminino", "image": "produtos/feminino/floratta-rose/01.webp", "link": "", "desc": "Perfume versátil, delicado e marcante na medida certa.", "tag": ""}, {"id": 39, "slug": "floratta-rose-sucree", "code": "88135", "name": "Floratta Rose Sucrée", "fullName": "Floratta Rose Sucrée Eau de Parfum 75ml", "price": 184.89, "category": "feminino", "image": "produtos/feminino/floratta-rose-sucree/01.webp", "link": "", "desc": "Opção charmosa para quem gosta de presença com leveza.", "tag": ""}, {"id": 40, "slug": "glamour-secrets-black", "code": "74103", "name": "Glamour Secrets Black", "fullName": "Glamour Secrets Black Desodorante Colônia 75ml", "price": 189.9, "category": "feminino", "image": "produtos/feminino/glamour-secrets-black/01.webp", "link": "", "desc": "Fragrância confortável, bonita e fácil de usar.", "tag": ""}, {"id": 41, "slug": "her-code", "code": "50022", "name": "Her Code", "fullName": "Her Code Eau de Parfum 50ml", "price": 244.9, "category": "feminino", "image": "produtos/feminino/her-code/01.webp", "link": "", "desc": "Perfume com toque refinado para destacar sua presença.", "tag": "Mais vendido"}, {"id": 42, "slug": "kiss-me-rosa-marcante", "code": "50267", "name": "Kiss Me Rosa Marcante", "fullName": "Kiss Me Rosa Marcante Colônia Desodorante 50ml", "price": 109.99, "category": "feminino", "image": "produtos/feminino/kiss-me-rosa-marcante/01.webp", "link": "", "desc": "Escolha feminina agradável, moderna e sofisticada.", "tag": ""}, {"id": 43, "slug": "leau-de-lily", "code": "83971", "name": "L'Eau de Lily", "fullName": "L'Eau de Lily Desodorante Colônia 75ml", "price": 219.9, "category": "feminino", "image": "produtos/feminino/leau-de-lily/01.webp", "link": "", "desc": "Fragrância feminina elegante para rotina e momentos especiais.", "tag": ""}, {"id": 44, "slug": "leau-de-lily-soleil", "code": "49680", "name": "L'Eau de Lily Soleil", "fullName": "L'Eau de Lily Soleil Desodorante Colônia 75ml", "price": 219.9, "category": "feminino", "image": "produtos/feminino/leau-de-lily-soleil/01.webp", "link": "", "desc": "Perfume versátil, delicado e marcante na medida certa.", "tag": ""}, {"id": 45, "slug": "lily-absolu", "code": "77988", "name": "Lily Absolu", "fullName": "Lily Absolu Eau de Parfum 75ml", "price": 319.9, "category": "feminino", "image": "produtos/feminino/lily-absolu/01.webp", "link": "", "desc": "Opção charmosa para quem gosta de presença com leveza.", "tag": "Premium"}, {"id": 46, "slug": "lily-eau-de-parfum", "code": "77524", "name": "Lily Eau de Parfum", "fullName": "Lily Eau de Parfum 75ml", "price": 284.9, "category": "feminino", "image": "produtos/feminino/lily-eau-de-parfum/01.webp", "link": "", "desc": "Fragrância confortável, bonita e fácil de usar.", "tag": "Mais vendido"}, {"id": 47, "slug": "lily-lumiere-eau-de-parfum", "code": "77989", "name": "Lily Lumière", "fullName": "Lily Lumière Eau de Parfum 75ml", "price": 319.9, "category": "feminino", "image": "produtos/feminino/lily-lumiere-eau-de-parfum/01.webp", "link": "", "desc": "Perfume com toque refinado para destacar sua presença.", "tag": "Premium"}, {"id": 48, "slug": "linda", "code": "22516", "name": "Linda", "fullName": "Linda Desodorante Colônia 100ml", "price": 209.9, "category": "feminino", "image": "produtos/feminino/linda/01.webp", "link": "", "desc": "Escolha feminina agradável, moderna e sofisticada.", "tag": ""}, {"id": 49, "slug": "linda-felicidade", "code": "81849", "name": "Linda Felicidade", "fullName": "Linda Felicidade Desodorante Colônia 100ml", "price": 209.9, "category": "feminino", "image": "produtos/feminino/linda-felicidade/01.webp", "link": "", "desc": "Fragrância feminina elegante para rotina e momentos especiais.", "tag": ""}, {"id": 50, "slug": "linda-irresistivel", "code": "81756", "name": "Linda Irresistível", "fullName": "Linda Irresistível Desodorante Colônia 100ml", "price": 209.9, "category": "feminino", "image": "produtos/feminino/linda-irresistivel/01.webp", "link": "", "desc": "Perfume versátil, delicado e marcante na medida certa.", "tag": ""}, {"id": 51, "slug": "liz-desodorante", "code": "76700", "name": "Liz", "fullName": "Liz Desodorante Colônia 100ml", "price": 174.9, "category": "feminino", "image": "produtos/feminino/liz-desodorante/01.webp", "link": "", "desc": "Opção charmosa para quem gosta de presença com leveza.", "tag": ""}, {"id": 52, "slug": "liz-flora", "code": "59466", "name": "Liz Flora", "fullName": "Liz Flora Desodorante Colônia 100ml", "price": 174.9, "category": "feminino", "image": "produtos/feminino/liz-flora/01.webp", "link": "", "desc": "Fragrância confortável, bonita e fácil de usar.", "tag": ""}, {"id": 53, "slug": "liz-sublime", "code": "47339", "name": "Liz Sublime", "fullName": "Liz Sublime Desodorante Colônia 100ml", "price": 174.9, "category": "feminino", "image": "produtos/feminino/liz-sublime/01.webp", "link": "", "desc": "Perfume com toque refinado para destacar sua presença.", "tag": ""}, {"id": 54, "slug": "magnific-rouge-camelia", "code": "52943", "name": "Magnific Rouge Camélia", "fullName": "Magnific Rouge Camélia Desodorante Colônia 75ml", "price": 139.9, "category": "feminino", "image": "produtos/feminino/magnific-rouge-camelia/01.webp", "link": "", "desc": "Escolha feminina agradável, moderna e sofisticada.", "tag": ""}, {"id": 55, "slug": "nativa-spa-ameixa-baunilha", "code": "89366", "name": "Body Splash Nativa Spa Rosas Secretas", "fullName": "Body Splash Nativa Spa Rosas Secretas 200ml", "price": 99.9, "category": "feminino", "image": "produtos/feminino/nativa-spa-ameixa-baunilha/01.webp", "link": "", "desc": "Fragrância feminina elegante para rotina e momentos especiais.", "tag": ""}, {"id": 56, "slug": "boti-baby-lua", "code": "59132", "name": "Colônia Boti Baby Lua", "fullName": "Colônia Boti Baby Lua 100ml", "price": 95.9, "category": "infantil", "image": "produtos/infantil/boti-baby-lua/01.webp", "link": "", "desc": "Colônia delicada para deixar a rotina mais perfumada.", "tag": ""}, {"id": 57, "slug": "boti-baby-sol", "code": "51802", "name": "Boti Baby Sol", "fullName": "Boti Baby Colônia do Sol 100ml", "price": 75.9, "category": "infantil", "image": "produtos/infantil/boti-baby-sol/01.webp", "link": "", "desc": "Colônia infantil suave e delicada para o dia a dia.", "tag": ""}, {"id": 58, "slug": "dr-botica-pocao-da-amizade", "code": "70674", "name": "Dr. Botica Poção da Amizade", "fullName": "Dr. Botica Poção da Amizade Colônia Infantil 120ml", "price": 96.9, "category": "infantil", "image": "produtos/infantil/dr-botica-pocao-da-amizade/01.webp", "link": "", "desc": "Fragrância leve e carinhosa para momentos de cuidado.", "tag": ""}, {"id": 59, "slug": "dr-botica-pocao-da-aventura", "code": "83684", "name": "Dr. Botica Poção da Aventura", "fullName": "Dr. Botica Poção da Aventura Colônia Infantil 120ml", "price": 96.9, "category": "infantil", "image": "produtos/infantil/dr-botica-pocao-da-aventura/01.webp", "link": "", "desc": "Opção infantil confortável, agradável e fácil de usar.", "tag": ""}, {"id": 60, "slug": "dr-botica-pocao-da-coragem", "code": "51521", "name": "Dr. Botica Poção da Coragem", "fullName": "Dr. Botica Poção da Coragem Colônia Infantil 120ml", "price": 77.9, "category": "infantil", "image": "produtos/infantil/dr-botica-pocao-da-coragem/01.webp", "link": "", "desc": "Colônia delicada para deixar a rotina mais perfumada.", "tag": ""}, {"id": 61, "slug": "dr-botica-pocao-da-criatividade", "code": "55221", "name": "Dr. Botica Poção da Criatividade", "fullName": "Dr. Botica Poção da Criatividade Colônia Infantil 120ml", "price": 96.9, "category": "infantil", "image": "produtos/infantil/dr-botica-pocao-da-criatividade/01.webp", "link": "", "desc": "Colônia infantil suave e delicada para o dia a dia.", "tag": ""}, {"id": 62, "slug": "dr-botica-pocao-da-forca", "code": "51441", "name": "Dr. Botica Poção da Força", "fullName": "Dr. Botica Poção da Força Colônia Infantil 120ml", "price": 96.9, "category": "infantil", "image": "produtos/infantil/dr-botica-pocao-da-forca/01.webp", "link": "", "desc": "Fragrância leve e carinhosa para momentos de cuidado.", "tag": ""}, {"id": 63, "slug": "dr-botica-pocao-do-coracao", "code": "70672", "name": "Dr. Botica Poção do Coração", "fullName": "Dr. Botica Poção do Coração Colônia Infantil 120ml", "price": 77.9, "category": "infantil", "image": "produtos/infantil/dr-botica-pocao-do-coracao/01.webp", "link": "", "desc": "Opção infantil confortável, agradável e fácil de usar.", "tag": ""}, {"id": 64, "slug": "ma-cherie", "code": "05009", "name": "Ma Chérie", "fullName": "Ma Chérie Desodorante Colônia 100ml", "price": 149.9, "category": "infantil", "image": "produtos/infantil/ma-cherie/01.webp", "link": "", "desc": "Colônia delicada para deixar a rotina mais perfumada.", "tag": "Mais vendido"}, {"id": 65, "slug": "sophie-candy", "code": "51500", "name": "Sophie Candy", "fullName": "Colônia Infantil Sophie Candy 100ml", "price": 119.9, "category": "infantil", "image": "produtos/infantil/sophie-candy/01.webp", "link": "", "desc": "Colônia infantil suave e delicada para o dia a dia.", "tag": ""}, {"id": 66, "slug": "sophie-hello", "code": "70668", "name": "Sophie Hello", "fullName": "Sophie Hello Colônia Infantil 100ml", "price": 119.9, "category": "infantil", "image": "produtos/infantil/sophie-hello/01.webp", "link": "", "desc": "Fragrância leve e carinhosa para momentos de cuidado.", "tag": ""}, {"id": 67, "slug": "sophie-like", "code": "70669", "name": "Sophie Like", "fullName": "Sophie Like Colônia Infantil 100ml", "price": 119.9, "category": "infantil", "image": "produtos/infantil/sophie-like/01.webp", "link": "", "desc": "Opção infantil confortável, agradável e fácil de usar.", "tag": "Mais vendido"}, {"id": 68, "slug": "arbo", "code": "74438", "name": "Arbo", "fullName": "Arbo Desodorante Colônia 100ml", "price": 131.9, "category": "masculino", "image": "produtos/masculino/arbo/01.webp", "link": "", "desc": "Perfume versátil para rotina, trabalho e encontros.", "tag": ""}, {"id": 69, "slug": "bold-intention", "code": "58933", "name": "Bold Intention", "fullName": "Bold Intention Desodorante Colônia 100ml", "price": 154.9, "category": "masculino", "image": "produtos/masculino/bold-intention/01.webp", "link": "", "desc": "Opção elegante para homens que valorizam presença.", "tag": ""}, {"id": 70, "slug": "boticollection-connexion", "code": "27707", "name": "Boticollection Connexion", "fullName": "Boticollection Connexion Desodorante Colônia 100ml", "price": 139.9, "category": "masculino", "image": "produtos/masculino/boticollection-connexion/01.webp", "link": "", "desc": "Fragrância direta, bonita e com acabamento limpo.", "tag": ""}, {"id": 71, "slug": "boticollection-styletto", "code": "76678", "name": "Boticollection Styletto", "fullName": "Boticollection Styletto Desodorante Colônia 100ml", "price": 174.9, "category": "masculino", "image": "produtos/masculino/boticollection-styletto/01.webp", "link": "", "desc": "Perfume masculino com personalidade e sofisticação.", "tag": ""}, {"id": 72, "slug": "celebre-sua-forca-masculino", "code": "83059", "name": "Celebre Sua Força Masculino", "fullName": "Celebre Sua Força Desodorante Colônia Masculino 100ml", "price": 119.9, "category": "masculino", "image": "produtos/masculino/celebre-sua-forca-masculino/01.webp", "link": "", "desc": "Escolha prática para causar boa impressão.", "tag": ""}, {"id": 73, "slug": "clash", "code": "50677", "name": "Clash", "fullName": "Clash Desodorante Colônia 100ml", "price": 134.9, "category": "masculino", "image": "produtos/masculino/clash/01.webp", "link": "", "desc": "Fragrância masculina marcante, moderna e segura.", "tag": ""}, {"id": 74, "slug": "coffee-man", "code": "74029", "name": "Coffee Man", "fullName": "Coffee Man Desodorante Colônia 100ml", "price": 219.9, "category": "masculino", "image": "produtos/masculino/coffee-man/01.webp", "link": "", "desc": "Perfume versátil para rotina, trabalho e encontros.", "tag": ""}, {"id": 75, "slug": "egeo-blue", "code": "82686", "name": "Egeo Blue", "fullName": "Egeo Blue Desodorante Colônia 90ml", "price": 159.9, "category": "masculino", "image": "produtos/masculino/egeo-blue/01.webp", "link": "", "desc": "Opção elegante para homens que valorizam presença.", "tag": ""}, {"id": 76, "slug": "egeo-original", "code": "49812", "name": "Egeo Original", "fullName": "Egeo Original Desodorante Colônia 90ml", "price": 159.9, "category": "masculino", "image": "produtos/masculino/egeo-original/01.webp", "link": "", "desc": "Fragrância direta, bonita e com acabamento limpo.", "tag": ""}, {"id": 77, "slug": "egeo-spicy-vibe", "code": "84214", "name": "Egeo Spicy Vibe", "fullName": "Egeo Spicy Vibe Desodorante Colônia 90ml", "price": 159.9, "category": "masculino", "image": "produtos/masculino/egeo-spicy-vibe/01.webp", "link": "", "desc": "Perfume masculino com personalidade e sofisticação.", "tag": "Mais vendido"}, {"id": 78, "slug": "eudora-h-marine", "code": "57597", "name": "Eudora H Marine", "fullName": "Eudora H Marine Desodorante Colônia 100ml", "price": 114.9, "category": "masculino", "image": "produtos/masculino/eudora-h-marine/01.webp", "link": "", "desc": "Escolha prática para causar boa impressão.", "tag": ""}, {"id": 79, "slug": "lor-de-mediterranee", "code": "56554", "name": "L'Or de Méditerranée", "fullName": "L'Or de Méditerranée Eau de Parfum Pour Homme 75ml", "price": 379.0, "category": "masculino", "image": "produtos/masculino/lor-de-mediterranee/01.webp", "link": "", "desc": "Fragrância masculina marcante, moderna e segura.", "tag": "Premium"}, {"id": 80, "slug": "malbec", "code": "48130", "name": "Malbec", "fullName": "Malbec Desodorante Colônia 100ml", "price": 184.9, "category": "masculino", "image": "produtos/masculino/malbec/01.webp", "link": "", "desc": "Perfume versátil para rotina, trabalho e encontros.", "tag": "Mais vendido"}, {"id": 81, "slug": "malbec-black", "code": "84392", "name": "Malbec Black", "fullName": "Malbec Black Desodorante Colônia 100ml", "price": 259.9, "category": "masculino", "image": "produtos/masculino/malbec-black/01.webp", "link": "", "desc": "Opção elegante para homens que valorizam presença.", "tag": "Premium"}, {"id": 82, "slug": "malbec-gold", "code": "84391", "name": "Malbec Gold", "fullName": "Malbec Gold Desodorante Colônia 100ml", "price": 249.9, "category": "masculino", "image": "produtos/masculino/malbec-gold/01.webp", "link": "", "desc": "Fragrância direta, bonita e com acabamento limpo.", "tag": "Premium"}, {"id": 83, "slug": "malbec-magnetic", "code": "84390", "name": "Malbec Magnetic", "fullName": "Malbec Magnetic Desodorante Colônia 100ml", "price": 249.9, "category": "masculino", "image": "produtos/masculino/malbec-magnetic/01.webp", "link": "", "desc": "Perfume masculino com personalidade e sofisticação.", "tag": "Premium"}, {"id": 84, "slug": "malbec-signature", "code": "48134", "name": "Malbec Signature", "fullName": "Malbec Eau de Parfum Signature 90ml", "price": 359.9, "category": "masculino", "image": "produtos/masculino/malbec-signature/01.webp", "link": "", "desc": "Escolha prática para causar boa impressão.", "tag": "Premium"}, {"id": 85, "slug": "malbec-sport", "code": "48787", "name": "Malbec Sport", "fullName": "Malbec Sport Desodorante Colônia 100ml", "price": 229.9, "category": "masculino", "image": "produtos/masculino/malbec-sport/01.webp", "link": "", "desc": "Fragrância masculina marcante, moderna e segura.", "tag": ""}, {"id": 86, "slug": "malbec-vert", "code": "48133", "name": "Malbec Vert", "fullName": "Malbec Vert Desodorante Colônia 100ml", "price": 229.9, "category": "masculino", "image": "produtos/masculino/malbec-vert/01.webp", "link": "", "desc": "Perfume versátil para rotina, trabalho e encontros.", "tag": ""}, {"id": 87, "slug": "men-galbe", "code": "76666", "name": "Men Galbe", "fullName": "Men Galbe Desodorante Colônia 100ml", "price": 164.9, "category": "masculino", "image": "produtos/masculino/men-galbe/01.webp", "link": "", "desc": "Opção elegante para homens que valorizam presença.", "tag": ""}, {"id": 88, "slug": "men-only", "code": "76665", "name": "Men Only", "fullName": "Men Only Desodorante Colônia 100ml", "price": 164.9, "category": "masculino", "image": "produtos/masculino/men-only/01.webp", "link": "", "desc": "Fragrância direta, bonita e com acabamento limpo.", "tag": ""}, {"id": 89, "slug": "oui-iconique-001", "code": "85827", "name": "O.U.I Iconique 001", "fullName": "O.U.I Iconique 001 Eau de Parfum 75ml", "price": 379.0, "category": "masculino", "image": "produtos/masculino/oui-iconique-001/01.webp", "link": "", "desc": "Perfume masculino com personalidade e sofisticação.", "tag": "Premium"}, {"id": 90, "slug": "oui-mystere-royal-084", "code": "47407", "name": "O.U.I Mystère Royal 084", "fullName": "O.U.I Mystère Royal 084 Eau de Parfum 75ml", "price": 379.0, "category": "masculino", "image": "produtos/masculino/oui-mystere-royal-084/01.webp", "link": "", "desc": "Escolha prática para causar boa impressão.", "tag": "Premium"}, {"id": 91, "slug": "quasar-brave", "code": "73287", "name": "Quasar Brave", "fullName": "Quasar Brave Desodorante Colônia 100ml", "price": 174.9, "category": "masculino", "image": "produtos/masculino/quasar-brave/01.webp", "link": "", "desc": "Fragrância masculina marcante, moderna e segura.", "tag": "Mais vendido"}, {"id": 92, "slug": "quasar-fire", "code": "73285", "name": "Quasar Fire", "fullName": "Quasar Fire Desodorante Colônia 100ml", "price": 174.9, "category": "masculino", "image": "produtos/masculino/quasar-fire/01.webp", "link": "", "desc": "Perfume versátil para rotina, trabalho e encontros.", "tag": ""}, {"id": 93, "slug": "quasar-rush", "code": "83039", "name": "Quasar Rush", "fullName": "Quasar Rush Desodorante Colônia 100ml", "price": 174.9, "category": "masculino", "image": "produtos/masculino/quasar-rush/01.webp", "link": "", "desc": "Opção elegante para homens que valorizam presença.", "tag": ""}, {"id": 94, "slug": "the-blend-bourbon", "code": "77489", "name": "The Blend Bourbon", "fullName": "The Blend Bourbon Eau de Parfum 100ml", "price": 359.9, "category": "masculino", "image": "produtos/masculino/the-blend-bourbon/01.webp", "link": "", "desc": "Fragrância direta, bonita e com acabamento limpo.", "tag": "Premium"}, {"id": 95, "slug": "the-blend-cardamom", "code": "83529", "name": "The Blend Cardamom", "fullName": "The Blend Cardamom Eau de Parfum 100ml", "price": 359.9, "category": "masculino", "image": "produtos/masculino/the-blend-cardamom/01.webp", "link": "", "desc": "Perfume masculino com personalidade e sofisticação.", "tag": "Mais vendido"}, {"id": 96, "slug": "uomini-black", "code": "77484", "name": "Uomini Black", "fullName": "Uomini Black Desodorante Colônia 100ml", "price": 199.9, "category": "masculino", "image": "produtos/masculino/uomini-black/01.webp", "link": "", "desc": "Escolha prática para causar boa impressão.", "tag": ""}, {"id": 97, "slug": "uomini-infinite", "code": "77490", "name": "Uomini Infinite", "fullName": "Uomini Infinite Desodorante Colônia 100ml", "price": 169.9, "category": "masculino", "image": "produtos/masculino/uomini-infinite/01.webp", "link": "", "desc": "Fragrância masculina marcante, moderna e segura.", "tag": ""}, {"id": 98, "slug": "volpe-triumph", "code": "56231", "name": "Volpe Triumph", "fullName": "Volpe Triumph Desodorante Colônia 100ml", "price": 169.9, "category": "masculino", "image": "produtos/masculino/volpe-triumph/01.webp", "link": "", "desc": "Perfume versátil para rotina, trabalho e encontros.", "tag": ""}, {"id": 99, "slug": "zaad-expedition", "code": "46898", "name": "Zaad Expedition", "fullName": "Zaad Expedition Eau de Parfum 95ml", "price": 294.9, "category": "masculino", "image": "produtos/masculino/zaad-expedition/01.webp", "link": "", "desc": "Opção elegante para homens que valorizam presença.", "tag": "Premium"}, {"id": 100, "slug": "zaad-intense", "code": "58644", "name": "Zaad Intense", "fullName": "Zaad Intense Eau de Parfum 95ml", "price": 299.9, "category": "masculino", "image": "produtos/masculino/zaad-intense/01.webp", "link": "", "desc": "Fragrância direta, bonita e com acabamento limpo.", "tag": "Premium"}, {"id": 101, "slug": "zaad-mondo", "code": "47951", "name": "Zaad Mondo", "fullName": "Zaad Mondo Eau de Parfum 95ml", "price": 263.89, "category": "masculino", "image": "produtos/masculino/zaad-mondo/01.webp", "link": "", "desc": "Perfume masculino com personalidade e sofisticação.", "tag": "Premium"}, {"id": 102, "slug": "zaad-eau-de-parfum", "code": "47950", "name": "Zaad Eau de Parfum", "fullName": "Zaad Eau de Parfum 95ml", "price": 329.9, "category": "masculino", "image": "produtos/masculino/zaad-eau-de-parfum/01.webp", "link": "", "desc": "Escolha prática para causar boa impressão.", "tag": "Mais vendido"}];
+    const bestsellerCodes = ["75792", "77524", "48139", "50022", "48130", "47950", "83529", "73287", "05009", "70669", "51387", "84214"];
 
-<footer>
-<div class="container footer-grid"><div><h3>Ana Essenci</h3><p>Perfumaria & conteúdo. Uma vitrine organizada para escolher produtos por código com atendimento assistido.</p></div><div><h3>Atendimento</h3><p><a href="mailto:loja.anaessenci@gmail.com">loja.anaessenci@gmail.com</a><br><a href="https://wa.me/5562981479674" target="_blank" rel="noopener">(62) 98147-9674</a></p></div></div>
-<div class="container copy">© 2026 Ana Essenci. Todos os direitos reservados.</div>
-</footer>
-<script>
-const products = [{"id": 1, "slug": "accordes", "code": "28813", "name": "Accordes", "fullName": "Accordes Desodorante Colônia 80ml", "price": 244.9, "category": "feminino", "image": "produtos/feminino/accordes/01.webp", "link": "", "desc": "Elegante, feminina e fácil de usar no dia a dia.", "tag": "Premium"}, {"id": 2, "slug": "body-splash", "code": "76621", "name": "Body Splash Dream", "fullName": "Body Splash Desodorante Colônia Dream Céu de Baunilha 200ml", "price": 109.9, "category": "feminino", "image": "produtos/feminino/body-splash/01.webp", "link": "", "desc": "Delicada e marcante na medida certa.", "tag": ""}, {"id": 3, "slug": "body-splash-cuide-se-bem", "code": "82037", "name": "Body Splash Cuide-se Bem Boa Noite", "fullName": "Body Splash Desodorante Colônia Cuide-se Bem Boa Noite 200ml", "price": 92.9, "category": "feminino", "image": "produtos/feminino/body-splash-cuide-se-bem/01.webp", "link": "", "desc": "Boa escolha para encontros e momentos especiais.", "tag": ""}, {"id": 4, "slug": "body-splash-nativa", "code": "82052", "name": "Body Splash Nativa Spa Jasmim Sambac", "fullName": "Body Splash Desodorante Colônia Nativa Spa Jasmim Sambac 200ml", "price": 69.9, "category": "feminino", "image": "produtos/feminino/body-splash-nativa/01.webp", "link": "", "desc": "Perfume confortável, bonito e versátil.", "tag": ""}, {"id": 5, "slug": "body-splash-pessegura", "code": "84205", "name": "Body Splash Cuide-se Bem Pessegura", "fullName": "Body Splash Desodorante Corporal Cuide-se Bem Pessegura 200ml", "price": 92.9, "category": "feminino", "image": "produtos/feminino/body-splash-pessegura/01.webp", "link": "", "desc": "Traz presença sem exagero e com bom gosto.", "tag": ""}, {"id": 6, "slug": "botica-214-african-sunrise", "code": "54657", "name": "Botica 214 African Sunrise", "fullName": "Botica 214 African Sunrise Floral Frutal Eau de Parfum 75ml", "price": 239.9, "category": "feminino", "image": "produtos/feminino/botica-214-african-sunrise/01.webp", "link": "", "desc": "Elegante, feminina e fácil de usar no dia a dia.", "tag": "Premium"}, {"id": 7, "slug": "botica-214-fiji-paradise", "code": "51387", "name": "Botica 214 Fiji Paradise", "fullName": "Botica 214 Fiji Paradise Floral Especiado Eau de Parfum 75ml", "price": 239.9, "category": "feminino", "image": "produtos/feminino/botica-214-fiji-paradise/01.webp", "link": "", "desc": "Delicada e marcante na medida certa.", "tag": "Mais vendido"}, {"id": 8, "slug": "botica-214-golden-gardenia", "code": "47629", "name": "Botica 214 Golden Gardênia", "fullName": "Botica 214 Golden Gardênia Eau de Parfum 75ml", "price": 239.9, "category": "feminino", "image": "produtos/feminino/botica-214-golden-gardenia/01.webp", "link": "", "desc": "Boa escolha para encontros e momentos especiais.", "tag": "Premium"}, {"id": 9, "slug": "botica-214-sevilla-dorada", "code": "58733", "name": "Botica 214 Sevilla Dorada", "fullName": "Botica 214 Sevilla Dorada Eau de Parfum Floral Frutal 75ml", "price": 239.9, "category": "feminino", "image": "produtos/feminino/botica-214-sevilla-dorada/01.webp", "link": "", "desc": "Perfume confortável, bonito e versátil.", "tag": "Premium"}, {"id": 10, "slug": "botica-214-verano-en-firenze", "code": "47553", "name": "Botica 214 Verano en Firenze", "fullName": "Botica 214 Verano en Firenze Eau de Parfum Floral Frutal 75ml", "price": 239.9, "category": "feminino", "image": "produtos/feminino/botica-214-verano-en-firenze/01.webp", "link": "", "desc": "Traz presença sem exagero e com bom gosto.", "tag": "Premium"}, {"id": 11, "slug": "by-acqua-fresca", "code": "48352", "name": "Boticollection Acqua Fresca", "fullName": "Boticollection Acqua Fresca Desodorante Colônia 200ml", "price": 224.9, "category": "feminino", "image": "produtos/feminino/by-acqua-fresca/01.webp", "link": "", "desc": "Elegante, feminina e fácil de usar no dia a dia.", "tag": ""}, {"id": 12, "slug": "by-cecita", "code": "22248", "name": "Boticollection Cecita", "fullName": "Boticollection Cecita Desodorante Colônia 100ml", "price": 174.9, "category": "feminino", "image": "produtos/feminino/by-cecita/01.webp", "link": "", "desc": "Delicada e marcante na medida certa.", "tag": ""}, {"id": 13, "slug": "by-crazy-feelings", "code": "71877", "name": "Boticollection Crazy Feelings", "fullName": "Boticollection Crazy Feelings Desodorante Colônia 100ml", "price": 174.9, "category": "feminino", "image": "produtos/feminino/by-crazy-feelings/01.webp", "link": "", "desc": "Boa escolha para encontros e momentos especiais.", "tag": ""}, {"id": 14, "slug": "by-free", "code": "22249", "name": "Free Boticollection", "fullName": "Free Desodorante Colônia Boticollection 100ml", "price": 174.9, "category": "feminino", "image": "produtos/feminino/by-free/01.webp", "link": "", "desc": "Perfume confortável, bonito e versátil.", "tag": ""}, {"id": 15, "slug": "by-thaty", "code": "19734", "name": "Boticollection Thaty", "fullName": "Boticollection Thaty Desodorante Colônia 100ml", "price": 174.9, "category": "feminino", "image": "produtos/feminino/by-thaty/01.webp", "link": "", "desc": "Traz presença sem exagero e com bom gosto.", "tag": ""}, {"id": 16, "slug": "celebre-agora", "code": "52044", "name": "Celebre Agora", "fullName": "Celebre Agora Feminino Desodorante Colônia 100ml", "price": 119.9, "category": "feminino", "image": "produtos/feminino/celebre-agora/01.webp", "link": "", "desc": "Elegante, feminina e fácil de usar no dia a dia.", "tag": ""}, {"id": 17, "slug": "celebre-sua-forca", "code": "83060", "name": "Celebre Sua Força", "fullName": "Celebre Sua Força Desodorante Colônia Feminino 100ml", "price": 119.9, "category": "feminino", "image": "produtos/feminino/celebre-sua-forca/01.webp", "link": "", "desc": "Delicada e marcante na medida certa.", "tag": ""}, {"id": 18, "slug": "coffee-woman-duo", "code": "73613", "name": "Coffee Woman Duo", "fullName": "Coffee Woman Duo Desodorante Colônia 100ml", "price": 219.9, "category": "feminino", "image": "produtos/feminino/coffee-woman-duo/01.webp", "link": "", "desc": "Boa escolha para encontros e momentos especiais.", "tag": ""}, {"id": 19, "slug": "coffee-woman-lucky", "code": "83756", "name": "Coffee Woman Lucky", "fullName": "Coffee Woman Lucky Desodorante Colônia 100ml", "price": 219.9, "category": "feminino", "image": "produtos/feminino/coffee-woman-lucky/01.webp", "link": "", "desc": "Perfume confortável, bonito e versátil.", "tag": ""}, {"id": 20, "slug": "coffee-woman-seduction", "code": "48139", "name": "Coffee Woman Seduction", "fullName": "Coffee Woman Seduction Desodorante Colônia 100ml", "price": 219.9, "category": "feminino", "image": "produtos/feminino/coffee-woman-seduction/01.webp", "link": "", "desc": "Traz presença sem exagero e com bom gosto.", "tag": "Mais vendido"}, {"id": 21, "slug": "egeo-bomb-purple", "code": "82685", "name": "Egeo Bomb Black", "fullName": "Egeo Bomb Black Desodorante Colônia 90ml", "price": 124.9, "category": "feminino", "image": "produtos/feminino/egeo-bomb-purple/01.webp", "link": "", "desc": "Elegante, feminina e fácil de usar no dia a dia.", "tag": ""}, {"id": 22, "slug": "egeo-choc-berry", "code": "82689", "name": "Egeo Choc", "fullName": "Egeo Choc Desodorante Colônia 90ml", "price": 159.9, "category": "feminino", "image": "produtos/feminino/egeo-choc-berry/01.webp", "link": "", "desc": "Delicada e marcante na medida certa.", "tag": ""}, {"id": 23, "slug": "egeo-dolce", "code": "82688", "name": "Egeo Dolce", "fullName": "Egeo Dolce Desodorante Colônia 90ml", "price": 159.9, "category": "feminino", "image": "produtos/feminino/egeo-dolce/01.webp", "link": "", "desc": "Boa escolha para encontros e momentos especiais.", "tag": ""}, {"id": 24, "slug": "egeo-red", "code": "82690", "name": "Egeo Red", "fullName": "Egeo Red Desodorante Colônia 90ml", "price": 159.9, "category": "feminino", "image": "produtos/feminino/egeo-red/01.webp", "link": "", "desc": "Perfume confortável, bonito e versátil.", "tag": ""}, {"id": 25, "slug": "egeo-vanilla-vibe", "code": "84213", "name": "Egeo Vanilla Vibe", "fullName": "Egeo Vanilla Vibe Desodorante Colônia 90ml", "price": 143.91, "category": "feminino", "image": "produtos/feminino/egeo-vanilla-vibe/01.webp", "link": "", "desc": "Traz presença sem exagero e com bom gosto.", "tag": ""}, {"id": 26, "slug": "elysee-nuit", "code": "48146", "name": "Elysée Nuit", "fullName": "Elysée Nuit Eau de Parfum 50ml", "price": 319.9, "category": "feminino", "image": "produtos/feminino/elysee-nuit/01.webp", "link": "", "desc": "Elegante, feminina e fácil de usar no dia a dia.", "tag": "Premium"}, {"id": 27, "slug": "elysee-succes", "code": "81331", "name": "Elysée Succès", "fullName": "Elysée Succès Eau de Parfum 50ml", "price": 319.9, "category": "feminino", "image": "produtos/feminino/elysee-succes/01.webp", "link": "", "desc": "Delicada e marcante na medida certa.", "tag": "Premium"}, {"id": 28, "slug": "eudora-kiss-me-cabernet", "code": "50268", "name": "Eudora Kiss Me Cabernet", "fullName": "Eudora Kiss Me Cabernet Desodorante Colônia 50ml", "price": 89.89, "category": "feminino", "image": "produtos/feminino/eudora-kiss-me-cabernet/01.webp", "link": "", "desc": "Boa escolha para encontros e momentos especiais.", "tag": ""}, {"id": 29, "slug": "eudora-rose-eau-de-parfum", "code": "56572", "name": "Eudora Rosé Eau de Parfum", "fullName": "Eudora Rosé Eau de Parfum 75ml", "price": 239.9, "category": "feminino", "image": "produtos/feminino/eudora-rose-eau-de-parfum/01.webp", "link": "", "desc": "Perfume confortável, bonito e versátil.", "tag": "Premium"}, {"id": 30, "slug": "floratta-blue", "code": "25458", "name": "Floratta Blue", "fullName": "Floratta Blue Desodorante Colônia 75ml", "price": 164.9, "category": "feminino", "image": "produtos/feminino/floratta-blue/01.webp", "link": "", "desc": "Traz presença sem exagero e com bom gosto.", "tag": ""}, {"id": 31, "slug": "floratta-fleur-declipse", "code": "48621", "name": "Floratta Fleur D'Éclipse", "fullName": "Floratta Fleur D'Éclipse Eau de Parfum 75ml", "price": 219.9, "category": "feminino", "image": "produtos/feminino/floratta-fleur-declipse/01.webp", "link": "", "desc": "Elegante, feminina e fácil de usar no dia a dia.", "tag": ""}, {"id": 32, "slug": "floratta-flores-secretas", "code": "48136", "name": "Floratta Flores Secretas", "fullName": "Floratta Flores Secretas Desodorante Colônia 75ml", "price": 164.9, "category": "feminino", "image": "produtos/feminino/floratta-flores-secretas/01.webp", "link": "", "desc": "Delicada e marcante na medida certa.", "tag": ""}, {"id": 33, "slug": "floratta-my-blue", "code": "01004", "name": "Floratta My Blue", "fullName": "Floratta My Blue Desodorante Colônia 75ml", "price": 164.9, "category": "feminino", "image": "produtos/feminino/floratta-my-blue/01.webp", "link": "", "desc": "Boa escolha para encontros e momentos especiais.", "tag": ""}, {"id": 34, "slug": "floratta-red", "code": "75792", "name": "Floratta Red", "fullName": "Floratta Red Desodorante Colônia 75ml", "price": 164.9, "category": "feminino", "image": "produtos/feminino/floratta-red/01.webp", "link": "", "desc": "Perfume confortável, bonito e versátil.", "tag": "Mais vendido"}, {"id": 35, "slug": "floratta-red-blossom", "code": "49973", "name": "Floratta Red Blossom", "fullName": "Floratta Red Blossom Desodorante Colônia 75ml", "price": 164.9, "category": "feminino", "image": "produtos/feminino/floratta-red-blossom/01.webp", "link": "", "desc": "Traz presença sem exagero e com bom gosto.", "tag": ""}, {"id": 36, "slug": "floratta-red-passion", "code": "59306", "name": "Floratta Red Passion", "fullName": "Floratta Red Passion Eau de Parfum 75ml", "price": 219.9, "category": "feminino", "image": "produtos/feminino/floratta-red-passion/01.webp", "link": "", "desc": "Elegante, feminina e fácil de usar no dia a dia.", "tag": ""}, {"id": 37, "slug": "floratta-romance", "code": "55659", "name": "Floratta Romance de Verão", "fullName": "Floratta Romance de Verão Desodorante Colônia 75ml", "price": 164.9, "category": "feminino", "image": "produtos/feminino/floratta-romance/01.webp", "link": "", "desc": "Delicada e marcante na medida certa.", "tag": ""}, {"id": 38, "slug": "floratta-rose", "code": "48635", "name": "Floratta Rose", "fullName": "Floratta Rose Desodorante Colônia 75ml", "price": 164.9, "category": "feminino", "image": "produtos/feminino/floratta-rose/01.webp", "link": "", "desc": "Boa escolha para encontros e momentos especiais.", "tag": ""}, {"id": 39, "slug": "floratta-rose-sucree", "code": "88135", "name": "Floratta Rose Sucrée", "fullName": "Floratta Rose Sucrée Eau de Parfum 75ml", "price": 184.89, "category": "feminino", "image": "produtos/feminino/floratta-rose-sucree/01.webp", "link": "", "desc": "Perfume confortável, bonito e versátil.", "tag": ""}, {"id": 40, "slug": "glamour-secrets-black", "code": "74103", "name": "Glamour Secrets Black", "fullName": "Glamour Secrets Black Desodorante Colônia 75ml", "price": 189.9, "category": "feminino", "image": "produtos/feminino/glamour-secrets-black/01.webp", "link": "", "desc": "Traz presença sem exagero e com bom gosto.", "tag": ""}, {"id": 41, "slug": "her-code", "code": "50022", "name": "Her Code", "fullName": "Her Code Eau de Parfum 50ml", "price": 244.9, "category": "feminino", "image": "produtos/feminino/her-code/01.webp", "link": "", "desc": "Elegante, feminina e fácil de usar no dia a dia.", "tag": "Mais vendido"}, {"id": 42, "slug": "kiss-me-rosa-marcante", "code": "50267", "name": "Kiss Me Rosa Marcante", "fullName": "Kiss Me Rosa Marcante Colônia Desodorante 50ml", "price": 109.99, "category": "feminino", "image": "produtos/feminino/kiss-me-rosa-marcante/01.webp", "link": "", "desc": "Delicada e marcante na medida certa.", "tag": ""}, {"id": 43, "slug": "leau-de-lily", "code": "83971", "name": "L'Eau de Lily", "fullName": "L'Eau de Lily Desodorante Colônia 75ml", "price": 219.9, "category": "feminino", "image": "produtos/feminino/leau-de-lily/01.webp", "link": "", "desc": "Boa escolha para encontros e momentos especiais.", "tag": ""}, {"id": 44, "slug": "leau-de-lily-soleil", "code": "49680", "name": "L'Eau de Lily Soleil", "fullName": "L'Eau de Lily Soleil Desodorante Colônia 75ml", "price": 219.9, "category": "feminino", "image": "produtos/feminino/leau-de-lily-soleil/01.webp", "link": "", "desc": "Perfume confortável, bonito e versátil.", "tag": ""}, {"id": 45, "slug": "lily-absolu", "code": "77988", "name": "Lily Absolu", "fullName": "Lily Absolu Eau de Parfum 75ml", "price": 319.9, "category": "feminino", "image": "produtos/feminino/lily-absolu/01.webp", "link": "", "desc": "Traz presença sem exagero e com bom gosto.", "tag": "Premium"}, {"id": 46, "slug": "lily-eau-de-parfum", "code": "77524", "name": "Lily Eau de Parfum", "fullName": "Lily Eau de Parfum 75ml", "price": 284.9, "category": "feminino", "image": "produtos/feminino/lily-eau-de-parfum/01.webp", "link": "", "desc": "Elegante, feminina e fácil de usar no dia a dia.", "tag": "Mais vendido"}, {"id": 47, "slug": "lily-lumiere-eau-de-parfum", "code": "77989", "name": "Lily Lumière", "fullName": "Lily Lumière Eau de Parfum 75ml", "price": 319.9, "category": "feminino", "image": "produtos/feminino/lily-lumiere-eau-de-parfum/01.webp", "link": "", "desc": "Delicada e marcante na medida certa.", "tag": "Premium"}, {"id": 48, "slug": "linda", "code": "22516", "name": "Linda", "fullName": "Linda Desodorante Colônia 100ml", "price": 209.9, "category": "feminino", "image": "produtos/feminino/linda/01.webp", "link": "", "desc": "Boa escolha para encontros e momentos especiais.", "tag": ""}, {"id": 49, "slug": "linda-felicidade", "code": "81849", "name": "Linda Felicidade", "fullName": "Linda Felicidade Desodorante Colônia 100ml", "price": 209.9, "category": "feminino", "image": "produtos/feminino/linda-felicidade/01.webp", "link": "", "desc": "Perfume confortável, bonito e versátil.", "tag": ""}, {"id": 50, "slug": "linda-irresistivel", "code": "81756", "name": "Linda Irresistível", "fullName": "Linda Irresistível Desodorante Colônia 100ml", "price": 209.9, "category": "feminino", "image": "produtos/feminino/linda-irresistivel/01.webp", "link": "", "desc": "Traz presença sem exagero e com bom gosto.", "tag": ""}, {"id": 51, "slug": "liz-desodorante", "code": "76700", "name": "Liz", "fullName": "Liz Desodorante Colônia 100ml", "price": 174.9, "category": "feminino", "image": "produtos/feminino/liz-desodorante/01.webp", "link": "", "desc": "Elegante, feminina e fácil de usar no dia a dia.", "tag": ""}, {"id": 52, "slug": "liz-flora", "code": "59466", "name": "Liz Flora", "fullName": "Liz Flora Desodorante Colônia 100ml", "price": 174.9, "category": "feminino", "image": "produtos/feminino/liz-flora/01.webp", "link": "", "desc": "Delicada e marcante na medida certa.", "tag": ""}, {"id": 53, "slug": "liz-sublime", "code": "47339", "name": "Liz Sublime", "fullName": "Liz Sublime Desodorante Colônia 100ml", "price": 174.9, "category": "feminino", "image": "produtos/feminino/liz-sublime/01.webp", "link": "", "desc": "Boa escolha para encontros e momentos especiais.", "tag": ""}, {"id": 54, "slug": "magnific-rouge-camelia", "code": "52943", "name": "Magnific Rouge Camélia", "fullName": "Magnific Rouge Camélia Desodorante Colônia 75ml", "price": 139.9, "category": "feminino", "image": "produtos/feminino/magnific-rouge-camelia/01.webp", "link": "", "desc": "Perfume confortável, bonito e versátil.", "tag": ""}, {"id": 55, "slug": "nativa-spa-ameixa-baunilha", "code": "89366", "name": "Body Splash Nativa Spa Rosas Secretas", "fullName": "Body Splash Nativa Spa Rosas Secretas 200ml", "price": 99.9, "category": "feminino", "image": "produtos/feminino/nativa-spa-ameixa-baunilha/01.webp", "link": "", "desc": "Traz presença sem exagero e com bom gosto.", "tag": ""}, {"id": 56, "slug": "boti-baby-lua", "code": "59132", "name": "Colônia Boti Baby Lua", "fullName": "Colônia Boti Baby Lua 100ml", "price": 95.9, "category": "infantil", "image": "produtos/infantil/boti-baby-lua/01.webp", "link": "", "desc": "Perfume delicado para momentos de cuidado.", "tag": ""}, {"id": 57, "slug": "boti-baby-sol", "code": "51802", "name": "Boti Baby Sol", "fullName": "Boti Baby Colônia do Sol 100ml", "price": 75.9, "category": "infantil", "image": "produtos/infantil/boti-baby-sol/01.webp", "link": "", "desc": "Colônia suave e delicada para o dia a dia.", "tag": ""}, {"id": 58, "slug": "dr-botica-pocao-da-amizade", "code": "70674", "name": "Dr. Botica Poção da Amizade", "fullName": "Dr. Botica Poção da Amizade Colônia Infantil 120ml", "price": 96.9, "category": "infantil", "image": "produtos/infantil/dr-botica-pocao-da-amizade/01.webp", "link": "", "desc": "Fragrância leve e carinhosa.", "tag": ""}, {"id": 59, "slug": "dr-botica-pocao-da-aventura", "code": "83684", "name": "Dr. Botica Poção da Aventura", "fullName": "Dr. Botica Poção da Aventura Colônia Infantil 120ml", "price": 96.9, "category": "infantil", "image": "produtos/infantil/dr-botica-pocao-da-aventura/01.webp", "link": "", "desc": "Opção infantil confortável e agradável.", "tag": ""}, {"id": 60, "slug": "dr-botica-pocao-da-coragem", "code": "51521", "name": "Dr. Botica Poção da Coragem", "fullName": "Dr. Botica Poção da Coragem Colônia Infantil 120ml", "price": 77.9, "category": "infantil", "image": "produtos/infantil/dr-botica-pocao-da-coragem/01.webp", "link": "", "desc": "Perfume delicado para momentos de cuidado.", "tag": ""}, {"id": 61, "slug": "dr-botica-pocao-da-criatividade", "code": "55221", "name": "Dr. Botica Poção da Criatividade", "fullName": "Dr. Botica Poção da Criatividade Colônia Infantil 120ml", "price": 96.9, "category": "infantil", "image": "produtos/infantil/dr-botica-pocao-da-criatividade/01.webp", "link": "", "desc": "Colônia suave e delicada para o dia a dia.", "tag": ""}, {"id": 62, "slug": "dr-botica-pocao-da-forca", "code": "51441", "name": "Dr. Botica Poção da Força", "fullName": "Dr. Botica Poção da Força Colônia Infantil 120ml", "price": 96.9, "category": "infantil", "image": "produtos/infantil/dr-botica-pocao-da-forca/01.webp", "link": "", "desc": "Fragrância leve e carinhosa.", "tag": ""}, {"id": 63, "slug": "dr-botica-pocao-do-coracao", "code": "70672", "name": "Dr. Botica Poção do Coração", "fullName": "Dr. Botica Poção do Coração Colônia Infantil 120ml", "price": 77.9, "category": "infantil", "image": "produtos/infantil/dr-botica-pocao-do-coracao/01.webp", "link": "", "desc": "Opção infantil confortável e agradável.", "tag": ""}, {"id": 64, "slug": "ma-cherie", "code": "05009", "name": "Ma Chérie", "fullName": "Ma Chérie Desodorante Colônia 100ml", "price": 149.9, "category": "infantil", "image": "produtos/infantil/ma-cherie/01.webp", "link": "", "desc": "Perfume delicado para momentos de cuidado.", "tag": "Mais vendido"}, {"id": 65, "slug": "sophie-candy", "code": "51500", "name": "Sophie Candy", "fullName": "Colônia Infantil Sophie Candy 100ml", "price": 119.9, "category": "infantil", "image": "produtos/infantil/sophie-candy/01.webp", "link": "", "desc": "Colônia suave e delicada para o dia a dia.", "tag": ""}, {"id": 66, "slug": "sophie-hello", "code": "70668", "name": "Sophie Hello", "fullName": "Sophie Hello Colônia Infantil 100ml", "price": 119.9, "category": "infantil", "image": "produtos/infantil/sophie-hello/01.webp", "link": "", "desc": "Fragrância leve e carinhosa.", "tag": ""}, {"id": 67, "slug": "sophie-like", "code": "70669", "name": "Sophie Like", "fullName": "Sophie Like Colônia Infantil 100ml", "price": 119.9, "category": "infantil", "image": "produtos/infantil/sophie-like/01.webp", "link": "", "desc": "Opção infantil confortável e agradável.", "tag": "Mais vendido"}, {"id": 68, "slug": "arbo", "code": "74438", "name": "Arbo", "fullName": "Arbo Desodorante Colônia 100ml", "price": 131.9, "category": "masculino", "image": "produtos/masculino/arbo/01.webp", "link": "", "desc": "Perfil masculino limpo, direto e elegante.", "tag": ""}, {"id": 69, "slug": "bold-intention", "code": "58933", "name": "Bold Intention", "fullName": "Bold Intention Desodorante Colônia 100ml", "price": 154.9, "category": "masculino", "image": "produtos/masculino/bold-intention/01.webp", "link": "", "desc": "Fragrância segura para causar boa impressão.", "tag": ""}, {"id": 70, "slug": "boticollection-connexion", "code": "27707", "name": "Boticollection Connexion", "fullName": "Boticollection Connexion Desodorante Colônia 100ml", "price": 139.9, "category": "masculino", "image": "produtos/masculino/boticollection-connexion/01.webp", "link": "", "desc": "Presença forte com acabamento sofisticado.", "tag": ""}, {"id": 71, "slug": "boticollection-styletto", "code": "76678", "name": "Boticollection Styletto", "fullName": "Boticollection Styletto Desodorante Colônia 100ml", "price": 174.9, "category": "masculino", "image": "produtos/masculino/boticollection-styletto/01.webp", "link": "", "desc": "Marcante, moderno e fácil de usar.", "tag": ""}, {"id": 72, "slug": "celebre-sua-forca-masculino", "code": "83059", "name": "Celebre Sua Força Masculino", "fullName": "Celebre Sua Força Desodorante Colônia Masculino 100ml", "price": 119.9, "category": "masculino", "image": "produtos/masculino/celebre-sua-forca-masculino/01.webp", "link": "", "desc": "Boa escolha para rotina, trabalho e encontros.", "tag": ""}, {"id": 73, "slug": "clash", "code": "50677", "name": "Clash", "fullName": "Clash Desodorante Colônia 100ml", "price": 134.9, "category": "masculino", "image": "produtos/masculino/clash/01.webp", "link": "", "desc": "Perfil masculino limpo, direto e elegante.", "tag": ""}, {"id": 74, "slug": "coffee-man", "code": "74029", "name": "Coffee Man", "fullName": "Coffee Man Desodorante Colônia 100ml", "price": 219.9, "category": "masculino", "image": "produtos/masculino/coffee-man/01.webp", "link": "", "desc": "Fragrância segura para causar boa impressão.", "tag": ""}, {"id": 75, "slug": "egeo-blue", "code": "82686", "name": "Egeo Blue", "fullName": "Egeo Blue Desodorante Colônia 90ml", "price": 159.9, "category": "masculino", "image": "produtos/masculino/egeo-blue/01.webp", "link": "", "desc": "Presença forte com acabamento sofisticado.", "tag": ""}, {"id": 76, "slug": "egeo-original", "code": "49812", "name": "Egeo Original", "fullName": "Egeo Original Desodorante Colônia 90ml", "price": 159.9, "category": "masculino", "image": "produtos/masculino/egeo-original/01.webp", "link": "", "desc": "Marcante, moderno e fácil de usar.", "tag": ""}, {"id": 77, "slug": "egeo-spicy-vibe", "code": "84214", "name": "Egeo Spicy Vibe", "fullName": "Egeo Spicy Vibe Desodorante Colônia 90ml", "price": 159.9, "category": "masculino", "image": "produtos/masculino/egeo-spicy-vibe/01.webp", "link": "", "desc": "Boa escolha para rotina, trabalho e encontros.", "tag": "Mais vendido"}, {"id": 78, "slug": "eudora-h-marine", "code": "57597", "name": "Eudora H Marine", "fullName": "Eudora H Marine Desodorante Colônia 100ml", "price": 114.9, "category": "masculino", "image": "produtos/masculino/eudora-h-marine/01.webp", "link": "", "desc": "Perfil masculino limpo, direto e elegante.", "tag": ""}, {"id": 79, "slug": "lor-de-mediterranee", "code": "56554", "name": "L'Or de Méditerranée", "fullName": "L'Or de Méditerranée Eau de Parfum Pour Homme 75ml", "price": 379.0, "category": "masculino", "image": "produtos/masculino/lor-de-mediterranee/01.webp", "link": "", "desc": "Fragrância segura para causar boa impressão.", "tag": "Premium"}, {"id": 80, "slug": "malbec", "code": "48130", "name": "Malbec", "fullName": "Malbec Desodorante Colônia 100ml", "price": 184.9, "category": "masculino", "image": "produtos/masculino/malbec/01.webp", "link": "", "desc": "Presença forte com acabamento sofisticado.", "tag": "Mais vendido"}, {"id": 81, "slug": "malbec-black", "code": "84392", "name": "Malbec Black", "fullName": "Malbec Black Desodorante Colônia 100ml", "price": 259.9, "category": "masculino", "image": "produtos/masculino/malbec-black/01.webp", "link": "", "desc": "Marcante, moderno e fácil de usar.", "tag": "Premium"}, {"id": 82, "slug": "malbec-gold", "code": "84391", "name": "Malbec Gold", "fullName": "Malbec Gold Desodorante Colônia 100ml", "price": 249.9, "category": "masculino", "image": "produtos/masculino/malbec-gold/01.webp", "link": "", "desc": "Boa escolha para rotina, trabalho e encontros.", "tag": "Premium"}, {"id": 83, "slug": "malbec-magnetic", "code": "84390", "name": "Malbec Magnetic", "fullName": "Malbec Magnetic Desodorante Colônia 100ml", "price": 249.9, "category": "masculino", "image": "produtos/masculino/malbec-magnetic/01.webp", "link": "", "desc": "Perfil masculino limpo, direto e elegante.", "tag": "Premium"}, {"id": 84, "slug": "malbec-signature", "code": "48134", "name": "Malbec Signature", "fullName": "Malbec Eau de Parfum Signature 90ml", "price": 359.9, "category": "masculino", "image": "produtos/masculino/malbec-signature/01.webp", "link": "", "desc": "Fragrância segura para causar boa impressão.", "tag": "Premium"}, {"id": 85, "slug": "malbec-sport", "code": "48787", "name": "Malbec Sport", "fullName": "Malbec Sport Desodorante Colônia 100ml", "price": 229.9, "category": "masculino", "image": "produtos/masculino/malbec-sport/01.webp", "link": "", "desc": "Presença forte com acabamento sofisticado.", "tag": ""}, {"id": 86, "slug": "malbec-vert", "code": "48133", "name": "Malbec Vert", "fullName": "Malbec Vert Desodorante Colônia 100ml", "price": 229.9, "category": "masculino", "image": "produtos/masculino/malbec-vert/01.webp", "link": "", "desc": "Marcante, moderno e fácil de usar.", "tag": ""}, {"id": 87, "slug": "men-galbe", "code": "76666", "name": "Men Galbe", "fullName": "Men Galbe Desodorante Colônia 100ml", "price": 164.9, "category": "masculino", "image": "produtos/masculino/men-galbe/01.webp", "link": "", "desc": "Boa escolha para rotina, trabalho e encontros.", "tag": ""}, {"id": 88, "slug": "men-only", "code": "76665", "name": "Men Only", "fullName": "Men Only Desodorante Colônia 100ml", "price": 164.9, "category": "masculino", "image": "produtos/masculino/men-only/01.webp", "link": "", "desc": "Perfil masculino limpo, direto e elegante.", "tag": ""}, {"id": 89, "slug": "oui-iconique-001", "code": "85827", "name": "O.U.I Iconique 001", "fullName": "O.U.I Iconique 001 Eau de Parfum 75ml", "price": 379.0, "category": "masculino", "image": "produtos/masculino/oui-iconique-001/01.webp", "link": "", "desc": "Fragrância segura para causar boa impressão.", "tag": "Premium"}, {"id": 90, "slug": "oui-mystere-royal-084", "code": "47407", "name": "O.U.I Mystère Royal 084", "fullName": "O.U.I Mystère Royal 084 Eau de Parfum 75ml", "price": 379.0, "category": "masculino", "image": "produtos/masculino/oui-mystere-royal-084/01.webp", "link": "", "desc": "Presença forte com acabamento sofisticado.", "tag": "Premium"}, {"id": 91, "slug": "quasar-brave", "code": "73287", "name": "Quasar Brave", "fullName": "Quasar Brave Desodorante Colônia 100ml", "price": 174.9, "category": "masculino", "image": "produtos/masculino/quasar-brave/01.webp", "link": "", "desc": "Marcante, moderno e fácil de usar.", "tag": "Mais vendido"}, {"id": 92, "slug": "quasar-fire", "code": "73285", "name": "Quasar Fire", "fullName": "Quasar Fire Desodorante Colônia 100ml", "price": 174.9, "category": "masculino", "image": "produtos/masculino/quasar-fire/01.webp", "link": "", "desc": "Boa escolha para rotina, trabalho e encontros.", "tag": ""}, {"id": 93, "slug": "quasar-rush", "code": "83039", "name": "Quasar Rush", "fullName": "Quasar Rush Desodorante Colônia 100ml", "price": 174.9, "category": "masculino", "image": "produtos/masculino/quasar-rush/01.webp", "link": "", "desc": "Perfil masculino limpo, direto e elegante.", "tag": ""}, {"id": 94, "slug": "the-blend-bourbon", "code": "77489", "name": "The Blend Bourbon", "fullName": "The Blend Bourbon Eau de Parfum 100ml", "price": 359.9, "category": "masculino", "image": "produtos/masculino/the-blend-bourbon/01.webp", "link": "", "desc": "Fragrância segura para causar boa impressão.", "tag": "Premium"}, {"id": 95, "slug": "the-blend-cardamom", "code": "83529", "name": "The Blend Cardamom", "fullName": "The Blend Cardamom Eau de Parfum 100ml", "price": 359.9, "category": "masculino", "image": "produtos/masculino/the-blend-cardamom/01.webp", "link": "", "desc": "Presença forte com acabamento sofisticado.", "tag": "Mais vendido"}, {"id": 96, "slug": "uomini-black", "code": "77484", "name": "Uomini Black", "fullName": "Uomini Black Desodorante Colônia 100ml", "price": 199.9, "category": "masculino", "image": "produtos/masculino/uomini-black/01.webp", "link": "", "desc": "Marcante, moderno e fácil de usar.", "tag": ""}, {"id": 97, "slug": "uomini-infinite", "code": "77490", "name": "Uomini Infinite", "fullName": "Uomini Infinite Desodorante Colônia 100ml", "price": 169.9, "category": "masculino", "image": "produtos/masculino/uomini-infinite/01.webp", "link": "", "desc": "Boa escolha para rotina, trabalho e encontros.", "tag": ""}, {"id": 98, "slug": "volpe-triumph", "code": "56231", "name": "Volpe Triumph", "fullName": "Volpe Triumph Desodorante Colônia 100ml", "price": 169.9, "category": "masculino", "image": "produtos/masculino/volpe-triumph/01.webp", "link": "", "desc": "Perfil masculino limpo, direto e elegante.", "tag": ""}, {"id": 99, "slug": "zaad-expedition", "code": "46898", "name": "Zaad Expedition", "fullName": "Zaad Expedition Eau de Parfum 95ml", "price": 294.9, "category": "masculino", "image": "produtos/masculino/zaad-expedition/01.webp", "link": "", "desc": "Fragrância segura para causar boa impressão.", "tag": "Premium"}, {"id": 100, "slug": "zaad-intense", "code": "58644", "name": "Zaad Intense", "fullName": "Zaad Intense Eau de Parfum 95ml", "price": 299.9, "category": "masculino", "image": "produtos/masculino/zaad-intense/01.webp", "link": "", "desc": "Presença forte com acabamento sofisticado.", "tag": "Premium"}, {"id": 101, "slug": "zaad-mondo", "code": "47951", "name": "Zaad Mondo", "fullName": "Zaad Mondo Eau de Parfum 95ml", "price": 263.89, "category": "masculino", "image": "produtos/masculino/zaad-mondo/01.webp", "link": "", "desc": "Marcante, moderno e fácil de usar.", "tag": "Premium"}, {"id": 102, "slug": "zaad-eau-de-parfum", "code": "47950", "name": "Zaad Eau de Parfum", "fullName": "Zaad Eau de Parfum 95ml", "price": 329.9, "category": "masculino", "image": "produtos/masculino/zaad-eau-de-parfum/01.webp", "link": "", "desc": "Boa escolha para rotina, trabalho e encontros.", "tag": "Mais vendido"}];
-const bestsellerCodes = ["75792", "77524", "48139", "50022", "48130", "47950", "83529", "73287", "05009", "70669", "51387", "84214"];
-const WHATSAPP_NUMBER = "5562981479674";
-const productGrid=document.getElementById("productGrid"),featuredGrid=document.getElementById("featuredGrid"),searchInput=document.getElementById("searchInput"),emptyState=document.getElementById("emptyState"),chips=document.querySelectorAll(".chip");
-let currentFilter="todos",slideIndex=0;
-function formatPrice(price){return Number(price).toLocaleString("pt-BR",{style:"currency",currency:"BRL"});}
-function categoryLabel(c){return c==="feminino"?"Feminino":c==="masculino"?"Masculino":"Infantil";}
-function message(p){return encodeURIComponent("Olá, quero reservar este produto da Ana Essenci:\n\nProduto: "+p.fullName+"\nCódigo: "+p.code+"\nPreço: "+formatPrice(p.price)+"\n\nPode me orientar para finalizar?");}
-function whats(p){return "https://wa.me/"+WHATSAPP_NUMBER+"?text="+message(p);}
-function card(p){const tag=p.tag?`<span class="tag">${p.tag}</span>`:"";return `<article class="card"><div class="product-image" data-open-product="${product.code}"><span class="badge">${categoryLabel(p.category)}</span>${tag}<img loading="lazy" src="${p.image}" alt="${p.fullName}" onerror="this.src='imagens/logo/logo-ana-essenci.png'"></div><div class="product-body"><span class="code">CÓDIGO ${p.code}</span><h3 class="product-title">${p.name}</h3><p class="product-desc">${p.desc}</p><strong class="price">${formatPrice(p.price)}</strong><a class="buy" href="${whats(p)}" target="_blank" rel="noopener">Reservar pelo código</a></div></article>`}
-function filtered(){const q=searchInput.value.trim().toLowerCase();return products.filter(p=>{const ok=currentFilter==="todos"||p.category===currentFilter;const text=[p.name,p.fullName,p.code,p.category,p.slug].join(" ").toLowerCase();return ok&&(!q||text.includes(q));});}
-function renderProducts(){const list=filtered();productGrid.innerHTML=list.map(card).join("");emptyState.style.display=list.length?"none":"block";}
-function renderFeatured(){const list=products.filter(p=>bestsellerCodes.includes(p.code));featuredGrid.innerHTML=list.map(card).join("");}
-chips.forEach(chip=>chip.addEventListener("click",()=>{chips.forEach(c=>c.classList.remove("active"));chip.classList.add("active");currentFilter=chip.dataset.filter;renderProducts();}));
-searchInput.addEventListener("input",renderProducts);
-renderFeatured();renderProducts();
-setInterval(()=>{if(window.innerWidth<821)return;const total=featuredGrid.children.length;if(!total)return;const visible=4;slideIndex=(slideIndex+1)%(total-visible+1);featuredGrid.style.transform=`translateX(calc(-${slideIndex} * ((100% - 66px) / 4 + 22px)))`;},3000);
-console.log("Ana Essenci corrigido", {total:products.length,feminino:products.filter(p=>p.category==="feminino").length,masculino:products.filter(p=>p.category==="masculino").length,infantil:products.filter(p=>p.category==="infantil").length});
+    const productGrid = document.getElementById("productGrid");
+    const featuredGrid = document.getElementById("featuredGrid");
+    const searchInput = document.getElementById("searchInput");
+    const emptyState = document.getElementById("emptyState");
+    const chips = document.querySelectorAll(".chip");
 
+    let currentFilter = "todos";
+
+    function formatPrice(price) {
+      return Number(price).toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+      });
+    }
+
+    function categoryLabel(category) {
+      if (category === "feminino") return "Feminino";
+      if (category === "masculino") return "Masculino";
+      return "Infantil";
+    }
+
+    function card(product) {
+      return `
+        <article class="card">
+          <div class="product-image" data-open-product="${product.code}">
+            <span class="badge">${categoryLabel(product.category)}</span>
+            <img loading="lazy" src="${product.image}" alt="${product.fullName}" onerror="this.src='imagens/logo/logo-ana-essenci.png'">
+          </div>
+          <div class="product-body">
+            <span class="code">CÓDIGO ${product.code}</span>
+            <h3 class="product-title">${product.name}</h3>
+            <p class="product-desc">${product.desc}</p>
+            <strong class="product-price">${formatPrice(product.price)}</strong>
+            <a class="buy" href="${product.link}" target="_blank" rel="noopener">Reservar pelo código</a>
+          </div>
+        </article>
+      `;
+    }
+
+    function filteredProducts() {
+      const q = searchInput.value.trim().toLowerCase();
+
+      return products.filter(product => {
+        const okCategory = currentFilter === "todos" || product.category === currentFilter;
+        const text = `${product.name} ${product.fullName} ${product.code} ${product.category} ${product.slug}`.toLowerCase();
+        const okSearch = !q || text.includes(q);
+        return okCategory && okSearch;
+      });
+    }
+
+    function renderProducts() {
+      const list = filteredProducts();
+      productGrid.innerHTML = list.map(card).join("");
+      emptyState.style.display = list.length ? "none" : "block";
+    }
+
+    function renderFeatured() {
+      const list = products.filter(product => bestsellerCodes.includes(product.code)).slice(0, 12);
+      featuredGrid.innerHTML = list.map(card).join("");
+    }
+
+    chips.forEach(chip => {
+      chip.addEventListener("click", () => {
+        chips.forEach(item => item.classList.remove("active"));
+        chip.classList.add("active");
+        currentFilter = chip.dataset.filter;
+        renderProducts();
+      });
+    });
+
+    searchInput.addEventListener("input", renderProducts);
+
+    renderFeatured();
+    renderProducts();
+
+    console.log("Ana Essenci validado:", {
+      total: products.length,
+      feminino: products.filter(p => p.category === "feminino").length,
+      masculino: products.filter(p => p.category === "masculino").length,
+      infantil: products.filter(p => p.category === "infantil").length,
+      linksInvalidos: products.filter(p => !p.link || p.link === "#").length
+    });
+  
 document.addEventListener('click',function(e){
-  const open=e.target.closest('[data-open-product]');
-  if(open){
-    const p=products.find(x=>x.code===open.dataset.openProduct);
-    if(!p)return;
-    document.getElementById('modalImg').src=p.image;
-    document.getElementById('modalImg').alt=p.fullName;
-    document.getElementById('modalName').textContent=p.name;
-    document.getElementById('modalDesc').textContent=p.desc;
-    document.getElementById('modalPrice').textContent=formatPrice(p.price);
-    document.getElementById('modalCode').textContent='CÓDIGO '+p.code;
-    document.getElementById('modalBuy').href=whatsappProductLink(p);
-    document.getElementById('productModal').classList.add('active');
-    document.body.style.overflow='hidden';
-  }
-  if(e.target.closest('[data-close-modal]')){
-    document.getElementById('productModal').classList.remove('active');
-    document.body.style.overflow='';
-  }
+ const open=e.target.closest('[data-open-product]');
+ if(open){
+  const p=products.find(x=>x.code===open.dataset.openProduct);
+  if(!p)return;
+  modalImg.src=p.image; modalImg.alt=p.fullName;
+  modalName.textContent=p.name; modalDesc.textContent=p.desc;
+  modalPrice.textContent=formatPrice(p.price); modalCode.textContent='CÓDIGO '+p.code;
+  modalBuy.href=whatsappProductLink(p);
+  productModal.classList.add('active'); document.body.style.overflow='hidden';
+ }
+ if(e.target.closest('[data-close-modal]')){
+  productModal.classList.remove('active'); document.body.style.overflow='';
+ }
 });
-
 </script>
-
-<div class="product-modal" id="productModal">
-  <div class="product-modal__bg" data-close-modal></div>
-  <div class="product-modal__box">
-    <button class="product-modal__close" data-close-modal>×</button>
-    <div class="product-modal__pic"><img id="modalImg" src="" alt=""></div>
-    <div class="product-modal__info">
-      <h2 id="modalName"></h2>
-      <p id="modalDesc"></p>
-      <strong class="modal-price" id="modalPrice"></strong>
-      <span class="modal-code" id="modalCode"></span>
-      <a class="modal-buy" id="modalBuy" href="#" target="_blank" rel="noopener">Reservar pelo código</a>
-    </div>
-  </div>
-</div>
-
-</body>
+<div class="product-modal" id="productModal"><div class="product-modal__bg" data-close-modal></div><div class="product-modal__box"><button class="product-modal__close" data-close-modal>×</button><div class="product-modal__pic"><img id="modalImg" src="" alt=""></div><div class="product-modal__info"><h2 id="modalName"></h2><p id="modalDesc"></p><strong class="modal-price" id="modalPrice"></strong><span class="modal-code" id="modalCode"></span><a class="modal-buy" id="modalBuy" href="#" target="_blank" rel="noopener">Reservar pelo código</a></div></div></div></body>
 </html>

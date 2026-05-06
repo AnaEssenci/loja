@@ -1,0 +1,47 @@
+const produtos = {
+  feminino: [
+    { id: "75792", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/75792/" },
+    { id: "25458", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/25458/" },
+    { id: "48635", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48635/" },
+    { id: "48621", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48621/" },
+    { id: "01004", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/01004/" },
+    { id: "77524", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/77524/" },
+    { id: "85699", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/85699/" },
+    { id: "77989", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/77989/" },
+    { id: "19685", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/19685/" },
+    { id: "48146", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48146/" },
+    { id: "82688", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/82688/" },
+    { id: "82690", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/82690/" },
+    { id: "82689", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/82689/" },
+    { id: "82685", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/82685/" },
+    { id: "84213", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/84213/" },
+    { id: "48139", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48139/" },
+    { id: "83756", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/83756/" },
+    { id: "74103", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/74103/" },
+    { id: "76700", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/76700/" },
+    { id: "50022", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/50022/" }
+  ],
+
+  masculino: [
+    { id: "46898", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/46898/" },
+    { id: "48130", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48130/" },
+    { id: "84392", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/84392/" },
+    { id: "73849", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/73849/" },
+    { id: "73743", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/73743/" },
+    { id: "48134", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48134/" },
+    { id: "48787", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48787/" },
+    { id: "48133", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/48133/" },
+    { id: "51243", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/51243/" },
+    { id: "51242", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/51242/" },
+    { id: "83039", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/83039/" },
+    { id: "74438", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/74438/" },
+    { id: "81138", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/81138/" },
+    { id: "82686", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/82686/" },
+    { id: "49812", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/49812/" },
+    { id: "84214", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/84214/" },
+    { id: "74029", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/74029/" },
+    { id: "47950", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/47950/" },
+    { id: "77489", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/77489/" },
+    { id: "26195", url: "https://minhaloja.grupoboticario.com.br/anaessenci/boticario/produto/26195/" }
+  ]
+};
